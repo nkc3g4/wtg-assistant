@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IsChinaMsg" xml:space="preserve">
+    <value>This program can not run in a directory contains Chinese</value>
+  </data>
+  <data name="Msg_BCDError" xml:space="preserve">
+    <value>An error occured while copying BCD file.</value>
+  </data>
+  <data name="Msg_bootmgrError" xml:space="preserve">
+    <value>Missing:bootmgr!</value>
+  </data>
+  <data name="Msg_chooseinstallwim" xml:space="preserve">
+    <value>Please choose the install.wim</value>
+  </data>
+  <data name="Msg_chooseud" xml:space="preserve">
+    <value>Please choose a extended USB device</value>
+  </data>
+  <data name="Msg_Complete" xml:space="preserve">
+    <value>Completed!</value>
+  </data>
+  <data name="Msg_ConfirmChoose" xml:space="preserve">
+    <value>Please confirm your selection:</value>
+  </data>
+  <data name="Msg_DeleteTempError" xml:space="preserve">
+    <value>An error occured while deleting temp files.</value>
+  </data>
+  <data name="Msg_DiskSpaceError" xml:space="preserve">
+    <value>USB disk capacity is less than VHD set size, please change settings!</value>
+  </data>
+  <data name="Msg_DiskSpaceWarning" xml:space="preserve">
+    <value>USB disk capacity is less than 16GB.This may cause some errors.Do you want to continue?</value>
+  </data>
+  <data name="Msg_Disk_Space" xml:space="preserve">
+    <value> volume,Capacity:</value>
+  </data>
+  <data name="Msg_DoWhat" xml:space="preserve">
+    <value>If you don't know what you're doing,please cancel.</value>
+  </data>
+  <data name="Msg_error" xml:space="preserve">
+    <value>Error!</value>
+  </data>
+  <data name="Msg_FormatWarning" xml:space="preserve">
+    <value>the volume will be formatted, all data will be deleted, this operation will not be restored, are you sure to continue?</value>
+  </data>
+  <data name="Msg_LetterV" xml:space="preserve">
+    <value>Virtual CD-ROM cannot be mounted into V disk</value>
+  </data>
+  <data name="Msg_RenameError" xml:space="preserve">
+    <value>Rename error!</value>
+  </data>
+  <data name="Msg_Repartition" xml:space="preserve">
+    <value>You checked the re-partitioning, all data on the USB device will be deleted! \r\n note that is the entire disk, not a partition!</value>
+  </data>
+  <data name="Msg_UDRoot" xml:space="preserve">
+    <value>Please choose the root directory of USB device.</value>
+  </data>
+  <data name="Msg_UefiError" xml:space="preserve">
+    <value>This USB device is not compatible with UEFI mode.</value>
+  </data>
+  <data name="Msg_UefiFormatWarning" xml:space="preserve">
+    <value>You checked the UEFI option, all data on the USB device will be deleted! \n note that is the entire disk, not a partition!</value>
+  </data>
+  <data name="Msg_VHDBcdbootError" xml:space="preserve">
+    <value>An error occured while editing bcd file using bcdboot.</value>
+  </data>
+  <data name="Msg_VHDCreationError" xml:space="preserve">
+    <value>An error occured while writing to VHD file.</value>
+  </data>
+  <data name="Msg_VHDDynamicSize" xml:space="preserve">
+    <value>You create a VHD for dynamic size VHD, the actual capacity of VHD:</value>
+  </data>
+  <data name="Msg_VHDDynamicSize2" xml:space="preserve">
+    <value>After the system is started,the VHD will automatically extended for the actual capacity. Please have enough space in the USB disk to ensure the system boot normally.</value>
+  </data>
+  <data name="FileName_VHD_Dynamic" xml:space="preserve">
+    <value>VHD_instruction.txt</value>
+  </data>
+  <data name="Msg_ClearPartition" xml:space="preserve">
+    <value>This operation will delete all data on the USB disk ,do you want to continue?</value>
+  </data>
+  <data name="Msg_ESDError" xml:space="preserve">
+    <value>This system does not support ESD file.</value>
+  </data>
+  <data name="Msg_Failure" xml:space="preserve">
+    <value>Operation failure!</value>
+  </data>
+  <data name="Msg_FormatTip" xml:space="preserve">
+    <value>is the disk you want to be written.</value>
+  </data>
+  <data name="Msg_ntfsstream" xml:space="preserve">
+    <value>NTFS stream error!\nplease rest assured, this error does not affect the normal use.</value>
+  </data>
+  <data name="Msg_OnlyNonUefi" xml:space="preserve">
+    <value>This option is only available while the UEFI is unchecked.</value>
+  </data>
+  <data name="Msg_warning" xml:space="preserve">
+    <value>Warning!</value>
+  </data>
+  <data name="Msg_wiminfoerror" xml:space="preserve">
+    <value>An error occured while getting WIM info.</value>
+  </data>
+  <data name="Msg_win7usberror" xml:space="preserve">
+    <value>An error occured while processing WIN7 TO GO.</value>
+  </data>
+  <data name="Msg_WriteProcessing" xml:space="preserve">
+    <value>Writing in progress,please wait.</value>
+  </data>
+  <data name="Msg_WritingAbort" xml:space="preserve">
+    <value>Writing in progress,do you want to abort?</value>
+  </data>
+  <data name="Msg_XPNotCOMP" xml:space="preserve">
+    <value>XP system is not compatible with this function.</value>
+  </data>
+  <data name="Msg_XPUefiError" xml:space="preserve">
+    <value>XP system is not compatible with UEFI mode.</value>
+  </data>
+  <data name="Msg_ConfirmRestart" xml:space="preserve">
+    <value>This program will restart,continue?</value>
+  </data>
+  <data name="Msg_Tip" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="Msg_Legacywarning" xml:space="preserve">
+    <value>This USB Disk using Legacy mode may not be able to start, confirm to continue?</value>
+  </data>
+  <data name="Msg_Copy" xml:space="preserve">
+    <value>Copying files...\n</value>
+  </data>
+  <data name="Msg_ApplyError" xml:space="preserve">
+    <value>Image file apply failed.</value>
+  </data>
+  <data name="Msg_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Msg_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Msg_VHDNameIllegal" xml:space="preserve">
+    <value>VHD Name can not contain Chinese or whitespaces.</value>
+  </data>
+  <data name="Msg_BitlockerUnusable" xml:space="preserve">
+    <value>Bitlocker can be used only in the typical.UEFI+GPT or UEFI+MBR must be checked.</value>
+  </data>
+</root>

@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FileName_VHD_Dynamic" xml:space="preserve">
+    <value>VHD模式說明.TXT</value>
+  </data>
+  <data name="IsChinaMsg" xml:space="preserve">
+    <value>請不要將程序放入中文文件夾運行。</value>
+  </data>
+  <data name="Msg_BCDError" xml:space="preserve">
+    <value>引導文件寫入出錯！boot文件夾不存在！</value>
+  </data>
+  <data name="Msg_bootmgrError" xml:space="preserve">
+    <value>文件寫入出錯！bootmgr不存在！\n請檢查寫入過程是否中斷</value>
+  </data>
+  <data name="Msg_chooseinstallwim" xml:space="preserve">
+    <value>鏡像文件選擇錯誤！請選擇install.wim！</value>
+  </data>
+  <data name="Msg_chooseud" xml:space="preserve">
+    <value>請選擇可移動設備</value>
+  </data>
+  <data name="Msg_ClearPartition" xml:space="preserve">
+    <value>此操作將會清除移動磁盤所有分區的所有數據，確認？</value>
+  </data>
+  <data name="Msg_Complete" xml:space="preserve">
+    <value>操作完成！</value>
+  </data>
+  <data name="Msg_ConfirmChoose" xml:space="preserve">
+    <value>請確認您所選擇的</value>
+  </data>
+  <data name="Msg_ConfirmRestart" xml:space="preserve">
+    <value>程序將會重啟，確認繼續？</value>
+  </data>
+  <data name="Msg_DeleteTempError" xml:space="preserve">
+    <value>程序刪除臨時文件出錯！可重啟程序或重啟電腦重試！\n</value>
+  </data>
+  <data name="Msg_DiskSpaceError" xml:space="preserve">
+    <value>優盤容量小於VHD設定大小，請修改設置！</value>
+  </data>
+  <data name="Msg_DiskSpaceWarning" xml:space="preserve">
+    <value>可移動磁盤容量不足16G，繼續寫入可能會導致程序出錯！您確定要繼續嗎？</value>
+  </data>
+  <data name="Msg_Disk_Space" xml:space="preserve">
+    <value>盤，容量</value>
+  </data>
+  <data name="Msg_DoWhat" xml:space="preserve">
+    <value>如果您不清楚您在做什麼，請立即停止操作！</value>
+  </data>
+  <data name="Msg_error" xml:space="preserve">
+    <value>錯誤！</value>
+  </data>
+  <data name="Msg_ESDError" xml:space="preserve">
+    <value>此系統不支持ESD文件處理！</value>
+  </data>
+  <data name="Msg_Failure" xml:space="preserve">
+    <value>操作失敗！</value>
+  </data>
+  <data name="Msg_FormatTip" xml:space="preserve">
+    <value>是將要寫入的優盤或移動硬盤</value>
+  </data>
+  <data name="Msg_FormatWarning" xml:space="preserve">
+    <value>此分区將會被格式化，此操作將不可恢復，您確定要繼續嗎？</value>
+  </data>
+  <data name="Msg_LetterV" xml:space="preserve">
+    <value>盤符V不能被佔用！</value>
+  </data>
+  <data name="Msg_ntfsstream" xml:space="preserve">
+    <value>NTFS文件流異常\n請放心，此錯誤不影響正常使用</value>
+  </data>
+  <data name="Msg_OnlyNonUefi" xml:space="preserve">
+    <value>此選項僅在非UEFI模式下有效！</value>
+  </data>
+  <data name="Msg_RenameError" xml:space="preserve">
+    <value>重命名錯誤</value>
+  </data>
+  <data name="Msg_Repartition" xml:space="preserve">
+    <value>您勾選了重新分區，優盤或移動硬盤上的所有文件將被刪除！\n注意是整個磁盤，不是一個分區！</value>
+  </data>
+  <data name="Msg_Tip" xml:space="preserve">
+    <value>提示！</value>
+  </data>
+  <data name="Msg_UDRoot" xml:space="preserve">
+    <value>請選擇優盤根目錄</value>
+  </data>
+  <data name="Msg_UefiError" xml:space="preserve">
+    <value>此優盤不支持UEFI模式\n只有 Fixed Disk格式支持\n詳情請看論壇說明！</value>
+  </data>
+  <data name="Msg_UefiFormatWarning" xml:space="preserve">
+    <value>您所選擇的是UEFI模式，此模式將會格式化您的整個移動磁盤！\n注意是整個磁盤！！！\n程序將會刪除所有優盤分區！</value>
+  </data>
+  <data name="Msg_UpdateTip" xml:space="preserve">
+    <value>若無彈出窗口，則當前程序已是最新版本！</value>
+  </data>
+  <data name="Msg_VHDBcdbootError" xml:space="preserve">
+    <value>VHD模式下BCDBOOT執行出錯！</value>
+  </data>
+  <data name="Msg_VHDCreationError" xml:space="preserve">
+    <value>VHD文件創建出錯！</value>
+  </data>
+  <data name="Msg_VHDDynamicSize" xml:space="preserve">
+    <value>您創建的VHD為動態大小VHD，實際VHD容量：</value>
+  </data>
+  <data name="Msg_VHDDynamicSize2" xml:space="preserve">
+    <value>在VHD系統啟動後將自動擴充為實際容量。請您在優盤留有足夠空間確保系統正常啟動！</value>
+  </data>
+  <data name="Msg_warning" xml:space="preserve">
+    <value>警告！</value>
+  </data>
+  <data name="Msg_wiminfoerror" xml:space="preserve">
+    <value>WIM文件信息獲取失敗\n將按WIN8系統安裝</value>
+  </data>
+  <data name="Msg_win7usberror" xml:space="preserve">
+    <value>處理WIN7 USB啟動時出現問題</value>
+  </data>
+  <data name="Msg_WriteProcessing" xml:space="preserve">
+    <value>正在寫入...</value>
+  </data>
+  <data name="Msg_WritingAbort" xml:space="preserve">
+    <value>正在寫入，您確定要取消嗎？</value>
+  </data>
+  <data name="Msg_XPNotCOMP" xml:space="preserve">
+    <value>XP系統不支持此操作</value>
+  </data>
+  <data name="Msg_XPUefiError" xml:space="preserve">
+    <value>XP系統不支持UEFI模式寫入</value>
+  </data>
+  <data name="Msg_Legacywarning" xml:space="preserve">
+    <value>此類優盤使用傳統模式可能無法啟動，確認繼續？</value>
+  </data>
+  <data name="Msg_Copy" xml:space="preserve">
+    <value>復制文件中...大約需要10分鐘~1小時，請耐心等待！\n</value>
+  </data>
+  <data name="Msg_ApplyError" xml:space="preserve">
+    <value>鏡像文件應用失敗！</value>
+  </data>
+  <data name="Msg_No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="Msg_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Msg_BitlockerUnusable" xml:space="preserve">
+    <value>Bitlocker僅在勾選UEFI+GPT或UEFI+MBR的傳統模式下可用。</value>
+  </data>
+</root>

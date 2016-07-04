@@ -1036,7 +1036,6 @@ namespace wintogo
             FileValidation();
             SystemDetection(true);
 
-            //timer1.Start();//UdList 刷新
 
             SWOnline swo = new SWOnline(releaseUrl, reportUrl);
             swo.TopicLink = WriteProgress.topicLink;

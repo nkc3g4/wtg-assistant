@@ -248,7 +248,7 @@ namespace iTuner
             // browse all USB WMI physical disks
             foreach (ManagementObject drive in
                 new ManagementObjectSearcher(
-                    "select DeviceID, Model,Size,TotalSectors from Win32_DiskDrive where InterfaceType='USB' or MediaType='External hard disk media' or (InterfaceType='SCSI' and MediaType='Removable Media')").Get())
+                    "select DeviceID,Model,Size from Win32_DiskDrive where InterfaceType='USB' or MediaType='External hard disk media' or (InterfaceType='SCSI' and MediaType='Removable Media')").Get())
             {
                 // associate physical disks with partitions
                 foreach (ManagementObject partition in new ManagementObjectSearcher(string.Format(
@@ -260,13 +260,13 @@ namespace iTuner
                         if (partition != null)
                         {
                             // associate partitions with logical disks (drive letter volumes)
-                            ManagementObject logical = new ManagementObjectSearcher(String.Format(
+                            ManagementObject logical = new ManagementObjectSearcher(string.Format(
                                 "associators of {{Win32_DiskPartition.DeviceID='{0}'}} where AssocClass = Win32_LogicalDiskToPartition",
                                 partition["DeviceID"])).First();
                             if (logical != null)
                             {
                                 // finally find the logical disk entry to determine the volume name
-                                ManagementObject volume = new ManagementObjectSearcher(String.Format(
+                                ManagementObject volume = new ManagementObjectSearcher(string.Format(
                                     "select FreeSpace, Size, VolumeName, DriveType from Win32_LogicalDisk where Name='{0}'",
                                     logical["Name"])).First();
 
@@ -279,7 +279,7 @@ namespace iTuner
                                 disk.Size = (ulong)volume["Size"];
                                 disk.DiskSize = (ulong)drive["Size"];
                                 disk.DriveType = Drivetypeconvert(int.Parse(volume["DriveType"].ToString()));
-                                disk.TotalSectors = (ulong)drive["TotalSectors"];
+                                //disk.TotalSectors = (ulong)drive["TotalSectors"];
                                 disks.Add(disk);
                                 //MessageBox.Show("HERE");
                             }

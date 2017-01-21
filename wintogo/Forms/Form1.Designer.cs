@@ -43,9 +43,6 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.linklblVhd = new System.Windows.Forms.LinkLabel();
-            this.linklblAdv = new System.Windows.Forms.LinkLabel();
-            this.checkBoxNotemp = new System.Windows.Forms.CheckBox();
             this.checkBoxSan_policy = new System.Windows.Forms.CheckBox();
             this.checkBoxWimboot = new System.Windows.Forms.CheckBox();
             this.checkBoxFixed = new System.Windows.Forms.CheckBox();
@@ -54,18 +51,15 @@
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.checkBoxBitlocker = new System.Windows.Forms.CheckBox();
+            this.checkBoxDisUasp = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.checkBoxNotemp = new System.Windows.Forms.CheckBox();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.radiobtnVhd = new System.Windows.Forms.RadioButton();
             this.checkBoxUefigpt = new System.Windows.Forms.CheckBox();
             this.radiobtnLegacy = new System.Windows.Forms.RadioButton();
             this.radiobtnVhdx = new System.Windows.Forms.RadioButton();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.lblVhdSize = new System.Windows.Forms.Label();
-            this.groupBoxAdv = new System.Windows.Forms.GroupBox();
             this.checkBoxNoDefaultLetter = new System.Windows.Forms.CheckBox();
-            this.comboBoxParts = new System.Windows.Forms.ComboBox();
-            this.lblVhdName = new System.Windows.Forms.Label();
-            this.txtVhdNameWithoutExt = new System.Windows.Forms.TextBox();
             this.checkBoxFixLetter = new System.Windows.Forms.CheckBox();
             this.checkBoxNtfsUefi = new System.Windows.Forms.CheckBox();
             this.checkBoxDoNotFormat = new System.Windows.Forms.CheckBox();
@@ -84,6 +78,7 @@
             this.wIN7TOGOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bOOTICEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修复盘符ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.克隆本机系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chineseSimpleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,19 +91,27 @@
             this.labelDisFunc = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxParts = new System.Windows.Forms.ComboBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.lblVhdTempPath = new System.Windows.Forms.Label();
+            this.lblVhdPartitionTableType = new System.Windows.Forms.Label();
+            this.comboBoxVhdPartitionType = new System.Windows.Forms.ComboBox();
+            this.btnVhdTempPath = new System.Windows.Forms.Button();
+            this.txtVhdTempPath = new System.Windows.Forms.TextBox();
             this.comboBoxGb = new System.Windows.Forms.ComboBox();
+            this.txtVhdNameWithoutExt = new System.Windows.Forms.TextBox();
+            this.lblVhdSize = new System.Windows.Forms.Label();
+            this.lblVhdName = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBoxDonet = new System.Windows.Forms.CheckBox();
             this.checkBoxDisWinre = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.labelPartition1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.linklblRestoreMultiPartition = new System.Windows.Forms.LinkLabel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEfiSize = new System.Windows.Forms.TextBox();
@@ -118,25 +121,28 @@
             this.txtPartitionSize2 = new System.Windows.Forms.TextBox();
             this.txtPartitionSize1 = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.checkBoxEfiPartition = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnEfiPartitionSelect = new System.Windows.Forms.Button();
+            this.textBoxEfiPartition = new System.Windows.Forms.TextBox();
             this.linklblTabPage4Resotre = new System.Windows.Forms.LinkLabel();
-            this.lblVhdTempPath = new System.Windows.Forms.Label();
-            this.lblVhdPartitionTableType = new System.Windows.Forms.Label();
-            this.comboBoxVhdPartitionType = new System.Windows.Forms.ComboBox();
-            this.btnVhdTempPath = new System.Windows.Forms.Button();
-            this.txtVhdTempPath = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnwim = new System.Windows.Forms.Button();
+            this.txtwim = new System.Windows.Forms.TextBox();
+            this.groupBoxadv = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBoxAdv.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBoxadv.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxUd
@@ -221,35 +227,6 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
-            // linklblVhd
-            // 
-            resources.ApplyResources(this.linklblVhd, "linklblVhd");
-            this.linklblVhd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linklblVhd.LinkColor = System.Drawing.Color.Red;
-            this.linklblVhd.Name = "linklblVhd";
-            this.linklblVhd.TabStop = true;
-            this.toolTip1.SetToolTip(this.linklblVhd, resources.GetString("linklblVhd.ToolTip"));
-            this.linklblVhd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked_2);
-            this.linklblVhd.Click += new System.EventHandler(this.linkLabel3_Click);
-            // 
-            // linklblAdv
-            // 
-            resources.ApplyResources(this.linklblAdv, "linklblAdv");
-            this.linklblAdv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linklblAdv.LinkColor = System.Drawing.Color.Red;
-            this.linklblAdv.Name = "linklblAdv";
-            this.linklblAdv.TabStop = true;
-            this.toolTip1.SetToolTip(this.linklblAdv, resources.GetString("linklblAdv.ToolTip"));
-            this.linklblAdv.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
-            this.linklblAdv.Click += new System.EventHandler(this.linkLabel5_Click);
-            // 
-            // checkBoxNotemp
-            // 
-            resources.ApplyResources(this.checkBoxNotemp, "checkBoxNotemp");
-            this.checkBoxNotemp.Name = "checkBoxNotemp";
-            this.toolTip1.SetToolTip(this.checkBoxNotemp, resources.GetString("checkBoxNotemp.ToolTip"));
-            this.checkBoxNotemp.UseVisualStyleBackColor = true;
-            // 
             // checkBoxSan_policy
             // 
             resources.ApplyResources(this.checkBoxSan_policy, "checkBoxSan_policy");
@@ -316,12 +293,34 @@
             this.checkBoxBitlocker.CheckedChanged += new System.EventHandler(this.checkBoxBitlocker_CheckedChanged);
             this.checkBoxBitlocker.Click += new System.EventHandler(this.checkBoxBitlocker_Click);
             // 
+            // checkBoxDisUasp
+            // 
+            resources.ApplyResources(this.checkBoxDisUasp, "checkBoxDisUasp");
+            this.checkBoxDisUasp.Name = "checkBoxDisUasp";
+            this.toolTip1.SetToolTip(this.checkBoxDisUasp, resources.GetString("checkBoxDisUasp.ToolTip"));
+            this.checkBoxDisUasp.UseVisualStyleBackColor = true;
+            // 
             // trackBar1
             // 
             resources.ApplyResources(this.trackBar1, "trackBar1");
             this.trackBar1.Name = "trackBar1";
             this.toolTip1.SetToolTip(this.trackBar1, resources.GetString("trackBar1.ToolTip"));
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // checkBoxNotemp
+            // 
+            resources.ApplyResources(this.checkBoxNotemp, "checkBoxNotemp");
+            this.checkBoxNotemp.Name = "checkBoxNotemp";
+            this.toolTip1.SetToolTip(this.checkBoxNotemp, resources.GetString("checkBoxNotemp.ToolTip"));
+            this.checkBoxNotemp.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel6
+            // 
+            resources.ApplyResources(this.linkLabel6, "linkLabel6");
+            this.linkLabel6.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.TabStop = true;
+            this.toolTip1.SetToolTip(this.linkLabel6, resources.GetString("linkLabel6.ToolTip"));
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked);
             // 
             // radiobtnVhd
             // 
@@ -341,9 +340,7 @@
             // radiobtnLegacy
             // 
             resources.ApplyResources(this.radiobtnLegacy, "radiobtnLegacy");
-            this.radiobtnLegacy.Checked = true;
             this.radiobtnLegacy.Name = "radiobtnLegacy";
-            this.radiobtnLegacy.TabStop = true;
             this.radiobtnLegacy.UseVisualStyleBackColor = true;
             this.radiobtnLegacy.CheckedChanged += new System.EventHandler(this.radiochuantong_CheckedChanged);
             // 
@@ -351,56 +348,14 @@
             // 
             resources.ApplyResources(this.radiobtnVhdx, "radiobtnVhdx");
             this.radiobtnVhdx.Name = "radiobtnVhdx";
-            this.radiobtnVhdx.TabStop = true;
             this.radiobtnVhdx.UseVisualStyleBackColor = true;
             this.radiobtnVhdx.CheckedChanged += new System.EventHandler(this.radiovhdx_CheckedChanged);
-            // 
-            // numericUpDown1
-            // 
-            resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            // 
-            // lblVhdSize
-            // 
-            resources.ApplyResources(this.lblVhdSize, "lblVhdSize");
-            this.lblVhdSize.Name = "lblVhdSize";
-            // 
-            // groupBoxAdv
-            // 
-            this.groupBoxAdv.Controls.Add(this.linklblVhd);
-            this.groupBoxAdv.Controls.Add(this.linklblAdv);
-            resources.ApplyResources(this.groupBoxAdv, "groupBoxAdv");
-            this.groupBoxAdv.Name = "groupBoxAdv";
-            this.groupBoxAdv.TabStop = false;
             // 
             // checkBoxNoDefaultLetter
             // 
             resources.ApplyResources(this.checkBoxNoDefaultLetter, "checkBoxNoDefaultLetter");
             this.checkBoxNoDefaultLetter.Name = "checkBoxNoDefaultLetter";
             this.checkBoxNoDefaultLetter.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxParts
-            // 
-            this.comboBoxParts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxParts.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBoxParts, "comboBoxParts");
-            this.comboBoxParts.Name = "comboBoxParts";
-            this.comboBoxParts.MouseHover += new System.EventHandler(this.comboBoxParts_MouseHover);
-            // 
-            // lblVhdName
-            // 
-            resources.ApplyResources(this.lblVhdName, "lblVhdName");
-            this.lblVhdName.Name = "lblVhdName";
-            // 
-            // txtVhdNameWithoutExt
-            // 
-            resources.ApplyResources(this.txtVhdNameWithoutExt, "txtVhdNameWithoutExt");
-            this.txtVhdNameWithoutExt.Name = "txtVhdNameWithoutExt";
             // 
             // checkBoxFixLetter
             // 
@@ -409,6 +364,7 @@
             this.checkBoxFixLetter.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxFixLetter.Name = "checkBoxFixLetter";
             this.checkBoxFixLetter.UseVisualStyleBackColor = true;
+            this.checkBoxFixLetter.CheckedChanged += new System.EventHandler(this.checkBoxFixLetter_CheckedChanged);
             // 
             // checkBoxNtfsUefi
             // 
@@ -492,7 +448,8 @@
             this.diskpart重新分区ToolStripMenuItem1,
             this.wIN7TOGOToolStripMenuItem,
             this.bOOTICEToolStripMenuItem,
-            this.修复盘符ToolStripMenuItem});
+            this.修复盘符ToolStripMenuItem,
+            this.克隆本机系统ToolStripMenuItem});
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
             resources.ApplyResources(this.工具ToolStripMenuItem, "工具ToolStripMenuItem");
             // 
@@ -534,6 +491,12 @@
             this.修复盘符ToolStripMenuItem.Name = "修复盘符ToolStripMenuItem";
             resources.ApplyResources(this.修复盘符ToolStripMenuItem, "修复盘符ToolStripMenuItem");
             this.修复盘符ToolStripMenuItem.Click += new System.EventHandler(this.修复盘符ToolStripMenuItem_Click);
+            // 
+            // 克隆本机系统ToolStripMenuItem
+            // 
+            this.克隆本机系统ToolStripMenuItem.Name = "克隆本机系统ToolStripMenuItem";
+            resources.ApplyResources(this.克隆本机系统ToolStripMenuItem, "克隆本机系统ToolStripMenuItem");
+            this.克隆本机系统ToolStripMenuItem.Click += new System.EventHandler(this.克隆本机系统ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -604,27 +567,25 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.trackBar1);
-            this.tabPage1.Controls.Add(this.comboBoxGb);
-            this.tabPage1.Controls.Add(this.txtVhdNameWithoutExt);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.comboBoxParts);
+            this.tabPage1.Controls.Add(this.checkBoxDisUasp);
             this.tabPage1.Controls.Add(this.checkBoxBitlocker);
             this.tabPage1.Controls.Add(this.linkLabel1);
-            this.tabPage1.Controls.Add(this.lblVhdSize);
-            this.tabPage1.Controls.Add(this.lblVhdName);
             this.tabPage1.Controls.Add(this.radiobtnVhdx);
-            this.tabPage1.Controls.Add(this.checkBoxNotemp);
             this.tabPage1.Controls.Add(this.radiobtnVhd);
-            this.tabPage1.Controls.Add(this.numericUpDown1);
             this.tabPage1.Controls.Add(this.checkBoxFixed);
             this.tabPage1.Controls.Add(this.radiobtnLegacy);
             this.tabPage1.Controls.Add(this.checkBoxUefimbr);
@@ -633,16 +594,102 @@
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // comboBoxParts
+            // 
+            this.comboBoxParts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxParts.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxParts, "comboBoxParts");
+            this.comboBoxParts.Name = "comboBoxParts";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.linkLabel6);
+            this.tabPage5.Controls.Add(this.lblVhdTempPath);
+            this.tabPage5.Controls.Add(this.lblVhdPartitionTableType);
+            this.tabPage5.Controls.Add(this.comboBoxVhdPartitionType);
+            this.tabPage5.Controls.Add(this.btnVhdTempPath);
+            this.tabPage5.Controls.Add(this.txtVhdTempPath);
+            this.tabPage5.Controls.Add(this.trackBar1);
+            this.tabPage5.Controls.Add(this.comboBoxGb);
+            this.tabPage5.Controls.Add(this.txtVhdNameWithoutExt);
+            this.tabPage5.Controls.Add(this.lblVhdSize);
+            this.tabPage5.Controls.Add(this.lblVhdName);
+            this.tabPage5.Controls.Add(this.numericUpDown1);
+            resources.ApplyResources(this.tabPage5, "tabPage5");
+            this.tabPage5.Name = "tabPage5";
+            // 
+            // lblVhdTempPath
+            // 
+            resources.ApplyResources(this.lblVhdTempPath, "lblVhdTempPath");
+            this.lblVhdTempPath.Name = "lblVhdTempPath";
+            // 
+            // lblVhdPartitionTableType
+            // 
+            resources.ApplyResources(this.lblVhdPartitionTableType, "lblVhdPartitionTableType");
+            this.lblVhdPartitionTableType.Name = "lblVhdPartitionTableType";
+            // 
+            // comboBoxVhdPartitionType
+            // 
+            this.comboBoxVhdPartitionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVhdPartitionType.FormattingEnabled = true;
+            this.comboBoxVhdPartitionType.Items.AddRange(new object[] {
+            resources.GetString("comboBoxVhdPartitionType.Items"),
+            resources.GetString("comboBoxVhdPartitionType.Items1")});
+            resources.ApplyResources(this.comboBoxVhdPartitionType, "comboBoxVhdPartitionType");
+            this.comboBoxVhdPartitionType.Name = "comboBoxVhdPartitionType";
+            // 
+            // btnVhdTempPath
+            // 
+            resources.ApplyResources(this.btnVhdTempPath, "btnVhdTempPath");
+            this.btnVhdTempPath.Name = "btnVhdTempPath";
+            this.btnVhdTempPath.UseVisualStyleBackColor = true;
+            // 
+            // txtVhdTempPath
+            // 
+            resources.ApplyResources(this.txtVhdTempPath, "txtVhdTempPath");
+            this.txtVhdTempPath.Name = "txtVhdTempPath";
+            this.txtVhdTempPath.ReadOnly = true;
+            // 
             // comboBoxGb
             // 
             this.comboBoxGb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxGb, "comboBoxGb");
             this.comboBoxGb.FormattingEnabled = true;
             this.comboBoxGb.Items.AddRange(new object[] {
             resources.GetString("comboBoxGb.Items"),
             resources.GetString("comboBoxGb.Items1")});
-            resources.ApplyResources(this.comboBoxGb, "comboBoxGb");
             this.comboBoxGb.Name = "comboBoxGb";
-            this.comboBoxGb.SelectedIndexChanged += new System.EventHandler(this.comboBoxGb_SelectedIndexChanged);
+            // 
+            // txtVhdNameWithoutExt
+            // 
+            resources.ApplyResources(this.txtVhdNameWithoutExt, "txtVhdNameWithoutExt");
+            this.txtVhdNameWithoutExt.Name = "txtVhdNameWithoutExt";
+            // 
+            // lblVhdSize
+            // 
+            resources.ApplyResources(this.lblVhdSize, "lblVhdSize");
+            this.lblVhdSize.Name = "lblVhdSize";
+            // 
+            // lblVhdName
+            // 
+            resources.ApplyResources(this.lblVhdName, "lblVhdName");
+            this.lblVhdName.Name = "lblVhdName";
+            // 
+            // numericUpDown1
+            // 
+            resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
             // 
             // tabPage2
             // 
@@ -650,8 +697,6 @@
             this.tabPage2.Controls.Add(this.linkLabel3);
             this.tabPage2.Controls.Add(this.checkBoxDonet);
             this.tabPage2.Controls.Add(this.checkBoxDisWinre);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.comboBoxParts);
             this.tabPage2.Controls.Add(this.checkBoxNoDefaultLetter);
             this.tabPage2.Controls.Add(this.checkBoxWimboot);
             this.tabPage2.Controls.Add(this.checkBoxCompactOS);
@@ -673,11 +718,6 @@
             this.checkBoxDisWinre.Name = "checkBoxDisWinre";
             this.checkBoxDisWinre.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
@@ -686,9 +726,6 @@
             this.tabPage3.Controls.Add(this.labelPartition1);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.linklblRestoreMultiPartition);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.txtEfiSize);
@@ -724,21 +761,6 @@
             this.linklblRestoreMultiPartition.TabStop = true;
             this.linklblRestoreMultiPartition.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblRestoreMultiPartition_LinkClicked);
             // 
-            // label14
-            // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
-            // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
             // label11
             // 
             resources.ApplyResources(this.label11, "label11");
@@ -766,7 +788,7 @@
             resources.ApplyResources(this.txtPartitionSize3, "txtPartitionSize3");
             this.txtPartitionSize3.Name = "txtPartitionSize3";
             this.txtPartitionSize3.ReadOnly = true;
-            this.txtPartitionSize3.ShortcutsEnabled = false;
+            this.txtPartitionSize3.TextChanged += new System.EventHandler(this.txtPartitionSize3_TextChanged);
             this.txtPartitionSize3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize3_KeyPress);
             // 
             // label4
@@ -778,7 +800,6 @@
             // 
             resources.ApplyResources(this.txtPartitionSize2, "txtPartitionSize2");
             this.txtPartitionSize2.Name = "txtPartitionSize2";
-            this.txtPartitionSize2.ShortcutsEnabled = false;
             this.txtPartitionSize2.TextChanged += new System.EventHandler(this.txtPartitionSize2_TextChanged);
             this.txtPartitionSize2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize2_KeyPress);
             // 
@@ -786,23 +807,47 @@
             // 
             resources.ApplyResources(this.txtPartitionSize1, "txtPartitionSize1");
             this.txtPartitionSize1.Name = "txtPartitionSize1";
-            this.txtPartitionSize1.ShortcutsEnabled = false;
             this.txtPartitionSize1.TextChanged += new System.EventHandler(this.txtPartitionSize1_TextChanged);
             this.txtPartitionSize1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize1_KeyPress);
             // 
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.checkBoxNotemp);
+            this.tabPage4.Controls.Add(this.checkBoxEfiPartition);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.btnEfiPartitionSelect);
+            this.tabPage4.Controls.Add(this.textBoxEfiPartition);
             this.tabPage4.Controls.Add(this.linkLabel5);
             this.tabPage4.Controls.Add(this.linklblTabPage4Resotre);
-            this.tabPage4.Controls.Add(this.lblVhdTempPath);
-            this.tabPage4.Controls.Add(this.lblVhdPartitionTableType);
-            this.tabPage4.Controls.Add(this.comboBoxVhdPartitionType);
-            this.tabPage4.Controls.Add(this.btnVhdTempPath);
-            this.tabPage4.Controls.Add(this.txtVhdTempPath);
             this.tabPage4.Controls.Add(this.checkBoxDoNotFormat);
             resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
+            // 
+            // checkBoxEfiPartition
+            // 
+            resources.ApplyResources(this.checkBoxEfiPartition, "checkBoxEfiPartition");
+            this.checkBoxEfiPartition.Name = "checkBoxEfiPartition";
+            this.checkBoxEfiPartition.UseVisualStyleBackColor = true;
+            this.checkBoxEfiPartition.CheckedChanged += new System.EventHandler(this.checkBoxEfiPartition_CheckedChanged);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // btnEfiPartitionSelect
+            // 
+            resources.ApplyResources(this.btnEfiPartitionSelect, "btnEfiPartitionSelect");
+            this.btnEfiPartitionSelect.Name = "btnEfiPartitionSelect";
+            this.btnEfiPartitionSelect.UseVisualStyleBackColor = true;
+            this.btnEfiPartitionSelect.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // textBoxEfiPartition
+            // 
+            resources.ApplyResources(this.textBoxEfiPartition, "textBoxEfiPartition");
+            this.textBoxEfiPartition.Name = "textBoxEfiPartition";
+            this.textBoxEfiPartition.ReadOnly = true;
             // 
             // linklblTabPage4Resotre
             // 
@@ -812,40 +857,6 @@
             this.linklblTabPage4Resotre.TabStop = true;
             this.linklblTabPage4Resotre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblTabPage4Resotre_LinkClicked);
             // 
-            // lblVhdTempPath
-            // 
-            resources.ApplyResources(this.lblVhdTempPath, "lblVhdTempPath");
-            this.lblVhdTempPath.Name = "lblVhdTempPath";
-            // 
-            // lblVhdPartitionTableType
-            // 
-            resources.ApplyResources(this.lblVhdPartitionTableType, "lblVhdPartitionTableType");
-            this.lblVhdPartitionTableType.Name = "lblVhdPartitionTableType";
-            // 
-            // comboBoxVhdPartitionType
-            // 
-            this.comboBoxVhdPartitionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxVhdPartitionType.FormattingEnabled = true;
-            this.comboBoxVhdPartitionType.Items.AddRange(new object[] {
-            resources.GetString("comboBoxVhdPartitionType.Items"),
-            resources.GetString("comboBoxVhdPartitionType.Items1")});
-            resources.ApplyResources(this.comboBoxVhdPartitionType, "comboBoxVhdPartitionType");
-            this.comboBoxVhdPartitionType.Name = "comboBoxVhdPartitionType";
-            // 
-            // btnVhdTempPath
-            // 
-            resources.ApplyResources(this.btnVhdTempPath, "btnVhdTempPath");
-            this.btnVhdTempPath.Name = "btnVhdTempPath";
-            this.btnVhdTempPath.UseVisualStyleBackColor = true;
-            this.btnVhdTempPath.Click += new System.EventHandler(this.btnVhdTempPath_Click);
-            // 
-            // txtVhdTempPath
-            // 
-            resources.ApplyResources(this.txtVhdTempPath, "txtVhdTempPath");
-            this.txtVhdTempPath.Name = "txtVhdTempPath";
-            this.txtVhdTempPath.ReadOnly = true;
-            this.txtVhdTempPath.MouseHover += new System.EventHandler(this.txtVhdTempPath_MouseHover);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -854,22 +865,43 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // btnwim
+            // 
+            resources.ApplyResources(this.btnwim, "btnwim");
+            this.btnwim.Name = "btnwim";
+            this.btnwim.UseVisualStyleBackColor = true;
+            this.btnwim.Click += new System.EventHandler(this.btnwim_Click);
+            // 
+            // txtwim
+            // 
+            resources.ApplyResources(this.txtwim, "txtwim");
+            this.txtwim.Name = "txtwim";
+            this.txtwim.ReadOnly = true;
+            // 
+            // groupBoxadv
+            // 
+            this.groupBoxadv.Controls.Add(this.tabControl1);
+            resources.ApplyResources(this.groupBoxadv, "groupBoxadv");
+            this.groupBoxadv.Name = "groupBoxadv";
+            this.groupBoxadv.TabStop = false;
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.groupBoxadv);
+            this.Controls.Add(this.txtwim);
+            this.Controls.Add(this.btnwim);
+            this.Controls.Add(this.comboBoxUd);
+            this.Controls.Add(this.lblWim);
+            this.Controls.Add(this.btnGo);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linklblVisit);
             this.Controls.Add(this.labelDisFunc);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.groupBoxAdv);
-            this.Controls.Add(this.lblWim);
-            this.Controls.Add(this.btnGo);
-            this.Controls.Add(this.comboBoxUd);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::wintogo.Properties.Resources.WTGA;
@@ -880,14 +912,14 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBoxAdv.ResumeLayout(false);
-            this.groupBoxAdv.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -895,6 +927,7 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBoxadv.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -916,15 +949,9 @@
         private System.Windows.Forms.RadioButton radiobtnVhd;
         private System.Windows.Forms.ToolStripMenuItem 萝卜头IT论坛ToolStripMenuItem;
         private System.Windows.Forms.RadioButton radiobtnVhdx;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label lblVhdSize;
-        private System.Windows.Forms.GroupBox groupBoxAdv;
         private System.Windows.Forms.CheckBox checkBoxFixed;
         private System.Windows.Forms.CheckBox checkBoxUefigpt;
-        private System.Windows.Forms.LinkLabel linklblVhd;
         private System.Windows.Forms.CheckBox checkBoxSan_policy;
-        private System.Windows.Forms.CheckBox checkBoxNotemp;
-        private System.Windows.Forms.LinkLabel linklblAdv;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开程序运行目录ToolStripMenuItem1;
@@ -954,17 +981,13 @@
         private System.Windows.Forms.ToolStripMenuItem 繁体中文ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修复盘符ToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBoxNtfsUefi;
-        private System.Windows.Forms.ComboBox comboBoxParts;
         private System.Windows.Forms.CheckBox checkBoxDoNotFormat;
         private System.Windows.Forms.CheckBox checkBoxFixLetter;
-        private System.Windows.Forms.Label lblVhdName;
-        private System.Windows.Forms.TextBox txtVhdNameWithoutExt;
         private System.Windows.Forms.CheckBox checkBoxNoDefaultLetter;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxDonet;
         private System.Windows.Forms.CheckBox checkBoxDisWinre;
         private System.Windows.Forms.Label label5;
@@ -975,14 +998,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEfiSize;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.ComboBox comboBoxVhdPartitionType;
-        private System.Windows.Forms.Button btnVhdTempPath;
-        private System.Windows.Forms.TextBox txtVhdTempPath;
-        private System.Windows.Forms.Label lblVhdTempPath;
-        private System.Windows.Forms.Label lblVhdPartitionTableType;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.LinkLabel linklblRestoreMultiPartition;
         private System.Windows.Forms.Label label6;
@@ -995,9 +1010,32 @@
         private System.Windows.Forms.LinkLabel linkLabel5;
         private System.Windows.Forms.CheckBox checkBoxBitlocker;
         private System.Windows.Forms.ToolStripMenuItem 手动选择优盘ToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBoxGb;
-        private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxDisUasp;
+        private System.Windows.Forms.ToolStripMenuItem 克隆本机系统ToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBoxEfiPartition;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnEfiPartitionSelect;
+        private System.Windows.Forms.TextBox textBoxEfiPartition;
+        private System.Windows.Forms.Button btnwim;
+        private System.Windows.Forms.TextBox txtwim;
+        private System.Windows.Forms.GroupBox groupBoxadv;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label lblVhdTempPath;
+        private System.Windows.Forms.Label lblVhdPartitionTableType;
+        private System.Windows.Forms.ComboBox comboBoxVhdPartitionType;
+        private System.Windows.Forms.Button btnVhdTempPath;
+        private System.Windows.Forms.TextBox txtVhdTempPath;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.ComboBox comboBoxGb;
+        private System.Windows.Forms.TextBox txtVhdNameWithoutExt;
+        private System.Windows.Forms.Label lblVhdSize;
+        private System.Windows.Forms.Label lblVhdName;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox checkBoxNotemp;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxParts;
+        private System.Windows.Forms.LinkLabel linkLabel6;
     }
 }
 

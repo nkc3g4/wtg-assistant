@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
 //using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace wintogo
 {
@@ -38,17 +34,17 @@ namespace wintogo
         //public static void BooticeWritePbrAndAct
         public static void BooticeMbr(string targetDisk)
         {
-            System.Diagnostics.Process booice = System.Diagnostics.Process.Start(WTGModel.applicationFilesPath + "\\BOOTICE.exe", (" /DEVICE=" + targetDisk.Substring(0, 2) + " /mbr /install /type=nt60 /quiet"));//写入引导
+            Process booice = Process.Start(WTGModel.applicationFilesPath + "\\BOOTICE.exe", (" /DEVICE=" + targetDisk.Substring(0, 2) + " /mbr /install /type=nt60 /quiet"));//写入引导
             booice.WaitForExit();
         }
         public static void BooticePbr(string targetDisk)
         {
-            System.Diagnostics.Process pbr = System.Diagnostics.Process.Start(WTGModel.applicationFilesPath + "\\BOOTICE.exe", (" /DEVICE=" + targetDisk.Substring(0, 2) + " /pbr /install /type=bootmgr /quiet"));//写入引导
+            Process pbr = Process.Start(WTGModel.applicationFilesPath + "\\BOOTICE.exe", (" /DEVICE=" + targetDisk.Substring(0, 2) + " /pbr /install /type=bootmgr /quiet"));//写入引导
             pbr.WaitForExit();
         }
         public static void BooticeAct(string targetDisk)
         {
-            System.Diagnostics.Process act = System.Diagnostics.Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /DEVICE=" + targetDisk.Substring(0, 2) + " /partitions /activate /quiet");
+            Process act = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /DEVICE=" + targetDisk.Substring(0, 2) + " /partitions /activate /quiet");
             act.WaitForExit();
 
         }

@@ -33,11 +33,7 @@ namespace wintogo
             //59055800320
             long udiskSize = long.Parse(match.Groups[4].Value);
             string dptFile = string.Empty;
-            if (udiskSize > 118111600640)
-            {
-                dptFile = "110G";
-            }
-            else if (udiskSize > 59055800320)
+            if (udiskSize > 59055800320)
             {
                 dptFile = "55G";
             }
@@ -200,7 +196,7 @@ namespace wintogo
             io.imageFile = WTGModel.imageFilePath;
             io.AutoChooseWimIndex();
             io.ImageApplyToUD();
-            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.ud, WTGModel.imageFilePath);
+            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, @"X:\", FirmwareType.UEFI);
             BootFileOperation.BcdeditFixBootFileTypical(@"X:\", WTGModel.ud, FirmwareType.UEFI);
             RemoveLetterX();
@@ -251,7 +247,7 @@ namespace wintogo
                 return false;
             }
 
-            else if (!File.Exists(WTGModel.ud + "\\Boot\\BCD"))
+            else if (!WTGModel.isUserSetEfiPartition && !File.Exists(WTGModel.ud + "\\Boot\\BCD"))
             {
                 //VHD模式下BCDBOOT执行出错！
                 Log.WriteLog("Err_VHDCreationError", "!File.Exists(BCD)");
@@ -298,30 +294,48 @@ namespace wintogo
             }
             if (WTGModel.win7togo == 0)
             {
-                ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.ud, WTGModel.imageFilePath);
+                ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             }
-            if (WTGModel.ntfsUefiSupport)
-            {
-                BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, WTGModel.ud, FirmwareType.ALL);
-                BootFileOperation.BcdeditFixBootFileTypical(WTGModel.ud, WTGModel.ud, FirmwareType.BIOS);
-                BootFileOperation.BcdeditFixBootFileTypical(WTGModel.ud, WTGModel.ud, FirmwareType.UEFI);
 
+            if (WTGModel.isUserSetEfiPartition && Directory.Exists(WTGModel.efiPartition))
+            {
+                BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, WTGModel.efiPartition, FirmwareType.ALL);
+                BootFileOperation.BcdeditFixBootFileTypical(WTGModel.ud, WTGModel.efiPartition, FirmwareType.BIOS);
+                BootFileOperation.BcdeditFixBootFileTypical(WTGModel.ud, WTGModel.efiPartition, FirmwareType.UEFI);
             }
             else
             {
-                BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, WTGModel.ud, FirmwareType.BIOS);
-                BootFileOperation.BcdeditFixBootFileTypical(WTGModel.ud, WTGModel.ud, FirmwareType.BIOS);
+                if (WTGModel.ntfsUefiSupport)
+                {
+                    BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, WTGModel.ud, FirmwareType.ALL);
+                    BootFileOperation.BcdeditFixBootFileTypical(WTGModel.ud, WTGModel.ud, FirmwareType.BIOS);
+                    BootFileOperation.BcdeditFixBootFileTypical(WTGModel.ud, WTGModel.ud, FirmwareType.UEFI);
 
+                }
+                else
+                {
+                    BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, WTGModel.ud, FirmwareType.BIOS);
+                    BootFileOperation.BcdeditFixBootFileTypical(WTGModel.ud, WTGModel.ud, FirmwareType.BIOS);
+
+                }
             }
             if (!legacyUdiskUefi)
             {
-                BootFileOperation.BooticeWriteMBRPBRAndAct(WTGModel.ud);
+                if (WTGModel.isUserSetEfiPartition)
+                {
+                    BootFileOperation.BooticeWriteMBRPBRAndAct(WTGModel.efiPartition);
 
+                }
+                else
+                {
+                    BootFileOperation.BooticeWriteMBRPBRAndAct(WTGModel.ud);
+
+                }
 
                 //ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\" + WTGModel.bcdbootFileName, WTGModel.ud.Substring(0, 3) + "windows  /s  " + WTGModel.ud.Substring(0, 2) + " /f ALL");
 
 
-                if (!System.IO.File.Exists(WTGModel.ud + "bootmgr"))
+                if (!File.Exists(WTGModel.ud + "bootmgr"))
                 {
                     //MsgManager.getResString("Msg_bootmgrError")
                     //文件写入出错！bootmgr不存在！\n请检查写入过程是否中断
@@ -332,7 +346,7 @@ namespace wintogo
                     return false;
                     //MessageBox.Show("文件写入出错！bootmgr不存在！\n请检查写入过程是否中断\n如有疑问，请访问官方论坛！");
                 }
-                else if (!System.IO.File.Exists(WTGModel.ud + "\\Boot\\BCD"))
+                else if (!WTGModel.isUserSetEfiPartition && !File.Exists(WTGModel.ud + "\\Boot\\BCD"))
                 {
                     //MsgManager.getResString("Msg_BCDError")
                     //引导文件写入出错！boot文件夹不存在！
@@ -405,7 +419,7 @@ namespace wintogo
             ImageOperation.ImageApply(WTGModel.isWimBoot, WTGModel.isEsd, WTGModel.imagexFileName, WTGModel.imageFilePath, WTGModel.wimPart, WTGModel.ud, WTGModel.ud);
 
             //安装EXTRA
-            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.ud, WTGModel.imageFilePath);
+            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             //BCDBOOT WRITE BOOT FILE  
             BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, @"X:\", FirmwareType.ALL);
             //BootFileOperation.BcdbootWriteALLBootFileToXAndAct(WTGOperation.bcdbootFileName, WTGOperation.ud);

@@ -52,20 +52,36 @@ namespace wintogo
             sb.AppendLine("convert gpt");
             sb.AppendLine("create partition efi size " + efiSize);
 
-            for (int i = 0; i < partitionSize.Length - 1; i++)
+
+            for (int i = 0; i < partitionSize.Length; i++)
             {
                 if (partitionSize[i] == "0")
                 {
                     continue;
                 }
-                sb.AppendLine("create partition primary size " + partitionSize[i]);
                 partitionsCount++;
             }
-            if (partitionSize[2] != "0")
+
+            for (int i = 0; i < partitionsCount - 1; i++)
             {
-                sb.AppendLine("create partition primary");
-                partitionsCount++;
+                sb.AppendLine("create partition primary size " + partitionSize[i]);
             }
+            sb.AppendLine("create partition primary");
+
+            //for (int i = 0; i < partitionSize.Length - 1; i++)
+            //{
+            //    if (partitionSize[i] == "0")
+            //    {
+            //        continue;
+            //    }
+            //    sb.AppendLine("create partition primary size " + partitionSize[i]);
+            //    partitionsCount++;
+            //}
+            //if (partitionSize[2] != "0")
+            //{
+            //    sb.AppendLine("create partition primary");
+            //    partitionsCount++;
+            //}
             sb.AppendLine("select partition 2");
             sb.AppendLine("format fs=fat quick");
             sb.AppendLine("assign letter=x");
@@ -118,20 +134,36 @@ namespace wintogo
             sb.AppendLine("clean");
             sb.AppendLine("convert mbr");
             sb.AppendLine("create partition primary size " + efisize);
-            for (int i = 0; i < partitionSize.Length - 1; i++)
+
+            for (int i = 0; i < partitionSize.Length; i++)
             {
                 if (partitionSize[i] == "0")
                 {
                     continue;
                 }
-                sb.AppendLine("create partition primary size " + partitionSize[i]);
                 partitionsCount++;
             }
-            if (partitionSize[2] != "0")
+
+            for (int i = 0; i < partitionsCount - 1; i++)
             {
-                sb.AppendLine("create partition primary");
-                partitionsCount++;
+                sb.AppendLine("create partition primary size " + partitionSize[i]);
             }
+            sb.AppendLine("create partition primary");
+
+            //for (int i = 0; i < partitionSize.Length - 1; i++)
+            //{
+            //    if (partitionSize[i] == "0")
+            //    {
+            //        continue;
+            //    }
+            //    sb.AppendLine("create partition primary size " + partitionSize[i]);
+            //    partitionsCount++;
+            //}
+            //if (partitionSize[2] != "0")
+            //{
+            //    sb.AppendLine("create partition primary");
+            //    partitionsCount++;
+            //}
             sb.AppendLine("select partition 1");
             sb.AppendLine("format fs=fat quick");
             sb.AppendLine("active");
@@ -163,20 +195,31 @@ namespace wintogo
             sb.AppendLine("select volume " + WTGModel.ud.Substring(0, 1));
             sb.AppendLine("clean");
             sb.AppendLine("convert mbr");
-            for (int i = 0; i < partitionSize.Length - 1; i++)
+            for (int i = 0; i < partitionSize.Length; i++)
             {
                 if (partitionSize[i] == "0")
                 {
                     continue;
                 }
-                sb.AppendLine("create partition primary size " + partitionSize[i]);
                 partitionsCount++;
             }
-            if (partitionSize[2] != "0")
+
+            for (int i = 0; i < partitionsCount - 1; i++)
             {
-                sb.AppendLine("create partition primary");
-                partitionsCount++;
+                sb.AppendLine("create partition primary size " + partitionSize[i]);
             }
+            sb.AppendLine("create partition primary");
+
+
+            //if (partitionSize[partitionSize.Length - 1] != "0")
+            //{
+            //    sb.AppendLine("create partition primary");
+            //    partitionsCount++;
+            //}
+            //if (partitionsCount == 0)
+            //{
+            //    sb.AppendLine("create partition primary");
+            //}
             sb.AppendLine("select partition 1");
             sb.AppendLine("format fs=ntfs quick");
             sb.AppendLine("active");

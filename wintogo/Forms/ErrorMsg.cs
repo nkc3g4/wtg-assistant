@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -37,10 +38,21 @@ namespace wintogo
         {
             try
             {
+
                 string tmpFile = Path.GetTempFileName();
                 ZipHelper.ZipFileDirectory(WTGModel.logPath, tmpFile);
                 HttpPost.HttpUploadFile(@"http://laa.luobotou.org/wtgreport.ashx", tmpFile);
                 File.Delete(tmpFile);
+
+
+
+                HttpPost.Post("http://laa.luobotou.org/wtgstats.ashx", new Dictionary<string, string>() {
+                    {"type","error" },
+                    {"guid",WTGModel.CreateGuid },
+                    {"errorMsg",errmsg}
+                });
+
+
             }
             catch (Exception ex)
             {

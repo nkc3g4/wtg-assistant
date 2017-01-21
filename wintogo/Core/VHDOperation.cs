@@ -237,7 +237,7 @@ namespace wintogo
         }
         public void VHDExtra()
         {
-            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, @"v:\", WTGModel.imageFilePath);
+            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, @"v:\", WTGModel.imageFilePath);
             UEFIAndWin7ToGo();
         }
         public void CopyVHD()
@@ -280,7 +280,7 @@ namespace wintogo
         {
             if (!NeedCopy)//不需要拷贝，不需要二次加载
             {
-                WriteBootFilesIntoVHD();
+                WriteBootFilesIntoUD();
             }
             //else
             //{
@@ -316,13 +316,12 @@ namespace wintogo
                 }
             }
         }
-        private void WriteBootFilesIntoVHD()
+        private void WriteBootFilesIntoUD()
         {
             if (WTGModel.isUefiGpt && !WTGModel.isLegacyUdiskUefi)
             {
                 BootFileOperation.BcdbootWriteBootFile(@"V:\", @"X:\", FirmwareType.UEFI);
                 BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
-                //ProcessManager.ECMD(Application.StartupPath + "\\files\\" + bcdboot, "  " + "V:\\" + "windows  /s  x: /f UEFI");
             }
             else if (WTGModel.isUefiMbr && !WTGModel.isLegacyUdiskUefi)
             {
@@ -330,40 +329,37 @@ namespace wintogo
                 BootFileOperation.BooticeWriteMBRPBRAndAct("X:");
                 BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
                 BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
-
-                //ProcessManager.ECMD(Application.StartupPath + "\\files\\" + bcdboot, "  " + "V:\\" + "windows  /s  x: /f ALL");
             }
-            else if (WTGModel.isWimBoot)
-            {
-                BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.ud, FirmwareType.BIOS);
-                BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
-
-                //ProcessManager.ECMD(Application.StartupPath + "\\files\\" + bcdboot, "  " + "V:\\" + "windows  /s  " + WTGOperation.WTGModel.ud.Substring(0, 2) + " /f ALL");
-            }
+            //else if (WTGModel.isWimBoot)
+            //{
+            //    BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.ud, FirmwareType.BIOS);
+            //    BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
+            //}
             else
             {
-                //if (!WTGModel.userSettings.CommonBootFiles)
-                //{
-                if (WTGModel.ntfsUefiSupport)
+                if (WTGModel.isUserSetEfiPartition && Directory.Exists(WTGModel.efiPartition))
                 {
-                    BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.ud, FirmwareType.ALL);
-                    BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
-                    BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
+                    BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.efiPartition, FirmwareType.ALL);
+                    BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.efiPartition, WTGModel.win8VHDFileName, FirmwareType.BIOS);
+                    BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.efiPartition, WTGModel.win8VHDFileName, FirmwareType.UEFI);
 
                 }
                 else
                 {
-                    BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.ud, FirmwareType.BIOS);
-                    BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
+                    if (WTGModel.ntfsUefiSupport)
+                    {
+                        BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.ud, FirmwareType.ALL);
+                        BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
+                        BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
 
+                    }
+                    else
+                    {
+                        BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.ud, FirmwareType.BIOS);
+                        BootFileOperation.BcdeditFixBootFileVHD(WTGModel.ud, WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
+
+                    }
                 }
-                //ProcessManager.ECMD(Application.StartupPath + "\\files\\" + bcdboot, "  " + "V:\\" + "windows  /s  " + WTGOperation.WTGModel.ud.Substring(0, 2) + " /f ALL");
-                //}
-                //else
-                //{
-                //    CopyVHDBootFiles();
-
-                //}
             }
         }
 
@@ -525,7 +521,7 @@ namespace wintogo
                         vhdmaxsize = 10485670;//10GB
                     }
 
-                    if (DiskOperation.GetHardDiskFreeSpace(WTGModel.vhdTempPath.Substring(0, 2) + "\\") <= vhdmaxsize * 1024L || StringUtility.IsChinaOrContainSpace(WTGModel.vhdTempPath) || (WTGModel.isUefiGpt && !WTGModel.isLegacyUdiskUefi) || (WTGModel.isUefiMbr && !WTGModel.isLegacyUdiskUefi) || WTGModel.isWimBoot || WTGModel.isNoTemp || WTGModel.CurrentOS == OS.Win7)
+                    if (DiskOperation.GetHardDiskFreeSpace(WTGModel.vhdTempPath.Substring(0, 2) + "\\") <= vhdmaxsize * 1024L || StringUtility.IsChina(WTGModel.vhdTempPath) || (WTGModel.isUefiGpt && !WTGModel.isLegacyUdiskUefi) || (WTGModel.isUefiMbr && !WTGModel.isLegacyUdiskUefi) || WTGModel.isWimBoot || WTGModel.isNoTemp || WTGModel.CurrentOS == OS.Win7)
                     {
                         NeedCopy = false;
                         VhdPath = StringUtility.Combine(WTGModel.ud, WTGModel.win8VHDFileName);

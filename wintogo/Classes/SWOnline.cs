@@ -60,44 +60,44 @@ namespace wintogo
             set { linkLabel = value; }
         }
 
-        public void Report()
-        {
-            string pageHtml;
-            try
-            {
+        //public void Report()
+        //{
+        //    string pageHtml;
+        //    try
+        //    {
 
-                WebClient MyWebClient = new WebClient();
+        //        WebClient MyWebClient = new WebClient();
 
-                MyWebClient.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于对向Internet资源的请求进行身份验证的网络凭据。
+        //        MyWebClient.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于对向Internet资源的请求进行身份验证的网络凭据。
 
-                Byte[] pageData = MyWebClient.DownloadData(releaseUrl); //从指定网站下载数据
-                pageHtml = Encoding.Default.GetString(pageData);
-                //MessageBox.Show(pageHtml);
-                int index = pageHtml.IndexOf("webreport=");
-                if (pageHtml.Substring(index + 10, 1) == "1")
-                {
-                    //string strURL = "http://myapp.luobotou.org/statistics.aspx?name=wtg&ver=" + Application.ProductVersion;
+        //        Byte[] pageData = MyWebClient.DownloadData(releaseUrl); //从指定网站下载数据
+        //        pageHtml = Encoding.Default.GetString(pageData);
+        //        //MessageBox.Show(pageHtml);
+        //        int index = pageHtml.IndexOf("webreport=");
+        //        if (pageHtml.Substring(index + 10, 1) == "1")
+        //        {
+        //            //string strURL = "http://myapp.luobotou.org/statistics.aspx?name=wtg&ver=" + Application.ProductVersion;
 
-                    string strURL = reportUrl + Application.ProductVersion;
-                    HttpWebRequest request;
-                    request = (HttpWebRequest)WebRequest.Create(strURL);
-                    HttpWebResponse response;
-                    response = (HttpWebResponse)request.GetResponse();
-                    using (StreamReader myreader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-                    {
-                        string responseText = myreader.ReadToEnd();
-                    }
-                }
+        //            string strURL = reportUrl + Application.ProductVersion;
+        //            HttpWebRequest request;
+        //            request = (HttpWebRequest)WebRequest.Create(strURL);
+        //            HttpWebResponse response;
+        //            response = (HttpWebResponse)request.GetResponse();
+        //            using (StreamReader myreader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+        //            {
+        //                string responseText = myreader.ReadToEnd();
+        //            }
+        //        }
 
 
-            }
-            catch (WebException webEx)
-            {
+        //    }
+        //    catch (WebException webEx)
+        //    {
 
-                Log.WriteLog("Err_ReportErr", webEx.ToString());
+        //        Log.WriteLog("Err_ReportErr", webEx.ToString());
 
-            }
-        }
+        //    }
+        //}
         public void Update()
         {
             //string autoup = IniFile.ReadVal("Main", "AutoUpdate", Application.StartupPath + "\\files\\settings.ini");

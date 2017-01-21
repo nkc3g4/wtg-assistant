@@ -74,9 +74,13 @@ namespace wintogo
         /// <param name="diswinre"></param>
         /// <param name="imageletter">可以是有盘盘符或V盘</param>
         /// <param name="wimlocation">WIM文件路径</param>
-        public static void ImageExtra(bool framework, bool san_policy, bool diswinre, string imageletter, string wimlocation)
+        public static void ImageExtra(bool framework, bool san_policy, bool diswinre, bool disUasp, string imageletter, string wimlocation)
         {
             AddDrivers(imageletter);
+            if (disUasp)
+            {
+                DisableUASP(imageletter);
+            }
             if (framework)
             {
                 StringBuilder args = new StringBuilder();
@@ -304,15 +308,6 @@ namespace wintogo
                     temp.Close();
                     ProcessManager.SyncCMD("reg.exe unload HKU\\TEMP > \"" + WTGModel.logPath + "\\unloadreg.log\"");
 
-
-
-                    //string code = ToHexString(registData);
-                    ////for (int i = 0; i < registData.Length; i++) 
-                    ////{
-                    ////    code += ToHexString(registData);
-                    ////}
-                    //MessageBox.Show(code);
-
                 }
                 else
                 {
@@ -327,10 +322,26 @@ namespace wintogo
         }
         public static void AddDrivers(string target)
         {
+            if (Directory.Exists(Application.StartupPath + "\\Drivers") && Directory.GetFiles(Application.StartupPath + "\\Drivers").Length == 0)
+            {
+                return;
+            }
             ProcessManager.ECMD("dism.exe", "/image:" + target + " /add-driver /driver:\"" + Application.StartupPath + "\\Drivers\"" + " /recurse");
         }
         #endregion
+        public static void DisableUASP(string installdrive)
+        {
+            int errorlevel = ProcessManager.SyncCMD(WTGModel.applicationFilesPath + "\\UASP\\UASP.EXE " + WTGModel.ud.Substring(0, 2) + " " + installdrive.Substring(0, 2));
 
+            Log.WriteLog("Info_DisUASP", errorlevel.ToString());
+
+
+            //ProcessManager.SyncCMD("reg.exe load HKU\\def " + installdrive + "Windows\\System32\\Config\\DEFAULT  > \"" + WTGModel.logPath + "\\UASPREGLoad.log\"");
+            //ProcessManager.SyncCMD("reg.exe import \"" + WTGModel.applicationFilesPath + "\\UASP\\Run.reg\"");
+            //ProcessManager.SyncCMD("reg.exe unload HKU\\def " + " > \"" + WTGModel.logPath + "\\UASPREGUnLoad.log\"");
+            //Log.WriteLog("Info_UASPImportReg", errorlevel.ToString());
+
+        }
         #region 对象方法
         public void AutoChooseWimIndex()
         {

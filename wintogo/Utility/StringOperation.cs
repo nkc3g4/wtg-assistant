@@ -8,7 +8,7 @@ namespace wintogo
 {
     public static class StringUtility
     {
-        public static bool IsChinaOrContainSpace(string CString)
+        public static bool IsChina(string CString)
         {
             bool BoolValue = false;
             //if (CString.IndexOf(' ') >= 0)
@@ -25,6 +25,24 @@ namespace wintogo
             }
             return BoolValue;
         }
+        public static bool IsChinaOrContainSpace(string CString)
+        {
+            bool BoolValue = false;
+            if (CString.IndexOf(' ') >= 0)
+            {
+                return true;
+            }
+            for (int i = 0; i < CString.Length; i++)
+            {
+                if (Convert.ToInt32(Convert.ToChar(CString.Substring(i, 1))) > Convert.ToInt32(Convert.ToChar(128)))
+                {
+                    BoolValue = true;
+                }
+
+            }
+            return BoolValue;
+        }
+
         public static string Combine(params string[] paths)
         {
             if (paths.Length == 0)

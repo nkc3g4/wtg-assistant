@@ -115,7 +115,9 @@ namespace wintogo
         public static OS CurrentOS;
         public static ApplyMode CheckedMode;
         public static string CreateGuid;
-        
+        public static bool disableUasp;
+        public static bool isUserSetEfiPartition;
+        public static string efiPartition = string.Empty;
     }
     public enum OS
     {

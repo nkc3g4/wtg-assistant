@@ -119,11 +119,11 @@
     </Compile>
     <Compile Include="Core\BootFileOperation.cs" />
     <Compile Include="Core\DiskOperation.cs" />
-    <Compile Include="Forms\BitlockerConfig.cs">
+    <Compile Include="Forms\Clone.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BitlockerConfig.Designer.cs">
-      <DependentUpon>BitlockerConfig.cs</DependentUpon>
+    <Compile Include="Forms\Clone.Designer.cs">
+      <DependentUpon>Clone.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ErrorMsg.cs">
       <SubType>Form</SubType>
@@ -203,8 +203,8 @@
     <EmbeddedResource Include="Forms\AboutBox.zh-Hant.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BitlockerConfig.resx">
-      <DependentUpon>BitlockerConfig.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Clone.resx">
+      <DependentUpon>Clone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ErrorMsg.en-AS.resx">
       <DependentUpon>ErrorMsg.cs</DependentUpon>
@@ -234,6 +234,9 @@
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.zh-Hans.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.zh-Hant.resx">
       <DependentUpon>Form1.cs</DependentUpon>

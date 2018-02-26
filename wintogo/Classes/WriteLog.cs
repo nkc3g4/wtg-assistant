@@ -1,11 +1,81 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using wintogo.Utility;
+
 namespace wintogo
 {
     public static class Log
     {
+        public static void WriteProgramRunInfoToLog()
+        {
+            WTGModel.CreateGuid = Guid.NewGuid().ToString();
+            //try
+            //{
+
+            Dictionary<string, string> infoDict = new Dictionary<string, string>();
+            infoDict.Add("App Path", Application.StartupPath);
+            infoDict.Add("OS Version", Environment.OSVersion.ToString());
+            infoDict.Add("Dism Version", FileOperation.GetFileVersion(Environment.GetEnvironmentVariable("windir") + "\\System32\\dism.exe"));
+            infoDict.Add("Wim file", WTGModel.imageFilePath);
+            infoDict.Add("Usb Disk", WTGModel.udString);
+            infoDict.Add("Mode", WTGModel.CheckedMode.ToString());
+            //infoDict.Add("VHD", radiobtnVhd.Checked.ToString());
+            //infoDict.Add("VHDX", radiobtnVhdx.Checked.ToString());
+            infoDict.Add("VHDName", WTGModel.vhdNameWithoutExt);
+            infoDict.Add("Re-Partition", WTGModel.rePartition.ToString());
+            infoDict.Add("VHD Size Set", WTGModel.userSetSize.ToString());
+            infoDict.Add("Fixed VHD", WTGModel.isFixedVHD.ToString());
+            infoDict.Add("Donet", WTGModel.installDonet35.ToString());
+            infoDict.Add("Disable-WinRE", WTGModel.disableWinRe.ToString());
+            infoDict.Add("Block Local Disk", WTGModel.isBlockLocalDisk.ToString());
+            infoDict.Add("NoTemp", WTGModel.isNoTemp.ToString());
+            infoDict.Add("UEFI+GPT", WTGModel.isUefiGpt.ToString());
+            infoDict.Add("UEFI+MBR", WTGModel.isUefiMbr.ToString());
+            infoDict.Add("WIMBOOT", WTGModel.isWimBoot.ToString());
+            infoDict.Add("CompactOS", WTGModel.isCompactOS.ToString());
+            infoDict.Add("No-format", WTGModel.doNotFormat.ToString());
+            infoDict.Add("NtfsUefiSupport", WTGModel.ntfsUefiSupport.ToString());
+            infoDict.Add("FixLetter", WTGModel.fixLetter.ToString());
+            infoDict.Add("SelectedPart", WTGModel.wimPart.ToString());
+            infoDict.Add("Partitions", string.Join(",", WTGModel.partitionSize));
+            infoDict.Add("NoDefalutLetter", WTGModel.noDefaultDriveLetter.ToString());
+            infoDict.Add("Bitlocker", WTGModel.isBitlocker.ToString());
+            infoDict.Add("CreateGuid", WTGModel.CreateGuid);
+
+            Thread t = new Thread(() =>
+            {
+                try
+                {
+                    JavaScriptSerializer jss = new JavaScriptSerializer();
+
+                    HttpPost.Post("http://laa.luobotou.org/wtgstats.ashx", new Dictionary<string, string>() {
+                    {"type","create" },
+                    {"guid",WTGModel.CreateGuid },
+                    {"paras",jss.Serialize(infoDict) }
+
+            });
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteLog("Err_Stats", ex.ToString());
+                }
+            });
+            t.Start();
+
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in infoDict)
+            {
+                sb.AppendLine(item.Key + ":" + item.Value);
+            }
+            WriteLog("Environment", sb.ToString());
+            
+        }
+
         public static void AppendLog(string LogNameWithExt,string WriteInfo)
         {
             try

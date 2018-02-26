@@ -1,4 +1,65 @@
-﻿//private void RemoveLetterX()
+﻿//private void btnVhdTempPath_Click(object sender, EventArgs e)
+//{
+//    folderBrowserDialog1.ShowDialog();
+//    if (Directory.Exists(folderBrowserDialog1.SelectedPath))
+//    {
+//        txtVhdTempPath.Text = folderBrowserDialog1.SelectedPath;
+//    }
+//private void 打开程序运行目录ToolStripMenuItem_Click(object sender, EventArgs e)
+//{
+//    Process.Start("explorer.exe", Application.StartupPath);
+//}
+//}
+//private void checkBox1_CheckedChanged(object sender, EventArgs e)//克隆本机系统
+//{
+//if (checkBoxClone.Checked)
+//{
+//    MessageBox.Show("克隆本机系统须知：\n1.本机系统必须为Win10。\n2.使用的USB驱动器必须识别为本地磁盘。\n3.USB驱动器将会被重新分区，所有数据将丢失。\n4.克隆后WTG系统为UEFI+MBR启动模式。\n5.本功能为实验性功能。");
+//    if (!File.Exists(Path.GetPathRoot(Environment.GetEnvironmentVariable("windir")) + "wtg_clone_source"))
+//    {
+//        File.Create(Path.GetPathRoot(Environment.GetEnvironmentVariable("windir")) + "wtg_clone_source");
+//    }
+//}
+//else
+//{
+//    if (File.Exists(Path.GetPathRoot(Environment.GetEnvironmentVariable("windir")) + "wtg_clone_source"))
+//    {
+//        File.Delete(Path.GetPathRoot(Environment.GetEnvironmentVariable("windir")) + "wtg_clone_source");
+//    }
+//}
+//lblWim.Enabled = !checkBoxClone.Checked;
+//radiobtnVhd.Enabled = !checkBoxClone.Checked;
+//radiobtnVhdx.Enabled = !checkBoxClone.Checked;
+//checkBoxBitlocker.Enabled = !checkBoxClone.Checked;
+//checkBoxUefigpt.Enabled = !checkBoxClone.Checked;
+//checkBoxUefimbr.Enabled = !checkBoxClone.Checked;
+
+//}
+
+
+//private byte[] UlongToMBRBytes(ulong u)
+//{
+//    string convertTempString = Convert.ToString(Convert.ToInt32(u), 16);
+
+//    for (int i = convertTempString.Length; i < 8; i++)
+//    {
+//        convertTempString = "0" + convertTempString;
+//    }
+//    //MessageBox.Show(convertTempString);
+
+//    //MessageBox.Show(convertTempString.Length.ToString());
+//    string hex1 = convertTempString[6].ToString() + convertTempString[7];
+//    string hex2 = convertTempString[4].ToString() + convertTempString[5];
+//    string hex3 = convertTempString[2].ToString() + convertTempString[3];
+//    string hex4 = convertTempString[0].ToString() + convertTempString[1];
+//    byte[] byts = new byte[4];
+//    byts[0] = Convert.ToByte(Convert.ToInt32(hex1, 16));
+//    byts[1] = Convert.ToByte(Convert.ToInt32(hex2, 16));
+//    byts[2] = Convert.ToByte(Convert.ToInt32(hex3, 16));
+//    byts[3] = Convert.ToByte(Convert.ToInt32(hex4, 16));
+//    return byts;
+//}
+//private void RemoveLetterX()
 //{
 //    try
 //    {

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading;
 //using System.Threading.Tasks;
@@ -40,12 +41,6 @@ namespace wintogo
         public static void DiskPartGPTAndUEFI(string efiSize, string uDisk, string[] partitionSize)
         {
             StringBuilder sb = new StringBuilder();
-            //using (FileStream fs0 = new FileStream(WTGModel.diskpartScriptPath + @"\uefi.txt", FileMode.Create, FileAccess.Write))
-            //{
-            //fs0.SetLength(0);
-            //using (StreamWriter sw0 = new StreamWriter(fs0, Encoding.Default))
-            //{
-            int partitionsCount = 0;
 
             sb.AppendLine("select volume " + uDisk.Substring(0, 1));
             sb.AppendLine("clean");
@@ -53,42 +48,32 @@ namespace wintogo
             sb.AppendLine("create partition efi size " + efiSize);
 
 
+            List<string> partitionList = new List<string>();
             for (int i = 0; i < partitionSize.Length; i++)
             {
-                if (partitionSize[i] == "0")
+                int partSize = 0;
+                int.TryParse(partitionSize[i], out partSize);
+                if (partSize == 0)
                 {
                     continue;
                 }
-                partitionsCount++;
+                partitionList.Add(partitionSize[i]);
             }
 
-            for (int i = 0; i < partitionsCount - 1; i++)
+            for (int i = 0; i < partitionList.Count - 1; i++)
             {
-                sb.AppendLine("create partition primary size " + partitionSize[i]);
+                sb.AppendLine("create partition primary size " + partitionList[i]);
             }
+
             sb.AppendLine("create partition primary");
 
-            //for (int i = 0; i < partitionSize.Length - 1; i++)
-            //{
-            //    if (partitionSize[i] == "0")
-            //    {
-            //        continue;
-            //    }
-            //    sb.AppendLine("create partition primary size " + partitionSize[i]);
-            //    partitionsCount++;
-            //}
-            //if (partitionSize[2] != "0")
-            //{
-            //    sb.AppendLine("create partition primary");
-            //    partitionsCount++;
-            //}
             sb.AppendLine("select partition 2");
             sb.AppendLine("format fs=fat quick");
             sb.AppendLine("assign letter=x");
             sb.AppendLine("select partition 3");
             sb.AppendLine("format fs=ntfs quick");
             sb.AppendLine("assign letter=" + uDisk.Substring(0, 1));
-            for (int i = 0; i < partitionsCount - 1; i++)
+            for (int i = 0; i < partitionList.Count - 1; i++)
             {
                 sb.AppendLine("select partition " + (i + 4).ToString());
                 sb.AppendLine("format fs=ntfs quick");
@@ -108,10 +93,6 @@ namespace wintogo
                     break;
                 }
             }
-            //}
-            //}
-            //sw0.Close();
-            //return WTGModel.diskpartScriptPath + "\\uefi.txt";
         }
         /// <summary>
         /// MBR+UEFI脚本Write到WTGOperation.diskpartscriptpath + @"\uefimbr.txt
@@ -128,26 +109,30 @@ namespace wintogo
             //    using (StreamWriter sw0 = new StreamWriter(fs0, Encoding.Default))
             //    {
             //string ws0 = "";
-            int partitionsCount = 0;
 
             sb.AppendLine("select volume " + ud.Substring(0, 1));
             sb.AppendLine("clean");
             sb.AppendLine("convert mbr");
             sb.AppendLine("create partition primary size " + efisize);
 
+            List<string> partitionList = new List<string>();
             for (int i = 0; i < partitionSize.Length; i++)
             {
-                if (partitionSize[i] == "0")
+                int partSize = 0;
+                int.TryParse(partitionSize[i], out partSize);
+                if (partSize == 0)
                 {
                     continue;
                 }
-                partitionsCount++;
+                partitionList.Add(partitionSize[i]);
             }
 
-            for (int i = 0; i < partitionsCount - 1; i++)
+            for (int i = 0; i < partitionList.Count - 1; i++)
             {
-                sb.AppendLine("create partition primary size " + partitionSize[i]);
+                sb.AppendLine("create partition primary size " + partitionList[i]);
             }
+
+
             sb.AppendLine("create partition primary");
 
             //for (int i = 0; i < partitionSize.Length - 1; i++)
@@ -171,7 +156,7 @@ namespace wintogo
             sb.AppendLine("select partition 2");
             sb.AppendLine("format fs=ntfs quick");
             sb.AppendLine("assign letter=" + ud.Substring(0, 1));
-            for (int i = 0; i < partitionsCount - 1; i++)
+            for (int i = 0; i < partitionList.Count - 1; i++)
             {
                 sb.AppendLine("select partition " + (i + 3).ToString());
                 sb.AppendLine("format fs=ntfs quick");
@@ -189,25 +174,30 @@ namespace wintogo
 
         public static void DiskPartRePartitionUD(string[] partitionSize)
         {
-            int partitionsCount = 0;
+            //int partitionsCount = 0;
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("select volume " + WTGModel.ud.Substring(0, 1));
             sb.AppendLine("clean");
             sb.AppendLine("convert mbr");
+            List<string> partitionList = new List<string>();
+
             for (int i = 0; i < partitionSize.Length; i++)
             {
-                if (partitionSize[i] == "0")
+                int partSize = 0;
+                int.TryParse(partitionSize[i], out partSize);
+                if (partSize == 0)
                 {
                     continue;
                 }
-                partitionsCount++;
+                partitionList.Add(partitionSize[i]);
             }
 
-            for (int i = 0; i < partitionsCount - 1; i++)
+            for (int i = 0; i < partitionList.Count - 1; i++)
             {
-                sb.AppendLine("create partition primary size " + partitionSize[i]);
+                sb.AppendLine("create partition primary size " + partitionList[i]);
             }
+
             sb.AppendLine("create partition primary");
 
 
@@ -224,7 +214,7 @@ namespace wintogo
             sb.AppendLine("format fs=ntfs quick");
             sb.AppendLine("active");
             sb.AppendLine("assign letter=" + WTGModel.ud.Substring(0, 1));
-            for (int i = 0; i < partitionsCount - 1; i++)
+            for (int i = 0; i < partitionList.Count - 1; i++)
             {
                 sb.AppendLine("select partition " + (i + 2).ToString());
                 sb.AppendLine("format fs=ntfs quick");

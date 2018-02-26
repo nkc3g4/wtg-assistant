@@ -11,6 +11,7 @@ namespace wintogo
         //public static string partitionSize1;
         //public static string partitionSize2;
         //public static string partitionSize3;
+        public static bool rePartition;
         public static bool doNotFormat;
         public static bool noDefaultDriveLetter;
         public static bool installDonet35;

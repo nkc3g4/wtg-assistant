@@ -109,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GetUdiskList.cs" />
+    <Compile Include="Classes\FileInitialization.cs" />
+    <Compile Include="Core\CreateMain.cs" />
     <Compile Include="Core\DiskpartScriptManager.cs" />
     <Compile Include="Core\GoWrite.cs" />
     <Compile Include="Forms\AboutBox.cs">
@@ -142,6 +144,7 @@
     <Compile Include="Classes\SystemSleepManagement.cs" />
     <Compile Include="Utility\TakeOwn.cs" />
     <Compile Include="Utility\HttpPost.cs" />
+    <Compile Include="Utility\WebUtility.cs" />
     <Compile Include="Utility\ZipHelper.cs" />
     <Compile Include="Utility\IniOperation.cs" />
     <Compile Include="MultiLanguage\MsgManager.cs" />

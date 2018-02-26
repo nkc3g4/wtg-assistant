@@ -23,7 +23,7 @@ namespace wintogo
         public static void RemoveableDiskUefiGpt()
         {
             string tempFileName = WTGModel.diskpartScriptPath + "\\" + Guid.NewGuid().ToString() + ".txt";
-            Process diskInfo = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /diskinfo /find: /usbonly /file=" + tempFileName);
+            Process diskInfo = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /diskinfo /find: /usbonly /file=\"" + tempFileName + "\"");
             diskInfo.WaitForExit();
 
             string tempUdiskInfo = File.ReadAllText(tempFileName);
@@ -91,7 +91,7 @@ namespace wintogo
         public static void RemoveableDiskUefiMbr()
         {
             string tempFileName = WTGModel.diskpartScriptPath + "\\" + Guid.NewGuid().ToString() + ".txt";
-            Process diskInfo = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /diskinfo /find: /usbonly /file=" + tempFileName);
+            Process diskInfo = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /diskinfo /find: /usbonly /file=\"" + tempFileName + "\"");
             diskInfo.WaitForExit();
 
             string tempUdiskInfo = File.ReadAllText(tempFileName);

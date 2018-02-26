@@ -94,7 +94,7 @@ namespace wintogo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form1.VisitWeb(topicLink[num]);
+            WebUtility.VisitWeb(topicLink[num]);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

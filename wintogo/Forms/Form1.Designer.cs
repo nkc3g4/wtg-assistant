@@ -116,10 +116,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtEfiSize = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtPartitionSize3 = new System.Windows.Forms.TextBox();
+            this.txtPartitionSize1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPartitionSize2 = new System.Windows.Forms.TextBox();
-            this.txtPartitionSize1 = new System.Windows.Forms.TextBox();
+            this.txtPartitionSize3 = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.checkBoxEfiPartition = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -131,6 +131,7 @@
             this.txtwim = new System.Windows.Forms.TextBox();
             this.groupBoxadv = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -305,6 +306,7 @@
             resources.ApplyResources(this.trackBar1, "trackBar1");
             this.trackBar1.Name = "trackBar1";
             this.toolTip1.SetToolTip(this.trackBar1, resources.GetString("trackBar1.ToolTip"));
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // checkBoxNotemp
             // 
@@ -605,6 +607,7 @@
             this.comboBoxParts.FormattingEnabled = true;
             resources.ApplyResources(this.comboBoxParts, "comboBoxParts");
             this.comboBoxParts.Name = "comboBoxParts";
+            this.comboBoxParts.MouseHover += new System.EventHandler(this.comboBoxParts_MouseHover);
             // 
             // tabPage5
             // 
@@ -649,12 +652,14 @@
             resources.ApplyResources(this.btnVhdTempPath, "btnVhdTempPath");
             this.btnVhdTempPath.Name = "btnVhdTempPath";
             this.btnVhdTempPath.UseVisualStyleBackColor = true;
+            this.btnVhdTempPath.Click += new System.EventHandler(this.btnVhdTempPath_Click_1);
             // 
             // txtVhdTempPath
             // 
             resources.ApplyResources(this.txtVhdTempPath, "txtVhdTempPath");
             this.txtVhdTempPath.Name = "txtVhdTempPath";
             this.txtVhdTempPath.ReadOnly = true;
+            this.txtVhdTempPath.MouseHover += new System.EventHandler(this.txtVhdTempPath_MouseHover);
             // 
             // comboBoxGb
             // 
@@ -665,6 +670,7 @@
             resources.GetString("comboBoxGb.Items"),
             resources.GetString("comboBoxGb.Items1")});
             this.comboBoxGb.Name = "comboBoxGb";
+            this.comboBoxGb.SelectedIndexChanged += new System.EventHandler(this.comboBoxGb_SelectedIndexChanged);
             // 
             // txtVhdNameWithoutExt
             // 
@@ -730,10 +736,10 @@
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.txtEfiSize);
             this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.txtPartitionSize3);
+            this.tabPage3.Controls.Add(this.txtPartitionSize1);
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.txtPartitionSize2);
-            this.tabPage3.Controls.Add(this.txtPartitionSize1);
+            this.tabPage3.Controls.Add(this.txtPartitionSize3);
             resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
@@ -783,13 +789,13 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // txtPartitionSize3
+            // txtPartitionSize1
             // 
-            resources.ApplyResources(this.txtPartitionSize3, "txtPartitionSize3");
-            this.txtPartitionSize3.Name = "txtPartitionSize3";
-            this.txtPartitionSize3.ReadOnly = true;
-            this.txtPartitionSize3.TextChanged += new System.EventHandler(this.txtPartitionSize3_TextChanged);
-            this.txtPartitionSize3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize3_KeyPress);
+            resources.ApplyResources(this.txtPartitionSize1, "txtPartitionSize1");
+            this.txtPartitionSize1.Name = "txtPartitionSize1";
+            this.txtPartitionSize1.ReadOnly = true;
+            this.txtPartitionSize1.TextChanged += new System.EventHandler(this.txtPartitionSize3_TextChanged);
+            this.txtPartitionSize1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize3_KeyPress);
             // 
             // label4
             // 
@@ -803,12 +809,12 @@
             this.txtPartitionSize2.TextChanged += new System.EventHandler(this.txtPartitionSize2_TextChanged);
             this.txtPartitionSize2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize2_KeyPress);
             // 
-            // txtPartitionSize1
+            // txtPartitionSize3
             // 
-            resources.ApplyResources(this.txtPartitionSize1, "txtPartitionSize1");
-            this.txtPartitionSize1.Name = "txtPartitionSize1";
-            this.txtPartitionSize1.TextChanged += new System.EventHandler(this.txtPartitionSize1_TextChanged);
-            this.txtPartitionSize1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize1_KeyPress);
+            resources.ApplyResources(this.txtPartitionSize3, "txtPartitionSize3");
+            this.txtPartitionSize3.Name = "txtPartitionSize3";
+            this.txtPartitionSize3.TextChanged += new System.EventHandler(this.txtPartitionSize1_TextChanged);
+            this.txtPartitionSize3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize1_KeyPress);
             // 
             // tabPage4
             // 
@@ -884,6 +890,10 @@
             resources.ApplyResources(this.groupBoxadv, "groupBoxadv");
             this.groupBoxadv.Name = "groupBoxadv";
             this.groupBoxadv.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -991,10 +1001,10 @@
         private System.Windows.Forms.CheckBox checkBoxDonet;
         private System.Windows.Forms.CheckBox checkBoxDisWinre;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPartitionSize3;
+        private System.Windows.Forms.TextBox txtPartitionSize1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPartitionSize2;
-        private System.Windows.Forms.TextBox txtPartitionSize1;
+        private System.Windows.Forms.TextBox txtPartitionSize3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEfiSize;
         private System.Windows.Forms.TabPage tabPage4;
@@ -1036,6 +1046,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxParts;
         private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;
     }
 }
 

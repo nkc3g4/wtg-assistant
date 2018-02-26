@@ -322,11 +322,10 @@ namespace wintogo
         }
         public static void AddDrivers(string target)
         {
-            if (Directory.Exists(Application.StartupPath + "\\Drivers") && Directory.GetFiles(Application.StartupPath + "\\Drivers").Length == 0)
+            if (Directory.Exists(Application.StartupPath + "\\Drivers"))
             {
-                return;
+                ProcessManager.ECMD("dism.exe", "/image:" + target + " /add-driver /driver:\"" + Application.StartupPath + "\\Drivers\"" + " /recurse");
             }
-            ProcessManager.ECMD("dism.exe", "/image:" + target + " /add-driver /driver:\"" + Application.StartupPath + "\\Drivers\"" + " /recurse");
         }
         #endregion
         public static void DisableUASP(string installdrive)

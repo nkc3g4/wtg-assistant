@@ -36,7 +36,7 @@ namespace wintogo
             //Log.AppendLog("Output.log", output.ToString());
             Log.WriteLog("Output", output.ToString());
             output.Clear();
-            
+
             try
             {
 
@@ -191,6 +191,16 @@ namespace wintogo
                 //操作失败
                 MessageBox.Show(MsgManager.GetResString("Msg_Failure", MsgManager.ci) + ex.ToString());
             }
+
+        }
+        public static void Do(ThreadStart ts)
+        {
+
+            wp = new WriteProgress();
+            wp.IsUserClosing = true;
+            Thread t = new Thread(ts);
+            t.Start();
+            wp.ShowDialog();
 
         }
         public static void ECMD(string StartFileName, string StartFileArg, params string[] AppendText)

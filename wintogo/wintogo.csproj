@@ -121,6 +121,12 @@
     </Compile>
     <Compile Include="Core\BootFileOperation.cs" />
     <Compile Include="Core\DiskOperation.cs" />
+    <Compile Include="Forms\BenchmarkProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BenchmarkProgress.Designer.cs">
+      <DependentUpon>BenchmarkProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Clone.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,13 @@
       <DependentUpon>FormatAlert.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\SystemSleepManagement.cs" />
+    <Compile Include="Forms\UdiskBenchmark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UdiskBenchmark.Designer.cs">
+      <DependentUpon>UdiskBenchmark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\Benchmark.cs" />
     <Compile Include="Utility\TakeOwn.cs" />
     <Compile Include="Utility\HttpPost.cs" />
     <Compile Include="Utility\WebUtility.cs" />
@@ -206,6 +219,12 @@
     <EmbeddedResource Include="Forms\AboutBox.zh-Hant.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BenchmarkProgress.en.resx">
+      <DependentUpon>BenchmarkProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BenchmarkProgress.resx">
+      <DependentUpon>BenchmarkProgress.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Clone.resx">
       <DependentUpon>Clone.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +271,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormatAlert.zh-Hant.resx">
       <DependentUpon>FormatAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UdiskBenchmark.en.resx">
+      <DependentUpon>UdiskBenchmark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UdiskBenchmark.resx">
+      <DependentUpon>UdiskBenchmark.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

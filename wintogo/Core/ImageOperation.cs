@@ -134,7 +134,18 @@ namespace wintogo
 
                         wimpart = "4";
                     }
-                    else { wimpart = "1"; }
+                    else
+                    {
+                        if (DismGetImagePartsInfo(WTGModel.imageFilePath).Count == 3)
+                        {
+                            wimpart = "2";
+
+                        }
+                        else
+                        {
+                            wimpart = "1";
+                        }
+                    }
                 }
             }
         }

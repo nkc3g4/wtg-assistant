@@ -90,6 +90,13 @@ namespace wintogo
                 VHDOperation.CleanTemp();
                 Log.DeleteAllLogs();
                 ProcessManager.KillProcessByName("bootice.exe");
+
+                //ProcessManager.Do(() => {
+
+                //});
+                //ProcessManager.AppendText("Doing Benchmark!");
+                
+
                 Log.WriteProgramRunInfoToLog();
 
                 writeSw.Restart();

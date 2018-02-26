@@ -1,14 +1,17 @@
 ﻿using iTuner;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using wintogo.Forms;
+using wintogo.Utility;
 
 namespace wintogo
 {
@@ -22,12 +25,11 @@ namespace wintogo
         private int udSizeInMB = 0;
         private readonly string releaseUrl = "http://bbs.luobotou.org/app/wintogo.txt";
         private readonly string reportUrl = "http://myapp.luobotou.org/statistics.aspx?name=wtg&ver=";
-
+        List<Control> formControlList = new List<Control>();
 
         public Form1()
         {
             Config.ReadConfigFile(ref autoCheckUpdate);
-
             InitializeComponent();
             txtVhdTempPath.Text = WTGModel.vhdTempPath;
         }
@@ -369,7 +371,6 @@ namespace wintogo
 
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("萝卜头IT论坛 nkc3g4制作\nQQ:1443112740\nEmail:microsoft5133@126.com","关于");
             AboutBox abx = new AboutBox();
             abx.Show();
         }
@@ -384,10 +385,6 @@ namespace wintogo
             SWOnline swo = new SWOnline(releaseUrl, reportUrl);
             Thread threadUpdate = new Thread(swo.Update);
             threadUpdate.Start();
-
-            //threadupdate = new Thread(SWOnline.update);
-            //threadupdate.Start();
-            //MsgManager.getResString("Msg_UpdateTip")
             //若无弹出窗口，则当前程序已是最新版本！
             MessageBox.Show(MsgManager.GetResString("Msg_UpdateTip", MsgManager.ci));
         }
@@ -520,7 +517,7 @@ namespace wintogo
 
         #endregion
 
-     
+
         #region UserControls
 
         private void Form1_Load(object sender, EventArgs e)
@@ -531,6 +528,7 @@ namespace wintogo
 
             toolStripMenuItem3.Checked = autoCheckUpdate;
             FileInitialization.FileValidation();
+            ReadPerference();
             SystemDetection(true);
 
 
@@ -574,6 +572,37 @@ namespace wintogo
             //txtVhdTempPath.text
 
         }
+
+        private void ReadPerference()
+        {
+            txtwim.Text = ReadSet("WimPath");
+
+            foreach (Control item in tabPage2.Controls)
+            {
+                formControlList.Add(item);
+            }
+            foreach (Control item in tabPage1.Controls)
+            {
+                formControlList.Add(item);
+            }
+
+            foreach (var item in formControlList)
+            {
+                if (item.GetType() == typeof(CheckBox))
+                {
+                    string val = ReadSet(((CheckBox)item).Name);
+                    if (val == "True")
+                    {
+                        ((CheckBox)item).Checked = true;
+                    }
+                    else if (val == "False")
+                    {
+                        ((CheckBox)item).Checked = false;
+                    }
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -715,10 +744,18 @@ namespace wintogo
         {
 
         }
-    
+
 
         private void 错误提示测试ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // MessageBox.Show(WTGModel.UdObj.Model);
+
+            //Benchmark bm = new Benchmark();
+            //WTGModel.UdObj = (UsbDisk)comboBoxUd.SelectedItem;
+            ////MessageBox.Show);
+            //BenchmarkResult bmr = bm.DoBenchmark("D:");
+            //MessageBox.Show(bmr.Write4K.ToString());
+            //MessageBox.Show(bmr.WriteSeq.ToString());
             //Write.EnableBitlocker("V:");
             //USBAudioDeviceItems dict = USBAudioDeviceItems.USBDevices;
             //MessageBox.Show(dict.Count.ToString());
@@ -1170,7 +1207,7 @@ namespace wintogo
             }
         }
 
-   
+
 
         private void 克隆本机系统ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1377,6 +1414,104 @@ namespace wintogo
             {
                 txtVhdTempPath.Text = folderBrowserDialog2.SelectedPath;
             }
+        }
+
+        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            foreach (var item in tabPage2.Controls)
+            {
+                if (item.GetType() == typeof(CheckBox))
+                {
+                    ((CheckBox)item).Checked = false;
+                }
+            }
+            checkBoxFixLetter.Checked = true;
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private string ReadSet(string name)
+        {
+            return IniFile.ReadVal("Perference", name, Config.settingFilePath);
+        }
+        private void SaveSet(string name, string val)
+        {
+            IniFile.WriteVal("Perference", name, val, Config.settingFilePath);
+        }
+        private void 保存当前设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IniFile.WriteVal("Perference", "WimPath", txtwim.Text, Config.settingFilePath);
+            foreach (var item in formControlList)
+            {
+                if (item.GetType() == typeof(CheckBox))
+                {
+                    SaveSet(((CheckBox)item).Name, ((CheckBox)item).Checked.ToString());
+                }
+            }
+        }
+        private async void Test()
+        {
+            await Task.Run(() => {
+
+            });
+        }
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            if (!Directory.Exists(WTGModel.UdObj.Name+"\\"))
+            {
+                MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci) + "!", MsgManager.GetResString("Msg_error", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }//是否选择优盘
+            BenchmarkProgress bp = new BenchmarkProgress();
+            
+            Benchmark bm = new Benchmark();
+            BenchmarkResult bmr = new BenchmarkResult ();
+            bp.Show();
+            Thread tBench = new Thread(() =>
+            {
+               
+                bmr = bm.DoBenchmark(WTGModel.UdObj.Name);
+
+                bp.Invoke(new Action(()=> { bp.Close(); }));
+                //furmula
+                double score = bmr.Write4K + Math.Log(1 + (bmr.WriteSeq / 1000));
+                //MessageBox.Show(bmr.Write4K.ToString());
+                int lv = 0;
+                if (score > 35)
+                {
+                    lv = 5;
+                }
+                else if (score > 10)
+                {
+                    lv = 4;
+                }
+                else if (score > 0.8)
+                {
+                    lv = 3;
+                }
+                else if (score > 0.3)
+                {
+                    lv = 2;
+                }
+                else
+                {
+                    lv = 1;
+                }
+
+                string UModel = WTGModel.UdObj.Model;
+                UModel = UModel.Replace("USB", "");
+                UModel = UModel.Replace("Device", "");
+                UModel = UModel.Replace("Disk", "");
+                UdiskBenchmark ub = new UdiskBenchmark(string.Format("{0}(4K:{1:N2},SEQ:{2:N0})", UModel, bmr.Write4K, bmr.WriteSeq), lv);
+                ub.ShowDialog();
+
+            });
+           
+            tBench.Start();
+           
+          
         }
     }
 }

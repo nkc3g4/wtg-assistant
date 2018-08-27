@@ -132,9 +132,9 @@
             this.btnwim = new System.Windows.Forms.Button();
             this.txtwim = new System.Windows.Forms.TextBox();
             this.groupBoxadv = new System.Windows.Forms.GroupBox();
+            this.buttonBenchmark = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
-            this.buttonBenchmark = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -186,6 +186,7 @@
             // folderBrowserDialog1
             // 
             resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
+            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
             // 
             // contextMenuStrip1
             // 
@@ -377,6 +378,7 @@
             this.checkBoxNoDefaultLetter.Name = "checkBoxNoDefaultLetter";
             this.toolTip1.SetToolTip(this.checkBoxNoDefaultLetter, resources.GetString("checkBoxNoDefaultLetter.ToolTip"));
             this.checkBoxNoDefaultLetter.UseVisualStyleBackColor = true;
+            this.checkBoxNoDefaultLetter.CheckedChanged += new System.EventHandler(this.checkBoxNoDefaultLetter_CheckedChanged);
             // 
             // checkBoxFixLetter
             // 
@@ -968,6 +970,7 @@
             this.txtwim.Name = "txtwim";
             this.txtwim.ReadOnly = true;
             this.toolTip1.SetToolTip(this.txtwim, resources.GetString("txtwim.ToolTip"));
+            this.txtwim.TextChanged += new System.EventHandler(this.txtwim_TextChanged);
             // 
             // groupBoxadv
             // 
@@ -977,14 +980,6 @@
             this.groupBoxadv.TabStop = false;
             this.toolTip1.SetToolTip(this.groupBoxadv, resources.GetString("groupBoxadv.ToolTip"));
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // folderBrowserDialog2
-            // 
-            resources.ApplyResources(this.folderBrowserDialog2, "folderBrowserDialog2");
-            // 
             // buttonBenchmark
             // 
             resources.ApplyResources(this.buttonBenchmark, "buttonBenchmark");
@@ -992,6 +987,14 @@
             this.toolTip1.SetToolTip(this.buttonBenchmark, resources.GetString("buttonBenchmark.ToolTip"));
             this.buttonBenchmark.UseVisualStyleBackColor = true;
             this.buttonBenchmark.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // folderBrowserDialog2
+            // 
+            resources.ApplyResources(this.folderBrowserDialog2, "folderBrowserDialog2");
             // 
             // Form1
             // 

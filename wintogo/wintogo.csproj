@@ -96,6 +96,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -155,6 +159,7 @@
       <DependentUpon>UdiskBenchmark.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\Benchmark.cs" />
+    <Compile Include="Utility\ISOHelper.cs" />
     <Compile Include="Utility\TakeOwn.cs" />
     <Compile Include="Utility\HttpPost.cs" />
     <Compile Include="Utility\WebUtility.cs" />

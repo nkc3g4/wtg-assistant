@@ -24,7 +24,7 @@ namespace wintogo
                 unZipDir += "/";
             if (!Directory.Exists(unZipDir))
                 Directory.CreateDirectory(unZipDir);
-
+            
             using (ZipInputStream s = new ZipInputStream(File.OpenRead(zipFilePath)))
             {
 

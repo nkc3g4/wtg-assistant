@@ -189,7 +189,7 @@ namespace wintogo
             {
                 //MsgManager.getResString("Msg_Failure")
                 //操作失败
-                MessageBox.Show(MsgManager.GetResString("Msg_Failure", MsgManager.ci) + ex.ToString());
+                MessageBox.Show(MsgManager.GetResString("Msg_Failure", MsgManager.ci) + " " + StartFileName + " " + ex.ToString());
             }
 
         }

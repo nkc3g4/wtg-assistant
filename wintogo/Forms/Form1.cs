@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -26,6 +27,9 @@ namespace wintogo
         private readonly string releaseUrl = "http://bbs.luobotou.org/app/wintogo.txt";
         private readonly string reportUrl = "http://myapp.luobotou.org/statistics.aspx?name=wtg&ver=";
         List<Control> formControlList = new List<Control>();
+
+        bool useiso = false;
+        string isoPath = string.Empty;
 
         public Form1()
         {
@@ -127,8 +131,10 @@ namespace wintogo
         #region MenuItemClick/Miscellaneous
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+
             WebUtility.VisitWeb("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=2427");
-            //System.Diagnostics.Process.Start("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=2427");
+
+
         }
 
 
@@ -277,6 +283,10 @@ namespace wintogo
                 checkBoxUefimbr.Checked = false;
                 checkBoxUefigpt.Checked = true;
             }
+            if (checkBoxUefigpt.Checked || checkBoxUefimbr.Checked)
+            {
+                checkBoxDiskpart.Checked = true;
+            }
             checkBoxDiskpart.Enabled = !checkBoxUefigpt.Checked;
             //checkBoxDiskpart.Checked = checkBoxUefigpt.Checked;
             if (checkBoxBitlocker.Checked)
@@ -333,10 +343,10 @@ namespace wintogo
             //MsgManager.getResString("Msg_chooseud")
             if (comboBoxUd.SelectedIndex == 0) { MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci)); return; }
             WTGModel.ud = comboBoxUd.SelectedItem.ToString().Substring(0, 2) + "\\";//优盘
-            //MsgManager.getResString("Msg_XPNotCOMP")
-            //XP系统不支持此操作
-            //MsgManager.getResString("Msg_ClearPartition")
-            //此操作将会清除移动磁盘所有分区的所有数据，确认？
+                                                                                    //MsgManager.getResString("Msg_XPNotCOMP")
+                                                                                    //XP系统不支持此操作
+                                                                                    //MsgManager.getResString("Msg_ClearPartition")
+                                                                                    //此操作将会清除移动磁盘所有分区的所有数据，确认？
             if (System.Environment.OSVersion.ToString().Contains("5.1") || System.Environment.OSVersion.ToString().Contains("5.2")) { MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci)); return; }
             if (DialogResult.No == MessageBox.Show(MsgManager.GetResString("Msg_ClearPartition", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) { return; }
 
@@ -432,8 +442,11 @@ namespace wintogo
         {
             if (checkBoxUefigpt.Checked && checkBoxUefimbr.Checked) { checkBoxUefigpt.Checked = false; checkBoxUefimbr.Checked = true; }
             if (checkBoxUefimbr.Checked) { WTGModel.disableWinRe = true; }
+            if (checkBoxUefimbr.Checked)
+            {
+                checkBoxDiskpart.Checked = true;
+            }
             checkBoxDiskpart.Enabled = !checkBoxUefimbr.Checked;
-            //checkBoxDiskpart.Checked = checkBoxUefimbr.Checked;
             if (checkBoxBitlocker.Checked)
             {
                 radiobtnLegacy.Checked = true;
@@ -522,8 +535,13 @@ namespace wintogo
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+
+
+
             Graphics graphics = CreateGraphics();
             float dpiX = graphics.DpiX;
+
             Width = (int)(650 * (dpiX / 96.0));
 
             toolStripMenuItem3.Checked = autoCheckUpdate;
@@ -605,7 +623,7 @@ namespace wintogo
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            
             try
             {
                 if (tWrite != null && tWrite.IsAlive)
@@ -639,7 +657,7 @@ namespace wintogo
             WTGModel.isBitlocker = checkBoxBitlocker.Checked;
             WTGModel.isWimBoot = checkBoxWimboot.Checked;
             WTGModel.isBlockLocalDisk = checkBoxSan_policy.Checked;
-            WTGModel.imageFilePath = txtwim.Text;
+            //WTGModel.imageFilePath = txtwim.Text;
             WTGModel.isCompactOS = checkBoxCompactOS.Checked;
             if (comboBoxGb.SelectedIndex == 1)
             {
@@ -723,6 +741,10 @@ namespace wintogo
                     Environment.Exit(0);
                     //threadwrite.Abort();
                 }
+                if (useiso)
+                {
+                    ISOHelper.DismountISO(txtwim.Text);
+                }
             }
             catch (Exception ex)
             {
@@ -748,6 +770,8 @@ namespace wintogo
 
         private void 错误提示测试ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            WriteProgress wp = new WriteProgress();
+            wp.Show();
             // MessageBox.Show(WTGModel.UdObj.Model);
 
             //Benchmark bm = new Benchmark();
@@ -1304,13 +1328,56 @@ namespace wintogo
         private void btnwim_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-
+            if (useiso)
+            {
+                try
+                {
+                    ISOHelper.DismountISO(isoPath);
+                }
+                catch { }
+                useiso = false;
+                isoPath = string.Empty;
+            }
             if (File.Exists(openFileDialog1.FileName))
             {
                 txtwim.Text = openFileDialog1.FileName;
                 WTGModel.imageFilePath = openFileDialog1.FileName;
                 WTGModel.choosedImageType = Path.GetExtension(openFileDialog1.FileName.ToLower()).Substring(1);
+                if (WTGModel.choosedImageType == "iso")
+                {
 
+                    bool mount_successfully = false;
+                    try
+                    {
+                        ISOHelper.MountISO(WTGModel.imageFilePath);
+                    }
+                    catch { }
+
+
+                    for (int i = 68; i <= 90; i++)
+                    {
+                        string ascll_to_eng = Convert.ToChar(i).ToString();
+                        if (File.Exists(ascll_to_eng + ":\\sources\\install.wim"))
+                        {
+                            //txtwim.Text = ascll_to_eng + ":\\sources\\install.wim";
+                            WTGModel.imageFilePath = ascll_to_eng + ":\\sources\\install.wim";
+                            WTGModel.choosedImageType = "wim";
+
+                            mount_successfully = true;
+                            break;
+                        }
+                    }
+                    if (!mount_successfully)
+                    {
+                        MessageBox.Show("虚拟光驱加载失败，请手动加载，之后选择install.wim");
+                        return;
+                    }
+                    else
+                    {
+                        useiso = true;
+                        isoPath = txtwim.Text;
+                    }
+                }
                 if (WTGModel.choosedImageType == "esd")
                 {
                     if (!WTGModel.allowEsd)
@@ -1367,7 +1434,7 @@ namespace wintogo
                 }
                 else
                 {
-                    WTGModel.win7togo = ImageOperation.Iswin7(WTGModel.imagexFileName, txtwim.Text);
+                    WTGModel.win7togo = ImageOperation.Iswin7(WTGModel.imagexFileName, WTGModel.imageFilePath);
                     if (WTGModel.win7togo != 0) //WIN7 cannot comptible with VHDX disk or wimboot
                     {
                         if (radiobtnVhdx.Checked)
@@ -1383,7 +1450,7 @@ namespace wintogo
                 {
                     comboBoxParts.Items.Clear();
                     comboBoxParts.Items.Add("0 : 自动选择");
-                    comboBoxParts.Items.AddRange(ImageOperation.DismGetImagePartsInfo(txtwim.Text).ToArray());
+                    comboBoxParts.Items.AddRange(ImageOperation.DismGetImagePartsInfo(WTGModel.imageFilePath).ToArray());
                     comboBoxParts.SelectedIndex = 0;
 
                 }
@@ -1453,33 +1520,34 @@ namespace wintogo
         }
         private async void Test()
         {
-            await Task.Run(() => {
+            await Task.Run(() =>
+            {
 
             });
         }
         private void button1_Click_2(object sender, EventArgs e)
         {
-            if (!Directory.Exists(WTGModel.UdObj.Name+"\\"))
+            if (WTGModel.UdObj == null || !Directory.Exists(WTGModel.UdObj.Name + "\\"))
             {
                 MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci) + "!", MsgManager.GetResString("Msg_error", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }//是否选择优盘
             BenchmarkProgress bp = new BenchmarkProgress();
-            
+
             Benchmark bm = new Benchmark();
-            BenchmarkResult bmr = new BenchmarkResult ();
+            BenchmarkResult bmr = new BenchmarkResult();
             bp.Show();
             Thread tBench = new Thread(() =>
             {
-               
+
                 bmr = bm.DoBenchmark(WTGModel.UdObj.Name);
 
-                bp.Invoke(new Action(()=> { bp.Close(); }));
+                bp.Invoke(new Action(() => { bp.Close(); }));
                 //furmula
                 double score = bmr.Write4K + Math.Log(1 + (bmr.WriteSeq / 1000));
                 //MessageBox.Show(bmr.Write4K.ToString());
                 int lv = 0;
-                if (score > 35)
+                if (score > 33)
                 {
                     lv = 5;
                 }
@@ -1508,10 +1576,25 @@ namespace wintogo
                 ub.ShowDialog();
 
             });
-           
+
             tBench.Start();
-           
-          
+
+
+        }
+
+        private void checkBoxNoDefaultLetter_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtwim_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+
         }
     }
 }

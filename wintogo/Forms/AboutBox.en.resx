@@ -601,83 +601,83 @@
 </value>
   </data>
   <data name="logoPictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+    <value>4, 4</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="logoPictureBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="logoPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 498</value>
+    <value>175, 318</value>
   </data>
   <data name="labelProductName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 0</value>
+    <value>191, 0</value>
   </data>
   <data name="labelProductName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 0, 6, 0</value>
+    <value>8, 0, 4, 0</value>
   </data>
   <data name="labelProductName.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 33</value>
+    <value>0, 21</value>
   </data>
   <data name="labelProductName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>541, 33</value>
+    <value>361, 21</value>
   </data>
   <data name="labelProductName.Text" xml:space="preserve">
     <value>Program Name</value>
   </data>
   <data name="labelVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 51</value>
+    <value>191, 32</value>
   </data>
   <data name="labelVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 0, 6, 0</value>
+    <value>8, 0, 4, 0</value>
   </data>
   <data name="labelVersion.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 33</value>
+    <value>0, 21</value>
   </data>
   <data name="labelVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>541, 33</value>
+    <value>361, 21</value>
   </data>
   <data name="labelVersion.Text" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="labelCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 102</value>
+    <value>191, 64</value>
   </data>
   <data name="labelCopyright.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 0, 6, 0</value>
+    <value>8, 0, 4, 0</value>
   </data>
   <data name="labelCopyright.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 33</value>
+    <value>0, 21</value>
   </data>
   <data name="labelCopyright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>541, 33</value>
+    <value>361, 21</value>
   </data>
   <data name="labelCopyright.Text" xml:space="preserve">
     <value>Copyright</value>
   </data>
   <data name="labelCompanyName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 153</value>
+    <value>191, 96</value>
   </data>
   <data name="labelCompanyName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 0, 6, 0</value>
+    <value>8, 0, 4, 0</value>
   </data>
   <data name="labelCompanyName.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 33</value>
+    <value>0, 21</value>
   </data>
   <data name="labelCompanyName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>541, 33</value>
+    <value>361, 21</value>
   </data>
   <data name="labelCompanyName.Text" xml:space="preserve">
     <value>Company Name</value>
   </data>
   <data name="textBoxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 210</value>
+    <value>191, 132</value>
   </data>
   <data name="textBoxDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 6, 6, 6</value>
+    <value>8, 4, 4, 4</value>
   </data>
   <data name="textBoxDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>541, 243</value>
+    <value>361, 155</value>
   </data>
   <data name="textBoxDescription.Text" xml:space="preserve">
     <value>Our Website(Chinese)：http://bbs.luobotou.org/forum-88-1.html
@@ -702,37 +702,37 @@ kill211
 ......</value>
   </data>
   <data name="okButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>678, 465</value>
+    <value>452, 297</value>
   </data>
   <data name="okButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="okButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 39</value>
+    <value>100, 25</value>
   </data>
   <data name="okButton.Text" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="tableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 17</value>
+    <value>12, 11</value>
   </data>
   <data name="tableLayoutPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>834, 510</value>
+    <value>556, 326</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>12, 25</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>870, 544</value>
+    <value>580, 348</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>8, 8, 8, 8</value>
+    <value>5, 5, 5, 5</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>18, 17, 18, 17</value>
+    <value>12, 11, 12, 11</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>About</value>

@@ -29,12 +29,13 @@ namespace wintogo
         public Win8PB()
         {
             InitializeComponent();
+            
             float dpiX, dpiY;
             Graphics graphics = this.CreateGraphics();
             dpiX = graphics.DpiX;
             dpiY = graphics.DpiY;
-            k = dpiX / 96;
-
+            k = dpiX / 96.0;
+            //MessageBox.Show(k.ToString());
             v1 = (int)(10 * k);
             v2 = (int)(10 * k);
             v3 = (int)(10 * k);
@@ -75,6 +76,7 @@ namespace wintogo
             label3.Left = (int)(500 * k);
             label4.Left = (int)(500 * k);
             label5.Left = (int)(500 * k);
+          
             timer1.Start();
             timer2.Start();
 
@@ -88,11 +90,12 @@ namespace wintogo
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+          //  Console.WriteLine(v1);
             if (p1 == 1)
             {
                 label1.Left += v1;
-                v1 = (int)(v1 - 1);
-                if (v1 == 2 * k) { p1 = 2; }
+                v1--;
+                if (v1 == (int)(2 * k)) { p1 = 2; }
             }
             else if (p1 == 2)
             {
@@ -117,8 +120,8 @@ namespace wintogo
             if (p2 == 1 && label1.Left > 48 * k)
             {
                 label2.Left += v2;
-                v2 = (int)(v2 - 1);
-                if (v2 == 2 * k) { p2 = 2; }
+                v2--;
+                if (v2 == (int)(2 * k)) { p2 = 2; }
             }
             else if (p2 == 2)
             {
@@ -144,8 +147,8 @@ namespace wintogo
                 label3.Left += v3;
 
 
-                v3 = (int)(v3 - 1);
-                if (v3 == 2 * k) { p3 = 2; }
+                v3--;
+                if (v3 == (int)(2 * k)) { p3 = 2; }
             }
             else if (p3 == 2)
             {
@@ -171,8 +174,8 @@ namespace wintogo
                 label4.Left += v4;
 
 
-                v4 = (int)(v4 - 1);
-                if (v4 == 2 * k) { p4 = 2; }
+                v4--;
+                if (v4 == (int)(2 * k)) { p4 = 2; }
             }
             else if (p4 == 2)
             {
@@ -198,8 +201,8 @@ namespace wintogo
                 label5.Left += v5;
 
 
-                v5 = (int)(v5 - 1);
-                if (v5 == 2 * k) { p5 = 2; }
+                v5--;
+                if (v5 == (int)(2 * k)) { p5 = 2; }
             }
             else if (p5 == 2)
             {

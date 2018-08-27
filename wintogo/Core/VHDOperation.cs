@@ -474,7 +474,7 @@ namespace wintogo
                     {
                         //MessageBox.Show(hardDiskSpace.ToString());
                         //DiskOperation.GetHardDiskSpace(WTGModel.ud);
-                        if (WTGModel.userSetSize > hardDiskSpace - 500)
+                        if (hardDiskSpace != 0 && WTGModel.userSetSize > hardDiskSpace - 500)
                         {
                             VhdSize = (hardDiskSpace - 500).ToString();
                         }

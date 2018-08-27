@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace wintogo.Forms
@@ -15,7 +10,8 @@ namespace wintogo.Forms
         private int lev = 0;
         private string udString = string.Empty;
         public UdiskBenchmark(string ud,int level)
-        {   
+        {
+            Thread.CurrentThread.CurrentUICulture = MsgManager.ci;
             InitializeComponent();
             Text = ud;
             lev = level;

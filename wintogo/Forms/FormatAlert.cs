@@ -9,6 +9,7 @@ namespace wintogo.Forms
         Thread t;
         public FormatAlert(string msg)
         {
+            Thread.CurrentThread.CurrentUICulture = MsgManager.ci;
             InitializeComponent();
             lblTxt.Text = msg;
             DialogResult = DialogResult.No;
@@ -16,9 +17,11 @@ namespace wintogo.Forms
 
         private void FormatAlert_Load(object sender, EventArgs e)
         {
+
             
             t = new Thread(() =>
             {
+
                 string oriText = btnOk.Text;
                 for (int i = 4; i >= 1; i--)
                 {

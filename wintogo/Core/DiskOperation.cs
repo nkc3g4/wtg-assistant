@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -68,7 +69,7 @@ namespace wintogo
             sb.AppendLine("create partition primary");
 
             sb.AppendLine("select partition 2");
-            sb.AppendLine("format fs=fat quick");
+            sb.AppendLine("format fs=fat32 quick");
             sb.AppendLine("assign letter=x");
             sb.AppendLine("select partition 3");
             sb.AppendLine("format fs=ntfs quick");
@@ -150,7 +151,7 @@ namespace wintogo
             //    partitionsCount++;
             //}
             sb.AppendLine("select partition 1");
-            sb.AppendLine("format fs=fat quick");
+            sb.AppendLine("format fs=fat32 quick");
             sb.AppendLine("active");
             sb.AppendLine("assign letter=x");
             sb.AppendLine("select partition 2");
@@ -170,6 +171,24 @@ namespace wintogo
 
             //}
             //return WTGModel.diskpartScriptPath + @"\uefimbr.txt";
+        }
+
+        internal static void AssignDriveLetter(string index)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("select disk " + index);
+            sb.AppendLine("clean");
+            //sb.AppendLine("convert mbr");
+            sb.AppendLine("create partition primary");
+            sb.AppendLine("select partition 1");
+            sb.AppendLine("format fs=ntfs quick");
+            sb.AppendLine("active");
+            sb.AppendLine("assign letter=" + WTGModel.ud.Substring(0, 1));
+            sb.AppendLine("exit");
+            DiskpartScriptManager dsm = new DiskpartScriptManager();
+            dsm.Args = sb.ToString();
+            dsm.RunDiskpartScript();
+
         }
 
         public static void DiskPartRePartitionUD(string[] partitionSize)

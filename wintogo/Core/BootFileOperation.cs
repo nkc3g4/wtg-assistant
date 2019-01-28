@@ -206,7 +206,7 @@ namespace wintogo
                     args.Append(" /f uefi ");
                 }
             }
-            args.Append(" /l zh-ch ");
+            args.Append(" /l zh-CN ");
             args.Append(" /v ");
             //这里不能直接调用系统BCDBOOT,原因未知
             //if (WTGModel.CurrentOS == OS.Win8_1_with_update || WTGModel.CurrentOS == OS.Win10 || WTGModel.CurrentOS == OS.Win8_without_update)

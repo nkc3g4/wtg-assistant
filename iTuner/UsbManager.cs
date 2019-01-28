@@ -248,8 +248,16 @@ namespace iTuner
             // browse all USB WMI physical disks
             foreach (ManagementObject drive in
                 new ManagementObjectSearcher(
-                    "select DeviceID,Model,Size from Win32_DiskDrive where InterfaceType='USB' or MediaType='External hard disk media' or (InterfaceType='SCSI' and MediaType='Removable Media')").Get())
+                    "select DeviceID,Model,Size,Index,MediaType,Size from Win32_DiskDrive where InterfaceType='USB' or MediaType='External hard disk media' or (InterfaceType='SCSI' and MediaType='Removable Media')").Get())
             {
+                //MessageBox.Show(drive["MediaType"].ToString());
+                UsbDisk disk = new UsbDisk(drive["DeviceID"].ToString());
+                disk.Model = drive["Model"].ToString();
+                disk.Index = drive["Index"].ToString();
+                disk.DiskSize = (ulong)drive["Size"];
+                disk.DriveType = (drive["MediaType"].ToString() == "External hard disk media") ? "本地磁盘" : "可移动磁盘";
+                disk.Size = (ulong)drive["Size"];
+                bool hasAdded = false;
                 // associate physical disks with partitions
                 foreach (ManagementObject partition in new ManagementObjectSearcher(string.Format(
                     "associators of {{Win32_DiskDrive.DeviceID='{0}'}} where AssocClass = Win32_DiskDriveToDiskPartition",
@@ -257,12 +265,14 @@ namespace iTuner
                 {
                     try
                     {
+                        //MessageBox.Show(partition.ToString());
                         if (partition != null)
                         {
                             // associate partitions with logical disks (drive letter volumes)
                             ManagementObject logical = new ManagementObjectSearcher(string.Format(
                                 "associators of {{Win32_DiskPartition.DeviceID='{0}'}} where AssocClass = Win32_LogicalDiskToPartition",
                                 partition["DeviceID"])).First();
+                            //MessageBox.Show(logical.ToString());
                             if (logical != null)
                             {
                                 // finally find the logical disk entry to determine the volume name
@@ -271,28 +281,29 @@ namespace iTuner
                                     logical["Name"])).First();
 
                                 //MessageBox.Show(drive["TotalSectors"].ToString());
-
-                                UsbDisk disk = new UsbDisk(logical["Name"].ToString());
-                                disk.Model = drive["Model"].ToString();
-                                disk.Volume = volume["VolumeName"].ToString();
+                                //MessageBox.Show(volume["VolumeName"].ToString());
+                                //UsbDisk disk = new UsbDisk(logical["Name"].ToString());
+                                if (logical["Name"].ToString().Contains("X"))
+                                    continue;
+                                disk.Volume = logical["Name"].ToString();
+                                //disk.VolumeName = volume["VolumeName"].ToString();
                                 disk.FreeSpace = (ulong)volume["FreeSpace"];
-                                disk.Size = (ulong)volume["Size"];
-                                disk.DiskSize = (ulong)drive["Size"];
-                                disk.DriveType = Drivetypeconvert(int.Parse(volume["DriveType"].ToString()));
+                                
+                                //disk.DriveType = Drivetypeconvert(int.Parse(volume["DriveType"].ToString()));
                                 //disk.TotalSectors = (ulong)drive["TotalSectors"];
                                 disks.Add(disk);
+                                hasAdded = true;
+                                break;
                                 //MessageBox.Show("HERE");
                             }
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         disks.Add(new UsbDisk(ex.ToString()));
                     }
-
-
-
                 }
+                if (!hasAdded) disks.Add(disk);
             }
 
             return disks;
@@ -359,7 +370,7 @@ namespace iTuner
 
                 if (volume != null)
                 {
-                    disk.Volume = volume["VolumeName"].ToString();
+                    disk.VolumeName = volume["VolumeName"].ToString();
                     disk.FreeSpace = (ulong)volume["FreeSpace"];
                     disk.Size = (ulong)volume["Size"];
                     disk.DriveType = Drivetypeconvert(Int32.Parse(volume["DriveType"].ToString()));

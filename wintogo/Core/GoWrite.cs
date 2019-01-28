@@ -27,6 +27,8 @@ namespace wintogo
             diskInfo.WaitForExit();
 
             string tempUdiskInfo = File.ReadAllText(tempFileName);
+            Log.WriteLog("Bootice_UsbInfo", tempUdiskInfo);
+
             Match match = Regex.Match(tempUdiskInfo, @"SET DRIVE([0-9])DESC=(.+)\r\nSET DRIVE([0-9])SIZE=(.+)\r\nSET DRIVE([0-9])LETTER=" + WTGModel.ud.Substring(0, 2).ToUpper(), RegexOptions.ECMAScript);
             string UdiskNumber = match.Groups[1].Value;
             if (DialogResult.No == MessageBox.Show(match.Groups[2].Value + "\n" + MsgManager.GetResString("Msg_TwiceConfirm", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) { return; }

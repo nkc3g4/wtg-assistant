@@ -1,7 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 //using System.Threading.Tasks;
@@ -72,11 +75,13 @@ namespace wintogo
         /// <param name="framework"></param>
         /// <param name="san_policy"></param>
         /// <param name="diswinre"></param>
-        /// <param name="imageletter">可以是有盘盘符或V盘</param>
+        /// <param name="imageletter">可以是U盘盘符或V盘</param>
         /// <param name="wimlocation">WIM文件路径</param>
         public static void ImageExtra(bool framework, bool san_policy, bool diswinre, bool disUasp, string imageletter, string wimlocation)
         {
             AddDrivers(imageletter);
+            Solve1809(imageletter.Substring(0, 2));
+            DriveIcon(imageletter.Substring(0, 2));
             if (disUasp)
             {
                 DisableUASP(imageletter);
@@ -351,6 +356,48 @@ namespace wintogo
             //ProcessManager.SyncCMD("reg.exe unload HKU\\def " + " > \"" + WTGModel.logPath + "\\UASPREGUnLoad.log\"");
             //Log.WriteLog("Info_UASPImportReg", errorlevel.ToString());
 
+        }
+        public static void Solve1809(string installDrive)
+        {
+
+            string wppPath = installDrive + "\\Windows\\system32\\drivers\\wpprecorder.sys";
+            try
+            {
+                int wppver = FileVersionInfo.GetVersionInfo(wppPath).ProductBuildPart;
+                if (wppver >= 17763)
+                {
+                    FileSecurity fileAcl = File.GetAccessControl(wppPath);
+                    IdentityReference everyoneUser = new NTAccount("Everyone");
+                    ProcessManager.SyncCMD("cmd.exe /c takeown /f " + wppPath + " && icacls " + wppPath + " /grant administrators:F");
+                    //MessageBox.Show(WellKnownSidType.AccountAdministratorSid);
+                    //fileAcl.SetOwner(new SecurityIdentifier(WellKnownSidType.AccountAdministratorSid.ToString()));
+                    FileSystemAccessRule everyoneRule = new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow);
+                    fileAcl.AddAccessRule(everyoneRule);
+
+                    File.Copy(WTGModel.applicationFilesPath + "\\wpprecorder.sys", wppPath, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteLog("Solve1809", ex.ToString());
+            }
+
+        }
+        public static void DriveIcon(string installDrive)
+        {
+            try
+            {
+                if (WTGModel.udString.ToUpper().Contains("CHIPFANCIER"))
+                {
+                    File.Copy(WTGModel.applicationFilesPath + "\\CF\\CHIPFANCIER.ico", installDrive + "\\CHIPFANCIER.ico", true);
+                    File.Copy(WTGModel.applicationFilesPath + "\\CF\\Autorun.inf", installDrive + "\\Autorun.inf", true);
+
+                }
+            }
+            catch(Exception ex)
+            {
+                Log.WriteLog("DriveIcon", ex.ToString());
+            }
         }
         #region 对象方法
         public void AutoChooseWimIndex()

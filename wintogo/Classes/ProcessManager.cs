@@ -34,11 +34,12 @@ namespace wintogo
         private static void progress_Exited(object sender, EventArgs e)
         {
             //Log.AppendLog("Output.log", output.ToString());
-            Log.WriteLog("Output", output.ToString());
-            output.Clear();
-
             try
             {
+                Log.WriteLog("Output", output.ToString());
+                output.Clear();
+
+
 
                 wp.Invoke(new Action(() =>
                 {

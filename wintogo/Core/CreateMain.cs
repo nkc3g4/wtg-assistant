@@ -21,20 +21,20 @@ namespace wintogo
                 #region 各种提示
 
 
-                if (!Directory.Exists(WTGModel.ud))
+                if (WTGModel.UdObj.Size == 0)
                 {
                     MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci) + "!", MsgManager.GetResString("Msg_error", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }//是否选择优盘
-                if (DiskOperation.GetHardDiskSpace(WTGModel.ud) <= (12L * 1024 * 1024 * 1024)) //优盘容量<12 GB提示
-                {
-                    //MsgManager.getResString("Msg_DiskSpaceWarning") 
-                    //可移动磁盘容量不足16G，继续写入可能会导致程序出错！您确定要继续吗？
-                    if (DialogResult.No == MessageBox.Show(MsgManager.GetResString("Msg_DiskSpaceWarning", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
-                    {
-                        return;
-                    }
-                }
+                //if (DiskOperation.GetHardDiskSpace(WTGModel.ud) <= (12L * 1024 * 1024 * 1024)) //优盘容量<12 GB提示
+                //{
+                //    //MsgManager.getResString("Msg_DiskSpaceWarning") 
+                //    //可移动磁盘容量不足16G，继续写入可能会导致程序出错！您确定要继续吗？
+                //    if (DialogResult.No == MessageBox.Show(MsgManager.GetResString("Msg_DiskSpaceWarning", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                //    {
+                //        return;
+                //    }
+                //}
 
                 if (StringUtility.IsChinaOrContainSpace(WTGModel.vhdNameWithoutExt))
                 {
@@ -90,13 +90,16 @@ namespace wintogo
                 VHDOperation.CleanTemp();
                 Log.DeleteAllLogs();
                 ProcessManager.KillProcessByName("bootice.exe");
-                
+
 
                 Log.WriteProgramRunInfoToLog();
 
                 writeSw.Restart();
 
-
+                if (WTGModel.UdObj.Volume == String.Empty)
+                {
+                    DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index);
+                }
                 if (WTGModel.isUefiGpt)
                 {
                     //UEFI+GPT
@@ -124,7 +127,7 @@ namespace wintogo
                         DiskOperation.DiskPartGPTAndUEFI(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
 
                         //ProcessManager.ECMD("diskpart.exe", " /s \"" + WTGOperation.diskpartScriptPath + "\\uefi.txt\"");
-                        if (WTGModel.CheckedMode==ApplyMode.Legacy)
+                        if (WTGModel.CheckedMode == ApplyMode.Legacy)
                         {
                             //UEFI+GPT 传统
                             if (Write.UefiGptTypical())

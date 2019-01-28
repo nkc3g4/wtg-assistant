@@ -35,7 +35,7 @@ namespace wintogo
         {
             Config.ReadConfigFile(ref autoCheckUpdate);
             InitializeComponent();
-            txtVhdTempPath.Text = WTGModel.vhdTempPath;
+            //txtVhdTempPath.Text = WTGModel.vhdTempPath;
         }
 
 
@@ -90,7 +90,7 @@ namespace wintogo
                     radiobtnVhdx.Enabled = true;
                     checkBoxUefigpt.Enabled = true;
                     checkBoxUefimbr.Enabled = true;
-                    checkBoxWimboot.Enabled = true;
+                    //checkBoxWimboot.Enabled = true;
                     WTGModel.allowEsd = true;
                     labelDisFunc.Visible = true;
                     //labelDisFuncEM.Visible = true;
@@ -104,8 +104,8 @@ namespace wintogo
                     radiobtnVhdx.Enabled = true;
                     checkBoxUefigpt.Enabled = true;
                     checkBoxUefimbr.Enabled = true;
-                    checkBoxWimboot.Enabled = true;
-                    checkBoxCompactOS.Enabled = true;
+                    //checkBoxWimboot.Enabled = true;
+                    //checkBoxCompactOS.Enabled = true;
                     WTGModel.allowEsd = true;
                     WTGModel.CurrentOS = OS.Win10;
 
@@ -200,8 +200,8 @@ namespace wintogo
                     {
                         SystemDetection(false);
                         WTGModel.isEsd = true;
-                        checkBoxWimboot.Checked = false;
-                        checkBoxWimboot.Enabled = false;
+                        //checkBoxWimboot.Checked = false;
+                        //checkBoxWimboot.Enabled = false;
                     }
 
                 }
@@ -226,8 +226,8 @@ namespace wintogo
                         radiobtnLegacy.Enabled = false;
                         radiobtnVhd.Enabled = false;
 
-                        checkBoxCompactOS.Checked = true;
-                        checkBoxCompactOS.Enabled = false;
+                        //checkBoxCompactOS.Checked = true;
+                        //checkBoxCompactOS.Enabled = false;
 
                     }
                     else
@@ -251,14 +251,14 @@ namespace wintogo
                             radiobtnVhd.Checked = true;
                         }
                         radiobtnVhdx.Enabled = false;
-                        checkBoxWimboot.Checked = false;
-                        checkBoxWimboot.Enabled = false;
+                        //checkBoxWimboot.Checked = false;
+                        //checkBoxWimboot.Enabled = false;
                     }
                 }
                 if (Regex.IsMatch(WTGModel.choosedImageType, @"wim|esd") && WTGModel.CurrentOS != OS.XP && WTGModel.CurrentOS != OS.Vista)
                 {
                     comboBoxParts.Items.Clear();
-                    comboBoxParts.Items.Add("0 : 自动选择");
+                    comboBoxParts.Items.Add("请选择安装分卷");
                     comboBoxParts.Items.AddRange(ImageOperation.DismGetImagePartsInfo(lblWim.Text).ToArray());
                     comboBoxParts.SelectedIndex = 0;
                     //////////////////////////////////dism / Get - ImageInfo
@@ -406,12 +406,12 @@ namespace wintogo
                 //Msg_Repartition
                 //MessageBox.Show(MsgManager.GetResString("Msg_Repartition", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 WTGModel.doNotFormat = false;
-                checkBoxDoNotFormat.Checked = false;
-                checkBoxDoNotFormat.Enabled = false;
+                //checkBoxDoNotFormat.Checked = false;
+                //checkBoxDoNotFormat.Enabled = false;
             }
             else
             {
-                checkBoxDoNotFormat.Enabled = true;
+                //checkBoxDoNotFormat.Enabled = true;
             }
         }
 
@@ -542,13 +542,15 @@ namespace wintogo
             Graphics graphics = CreateGraphics();
             float dpiX = graphics.DpiX;
 
-            Width = (int)(650 * (dpiX / 96.0));
+            Width = (int)(720 * (dpiX / 96.0));
 
             toolStripMenuItem3.Checked = autoCheckUpdate;
             FileInitialization.FileValidation();
             ReadPerference();
             SystemDetection(true);
-
+            Thread autodetectWim = new Thread(AutoDetectInstallWim);
+            autodetectWim.Start();
+            //linkLabel7_LinkClicked(null, null);
 
             SWOnline swo = new SWOnline(releaseUrl, reportUrl);
             swo.TopicLink = WriteProgress.topicLink;
@@ -581,7 +583,7 @@ namespace wintogo
 
             GetUdiskList.LoadUDList(comboBoxUd);
             comboBoxParts.Items.Clear();
-            comboBoxParts.Items.Add("0 : 自动选择");
+            comboBoxParts.Items.Add("自动选择安装分卷");
             comboBoxParts.SelectedIndex = 0;
             comboBoxVhdPartitionType.SelectedIndex = 1;
             comboBoxGb.SelectedIndex = 1;
@@ -595,10 +597,10 @@ namespace wintogo
         {
             txtwim.Text = ReadSet("WimPath");
 
-            foreach (Control item in tabPage2.Controls)
-            {
-                formControlList.Add(item);
-            }
+            //foreach (Control item in tabPage2.Controls)
+            //{
+            //    formControlList.Add(item);
+            //}
             foreach (Control item in tabPage1.Controls)
             {
                 formControlList.Add(item);
@@ -623,7 +625,7 @@ namespace wintogo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 if (tWrite != null && tWrite.IsAlive)
@@ -651,14 +653,23 @@ namespace wintogo
             {
                 WTGModel.CheckedMode = ApplyMode.VHDX;
             }
-            WTGModel.ud = comboBoxUd.SelectedItem.ToString().Substring(0, 2) + "\\";//
+
             WTGModel.UdObj = (UsbDisk)comboBoxUd.SelectedItem;
+            if (WTGModel.UdObj.Volume == String.Empty)
+            {
+                WTGModel.ud = "W:\\";//
+            }
+            else
+            {
+                WTGModel.ud = WTGModel.UdObj.Volume.Substring(0, 2) + "\\";
+            }
+            //WTGModel.ud = comboBoxUd.SelectedItem.ToString().Substring(0, 2) + "\\";//
             WTGModel.udString = comboBoxUd.SelectedItem.ToString();
             WTGModel.isBitlocker = checkBoxBitlocker.Checked;
-            WTGModel.isWimBoot = checkBoxWimboot.Checked;
+            WTGModel.isWimBoot = false;
             WTGModel.isBlockLocalDisk = checkBoxSan_policy.Checked;
             //WTGModel.imageFilePath = txtwim.Text;
-            WTGModel.isCompactOS = checkBoxCompactOS.Checked;
+            WTGModel.isCompactOS = false;
             if (comboBoxGb.SelectedIndex == 1)
             {
                 WTGModel.userSetSize = (int)numericUpDown1.Value * 1024;
@@ -675,9 +686,9 @@ namespace wintogo
             WTGModel.isFixedVHD = checkBoxFixed.Checked;
             WTGModel.isUefiGpt = checkBoxUefigpt.Checked;
             WTGModel.isUefiMbr = checkBoxUefimbr.Checked;
-            WTGModel.isNoTemp = checkBoxNotemp.Checked;
-            WTGModel.ntfsUefiSupport = checkBoxNtfsUefi.Checked;
-            WTGModel.doNotFormat = checkBoxDoNotFormat.Checked;
+            //WTGModel.isNoTemp = checkBoxNotemp.Checked;
+            WTGModel.ntfsUefiSupport = false;
+            //WTGModel.doNotFormat = checkBoxDoNotFormat.Checked;
             WTGModel.vhdNameWithoutExt = txtVhdNameWithoutExt.Text;
             WTGModel.installDonet35 = checkBoxDonet.Checked;
             WTGModel.fixLetter = checkBoxFixLetter.Checked;
@@ -686,14 +697,15 @@ namespace wintogo
             WTGModel.disableUasp = checkBoxDisUasp.Checked;
             WTGModel.efiPartitionSize = txtEfiSize.Text;
             WTGModel.vhdPartitionType = comboBoxVhdPartitionType.SelectedText;
-            WTGModel.vhdTempPath = txtVhdTempPath.Text;
+            //WTGModel.vhdTempPath = txtVhdTempPath.Text;
             WTGModel.partitionSize = new string[3];
             WTGModel.partitionSize[0] = txtPartitionSize1.Text;
             WTGModel.partitionSize[1] = txtPartitionSize2.Text;
             WTGModel.partitionSize[2] = txtPartitionSize3.Text;
-            WTGModel.wimPart = comboBoxParts.SelectedItem.ToString().Substring(0, 1);
-            WTGModel.isUserSetEfiPartition = checkBoxEfiPartition.Checked;
-            WTGModel.efiPartition = textBoxEfiPartition.Text;
+            //MessageBox.Show(comboBoxParts.SelectedIndex.ToString());
+            WTGModel.wimPart = comboBoxParts.SelectedIndex.ToString();
+            //WTGModel.isUserSetEfiPartition = checkBoxEfiPartition.Checked;
+            //WTGModel.efiPartition = textBoxEfiPartition.Text;
 
             if (radiobtnVhdx.Checked)
             {
@@ -770,8 +782,9 @@ namespace wintogo
 
         private void 错误提示测试ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WriteProgress wp = new WriteProgress();
-            wp.Show();
+            ImageOperation.Solve1809("W:");
+            //WriteProgress wp = new WriteProgress();
+            //wp.Show();
             // MessageBox.Show(WTGModel.UdObj.Model);
 
             //Benchmark bm = new Benchmark();
@@ -844,14 +857,14 @@ namespace wintogo
 
             numericUpDown1.Enabled = false;
             checkBoxFixed.Enabled = false;
-            checkBoxNotemp.Enabled = false;
+            //checkBoxNotemp.Enabled = false;
             lblVhdSize.Enabled = false;
 
             lblVhdPartitionTableType.Enabled = false;
             comboBoxVhdPartitionType.Enabled = false;
-            lblVhdTempPath.Enabled = false;
-            txtVhdTempPath.Enabled = false;
-            btnVhdTempPath.Enabled = false;
+            //lblVhdTempPath.Enabled = false;
+            //txtVhdTempPath.Enabled = false;
+            //btnVhdTempPath.Enabled = false;
 
             comboBoxGb.Enabled = false;
             trackBar1.Enabled = false;
@@ -878,18 +891,19 @@ namespace wintogo
 
         private void radiovhd_CheckedChanged(object sender, EventArgs e)
         {
+
             checkBoxBitlocker.Checked = false;
             checkBoxBitlocker.Enabled = false;
             numericUpDown1.Enabled = true;
             checkBoxFixed.Enabled = true;
-            checkBoxNotemp.Enabled = true;
+            //checkBoxNotemp.Enabled = true;
             lblVhdSize.Enabled = true;
             comboBoxGb.Enabled = true;
             lblVhdPartitionTableType.Enabled = true;
             comboBoxVhdPartitionType.Enabled = true;
-            lblVhdTempPath.Enabled = true;
-            txtVhdTempPath.Enabled = true;
-            btnVhdTempPath.Enabled = true;
+            //lblVhdTempPath.Enabled = true;
+            //txtVhdTempPath.Enabled = true;
+            //btnVhdTempPath.Enabled = true;
 
             if (comboBoxUd.SelectedIndex != 0 && comboBoxUd.SelectedIndex != -1)
             {
@@ -907,13 +921,13 @@ namespace wintogo
             checkBoxBitlocker.Enabled = false;
             numericUpDown1.Enabled = true;
             checkBoxFixed.Enabled = true;
-            checkBoxNotemp.Enabled = true;
+            //checkBoxNotemp.Enabled = true;
             lblVhdSize.Enabled = true;
             lblVhdPartitionTableType.Enabled = true;
             comboBoxVhdPartitionType.Enabled = true;
-            lblVhdTempPath.Enabled = true;
-            txtVhdTempPath.Enabled = true;
-            btnVhdTempPath.Enabled = true;
+            //lblVhdTempPath.Enabled = true;
+            //txtVhdTempPath.Enabled = true;
+            //btnVhdTempPath.Enabled = true;
             if (comboBoxUd.SelectedIndex != 0 && comboBoxUd.SelectedIndex != -1)
             {
                 trackBar1.Enabled = true;
@@ -932,7 +946,7 @@ namespace wintogo
         {
             try
             {
-                toolTip1.SetToolTip(txtVhdTempPath, txtVhdTempPath.Text); ;
+                //toolTip1.SetToolTip(txtVhdTempPath, txtVhdTempPath.Text); ;
             }
             catch (Exception ex)
             {
@@ -1050,6 +1064,7 @@ namespace wintogo
             }
             else
             {
+                WTGModel.UdObj = null;
                 txtPartitionSize3.Enabled = false;
                 txtPartitionSize2.Enabled = false;
                 txtPartitionSize1.Enabled = false;
@@ -1105,7 +1120,7 @@ namespace wintogo
         private void linklblTabPage4Resotre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             comboBoxVhdPartitionType.SelectedIndex = 1;
-            txtVhdTempPath.Text = Path.GetTempPath();
+            //txtVhdTempPath.Text = Path.GetTempPath();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -1291,31 +1306,31 @@ namespace wintogo
                 return;
 
             }
-            textBoxEfiPartition.Text = folderBrowserDialog1.SelectedPath;
+            //textBoxEfiPartition.Text = folderBrowserDialog1.SelectedPath;
 
         }
 
         private void checkBoxEfiPartition_CheckedChanged(object sender, EventArgs e)
         {
-            btnEfiPartitionSelect.Enabled = checkBoxEfiPartition.Checked;
-            textBoxEfiPartition.Enabled = checkBoxEfiPartition.Checked;
-            if (checkBoxEfiPartition.Checked)
-            {
-                checkBoxUefigpt.Checked = false;
-                checkBoxUefimbr.Checked = false;
-                checkBoxDiskpart.Checked = false;
+            //btnEfiPartitionSelect.Enabled = checkBoxEfiPartition.Checked;
+            //textBoxEfiPartition.Enabled = checkBoxEfiPartition.Checked;
+            //if (checkBoxEfiPartition.Checked)
+            //{
+            //    checkBoxUefigpt.Checked = false;
+            //    checkBoxUefimbr.Checked = false;
+            //    checkBoxDiskpart.Checked = false;
 
-                checkBoxUefigpt.Enabled = false;
-                checkBoxUefimbr.Enabled = false;
-                checkBoxDiskpart.Enabled = false;
-            }
-            else
-            {
-                checkBoxUefigpt.Enabled = true;
-                checkBoxUefimbr.Enabled = true;
-                checkBoxDiskpart.Enabled = true;
+            //    checkBoxUefigpt.Enabled = false;
+            //    checkBoxUefimbr.Enabled = false;
+            //    checkBoxDiskpart.Enabled = false;
+            //}
+            //else
+            //{
+            //    checkBoxUefigpt.Enabled = true;
+            //    checkBoxUefimbr.Enabled = true;
+            //    checkBoxDiskpart.Enabled = true;
 
-            }
+            //}
 
 
         }
@@ -1392,8 +1407,8 @@ namespace wintogo
                     {
                         SystemDetection(false);
                         WTGModel.isEsd = true;
-                        checkBoxWimboot.Checked = false;
-                        checkBoxWimboot.Enabled = false;
+                        //checkBoxWimboot.Checked = false;
+                        //checkBoxWimboot.Enabled = false;
                     }
 
                 }
@@ -1418,8 +1433,8 @@ namespace wintogo
                         radiobtnLegacy.Enabled = false;
                         radiobtnVhd.Enabled = false;
 
-                        checkBoxCompactOS.Checked = true;
-                        checkBoxCompactOS.Enabled = false;
+                        //checkBoxCompactOS.Checked = true;
+                        //checkBoxCompactOS.Enabled = false;
 
                     }
                     else
@@ -1442,19 +1457,26 @@ namespace wintogo
                             radiobtnVhd.Checked = true;
                         }
                         radiobtnVhdx.Enabled = false;
-                        checkBoxWimboot.Checked = false;
-                        checkBoxWimboot.Enabled = false;
+                        //checkBoxWimboot.Checked = false;
+                        //checkBoxWimboot.Enabled = false;
                     }
                 }
-                if (Regex.IsMatch(WTGModel.choosedImageType, @"wim|esd") && WTGModel.CurrentOS != OS.XP && WTGModel.CurrentOS != OS.Vista)
+                DisplayImagePartsInfo();
+                comboBoxUd.Enabled = true;
+            }
+        }
+        private void DisplayImagePartsInfo()
+        {
+            if (Regex.IsMatch(WTGModel.choosedImageType, @"wim|esd") && WTGModel.CurrentOS != OS.XP && WTGModel.CurrentOS != OS.Vista)
+            {
+                List<string> partsInfoList = ImageOperation.DismGetImagePartsInfo(WTGModel.imageFilePath);
+                comboBoxParts.Invoke(new Action(() =>
                 {
                     comboBoxParts.Items.Clear();
-                    comboBoxParts.Items.Add("0 : 自动选择");
-                    comboBoxParts.Items.AddRange(ImageOperation.DismGetImagePartsInfo(WTGModel.imageFilePath).ToArray());
+                    comboBoxParts.Items.Add("自动选择安装分卷");
+                    comboBoxParts.Items.AddRange(partsInfoList.ToArray());
                     comboBoxParts.SelectedIndex = 0;
-
-                }
-                comboBoxUd.Enabled = true;
+                }));
             }
         }
 
@@ -1479,25 +1501,46 @@ namespace wintogo
             folderBrowserDialog2.ShowDialog();
             if (Directory.Exists(folderBrowserDialog2.SelectedPath))
             {
-                txtVhdTempPath.Text = folderBrowserDialog2.SelectedPath;
+                //txtVhdTempPath.Text = folderBrowserDialog2.SelectedPath;
             }
         }
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            foreach (var item in tabPage2.Controls)
-            {
-                if (item.GetType() == typeof(CheckBox))
-                {
-                    ((CheckBox)item).Checked = false;
-                }
-            }
-            checkBoxFixLetter.Checked = true;
+            //foreach (var item in tabPage2.Controls)
+            //{
+            //    if (item.GetType() == typeof(CheckBox))
+            //    {
+            //        ((CheckBox)item).Checked = true;
+            //    }
+            //}
+            //checkBoxDonet.Checked = false;
+            //checkBoxFixLetter.Checked = true;
+            //checkbox
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
 
+        }
+        private void AutoDetectInstallWim()
+        {
+            bool detectSuccess = false;
+            for (int i = 68; i <= 90; i++)
+            {
+                string ascll_to_eng = Convert.ToChar(i).ToString();
+                if (File.Exists(ascll_to_eng + ":\\sources\\install.wim"))
+                {
+                    txtwim.Invoke(new Action(() => { txtwim.Text = ascll_to_eng + ":\\sources\\install.wim"; }));
+                    WTGModel.imageFilePath = ascll_to_eng + ":\\sources\\install.wim";
+                    WTGModel.choosedImageType = "wim";
+
+                    detectSuccess = true;
+                    break;
+                }
+            }
+            if (detectSuccess)
+                DisplayImagePartsInfo();
         }
         private string ReadSet(string name)
         {
@@ -1593,6 +1636,11 @@ namespace wintogo
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxParts_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

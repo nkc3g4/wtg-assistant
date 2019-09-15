@@ -258,4 +258,7 @@
   <data name="Msg_BitlockerUnusable" xml:space="preserve">
     <value>Bitlocker僅在勾選UEFI+GPT或UEFI+MBR的傳統模式下可用。</value>
   </data>
+  <data name="Msg_Below1709" xml:space="preserve">
+    <value>本機系統需要Windows 10 1709或更高版本以支持抽取式磁碟UEFI啟動部署。</value>
+  </data>
 </root>

@@ -248,62 +248,67 @@ namespace iTuner
             // browse all USB WMI physical disks
             foreach (ManagementObject drive in
                 new ManagementObjectSearcher(
-                    "select DeviceID,Model,Size,Index,MediaType,Size from Win32_DiskDrive where InterfaceType='USB' or MediaType='External hard disk media' or (InterfaceType='SCSI' and MediaType='Removable Media')").Get())
+                    "select DeviceID,Model,Size,Index,MediaType,Size,InterfaceType from Win32_DiskDrive").Get())
             {
-                //MessageBox.Show(drive["MediaType"].ToString());
-                UsbDisk disk = new UsbDisk(drive["DeviceID"].ToString());
-                disk.Model = drive["Model"].ToString();
-                disk.Index = drive["Index"].ToString();
-                disk.DiskSize = (ulong)drive["Size"];
-                disk.DriveType = (drive["MediaType"].ToString() == "External hard disk media") ? "本地磁盘" : "可移动磁盘";
-                disk.Size = (ulong)drive["Size"];
-                bool hasAdded = false;
-                // associate physical disks with partitions
-                foreach (ManagementObject partition in new ManagementObjectSearcher(string.Format(
-                    "associators of {{Win32_DiskDrive.DeviceID='{0}'}} where AssocClass = Win32_DiskDriveToDiskPartition",
-                    drive["DeviceID"])).Get())
+                try
                 {
-                    try
+                    if ((uint)drive["Index"] < 1) continue;
+                    if (drive["InterfaceType"].ToString() != "USB" && drive["InterfaceType"].ToString() != "SCSI") continue;
+                    if (drive["Model"].ToString().Contains("APPLE SD")) continue;
+                    UsbDisk disk = new UsbDisk(drive["DeviceID"].ToString());
+                    disk.Model = drive["Model"].ToString();
+                    disk.Index = drive["Index"].ToString();
+                    disk.DiskSize = (ulong)drive["Size"];
+                    disk.DriveType = (drive["MediaType"].ToString() == "External hard disk media") ? "本地磁盘" : "可移动磁盘";
+                    disk.Size = (ulong)drive["Size"];
+                    bool hasAdded = false;
+                    // associate physical disks with partitions
+                    foreach (ManagementObject partition in new ManagementObjectSearcher(string.Format(
+                        "associators of {{Win32_DiskDrive.DeviceID='{0}'}} where AssocClass = Win32_DiskDriveToDiskPartition",
+                        drive["DeviceID"])).Get())
                     {
-                        //MessageBox.Show(partition.ToString());
-                        if (partition != null)
+                        try
                         {
-                            // associate partitions with logical disks (drive letter volumes)
-                            ManagementObject logical = new ManagementObjectSearcher(string.Format(
-                                "associators of {{Win32_DiskPartition.DeviceID='{0}'}} where AssocClass = Win32_LogicalDiskToPartition",
-                                partition["DeviceID"])).First();
-                            //MessageBox.Show(logical.ToString());
-                            if (logical != null)
+                            if (partition != null)
                             {
-                                // finally find the logical disk entry to determine the volume name
-                                ManagementObject volume = new ManagementObjectSearcher(string.Format(
-                                    "select FreeSpace, Size, VolumeName, DriveType from Win32_LogicalDisk where Name='{0}'",
-                                    logical["Name"])).First();
+                                // associate partitions with logical disks (drive letter volumes)
+                                ManagementObject logical = new ManagementObjectSearcher(string.Format(
+                                    "associators of {{Win32_DiskPartition.DeviceID='{0}'}} where AssocClass = Win32_LogicalDiskToPartition",
+                                    partition["DeviceID"])).First();
+                                //MessageBox.Show(logical.ToString());
+                                if (logical != null)
+                                {
+                                    // finally find the logical disk entry to determine the volume name
+                                    ManagementObject volume = new ManagementObjectSearcher(string.Format(
+                                        "select FreeSpace, Size, VolumeName, DriveType from Win32_LogicalDisk where Name='{0}'",
+                                        logical["Name"])).First();
 
-                                //MessageBox.Show(drive["TotalSectors"].ToString());
-                                //MessageBox.Show(volume["VolumeName"].ToString());
-                                //UsbDisk disk = new UsbDisk(logical["Name"].ToString());
-                                if (logical["Name"].ToString().Contains("X"))
-                                    continue;
-                                disk.Volume = logical["Name"].ToString();
-                                //disk.VolumeName = volume["VolumeName"].ToString();
-                                disk.FreeSpace = (ulong)volume["FreeSpace"];
-                                
-                                //disk.DriveType = Drivetypeconvert(int.Parse(volume["DriveType"].ToString()));
-                                //disk.TotalSectors = (ulong)drive["TotalSectors"];
-                                disks.Add(disk);
-                                hasAdded = true;
-                                break;
-                                //MessageBox.Show("HERE");
+                                    if (logical["Name"].ToString().Contains("X"))
+                                        continue;
+                                    disk.Volume = logical["Name"].ToString();
+                                    //disk.VolumeName = volume["VolumeName"].ToString();
+                                    disk.FreeSpace = (ulong)volume["FreeSpace"];
+
+                                    //disk.DriveType = Drivetypeconvert(int.Parse(volume["DriveType"].ToString()));
+                                    //disk.TotalSectors = (ulong)drive["TotalSectors"];
+                                    disks.Add(disk);
+                                    hasAdded = true;
+                                    break;
+                                }
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            disks.Add(new UsbDisk(ex.ToString()));
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        disks.Add(new UsbDisk(ex.ToString()));
-                    }
+                    if (!hasAdded) disks.Add(disk);
                 }
-                if (!hasAdded) disks.Add(disk);
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    //MessageBox.Show(e.ToString());
+                }
             }
 
             return disks;

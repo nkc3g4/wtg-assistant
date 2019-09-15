@@ -35,7 +35,6 @@ namespace wintogo
         {
             Config.ReadConfigFile(ref autoCheckUpdate);
             InitializeComponent();
-            //txtVhdTempPath.Text = WTGModel.vhdTempPath;
         }
 
 
@@ -50,12 +49,6 @@ namespace wintogo
             if (osVersionStr.Contains("5.1") || osVersionStr.Contains("6.0")) //XP 禁用功能
             {
                 radiobtnLegacy.Enabled = true;
-                //radiobtnVhd.Enabled = false;
-                //radiobtnVhdx.Enabled = false;
-                //if (isInitialization)
-                //{
-                //}
-                //groupBoxAdv.Enabled = false;
                 checkBoxDiskpart.Checked = false;
                 checkBoxDiskpart.Enabled = false;
                 labelDisFunc.Visible = true;
@@ -77,53 +70,58 @@ namespace wintogo
                 radiobtnVhdx.Enabled = true;
                 checkBoxUefigpt.Enabled = true;
                 checkBoxUefimbr.Enabled = true;
-                //if (isInitialization)
-                //{
-                //    radiobtnVhd.Checked = true;
-                //}
                 //WIN8.1 UPDATE1 WIMBOOT  已修复WIN10版本号问题
-                string dismversion = FileOperation.GetFileVersion(System.Environment.GetEnvironmentVariable("windir") + "\\System32\\dism.exe");
-                if (dismversion.Substring(0, 14) == "6.3.9600.17031" || dismversion.Substring(0, 3) == "6.4")
+                try
                 {
-                    radiobtnLegacy.Enabled = true;
-                    radiobtnVhd.Enabled = true;
-                    radiobtnVhdx.Enabled = true;
-                    checkBoxUefigpt.Enabled = true;
-                    checkBoxUefimbr.Enabled = true;
-                    //checkBoxWimboot.Enabled = true;
-                    WTGModel.allowEsd = true;
-                    labelDisFunc.Visible = true;
-                    //labelDisFuncEM.Visible = true;
-                    WTGModel.CurrentOS = OS.Win8_1_with_update;
+                    string dismversion = FileOperation.GetFileVersion(System.Environment.GetEnvironmentVariable("windir") + "\\System32\\dism.exe");
+
+                    WTGModel.dismversion = new Version(Regex.Match(dismversion, @"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+").Value);
+                    if (dismversion.Substring(0, 14) == "6.3.9600.17031" || dismversion.Substring(0, 3) == "6.4")
+                    {
+                        radiobtnLegacy.Enabled = true;
+                        radiobtnVhd.Enabled = true;
+                        radiobtnVhdx.Enabled = true;
+                        checkBoxUefigpt.Enabled = true;
+                        checkBoxUefimbr.Enabled = true;
+                        //checkBoxWimboot.Enabled = true;
+                        WTGModel.allowEsd = true;
+                        labelDisFunc.Visible = true;
+                        //labelDisFuncEM.Visible = true;
+                        WTGModel.CurrentOS = OS.Win8_1_with_update;
+
+                    }
+                    else if (dismversion.Substring(0, 3) == "10.")
+                    {
+                        radiobtnLegacy.Enabled = true;
+                        radiobtnVhd.Enabled = true;
+                        radiobtnVhdx.Enabled = true;
+                        checkBoxUefigpt.Enabled = true;
+                        checkBoxUefimbr.Enabled = true;
+                        //checkBoxWimboot.Enabled = true;
+                        //checkBoxCompactOS.Enabled = true;
+                        WTGModel.allowEsd = true;
+                        WTGModel.CurrentOS = OS.Win10;
+
+                    }
+                    else
+                    {
+                        radiobtnLegacy.Enabled = true;
+                        radiobtnVhd.Enabled = true;
+                        radiobtnVhdx.Enabled = true;
+                        checkBoxUefigpt.Enabled = true;
+                        checkBoxUefimbr.Enabled = true;
+
+                        WTGModel.CurrentOS = OS.Win8_without_update;
+                    }
+
+                    //radiobtnLegacy.Checked = true;
 
                 }
-                else if (dismversion.Substring(0, 3) == "10.")
+                catch (Exception ex)
                 {
-                    radiobtnLegacy.Enabled = true;
-                    radiobtnVhd.Enabled = true;
-                    radiobtnVhdx.Enabled = true;
-                    checkBoxUefigpt.Enabled = true;
-                    checkBoxUefimbr.Enabled = true;
-                    //checkBoxWimboot.Enabled = true;
-                    //checkBoxCompactOS.Enabled = true;
-                    WTGModel.allowEsd = true;
-                    WTGModel.CurrentOS = OS.Win10;
-
+                    ErrorMsg em = new ErrorMsg(ex.Message, true);
+                    em.Show();
                 }
-                else
-                {
-                    radiobtnLegacy.Enabled = true;
-                    radiobtnVhd.Enabled = true;
-                    radiobtnVhdx.Enabled = true;
-                    checkBoxUefigpt.Enabled = true;
-                    checkBoxUefimbr.Enabled = true;
-
-                    WTGModel.CurrentOS = OS.Win8_without_update;
-                }
-
-                //radiobtnLegacy.Checked = true;
-
-
             }
 
         }
@@ -342,11 +340,11 @@ namespace wintogo
         {
             //MsgManager.getResString("Msg_chooseud")
             if (comboBoxUd.SelectedIndex == 0) { MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci)); return; }
-            WTGModel.ud = comboBoxUd.SelectedItem.ToString().Substring(0, 2) + "\\";//优盘
-                                                                                    //MsgManager.getResString("Msg_XPNotCOMP")
-                                                                                    //XP系统不支持此操作
-                                                                                    //MsgManager.getResString("Msg_ClearPartition")
-                                                                                    //此操作将会清除移动磁盘所有分区的所有数据，确认？
+            //WTGModel.ud = comboBoxUd.SelectedItem.ToString().Substring(0, 2) + "\\";//优盘
+            //MsgManager.getResString("Msg_XPNotCOMP")
+            //XP系统不支持此操作
+            //MsgManager.getResString("Msg_ClearPartition")
+            //此操作将会清除移动磁盘所有分区的所有数据，确认？
             if (System.Environment.OSVersion.ToString().Contains("5.1") || System.Environment.OSVersion.ToString().Contains("5.2")) { MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci)); return; }
             if (DialogResult.No == MessageBox.Show(MsgManager.GetResString("Msg_ClearPartition", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) { return; }
 
@@ -354,15 +352,17 @@ namespace wintogo
             //Msg_Complete
             try
             {
-                DiskOperation.DiskPartRePartitionUD(WTGModel.partitionSize);
+                DiskOperation.RepartitionAndAutoAssignDriveLetter(WTGModel.UdObj.Index);
+                //DiskOperation.DiskPartRePartitionUD(WTGModel.partitionSize);
                 //diskPart();
                 MessageBox.Show(MsgManager.GetResString("Msg_Complete", MsgManager.ci));
+                comboBoxUd.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 Log.WriteLog("Err_Exception", ex.ToString());
 
-                ErrorMsg em = new ErrorMsg(ex.Message);
+                ErrorMsg em = new ErrorMsg(ex.Message, true);
                 em.Show();
             }
 
@@ -429,12 +429,12 @@ namespace wintogo
 
         private void bOOTICEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(WTGModel.applicationFilesPath + "\\BOOTICE.EXE");
+            Process.Start(WTGModel.applicationFilesPath + "\\BOOTICE.EXE");
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(WTGModel.logPath);
+            Process.Start(WTGModel.logPath);
 
         }
 
@@ -654,17 +654,7 @@ namespace wintogo
                 WTGModel.CheckedMode = ApplyMode.VHDX;
             }
 
-            WTGModel.UdObj = (UsbDisk)comboBoxUd.SelectedItem;
-            if (WTGModel.UdObj.Volume == String.Empty)
-            {
-                WTGModel.ud = "W:\\";//
-            }
-            else
-            {
-                WTGModel.ud = WTGModel.UdObj.Volume.Substring(0, 2) + "\\";
-            }
-            //WTGModel.ud = comboBoxUd.SelectedItem.ToString().Substring(0, 2) + "\\";//
-            WTGModel.udString = comboBoxUd.SelectedItem.ToString();
+            AssignUDVariable();
             WTGModel.isBitlocker = checkBoxBitlocker.Checked;
             WTGModel.isWimBoot = false;
             WTGModel.isBlockLocalDisk = checkBoxSan_policy.Checked;
@@ -687,11 +677,11 @@ namespace wintogo
             WTGModel.isUefiGpt = checkBoxUefigpt.Checked;
             WTGModel.isUefiMbr = checkBoxUefimbr.Checked;
             //WTGModel.isNoTemp = checkBoxNotemp.Checked;
-            WTGModel.ntfsUefiSupport = false;
-            //WTGModel.doNotFormat = checkBoxDoNotFormat.Checked;
+            WTGModel.ntfsUefiSupport = true;
+            WTGModel.doNotFormat = checkBoxNoFormat.Checked;
             WTGModel.vhdNameWithoutExt = txtVhdNameWithoutExt.Text;
             WTGModel.installDonet35 = checkBoxDonet.Checked;
-            WTGModel.fixLetter = checkBoxFixLetter.Checked;
+            //WTGModel.fixLetter = checkBoxFixLetter.Checked;
             WTGModel.noDefaultDriveLetter = checkBoxNoDefaultLetter.Checked;
             WTGModel.disableWinRe = checkBoxDisWinre.Checked;
             WTGModel.disableUasp = checkBoxDisUasp.Checked;
@@ -716,7 +706,20 @@ namespace wintogo
             tWrite.Start();
 
         }
+        private void AssignUDVariable()
+        {
+            WTGModel.UdObj = (UsbDisk)comboBoxUd.SelectedItem;
+            if (WTGModel.UdObj.Volume == String.Empty)
+            {
+                WTGModel.ud = "W:\\";//
+            }
+            else
+            {
+                WTGModel.ud = WTGModel.UdObj.Volume.Substring(0, 2) + "\\";
+            }
+            WTGModel.udString = comboBoxUd.SelectedItem.ToString();
 
+        }
 
         private void ManualSelectUdisk()
         {
@@ -1255,8 +1258,7 @@ namespace wintogo
             {
                 return;
             }
-            WTGModel.ud = comboBoxUd.SelectedItem.ToString().Substring(0, 2) + "\\";//
-
+            AssignUDVariable();
 
             if (!Directory.Exists(Application.StartupPath + "\\wtg_clone"))
             {
@@ -1643,6 +1645,15 @@ namespace wintogo
         private void comboBoxParts_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBoxNoFormat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxNoFormat.Checked && (checkBoxDiskpart.Checked || checkBoxUefigpt.Checked || checkBoxUefimbr.Checked))
+            {
+                MessageBox.Show("不格式化不能与“重新分区”或“UEFI+GPT”或“UEFI+MBR”选项共存。");
+                checkBoxNoFormat.Checked = false;
+            }
         }
     }
 }

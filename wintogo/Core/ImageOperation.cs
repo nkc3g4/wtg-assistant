@@ -340,7 +340,7 @@ namespace wintogo
         {
             if (Directory.Exists(Application.StartupPath + "\\Drivers"))
             {
-                ProcessManager.ECMD("dism.exe", "/image:" + target + " /add-driver /driver:\"" + Application.StartupPath + "\\Drivers\"" + " /recurse");
+                ProcessManager.ECMD("dism.exe", "/image:" + target + " /add-driver /driver:\"" + Application.StartupPath + "\\Drivers\"" + " /recurse /ForceUnsigned");
             }
         }
         #endregion

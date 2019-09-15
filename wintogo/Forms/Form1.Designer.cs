@@ -53,7 +53,6 @@
             this.checkBoxUefigpt = new System.Windows.Forms.CheckBox();
             this.checkBoxUefimbr = new System.Windows.Forms.CheckBox();
             this.checkBoxDiskpart = new System.Windows.Forms.CheckBox();
-            this.checkBoxFixLetter = new System.Windows.Forms.CheckBox();
             this.checkBoxSan_policy = new System.Windows.Forms.CheckBox();
             this.checkBoxNoDefaultLetter = new System.Windows.Forms.CheckBox();
             this.checkBoxDisWinre = new System.Windows.Forms.CheckBox();
@@ -116,6 +115,7 @@
             this.groupBoxadv = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
+            this.checkBoxNoFormat = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -297,16 +297,6 @@
             this.toolTip1.SetToolTip(this.checkBoxDiskpart, resources.GetString("checkBoxDiskpart.ToolTip"));
             this.checkBoxDiskpart.UseVisualStyleBackColor = true;
             this.checkBoxDiskpart.CheckedChanged += new System.EventHandler(this.checkBoxdiskpart_CheckedChanged);
-            // 
-            // checkBoxFixLetter
-            // 
-            resources.ApplyResources(this.checkBoxFixLetter, "checkBoxFixLetter");
-            this.checkBoxFixLetter.Checked = true;
-            this.checkBoxFixLetter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxFixLetter.Name = "checkBoxFixLetter";
-            this.toolTip1.SetToolTip(this.checkBoxFixLetter, resources.GetString("checkBoxFixLetter.ToolTip"));
-            this.checkBoxFixLetter.UseVisualStyleBackColor = true;
-            this.checkBoxFixLetter.CheckedChanged += new System.EventHandler(this.checkBoxFixLetter_CheckedChanged);
             // 
             // checkBoxSan_policy
             // 
@@ -550,6 +540,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.checkBoxNoFormat);
             this.tabPage1.Controls.Add(this.linkLabel3);
             this.tabPage1.Controls.Add(this.checkBoxDisUasp);
             this.tabPage1.Controls.Add(this.checkBoxBitlocker);
@@ -562,7 +553,6 @@
             this.tabPage1.Controls.Add(this.radiobtnLegacy);
             this.tabPage1.Controls.Add(this.checkBoxSan_policy);
             this.tabPage1.Controls.Add(this.checkBoxUefimbr);
-            this.tabPage1.Controls.Add(this.checkBoxFixLetter);
             this.tabPage1.Controls.Add(this.checkBoxDiskpart);
             this.tabPage1.Controls.Add(this.checkBoxUefigpt);
             resources.ApplyResources(this.tabPage1, "tabPage1");
@@ -776,6 +766,13 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // checkBoxNoFormat
+            // 
+            resources.ApplyResources(this.checkBoxNoFormat, "checkBoxNoFormat");
+            this.checkBoxNoFormat.Name = "checkBoxNoFormat";
+            this.checkBoxNoFormat.UseVisualStyleBackColor = true;
+            this.checkBoxNoFormat.CheckedChanged += new System.EventHandler(this.checkBoxNoFormat_CheckedChanged);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -907,8 +904,8 @@
         private System.Windows.Forms.CheckBox checkBoxDisWinre;
         private System.Windows.Forms.CheckBox checkBoxNoDefaultLetter;
         private System.Windows.Forms.CheckBox checkBoxSan_policy;
-        private System.Windows.Forms.CheckBox checkBoxFixLetter;
         private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.CheckBox checkBoxNoFormat;
     }
 }
 

@@ -126,10 +126,10 @@
     <value>NSimSun, 9pt</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 38</value>
+    <value>8, 48</value>
   </data>
   <data name="textBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
@@ -139,7 +139,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>796, 156</value>
+    <value>983, 250</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -160,16 +160,16 @@
     <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 100</value>
+    <value>38, 170</value>
   </data>
   <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>808, 200</value>
+    <value>999, 306</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -199,13 +199,13 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 18</value>
+    <value>258, 23</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>8, 0, 8, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>434, 42</value>
+    <value>543, 52</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -235,13 +235,13 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 312</value>
+    <value>39, 493</value>
   </data>
   <data name="linkLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>8, 0, 8, 0</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 31</value>
+    <value>122, 39</value>
   </data>
   <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -262,13 +262,13 @@
     <value>0</value>
   </data>
   <data name="win8PB1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 70</value>
+    <value>162, 122</value>
   </data>
   <data name="win8PB1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 12, 12, 12</value>
+    <value>15, 15, 15, 15</value>
   </data>
   <data name="win8PB1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 20</value>
+    <value>750, 25</value>
   </data>
   <data name="win8PB1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -277,7 +277,7 @@
     <value>win8PB1</value>
   </data>
   <data name="&gt;&gt;win8PB1.Type" xml:space="preserve">
-    <value>wintogo.Win8PB, wintogo, Version=4.7.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>wintogo.Win8PB, wintogo, Version=4.9.6.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;win8PB1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -289,13 +289,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>192, 192</value>
+    <value>240, 240</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>856, 364</value>
+    <value>1068, 555</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

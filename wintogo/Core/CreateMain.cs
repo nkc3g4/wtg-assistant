@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using wintogo.Forms;
 
@@ -19,7 +20,12 @@ namespace wintogo
 
                 //wimpart = ChoosePart.part;//读取选择分卷，默认选择第一分卷
                 #region 各种提示
-
+                //MessageBox.Show(WTGModel.imageFilePath.Length.ToString());
+                if (String.IsNullOrEmpty(WTGModel.imageFilePath))
+                {
+                    MessageBox.Show(MsgManager.GetResString("Msg_chooseinstallwim", MsgManager.ci), MsgManager.GetResString("Msg_error", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 if (WTGModel.UdObj.Size == 0)
                 {
@@ -87,9 +93,11 @@ namespace wintogo
                 SystemSleepManagement.PreventSleep();
 
                 //删除旧LOG文件
+                ProcessManager.KillProcessByName("bootice.exe");
+                ProcessManager.KillProcessByName("dism.exe");
+
                 VHDOperation.CleanTemp();
                 Log.DeleteAllLogs();
-                ProcessManager.KillProcessByName("bootice.exe");
 
 
                 Log.WriteProgramRunInfoToLog();
@@ -105,73 +113,75 @@ namespace wintogo
                     //UEFI+GPT
                     if (Environment.OSVersion.ToString().Contains("5.1") || System.Environment.OSVersion.ToString().Contains("5.2"))
                     {
-                        //MsgManager.getResString("Msg_XPUefiError")
                         //XP系统不支持UEFI模式写入
                         MessageBox.Show(MsgManager.GetResString("Msg_XPUefiError", MsgManager.ci)); return;
                     }
-                    if (WTGModel.udString.Contains("Removable Disk"))
+                    if (WTGModel.udString.Contains("可移动磁盘") || WTGModel.udString.Contains("Removable Disk"))
                     {
-                        //普通优盘UEFI
-                        WTGModel.isLegacyUdiskUefi = true;
-                        Write.RemoveableDiskUefiGpt();
-                        FinishSuccessful();
+                        if (WTGModel.dismversion.Build < 16299)
+                        {
+                            throw new Exception(MsgManager.GetResString("Msg_Below1709", MsgManager.ci));
+                        }
 
 
                     }
-                    else
+
+                    //MsgManager.getResString("Msg_UefiFormatWarning")
+                    //您所选择的是UEFI模式，此模式将会格式化您的整个移动磁盘！\n注意是整个磁盘！！！\n程序将会删除所有优盘分区！
+
+                    DiskOperation.DiskPartGPTAndUEFI(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
+
+                    if (WTGModel.CheckedMode == ApplyMode.Legacy)
                     {
-                        //MsgManager.getResString("Msg_UefiFormatWarning")
-                        //您所选择的是UEFI模式，此模式将会格式化您的整个移动磁盘！\n注意是整个磁盘！！！\n程序将会删除所有优盘分区！
-                        //if (DialogResult.No == MessageBox.Show(MsgManager.GetResString("Msg_UefiFormatWarning", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) { return; }
-
-                        DiskOperation.DiskPartGPTAndUEFI(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
-
-                        //ProcessManager.ECMD("diskpart.exe", " /s \"" + WTGOperation.diskpartScriptPath + "\\uefi.txt\"");
-                        if (WTGModel.CheckedMode == ApplyMode.Legacy)
-                        {
-                            //UEFI+GPT 传统
-                            if (Write.UefiGptTypical())
-                            { FinishSuccessful(); }
-                        }
-                        else // UEFI+GPT VHD、VHDX模式
-                        {
-
-                            if (Write.UefiGptVhdVhdx())
-                            { FinishSuccessful(); }
-                        }
+                        //UEFI+GPT 传统
+                        if (Write.UefiGptTypical())
+                        { FinishSuccessful(); }
                     }
+                    else // UEFI+GPT VHD、VHDX模式
+                    {
+
+                        if (Write.UefiGptVhdVhdx())
+                        { FinishSuccessful(); }
+                    }
+
                 }
                 else if (WTGModel.isUefiMbr)
                 {
                     //UEFI+MBR
-                    if (WTGModel.udString.Contains("Removable Disk"))
+                    if (WTGModel.udString.Contains("可移动磁盘") || WTGModel.udString.Contains("Removable Disk"))
                     {
-                        WTGModel.isLegacyUdiskUefi = true;
-                        Write.RemoveableDiskUefiMbr();
-                        FinishSuccessful();
-
+                        if (WTGModel.dismversion.Build < 16299)
+                        {
+                            throw new Exception(MsgManager.GetResString("Msg_Below1709", MsgManager.ci));
+                        }
                     }
-                    else
+
+                    //DiskpartScriptManager dsm = new DiskpartScriptManager();
+                    DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
+                    for (int i = 0; i < 5 && !Directory.Exists(WTGModel.ud); i++)
                     {
-                        DiskpartScriptManager dsm = new DiskpartScriptManager();
+                        Console.WriteLine("Retry-partition");
+                        Thread.Sleep(1800);
+                        DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index);
+
                         DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
-
-                        if (WTGModel.CheckedMode == ApplyMode.Legacy)
+                    }
+                    if (WTGModel.CheckedMode == ApplyMode.Legacy)
+                    {
+                        if (Write.UEFIMBRTypical())
                         {
-                            if (Write.UEFIMBRTypical())
-                            {
-                                FinishSuccessful();
-                            }
-
+                            FinishSuccessful();
                         }
-                        else //uefi MBR VHD、VHDX模式
+
+                    }
+                    else //uefi MBR VHD、VHDX模式
+                    {
+                        if (Write.UefiMbrVHDVHDX())
                         {
-                            if (Write.UefiMbrVHDVHDX())
-                            {
-                                FinishSuccessful();
-                            }
+                            FinishSuccessful();
                         }
                     }
+
                     //MessageBox.Show("UEFI模式写入完成！\n请重启电脑用优盘启动\n如有问题，可去论坛反馈！", "完成啦！", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -221,14 +231,14 @@ namespace wintogo
             catch (UserCancelException ex)
             {
                 Log.WriteLog("Err_UserCancelException", ex.ToString());
-                ErrorMsg em = new ErrorMsg(ex.Message);
+                ErrorMsg em = new ErrorMsg(ex.Message, false);
                 em.ShowDialog();
             }
             catch (Exception ex)
             {
                 Log.WriteLog("Err_Exception", ex.ToString());
 
-                ErrorMsg em = new ErrorMsg(ex.Message);
+                ErrorMsg em = new ErrorMsg(ex.Message, true);
                 em.ShowDialog();
             }
             finally

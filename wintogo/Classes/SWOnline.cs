@@ -107,7 +107,7 @@ namespace wintogo
             {
                 WebClient MyWebClient = new WebClient();
                 //MyWebClient.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
-                MyWebClient.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于对向Internet资源的请求进行身份验证的网络凭据。
+                MyWebClient.Credentials = CredentialCache.DefaultCredentials;
                 byte[] pageData = MyWebClient.DownloadData(releaseUrl); //从指定网站下载数据"http://bbs.luobotou.org/app/wintogo.txt"
 
                 pageHtml = Encoding.UTF8.GetString(pageData);
@@ -124,7 +124,6 @@ namespace wintogo
             }
             catch (WebException webEx)
             {
-                //Console.WriteLine(webEx.Message.ToString());
                 Log.WriteLog("Err_UpdateErr", webEx.ToString());
             }
         }
@@ -138,7 +137,7 @@ namespace wintogo
             {
                 WebClient MyWebClient = new WebClient();
 
-                MyWebClient.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于对向Internet资源的请求进行身份验证的网络凭据。
+                MyWebClient.Credentials = CredentialCache.DefaultCredentials;
                 
                 byte[] pageData = MyWebClient.DownloadData("http://bbs.luobotou.org/app/wintogo.txt"); //从指定网站下载数据
                 //MyWebClient.DownloadString()
@@ -151,8 +150,8 @@ namespace wintogo
                     {
                         //string pageHtml;
                         //WebClient MyWebClient2 = new WebClient();
-                        MyWebClient.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于对向Internet资源的请求进行身份验证的网络凭据。
-                        byte[] pageData1 = MyWebClient.DownloadData("http://bbs.luobotou.org/portal.php"); //从指定网站下载数据
+                        MyWebClient.Credentials = CredentialCache.DefaultCredentials;
+                        byte[] pageData1 = MyWebClient.DownloadData("http://bbs.luobotou.org/portal.php");
                         pageHtml = Encoding.UTF8.GetString(pageData1);
 
                         #region 正则表达式实现
@@ -164,6 +163,8 @@ namespace wintogo
                         {
                             TopicLink[i] = matches[i].Groups[1].Value;
                             TopicName[i] = matches[i].Groups[2].Value;
+                            //Console.WriteLine(TopicName[i]);
+
                         }
                         #endregion
 
@@ -184,10 +185,6 @@ namespace wintogo
                         //    //int adprogram = index1 + Application.ProductName.Length + 1;
                         //}
                     }
-                    //string pageHtml1;
-                    //WebClient MyWebClient1 = new WebClient();
-                    //MyWebClient1.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于对向Internet资源的请求进行身份验证的网络凭据。
-                    //MyWebClient1.Encoding = Encoding.UTF8;
                     pageHtml = MyWebClient.DownloadString("http://bbs.luobotou.org/app/announcement.txt");
                     Match match = Regex.Match(pageHtml, Application.ProductName + "=(.+)~(.+)结束");
                     string adlink = match.Groups[2].Value;

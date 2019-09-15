@@ -10,11 +10,13 @@ namespace wintogo
     public partial class ErrorMsg : Form
     {
         string errmsg;
-        public ErrorMsg(string errmsg)
+        bool critical;
+        public ErrorMsg(string errmsg, bool critical)
         {
             Thread.CurrentThread.CurrentUICulture = MsgManager.ci;
 
             this.errmsg = errmsg;
+            this.critical = critical;
             InitializeComponent();
 
         }
@@ -24,14 +26,17 @@ namespace wintogo
             WebUtility.VisitWeb("http://bbs.luobotou.org/forum-88-1.html");
         }
 
-        private void error_Load(object sender, System.EventArgs e)
+        private void error_Load(object sender, EventArgs e)
         {
-            this.Text += Application.ProductName + Application.ProductVersion;
-            label1.Text += errmsg;
+            Text += Application.ProductName + Application.ProductVersion;
+            textBox1.Text = errmsg;
             Log.WriteLog("Info_ErrMsg", errmsg);
             //Upload ErrorLog
-            Thread t = new Thread(UploadLogs);
-            t.Start();
+            if (critical)
+            {
+                Thread t = new Thread(UploadLogs);
+                t.Start();
+            }
 
         }
         private void UploadLogs()

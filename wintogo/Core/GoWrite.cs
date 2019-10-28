@@ -20,171 +20,171 @@ namespace wintogo
 
 
         #region 七种写入模式
-        public static void RemoveableDiskUefiGpt()
-        {
-            string tempFileName = WTGModel.diskpartScriptPath + "\\" + Guid.NewGuid().ToString() + ".txt";
-            Process diskInfo = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /diskinfo /find: /usbonly /file=\"" + tempFileName + "\"");
-            diskInfo.WaitForExit();
+        //public static void RemoveableDiskUefiGpt()
+        //{
+        //    string tempFileName = WTGModel.diskpartScriptPath + "\\" + Guid.NewGuid().ToString() + ".txt";
+        //    Process diskInfo = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /diskinfo /find: /usbonly /file=\"" + tempFileName + "\"");
+        //    diskInfo.WaitForExit();
 
-            string tempUdiskInfo = File.ReadAllText(tempFileName);
-            Log.WriteLog("Bootice_UsbInfo", tempUdiskInfo);
+        //    string tempUdiskInfo = File.ReadAllText(tempFileName);
+        //    Log.WriteLog("Bootice_UsbInfo", tempUdiskInfo);
 
-            Match match = Regex.Match(tempUdiskInfo, @"SET DRIVE([0-9])DESC=(.+)\r\nSET DRIVE([0-9])SIZE=(.+)\r\nSET DRIVE([0-9])LETTER=" + WTGModel.ud.Substring(0, 2).ToUpper(), RegexOptions.ECMAScript);
-            string UdiskNumber = match.Groups[1].Value;
-            if (DialogResult.No == MessageBox.Show(match.Groups[2].Value + "\n" + MsgManager.GetResString("Msg_TwiceConfirm", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) { return; }
-            //59055800320
-            long udiskSize = long.Parse(match.Groups[4].Value);
-            string dptFile = string.Empty;
-            if (udiskSize > 59055800320)
-            {
-                dptFile = "55G";
-            }
-            else if (udiskSize > 28991029248)
-            {
-                dptFile = "27G";
-            }
-            else if (udiskSize > 13958643712)
-            {
-                dptFile = "13G";
-            }
-            else
-            {
-                throw new NotSupportedException("Your Usb Key is not suppotred");
-            }
-            //MessageBox.Show(WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-1.dpt");
-            Process p1 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=\"" + WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-1.dpt\"");
-            p1.WaitForExit();
-            ProcessManager.ECMD("cmd.exe", "/c format " + WTGModel.ud.Substring(0, 2) + "/FS:ntfs /q /V: /Y");
-            WTGModel.ntfsUefiSupport = true;
+        //    Match match = Regex.Match(tempUdiskInfo, @"SET DRIVE([0-9])DESC=(.+)\r\nSET DRIVE([0-9])SIZE=(.+)\r\nSET DRIVE([0-9])LETTER=" + WTGModel.ud.Substring(0, 2).ToUpper(), RegexOptions.ECMAScript);
+        //    string UdiskNumber = match.Groups[1].Value;
+        //    if (DialogResult.No == MessageBox.Show(match.Groups[2].Value + "\n" + MsgManager.GetResString("Msg_TwiceConfirm", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) { return; }
+        //    //59055800320
+        //    long udiskSize = long.Parse(match.Groups[4].Value);
+        //    string dptFile = string.Empty;
+        //    if (udiskSize > 59055800320)
+        //    {
+        //        dptFile = "55G";
+        //    }
+        //    else if (udiskSize > 28991029248)
+        //    {
+        //        dptFile = "27G";
+        //    }
+        //    else if (udiskSize > 13958643712)
+        //    {
+        //        dptFile = "13G";
+        //    }
+        //    else
+        //    {
+        //        throw new NotSupportedException("Your Usb Key is not suppotred");
+        //    }
+        //    //MessageBox.Show(WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-1.dpt");
+        //    Process p1 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=\"" + WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-1.dpt\"");
+        //    p1.WaitForExit();
+        //    ProcessManager.ECMD("cmd.exe", "/c format " + WTGModel.ud.Substring(0, 2) + "/FS:ntfs /q /V: /Y");
+        //    WTGModel.ntfsUefiSupport = true;
 
-            if (WTGModel.CheckedMode == ApplyMode.Legacy)
-            {
-                NonUEFITypical(true);
+        //    if (WTGModel.CheckedMode == ApplyMode.Legacy)
+        //    {
+        //        NonUEFITypical(true);
 
-            }
-            else //非UEFI VHD VHDX
-            {
-                NonUEFIVHDVHDX(true);
-            }
-            FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\EFI\\");
+        //    }
+        //    else //非UEFI VHD VHDX
+        //    {
+        //        NonUEFIVHDVHDX(true);
+        //    }
+        //    FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\EFI\\");
 
-            ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.ud.Substring(0, 2) + "\\EFI\\*.*" + "\"" + " \"" + WTGModel.diskpartScriptPath + "\\EFI\\\" /e /h /y");
-            Process p2 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-2.dpt");
-            p2.WaitForExit();
-            ProcessManager.ECMD("cmd.exe", "/c format " + WTGModel.ud.Substring(0, 2) + "/FS:fat /q /V: /Y");
-            ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.diskpartScriptPath + "\\EFI\\*.*" + "\"" + " \"" + WTGModel.ud.Substring(0, 2) + "\\EFI\\\" /e /h /y");
+        //    ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.ud.Substring(0, 2) + "\\EFI\\*.*" + "\"" + " \"" + WTGModel.diskpartScriptPath + "\\EFI\\\" /e /h /y");
+        //    Process p2 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-2.dpt");
+        //    p2.WaitForExit();
+        //    ProcessManager.ECMD("cmd.exe", "/c format " + WTGModel.ud.Substring(0, 2) + "/FS:fat /q /V: /Y");
+        //    ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.diskpartScriptPath + "\\EFI\\*.*" + "\"" + " \"" + WTGModel.ud.Substring(0, 2) + "\\EFI\\\" /e /h /y");
 
-            Process p3 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-1.dpt");
-            p3.WaitForExit();
-            FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\EFI\\");
+        //    Process p3 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-1.dpt");
+        //    p3.WaitForExit();
+        //    FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\EFI\\");
 
-            ////takeown /f e:\boot /r
-            //ProcessManager.SyncCMD("takeown.exe /f " + WTGModel.ud.Substring(0, 2) + "\\EFI /r");
-            //ProcessManager.SyncCMD("takeown.exe /f " + WTGModel.ud.Substring(0, 2) + "\\Boot /r");
+        //    ////takeown /f e:\boot /r
+        //    //ProcessManager.SyncCMD("takeown.exe /f " + WTGModel.ud.Substring(0, 2) + "\\EFI /r");
+        //    //ProcessManager.SyncCMD("takeown.exe /f " + WTGModel.ud.Substring(0, 2) + "\\Boot /r");
 
-            //ProcessManager.SyncCMD("cacls.exe " + WTGModel.ud.Substring(0, 2) + "\\EFI /t /e /c /g everyone:f");
-            //ProcessManager.SyncCMD("cacls.exe " + WTGModel.ud.Substring(0, 2) + "\\Boot /t /e /c /g everyone:f");
-            //FileOperation.DeleteFolder(WTGModel.ud.Substring(0, 2) + "\\EFI");
-            //FileOperation.DeleteFolder(WTGModel.ud.Substring(0, 2) + "\\Boot");
-
-
-
-        }
-        public static void RemoveableDiskUefiMbr()
-        {
-            string tempFileName = WTGModel.diskpartScriptPath + "\\" + Guid.NewGuid().ToString() + ".txt";
-            Process diskInfo = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /diskinfo /find: /usbonly /file=\"" + tempFileName + "\"");
-            diskInfo.WaitForExit();
-
-            string tempUdiskInfo = File.ReadAllText(tempFileName);
-            Match match = Regex.Match(tempUdiskInfo, @"SET DRIVE([0-9])DESC=(.+)\r\nSET DRIVE([0-9])SIZE=(.+)\r\nSET DRIVE([0-9])LETTER=" + WTGModel.ud.Substring(0, 2).ToUpper(), RegexOptions.ECMAScript);
-            string UdiskNumber = match.Groups[1].Value;
-            if (DialogResult.No == MessageBox.Show(match.Groups[2].Value + "\n" + MsgManager.GetResString("Msg_TwiceConfirm", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) { return; }
-            //59055800320
-            long udiskSize = long.Parse(match.Groups[4].Value);
-            string dptFile = string.Empty;
-            if (udiskSize > 123480309760)
-            {
-                dptFile = "115G";
-            }
-            else if (udiskSize > 62277025792)
-            {
-                dptFile = "58G";
-            }
-            else if (udiskSize > 31138512896)
-            {
-                dptFile = "29G";
-            }
-            else if (udiskSize > 15032385536)
-            {
-                dptFile = "14G";
-            }
-            else
-            {
-                throw new NotSupportedException("Your Usb Key is not suppotred");
-            }
-            //Process p = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /repartition /usb-fdd /fstype=ntfs /quiet");
-            //p.WaitForExit();
-            DiskOperation.DiskPartRePartitionUD(WTGModel.partitionSize);
-
-
-            //MessageBox.Show(WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-1.dpt");
-            Process p1 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=\"" + WTGModel.applicationFilesPath + "\\DPTs\\UEFIMBR\\" + dptFile + "-1.dpt\"");
-            p1.WaitForExit();
-            ProcessManager.ECMD("cmd.exe", "/c format " + WTGModel.ud.Substring(0, 2) + "/FS:ntfs /q /V: /Y");
+        //    //ProcessManager.SyncCMD("cacls.exe " + WTGModel.ud.Substring(0, 2) + "\\EFI /t /e /c /g everyone:f");
+        //    //ProcessManager.SyncCMD("cacls.exe " + WTGModel.ud.Substring(0, 2) + "\\Boot /t /e /c /g everyone:f");
+        //    //FileOperation.DeleteFolder(WTGModel.ud.Substring(0, 2) + "\\EFI");
+        //    //FileOperation.DeleteFolder(WTGModel.ud.Substring(0, 2) + "\\Boot");
 
 
 
-            WTGModel.ntfsUefiSupport = true;
+        //}
+        //public static void RemoveableDiskUefiMbr()
+        //{
+        //    string tempFileName = WTGModel.diskpartScriptPath + "\\" + Guid.NewGuid().ToString() + ".txt";
+        //    Process diskInfo = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", " /diskinfo /find: /usbonly /file=\"" + tempFileName + "\"");
+        //    diskInfo.WaitForExit();
 
-            if (WTGModel.CheckedMode == ApplyMode.Legacy)
-            {
-                NonUEFITypical(true);
-
-            }
-            else //非UEFI VHD VHDX
-            {
-                NonUEFIVHDVHDX(true);
-            }
-            FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\EFI\\");
-
-            ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.ud.Substring(0, 2) + "\\EFI\\*.*" + "\"" + " \"" + WTGModel.diskpartScriptPath + "\\EFI\\\" /e /h /y");
-            ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.ud.Substring(0, 2) + "\\Boot\\*.*" + "\"" + " \"" + WTGModel.diskpartScriptPath + "\\Boot\\\" /e /h /y");
-            File.Copy(WTGModel.ud.Substring(0, 2) + "\\bootmgr", WTGModel.diskpartScriptPath + "\\EFI\\bootmgr", true);
-            File.Copy(WTGModel.ud.Substring(0, 2) + "\\BOOTNXT", WTGModel.diskpartScriptPath + "\\EFI\\BOOTNXT", true);
-
-            Process p2 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /backup_dpt=\"" + WTGModel.diskpartScriptPath + "\\" + dptFile + "-3.dpt\"");
-            p2.WaitForExit();
-
-
-
-
-            Process p3 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.applicationFilesPath + "\\DPTs\\UEFIMBR\\" + dptFile + "-2.dpt");
-            p3.WaitForExit();
-
-
-
-            ProcessManager.ECMD("cmd.exe", "/c format " + WTGModel.ud.Substring(0, 2) + "/FS:fat /q /V: /Y");
-
-            Process pRE = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.applicationFilesPath + "\\DPTs\\UEFIMBR\\" + dptFile + "-2.dpt");
-            pRE.WaitForExit();
-
-
-            ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.diskpartScriptPath + "\\EFI\\*.*" + "\"" + " \"" + WTGModel.ud.Substring(0, 2) + "\\EFI\\\" /e /h /y");
-            ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.diskpartScriptPath + "\\Boot\\*.*" + "\"" + " \"" + WTGModel.ud.Substring(0, 2) + "\\Boot\\\" /e /h /y");
-            File.Copy(WTGModel.diskpartScriptPath + "\\EFI\\bootmgr", WTGModel.ud.Substring(0, 2) + "\\bootmgr", true);
-            File.Copy(WTGModel.diskpartScriptPath + "\\EFI\\BOOTNXT", WTGModel.ud.Substring(0, 2) + "\\BOOTNXT", true);
-
-            BootFileOperation.BooticeAct(WTGModel.ud);
+        //    string tempUdiskInfo = File.ReadAllText(tempFileName);
+        //    Match match = Regex.Match(tempUdiskInfo, @"SET DRIVE([0-9])DESC=(.+)\r\nSET DRIVE([0-9])SIZE=(.+)\r\nSET DRIVE([0-9])LETTER=" + WTGModel.ud.Substring(0, 2).ToUpper(), RegexOptions.ECMAScript);
+        //    string UdiskNumber = match.Groups[1].Value;
+        //    if (DialogResult.No == MessageBox.Show(match.Groups[2].Value + "\n" + MsgManager.GetResString("Msg_TwiceConfirm", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) { return; }
+        //    //59055800320
+        //    long udiskSize = long.Parse(match.Groups[4].Value);
+        //    string dptFile = string.Empty;
+        //    if (udiskSize > 123480309760)
+        //    {
+        //        dptFile = "115G";
+        //    }
+        //    else if (udiskSize > 62277025792)
+        //    {
+        //        dptFile = "58G";
+        //    }
+        //    else if (udiskSize > 31138512896)
+        //    {
+        //        dptFile = "29G";
+        //    }
+        //    else if (udiskSize > 15032385536)
+        //    {
+        //        dptFile = "14G";
+        //    }
+        //    else
+        //    {
+        //        throw new NotSupportedException("Your Usb Key is not suppotred");
+        //    }
+        //    //Process p = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /repartition /usb-fdd /fstype=ntfs /quiet");
+        //    //p.WaitForExit();
+        //    DiskOperation.DiskPartRePartitionUD(WTGModel.partitionSize);
 
 
-            Process p4 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.diskpartScriptPath + "\\" + dptFile + "-3.dpt");
-            p4.WaitForExit();
+        //    //MessageBox.Show(WTGModel.applicationFilesPath + "\\DPTs\\" + dptFile + "-1.dpt");
+        //    Process p1 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=\"" + WTGModel.applicationFilesPath + "\\DPTs\\UEFIMBR\\" + dptFile + "-1.dpt\"");
+        //    p1.WaitForExit();
+        //    ProcessManager.ECMD("cmd.exe", "/c format " + WTGModel.ud.Substring(0, 2) + "/FS:ntfs /q /V: /Y");
 
-            FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\EFI\\");
-            FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\Boot\\");
 
-        }
+
+        //    WTGModel.ntfsUefiSupport = true;
+
+        //    if (WTGModel.CheckedMode == ApplyMode.Legacy)
+        //    {
+        //        NonUEFITypical(true);
+
+        //    }
+        //    else //非UEFI VHD VHDX
+        //    {
+        //        NonUEFIVHDVHDX(true);
+        //    }
+        //    FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\EFI\\");
+
+        //    ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.ud.Substring(0, 2) + "\\EFI\\*.*" + "\"" + " \"" + WTGModel.diskpartScriptPath + "\\EFI\\\" /e /h /y");
+        //    ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.ud.Substring(0, 2) + "\\Boot\\*.*" + "\"" + " \"" + WTGModel.diskpartScriptPath + "\\Boot\\\" /e /h /y");
+        //    File.Copy(WTGModel.ud.Substring(0, 2) + "\\bootmgr", WTGModel.diskpartScriptPath + "\\EFI\\bootmgr", true);
+        //    File.Copy(WTGModel.ud.Substring(0, 2) + "\\BOOTNXT", WTGModel.diskpartScriptPath + "\\EFI\\BOOTNXT", true);
+
+        //    Process p2 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /backup_dpt=\"" + WTGModel.diskpartScriptPath + "\\" + dptFile + "-3.dpt\"");
+        //    p2.WaitForExit();
+
+
+
+
+        //    Process p3 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.applicationFilesPath + "\\DPTs\\UEFIMBR\\" + dptFile + "-2.dpt");
+        //    p3.WaitForExit();
+
+
+
+        //    ProcessManager.ECMD("cmd.exe", "/c format " + WTGModel.ud.Substring(0, 2) + "/FS:fat /q /V: /Y");
+
+        //    Process pRE = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.applicationFilesPath + "\\DPTs\\UEFIMBR\\" + dptFile + "-2.dpt");
+        //    pRE.WaitForExit();
+
+
+        //    ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.diskpartScriptPath + "\\EFI\\*.*" + "\"" + " \"" + WTGModel.ud.Substring(0, 2) + "\\EFI\\\" /e /h /y");
+        //    ProcessManager.ECMD("xcopy.exe", "\"" + WTGModel.diskpartScriptPath + "\\Boot\\*.*" + "\"" + " \"" + WTGModel.ud.Substring(0, 2) + "\\Boot\\\" /e /h /y");
+        //    File.Copy(WTGModel.diskpartScriptPath + "\\EFI\\bootmgr", WTGModel.ud.Substring(0, 2) + "\\bootmgr", true);
+        //    File.Copy(WTGModel.diskpartScriptPath + "\\EFI\\BOOTNXT", WTGModel.ud.Substring(0, 2) + "\\BOOTNXT", true);
+
+        //    BootFileOperation.BooticeAct(WTGModel.ud);
+
+
+        //    Process p4 = Process.Start(WTGModel.applicationFilesPath + "\\bootice.exe", "/DEVICE=" + UdiskNumber + " /partitions  /quiet /restore_dpt=" + WTGModel.diskpartScriptPath + "\\" + dptFile + "-3.dpt");
+        //    p4.WaitForExit();
+
+        //    FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\EFI\\");
+        //    FileOperation.DeleteFolder(WTGModel.diskpartScriptPath + "\\Boot\\");
+
+        //}
 
 
         public static bool UefiGptTypical()
@@ -198,10 +198,16 @@ namespace wintogo
             io.imageFile = WTGModel.imageFilePath;
             io.AutoChooseWimIndex();
             io.ImageApplyToUD();
+            if (!VerifySysFiles(WTGModel.ud))
+            {
+                throw new Exception(MsgManager.GetResString("Msg_bootmgrError", MsgManager.ci));
+            }
+
             ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, @"X:\", FirmwareType.UEFI);
             BootFileOperation.BcdeditFixBootFileTypical(@"X:\", WTGModel.ud, FirmwareType.UEFI);
             RemoveLetterX();
+
             return true;
         }
 
@@ -223,7 +229,7 @@ namespace wintogo
                 Log.WriteLog("Err_VHDCreationError", "VHDCreationError");
 
                 //VHD文件创建出错！
-                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDCreationError", MsgManager.ci));
+                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDCreationError", MsgManager.ci), true);
                 er.ShowDialog();
                 return false;
                 //MessageBox.Show("Win8 VHD文件不存在！，可到论坛发帖求助！\n建议将程序目录下logs文件夹打包上传，谢谢！","出错啦！",MessageBoxButtons .OK ,MessageBoxIcon.Error );
@@ -244,7 +250,7 @@ namespace wintogo
                 //Win8 VHD文件不存在！未知错误原因！
                 Log.WriteLog("Err_VHDCreationError", "!File.Exists(VHD)");
 
-                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDCreationError", MsgManager.ci));
+                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDCreationError", MsgManager.ci), true);
                 er.ShowDialog();
                 return false;
             }
@@ -254,7 +260,7 @@ namespace wintogo
                 //VHD模式下BCDBOOT执行出错！
                 Log.WriteLog("Err_VHDCreationError", "!File.Exists(BCD)");
 
-                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDBcdbootError", MsgManager.ci));
+                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDBcdbootError", MsgManager.ci), true);
                 er.ShowDialog();
                 return false;
             }
@@ -262,7 +268,7 @@ namespace wintogo
             {
                 Log.WriteLog("Err_VHDCreationError", "!File.Exists(bootmgr)");
 
-                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_bootmgrError", MsgManager.ci));
+                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_bootmgrError", MsgManager.ci), true);
                 er.ShowDialog();
                 return false;
                 //MessageBox.Show("文件写入出错！bootmgr不存在！\n请检查写入过程是否中断\n如有疑问，请访问官方论坛！");
@@ -343,7 +349,7 @@ namespace wintogo
                     //文件写入出错！bootmgr不存在！\n请检查写入过程是否中断
                     Log.WriteLog("Err_bootmgrError", "!File.Exists(bootmgr)");
 
-                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_bootmgrError", MsgManager.ci));
+                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_bootmgrError", MsgManager.ci), true);
                     er.ShowDialog();
                     return false;
                     //MessageBox.Show("文件写入出错！bootmgr不存在！\n请检查写入过程是否中断\n如有疑问，请访问官方论坛！");
@@ -354,7 +360,7 @@ namespace wintogo
                     //引导文件写入出错！boot文件夹不存在！
                     Log.WriteLog("Err_BCDError", "!File.Exists(BCD)");
 
-                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_BCDError", MsgManager.ci));
+                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_BCDError", MsgManager.ci), true);
                     er.ShowDialog();
                     return false;
                     //MessageBox.Show("引导文件写入出错！boot文件夹不存在\n请看论坛教程！", "出错啦", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -388,7 +394,7 @@ namespace wintogo
             {
                 Log.WriteLog("Err_VHDCreationError", "!File.Exists(VHD)");
 
-                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDCreationError", MsgManager.ci));
+                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDCreationError", MsgManager.ci), true);
                 er.ShowDialog();
                 return false;
                 //shouldcontinue = false;
@@ -419,7 +425,10 @@ namespace wintogo
             }
             //IMAGEX解压
             ImageOperation.ImageApply(WTGModel.isWimBoot, WTGModel.isEsd, WTGModel.imagexFileName, WTGModel.imageFilePath, WTGModel.wimPart, WTGModel.ud, WTGModel.ud);
-
+            if (!VerifySysFiles(WTGModel.ud))
+            {
+                throw new Exception(MsgManager.GetResString("Msg_bootmgrError", MsgManager.ci));
+            }
             //安装EXTRA
             ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             //BCDBOOT WRITE BOOT FILE  
@@ -428,11 +437,19 @@ namespace wintogo
             BootFileOperation.BcdeditFixBootFileTypical(@"X:\", WTGModel.ud, FirmwareType.UEFI);
             BootFileOperation.BooticeAct(@"X:\");
             RemoveLetterX();
+
             return true;
             //FinishSuccessful();
 
         }
-
+        private static bool VerifySysFiles(string ud)
+        {
+            if(!File.Exists(ud+ "\\Windows\\system32\\ntoskrnl.exe"))
+            {
+                return false;
+            }
+            return true;
+        }
 
         public static void RemoveLetterX()
         {

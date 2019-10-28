@@ -66,7 +66,7 @@ namespace wintogo
                         {
                             Log.WriteLog("Err_UnZip_" + DateTime.Now.ToFileTime() + ".log", ex.ToString());
 
-                            ErrorMsg err = new ErrorMsg(ex.Message.Substring(0, 20) + "...");
+                            ErrorMsg err = new ErrorMsg(ex.Message.Substring(0, 20) + "...",true);
                             err.ShowDialog();
                         }
                     }

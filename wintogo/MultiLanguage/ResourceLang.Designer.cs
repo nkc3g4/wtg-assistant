@@ -19,7 +19,7 @@ namespace wintogo.MultiLanguage {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ResourceLang {
@@ -97,6 +97,15 @@ namespace wintogo.MultiLanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 本机系统需要Windows 10 1709或更高版本以支持可移动磁盘 UEFI启动部署。.
+        /// </summary>
+        public static string Msg_Below1709 {
+            get {
+                return ResourceManager.GetString("Msg_Below1709", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bitlocker仅在勾选UEFI+GPT或UEFI+MBR的传统模式下可用。.
         /// </summary>
         public static string Msg_BitlockerUnusable {
@@ -115,7 +124,7 @@ namespace wintogo.MultiLanguage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 镜像文件选择错误！请选择install.wim！.
+        ///   Looks up a localized string similar to 请选择镜像文件！.
         /// </summary>
         public static string Msg_chooseinstallwim {
             get {

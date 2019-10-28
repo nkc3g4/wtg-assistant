@@ -1,4 +1,5 @@
 ﻿using iTuner;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace wintogo
         public static bool disableWinRe;
         public static string vhdTempPath;
         //public static string imageIndex;
-        public static bool fixLetter;
+        public static bool fixLetter = true;
         public static string vhdNameWithoutExt;
         public static string vhdPartitionType;
         public static string efiPartitionSize;
@@ -119,6 +120,7 @@ namespace wintogo
         public static bool disableUasp;
         public static bool isUserSetEfiPartition;
         public static string efiPartition = string.Empty;
+        public static Version dismversion = new Version("0.0.0.0");
     }
     public enum OS
     {

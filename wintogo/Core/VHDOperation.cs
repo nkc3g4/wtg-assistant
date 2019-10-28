@@ -396,7 +396,7 @@ namespace wintogo
             {
                 Log.WriteLog("Err_VHDException", ex.ToString());
 
-                ErrorMsg em = new ErrorMsg(ex.Message);
+                ErrorMsg em = new ErrorMsg(ex.Message, true);
                 em.ShowDialog();
             }
             catch (Exception ex)
@@ -474,7 +474,7 @@ namespace wintogo
                     {
                         //MessageBox.Show(hardDiskSpace.ToString());
                         //DiskOperation.GetHardDiskSpace(WTGModel.ud);
-                        if (hardDiskSpace != 0 && WTGModel.userSetSize > hardDiskSpace - 500)
+                        if (hardDiskSpace - 500 > 0 && WTGModel.userSetSize > hardDiskSpace - 500)
                         {
                             VhdSize = (hardDiskSpace - 500).ToString();
                         }
@@ -486,28 +486,16 @@ namespace wintogo
                     else
                     {
 
-                        if (!WTGModel.isWimBoot)
+
+                        if (hardDiskSpace >= (int.Parse(vhdDefaultSize) + 1024))
                         {
-                            if (hardDiskSpace >= (int.Parse(vhdDefaultSize) + 1024))
-                            {
-                                VhdSize = vhdDefaultSize;
-                            }
-                            else
-                            {
-                                VhdSize = hardDiskSpace == 0 ? vhdDefaultSize : (hardDiskSpace - 500).ToString();
-                            }
+                            VhdSize = vhdDefaultSize;
                         }
                         else
                         {
-                            if (hardDiskSpace >= (int.Parse(vhdDefaultSize) + 4096))
-                            {
-                                VhdSize = vhdDefaultSize;
-                            }
-                            else
-                            {
-                                VhdSize = hardDiskSpace == 0 ? vhdDefaultSize : (hardDiskSpace - 4096).ToString();
-                            }
+                            VhdSize = hardDiskSpace - 500 > 0 ? vhdDefaultSize : (hardDiskSpace - 500).ToString();
                         }
+
                     }
 
                     ////////////////判断临时文件夹,VHD needcopy?///////////////////
@@ -545,7 +533,7 @@ namespace wintogo
             catch (Exception ex)
             {
                 Log.WriteLog("Err_SetVhdProp", ex.ToString());
-                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDCreationError", MsgManager.ci));
+                ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_VHDCreationError", MsgManager.ci), true);
                 er.ShowDialog();
             }
         }

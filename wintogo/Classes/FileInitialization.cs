@@ -19,7 +19,7 @@ namespace wintogo
                 if (StringUtility.IsChina(Application.StartupPath))
                 {
                     Log.WriteLog("Err_IsChinaOrContainSpace", "FileValidationErr");
-                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("IsChinaMsg", MsgManager.ci));
+                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("IsChinaMsg", MsgManager.ci),false);
                     er.ShowDialog();
                     Environment.Exit(0);
                 }

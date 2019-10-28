@@ -121,7 +121,7 @@
     <value>请不要将程序放入中文文件夹运行。</value>
   </data>
   <data name="Msg_chooseinstallwim" xml:space="preserve">
-    <value>镜像文件选择错误！请选择install.wim！</value>
+    <value>请选择镜像文件！</value>
   </data>
   <data name="Msg_chooseud" xml:space="preserve">
     <value>请选择可移动设备</value>
@@ -266,5 +266,8 @@
   </data>
   <data name="Msg_BitlockerUnusable" xml:space="preserve">
     <value>Bitlocker仅在勾选UEFI+GPT或UEFI+MBR的传统模式下可用。</value>
+  </data>
+  <data name="Msg_Below1709" xml:space="preserve">
+    <value>本机系统需要Windows 10 1709或更高版本以支持可移动磁盘 UEFI启动部署。</value>
   </data>
 </root>

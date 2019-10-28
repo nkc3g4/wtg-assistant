@@ -163,58 +163,83 @@
 </value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 13</value>
+    <value>32, 31</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>11, 10, 11, 10</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 162</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 70</value>
+    <value>792, 167</value>
+  </data>
+  <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>11, 10, 11, 10</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>200, 60</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Close</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 13</value>
+    <value>229, 31</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>11, 0, 11, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
+    <value>158, 39</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Error Info:</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 52</value>
+    <value>229, 124</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>11, 0, 11, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 13</value>
+    <value>566, 39</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Tips:You can find solutions on Google!</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 74</value>
+    <value>227, 176</value>
+  </data>
+  <data name="linkLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>11, 0, 11, 0</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 14</value>
+    <value>215, 43</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>Ask for Help</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 52</value>
+    <value>616, 124</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>11, 0, 11, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 13</value>
+    <value>338, 39</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Our WebSite(Chinese).</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>16, 31</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>384, 103</value>
+    <value>1024, 246</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>11, 10, 11, 10</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>An error occured</value>

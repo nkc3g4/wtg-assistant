@@ -104,13 +104,6 @@ namespace wintogo
         {
             StringBuilder sb = new StringBuilder();
 
-            //using (FileStream fs0 = new FileStream(WTGModel.diskpartScriptPath + @"\uefimbr.txt", FileMode.Create, FileAccess.Write))
-            //{
-            //    fs0.SetLength(0);
-            //    using (StreamWriter sw0 = new StreamWriter(fs0, Encoding.Default))
-            //    {
-            //string ws0 = "";
-
             sb.AppendLine("select volume " + ud.Substring(0, 1));
             sb.AppendLine("clean");
             sb.AppendLine("convert mbr");
@@ -135,21 +128,6 @@ namespace wintogo
 
 
             sb.AppendLine("create partition primary");
-
-            //for (int i = 0; i < partitionSize.Length - 1; i++)
-            //{
-            //    if (partitionSize[i] == "0")
-            //    {
-            //        continue;
-            //    }
-            //    sb.AppendLine("create partition primary size " + partitionSize[i]);
-            //    partitionsCount++;
-            //}
-            //if (partitionSize[2] != "0")
-            //{
-            //    sb.AppendLine("create partition primary");
-            //    partitionsCount++;
-            //}
             sb.AppendLine("select partition 1");
             sb.AppendLine("format fs=fat32 quick");
             sb.AppendLine("active");
@@ -167,10 +145,6 @@ namespace wintogo
             DiskpartScriptManager dsm = new DiskpartScriptManager();
             dsm.Args = sb.ToString();
             dsm.RunDiskpartScript();
-            //    }
-
-            //}
-            //return WTGModel.diskpartScriptPath + @"\uefimbr.txt";
         }
 
         internal static void AssignDriveLetter(string index)
@@ -184,6 +158,23 @@ namespace wintogo
             sb.AppendLine("format fs=ntfs quick");
             sb.AppendLine("active");
             sb.AppendLine("assign letter=" + WTGModel.ud.Substring(0, 1));
+            sb.AppendLine("exit");
+            DiskpartScriptManager dsm = new DiskpartScriptManager();
+            dsm.Args = sb.ToString();
+            dsm.RunDiskpartScript();
+
+        }
+        internal static void RepartitionAndAutoAssignDriveLetter(string index)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("select disk " + index);
+            sb.AppendLine("clean");
+            //sb.AppendLine("convert mbr");
+            sb.AppendLine("create partition primary");
+            sb.AppendLine("select partition 1");
+            sb.AppendLine("format fs=ntfs quick");
+            sb.AppendLine("active");
+            sb.AppendLine("assign");
             sb.AppendLine("exit");
             DiskpartScriptManager dsm = new DiskpartScriptManager();
             dsm.Args = sb.ToString();

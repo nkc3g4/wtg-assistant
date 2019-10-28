@@ -258,4 +258,7 @@
   <data name="Msg_BitlockerUnusable" xml:space="preserve">
     <value>Bitlocker can be used only in the typical.UEFI+GPT or UEFI+MBR must be checked.</value>
   </data>
+  <data name="Msg_Below1709" xml:space="preserve">
+    <value>Windows 10 1709 is required for HOST to deploy UEFI mode with removable disk.</value>
+  </data>
 </root>

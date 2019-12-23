@@ -57,7 +57,6 @@
             this.checkBoxNoDefaultLetter = new System.Windows.Forms.CheckBox();
             this.checkBoxDisWinre = new System.Windows.Forms.CheckBox();
             this.checkBoxDonet = new System.Windows.Forms.CheckBox();
-            this.radiobtnVhd = new System.Windows.Forms.RadioButton();
             this.radiobtnLegacy = new System.Windows.Forms.RadioButton();
             this.radiobtnVhdx = new System.Windows.Forms.RadioButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -86,6 +85,7 @@
             this.labelDisFunc = new System.Windows.Forms.Label();
             this.tabControlSystem = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBoxNoFormat = new System.Windows.Forms.CheckBox();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.lblVhdPartitionTableType = new System.Windows.Forms.Label();
@@ -115,7 +115,6 @@
             this.groupBoxadv = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
-            this.checkBoxNoFormat = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -331,15 +330,6 @@
             this.toolTip1.SetToolTip(this.checkBoxDonet, resources.GetString("checkBoxDonet.ToolTip"));
             this.checkBoxDonet.UseVisualStyleBackColor = true;
             // 
-            // radiobtnVhd
-            // 
-            resources.ApplyResources(this.radiobtnVhd, "radiobtnVhd");
-            this.radiobtnVhd.Name = "radiobtnVhd";
-            this.toolTip1.SetToolTip(this.radiobtnVhd, resources.GetString("radiobtnVhd.ToolTip"));
-            this.radiobtnVhd.UseVisualStyleBackColor = true;
-            this.radiobtnVhd.CheckedChanged += new System.EventHandler(this.radiovhd_CheckedChanged);
-            this.radiobtnVhd.EnabledChanged += new System.EventHandler(this.radiovhd_EnabledChanged);
-            // 
             // radiobtnLegacy
             // 
             resources.ApplyResources(this.radiobtnLegacy, "radiobtnLegacy");
@@ -359,6 +349,7 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
@@ -548,7 +539,6 @@
             this.tabPage1.Controls.Add(this.linkLabel1);
             this.tabPage1.Controls.Add(this.checkBoxDisWinre);
             this.tabPage1.Controls.Add(this.radiobtnVhdx);
-            this.tabPage1.Controls.Add(this.radiobtnVhd);
             this.tabPage1.Controls.Add(this.checkBoxNoDefaultLetter);
             this.tabPage1.Controls.Add(this.radiobtnLegacy);
             this.tabPage1.Controls.Add(this.checkBoxSan_policy);
@@ -557,6 +547,13 @@
             this.tabPage1.Controls.Add(this.checkBoxUefigpt);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
+            // 
+            // checkBoxNoFormat
+            // 
+            resources.ApplyResources(this.checkBoxNoFormat, "checkBoxNoFormat");
+            this.checkBoxNoFormat.Name = "checkBoxNoFormat";
+            this.checkBoxNoFormat.UseVisualStyleBackColor = true;
+            this.checkBoxNoFormat.CheckedChanged += new System.EventHandler(this.checkBoxNoFormat_CheckedChanged);
             // 
             // linkLabel3
             // 
@@ -766,13 +763,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // checkBoxNoFormat
-            // 
-            resources.ApplyResources(this.checkBoxNoFormat, "checkBoxNoFormat");
-            this.checkBoxNoFormat.Name = "checkBoxNoFormat";
-            this.checkBoxNoFormat.UseVisualStyleBackColor = true;
-            this.checkBoxNoFormat.CheckedChanged += new System.EventHandler(this.checkBoxNoFormat_CheckedChanged);
-            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -831,7 +821,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RadioButton radiobtnLegacy;
-        private System.Windows.Forms.RadioButton radiobtnVhd;
         private System.Windows.Forms.ToolStripMenuItem 萝卜头IT论坛ToolStripMenuItem;
         private System.Windows.Forms.RadioButton radiobtnVhdx;
         private System.Windows.Forms.CheckBox checkBoxFixed;

@@ -261,4 +261,10 @@
   <data name="Msg_Below1709" xml:space="preserve">
     <value>本機系統需要Windows 10 1709或更高版本以支持抽取式磁碟UEFI啟動部署。</value>
   </data>
+  <data name="Msg_SelectBothNoformatAndRepartition" xml:space="preserve">
+    <value>不格式化不能與“重新分區”或“UEFI+GPT”或“UEFI+MBR”選項共存。</value>
+  </data>
+  <data name="Msg_VHDXWarning" xml:space="preserve">
+    <value>虛擬硬盤模式制作成功率較低，啟動兼容性較差，不推薦使用。\n是否繼續選擇？</value>
+  </data>
 </root>

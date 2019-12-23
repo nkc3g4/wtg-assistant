@@ -33,7 +33,7 @@ namespace wintogo.Utility
 
         private static uint file_flags = FILE_FLAG_NO_BUFFERING | FILE_FLAG_WRITE_THROUGH;
 
-        private Thread tBench;
+        //private Thread tBench;
 
 
 

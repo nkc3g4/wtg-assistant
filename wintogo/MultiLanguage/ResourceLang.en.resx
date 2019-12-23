@@ -261,4 +261,10 @@
   <data name="Msg_Below1709" xml:space="preserve">
     <value>Windows 10 1709 is required for HOST to deploy UEFI mode with removable disk.</value>
   </data>
+  <data name="Msg_SelectBothNoformatAndRepartition" xml:space="preserve">
+    <value>No Format can not select with UEFI+GPT, UEFI+MBR and Repartition.</value>
+  </data>
+  <data name="Msg_VHDXWarning" xml:space="preserve">
+    <value>VHD, VHDX mode is NOT recommended for its poor compatibility. Continue?</value>
+  </data>
 </root>

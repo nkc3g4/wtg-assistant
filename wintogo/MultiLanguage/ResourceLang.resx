@@ -270,4 +270,10 @@
   <data name="Msg_Below1709" xml:space="preserve">
     <value>本机系统需要Windows 10 1709或更高版本以支持可移动磁盘 UEFI启动部署。</value>
   </data>
+  <data name="Msg_SelectBothNoformatAndRepartition" xml:space="preserve">
+    <value>不格式化不能与“重新分区”或“UEFI+GPT”或“UEFI+MBR”选项共存。</value>
+  </data>
+  <data name="Msg_VHDXWarning" xml:space="preserve">
+    <value>虚拟硬盘模式制作成功率较低，启动兼容性较差，不推荐使用。\n是否继续选择？</value>
+  </data>
 </root>

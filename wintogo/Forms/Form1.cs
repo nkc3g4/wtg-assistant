@@ -66,7 +66,7 @@ namespace wintogo
             else if (osVersionStr.Contains("6.2") || osVersionStr.Contains("6.3"))//WIN8及以上
             {
                 radiobtnLegacy.Enabled = true;
-                radiobtnVhd.Enabled = true;
+                //radiobtnVhd.Enabled = true;
                 radiobtnVhdx.Enabled = true;
                 checkBoxUefigpt.Enabled = true;
                 checkBoxUefimbr.Enabled = true;
@@ -79,7 +79,7 @@ namespace wintogo
                     if (dismversion.Substring(0, 14) == "6.3.9600.17031" || dismversion.Substring(0, 3) == "6.4")
                     {
                         radiobtnLegacy.Enabled = true;
-                        radiobtnVhd.Enabled = true;
+                        //radiobtnVhd.Enabled = true;
                         radiobtnVhdx.Enabled = true;
                         checkBoxUefigpt.Enabled = true;
                         checkBoxUefimbr.Enabled = true;
@@ -93,7 +93,7 @@ namespace wintogo
                     else if (dismversion.Substring(0, 3) == "10.")
                     {
                         radiobtnLegacy.Enabled = true;
-                        radiobtnVhd.Enabled = true;
+                        //radiobtnVhd.Enabled = true;
                         radiobtnVhdx.Enabled = true;
                         checkBoxUefigpt.Enabled = true;
                         checkBoxUefimbr.Enabled = true;
@@ -106,7 +106,7 @@ namespace wintogo
                     else
                     {
                         radiobtnLegacy.Enabled = true;
-                        radiobtnVhd.Enabled = true;
+                        //radiobtnVhd.Enabled = true;
                         radiobtnVhdx.Enabled = true;
                         checkBoxUefigpt.Enabled = true;
                         checkBoxUefimbr.Enabled = true;
@@ -205,24 +205,14 @@ namespace wintogo
                 }
                 else if (WTGModel.choosedImageType == "vhd")
                 {
-                    if (!radiobtnVhd.Enabled)
-                    {
-                        radiobtnVhd.Checked = true;
-                        radiobtnLegacy.Enabled = false;
-                        radiobtnVhdx.Enabled = false;
-                    }
-                    else
-                    {
-                        radiobtnVhd.Checked = true;
-                    }
+
                 }
-                else if (WTGModel.choosedImageType == "vhdx")
+                else if (WTGModel.choosedImageType == "vhd" || WTGModel.choosedImageType == "vhdx")
                 {
                     if (!radiobtnVhdx.Enabled)
                     {
                         radiobtnVhdx.Checked = true;
                         radiobtnLegacy.Enabled = false;
-                        radiobtnVhd.Enabled = false;
 
                         //checkBoxCompactOS.Checked = true;
                         //checkBoxCompactOS.Enabled = false;
@@ -231,8 +221,6 @@ namespace wintogo
                     else
                     {
                         radiobtnLegacy.Enabled = false;
-                        radiobtnVhd.Enabled = false;
-
                         radiobtnVhdx.Checked = true;
                         //MessageBox.Show("Test");
                     }
@@ -244,10 +232,10 @@ namespace wintogo
                     WTGModel.win7togo = ImageOperation.Iswin7(WTGModel.imagexFileName, lblWim.Text);
                     if (WTGModel.win7togo != 0) //WIN7 cannot comptible with VHDX disk or wimboot
                     {
-                        if (radiobtnVhdx.Checked)
-                        {
-                            radiobtnVhd.Checked = true;
-                        }
+                        //if (radiobtnVhdx.Checked)
+                        //{
+                        //    radiobtnVhd.Checked = true;
+                        //}
                         radiobtnVhdx.Enabled = false;
                         //checkBoxWimboot.Checked = false;
                         //checkBoxWimboot.Enabled = false;
@@ -290,11 +278,11 @@ namespace wintogo
             if (checkBoxBitlocker.Checked)
             {
                 radiobtnLegacy.Checked = true;
-                radiobtnVhd.Enabled = false;
+                //radiobtnVhd.Enabled = false;
                 radiobtnVhdx.Enabled = false;
             }
 
-            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked && !radiobtnVhd.Checked)
+            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked)
             {
                 checkBoxBitlocker.Enabled = true;
             }
@@ -403,6 +391,12 @@ namespace wintogo
         {
             if (checkBoxDiskpart.Checked)
             {
+                if (checkBoxNoFormat.Checked)
+                {
+                    MessageBox.Show(MsgManager.GetResString("Msg_SelectBothNoformatAndRepartition", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    checkBoxDiskpart.Checked = false;
+                    return;
+                }
                 //Msg_Repartition
                 //MessageBox.Show(MsgManager.GetResString("Msg_Repartition", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 WTGModel.doNotFormat = false;
@@ -450,11 +444,11 @@ namespace wintogo
             if (checkBoxBitlocker.Checked)
             {
                 radiobtnLegacy.Checked = true;
-                radiobtnVhd.Enabled = false;
+                //radiobtnVhd.Enabled = false;
                 radiobtnVhdx.Enabled = false;
             }
 
-            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked && !radiobtnVhd.Checked)
+            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked)
             {
                 checkBoxBitlocker.Enabled = true;
             }
@@ -645,10 +639,7 @@ namespace wintogo
             {
                 WTGModel.CheckedMode = ApplyMode.Legacy;
             }
-            else if (radiobtnVhd.Checked)
-            {
-                WTGModel.CheckedMode = ApplyMode.VHD;
-            }
+
             else
             {
                 WTGModel.CheckedMode = ApplyMode.VHDX;
@@ -877,11 +868,11 @@ namespace wintogo
             if (checkBoxBitlocker.Checked)
             {
                 radiobtnLegacy.Checked = true;
-                radiobtnVhd.Enabled = false;
+                //radiobtnVhd.Enabled = false;
                 radiobtnVhdx.Enabled = false;
             }
 
-            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked && !radiobtnVhd.Checked)
+            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked)
             {
                 checkBoxBitlocker.Enabled = true;
             }
@@ -920,6 +911,12 @@ namespace wintogo
 
         private void radiovhdx_CheckedChanged(object sender, EventArgs e)
         {
+            if (radiobtnVhdx.Checked && DialogResult.Cancel == MessageBox.Show(MsgManager.GetResString("Msg_VHDXWarning", MsgManager.ci), "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning))
+            {
+                radiobtnVhdx.Checked = false;
+                radiobtnLegacy.Checked = true;
+                return;
+            }
             checkBoxBitlocker.Checked = false;
             checkBoxBitlocker.Enabled = false;
             numericUpDown1.Enabled = true;
@@ -1027,7 +1024,7 @@ namespace wintogo
                 txtPartitionSize3.Text = "0";
 
 
-                if (radiobtnVhd.Checked || radiobtnVhdx.Checked)
+                if (radiobtnVhdx.Checked)
                 {
                     trackBar1.Enabled = true;
                 }
@@ -1173,7 +1170,7 @@ namespace wintogo
             if (checkBoxBitlocker.Checked)
             {
                 radiobtnLegacy.Checked = true;
-                radiobtnVhd.Enabled = false;
+                //radiobtnVhd.Enabled = false;
                 radiobtnVhdx.Enabled = false;
             }
             else
@@ -1181,7 +1178,7 @@ namespace wintogo
                 SystemDetection(false);
             }
 
-            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked && !radiobtnVhd.Checked)
+            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked)
             {
                 checkBoxBitlocker.Enabled = true;
             }
@@ -1414,26 +1411,13 @@ namespace wintogo
                     }
 
                 }
-                else if (WTGModel.choosedImageType == "vhd")
-                {
-                    if (!radiobtnVhd.Enabled)
-                    {
-                        radiobtnVhd.Checked = true;
-                        radiobtnLegacy.Enabled = false;
-                        radiobtnVhdx.Enabled = false;
-                    }
-                    else
-                    {
-                        radiobtnVhd.Checked = true;
-                    }
-                }
-                else if (WTGModel.choosedImageType == "vhdx")
+                else if (WTGModel.choosedImageType == "vhd" || WTGModel.choosedImageType == "vhdx")
                 {
                     if (!radiobtnVhdx.Enabled)
                     {
                         radiobtnVhdx.Checked = true;
                         radiobtnLegacy.Enabled = false;
-                        radiobtnVhd.Enabled = false;
+                        //radiobtnVhd.Enabled = false;
 
                         //checkBoxCompactOS.Checked = true;
                         //checkBoxCompactOS.Enabled = false;
@@ -1442,7 +1426,7 @@ namespace wintogo
                     else
                     {
                         radiobtnLegacy.Enabled = false;
-                        radiobtnVhd.Enabled = false;
+                        //radiobtnVhd.Enabled = false;
 
                         radiobtnVhdx.Checked = true;
                         //MessageBox.Show("Test");
@@ -1454,10 +1438,7 @@ namespace wintogo
                     WTGModel.win7togo = ImageOperation.Iswin7(WTGModel.imagexFileName, WTGModel.imageFilePath);
                     if (WTGModel.win7togo != 0) //WIN7 cannot comptible with VHDX disk or wimboot
                     {
-                        if (radiobtnVhdx.Checked)
-                        {
-                            radiobtnVhd.Checked = true;
-                        }
+
                         radiobtnVhdx.Enabled = false;
                         //checkBoxWimboot.Checked = false;
                         //checkBoxWimboot.Enabled = false;
@@ -1649,9 +1630,10 @@ namespace wintogo
 
         private void checkBoxNoFormat_CheckedChanged(object sender, EventArgs e)
         {
+
             if (checkBoxNoFormat.Checked && (checkBoxDiskpart.Checked || checkBoxUefigpt.Checked || checkBoxUefimbr.Checked))
             {
-                MessageBox.Show("不格式化不能与“重新分区”或“UEFI+GPT”或“UEFI+MBR”选项共存。");
+                MessageBox.Show(MsgManager.GetResString("Msg_SelectBothNoformatAndRepartition", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 checkBoxNoFormat.Checked = false;
             }
         }

@@ -19,7 +19,7 @@ namespace wintogo.MultiLanguage {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ResourceLang {
@@ -349,6 +349,15 @@ namespace wintogo.MultiLanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 不格式化不能与“重新分区”或“UEFI+GPT”或“UEFI+MBR”选项共存。.
+        /// </summary>
+        public static string Msg_SelectBothNoformatAndRepartition {
+            get {
+                return ResourceManager.GetString("Msg_SelectBothNoformatAndRepartition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 提示！.
         /// </summary>
         public static string Msg_Tip {
@@ -444,6 +453,15 @@ namespace wintogo.MultiLanguage {
         public static string Msg_VHDNameIllegal {
             get {
                 return ResourceManager.GetString("Msg_VHDNameIllegal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 虚拟硬盘模式制作成功率较低，启动兼容性较差，不推荐使用。\n是否继续选择？.
+        /// </summary>
+        public static string Msg_VHDXWarning {
+            get {
+                return ResourceManager.GetString("Msg_VHDXWarning", resourceCulture);
             }
         }
         

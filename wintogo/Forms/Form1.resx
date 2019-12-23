@@ -238,7 +238,7 @@
     <value>326, 17</value>
   </metadata>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 142</value>
+    <value>289, 148</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
     <value>contextMenuStrip1</value>
@@ -247,13 +247,13 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="萝卜头IT论坛ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 46</value>
+    <value>288, 48</value>
   </data>
   <data name="萝卜头IT论坛ToolStripMenuItem.Text" xml:space="preserve">
     <value>萝卜头IT论坛</value>
   </data>
   <data name="错误提示测试ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 46</value>
+    <value>288, 48</value>
   </data>
   <data name="错误提示测试ToolStripMenuItem.Text" xml:space="preserve">
     <value>错误提示测试</value>
@@ -262,7 +262,7 @@
     <value>False</value>
   </data>
   <data name="手动选择优盘ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 46</value>
+    <value>288, 48</value>
   </data>
   <data name="手动选择优盘ToolStripMenuItem.Text" xml:space="preserve">
     <value>手动选择优盘</value>
@@ -669,7 +669,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;checkBoxUefigpt.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="checkBoxUefimbr.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -708,7 +708,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;checkBoxUefimbr.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="checkBoxDiskpart.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -744,7 +744,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;checkBoxDiskpart.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="checkBoxSan_policy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -780,7 +780,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;checkBoxSan_policy.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="checkBoxNoDefaultLetter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -816,7 +816,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;checkBoxNoDefaultLetter.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="checkBoxDisWinre.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -890,45 +890,6 @@
   <data name="&gt;&gt;checkBoxDonet.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="radiobtnVhd.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radiobtnVhd.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="radiobtnVhd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei, 9pt</value>
-  </data>
-  <data name="radiobtnVhd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 14</value>
-  </data>
-  <data name="radiobtnVhd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 2</value>
-  </data>
-  <data name="radiobtnVhd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 43</value>
-  </data>
-  <data name="radiobtnVhd.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="radiobtnVhd.Text" xml:space="preserve">
-    <value>VHD</value>
-  </data>
-  <data name="radiobtnVhd.ToolTip" xml:space="preserve">
-    <value>VHD(X)模式制作成功率较低，不推荐使用。</value>
-  </data>
-  <data name="&gt;&gt;radiobtnVhd.Name" xml:space="preserve">
-    <value>radiobtnVhd</value>
-  </data>
-  <data name="&gt;&gt;radiobtnVhd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radiobtnVhd.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;radiobtnVhd.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="radiobtnLegacy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -963,7 +924,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;radiobtnLegacy.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="radiobtnVhdx.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -975,19 +936,19 @@
     <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="radiobtnVhdx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 14</value>
+    <value>280, 10</value>
   </data>
   <data name="radiobtnVhdx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 2</value>
   </data>
   <data name="radiobtnVhdx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 43</value>
+    <value>174, 43</value>
   </data>
   <data name="radiobtnVhdx.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="radiobtnVhdx.Text" xml:space="preserve">
-    <value>VHDX</value>
+    <value>虚拟硬盘</value>
   </data>
   <data name="radiobtnVhdx.ToolTip" xml:space="preserve">
     <value>VHD(X)模式制作成功率较低，不推荐使用。</value>
@@ -1014,7 +975,7 @@
     <value>2, 2, 0, 2</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1756, 49</value>
+    <value>1756, 60</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -1035,55 +996,55 @@
     <value>13</value>
   </data>
   <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 45</value>
+    <value>106, 56</value>
   </data>
   <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="打开程序运行目录ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 46</value>
+    <value>408, 54</value>
   </data>
   <data name="打开程序运行目录ToolStripMenuItem1.Text" xml:space="preserve">
     <value>打开运行目录</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 46</value>
+    <value>408, 54</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>打开日志文件夹</value>
   </data>
   <data name="退出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 46</value>
+    <value>408, 54</value>
   </data>
   <data name="退出ToolStripMenuItem.Text" xml:space="preserve">
     <value>退出</value>
   </data>
   <data name="工具ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 45</value>
+    <value>106, 56</value>
   </data>
   <data name="工具ToolStripMenuItem.Text" xml:space="preserve">
     <value>工具</value>
   </data>
   <data name="自动检查更新ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 46</value>
+    <value>421, 54</value>
   </data>
   <data name="自动检查更新ToolStripMenuItem.Text" xml:space="preserve">
     <value>检查更新</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 46</value>
+    <value>421, 54</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
     <value>自动检查更新</value>
   </data>
   <data name="diskpart重新分区ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 46</value>
+    <value>421, 54</value>
   </data>
   <data name="diskpart重新分区ToolStripMenuItem1.Text" xml:space="preserve">
     <value>Diskpart重新分区</value>
   </data>
   <data name="wIN7TOGOToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 46</value>
+    <value>421, 54</value>
   </data>
   <data name="wIN7TOGOToolStripMenuItem.Text" xml:space="preserve">
     <value>强制WIN7 TO GO</value>
@@ -1092,79 +1053,79 @@
     <value>False</value>
   </data>
   <data name="bOOTICEToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 46</value>
+    <value>421, 54</value>
   </data>
   <data name="bOOTICEToolStripMenuItem.Text" xml:space="preserve">
     <value>启动BOOTICE</value>
   </data>
   <data name="修复盘符ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 46</value>
+    <value>421, 54</value>
   </data>
   <data name="修复盘符ToolStripMenuItem.Text" xml:space="preserve">
     <value>修复盘符</value>
   </data>
   <data name="克隆本机系统ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 46</value>
+    <value>421, 54</value>
   </data>
   <data name="克隆本机系统ToolStripMenuItem.Text" xml:space="preserve">
     <value>克隆本机系统</value>
   </data>
   <data name="保存当前设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 46</value>
+    <value>421, 54</value>
   </data>
   <data name="保存当前设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>保存当前设置</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 45</value>
+    <value>254, 56</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
     <value>语言(Language)</value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 46</value>
+    <value>312, 54</value>
   </data>
   <data name="englishToolStripMenuItem.Text" xml:space="preserve">
     <value>English</value>
   </data>
   <data name="chineseSimpleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 46</value>
+    <value>312, 54</value>
   </data>
   <data name="chineseSimpleToolStripMenuItem.Text" xml:space="preserve">
     <value>简体中文</value>
   </data>
   <data name="繁体中文ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 46</value>
+    <value>312, 54</value>
   </data>
   <data name="繁体中文ToolStripMenuItem.Text" xml:space="preserve">
     <value>繁體中文</value>
   </data>
   <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 45</value>
+    <value>106, 56</value>
   </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助</value>
   </data>
   <data name="在线帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 46</value>
+    <value>312, 54</value>
   </data>
   <data name="在线帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>在线教程</value>
   </data>
   <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 46</value>
+    <value>312, 54</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
     <value>常见问题</value>
   </data>
   <data name="官方论坛ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 46</value>
+    <value>312, 54</value>
   </data>
   <data name="官方论坛ToolStripMenuItem.Text" xml:space="preserve">
     <value>官方论坛</value>
   </data>
   <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 46</value>
+    <value>312, 54</value>
   </data>
   <data name="关于ToolStripMenuItem.Text" xml:space="preserve">
     <value>关于</value>
@@ -1297,321 +1258,6 @@
     <value>tabControlSystem</value>
   </data>
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblVhdPartitionTableType.Name" xml:space="preserve">
-    <value>lblVhdPartitionTableType</value>
-  </data>
-  <data name="&gt;&gt;lblVhdPartitionTableType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblVhdPartitionTableType.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;lblVhdPartitionTableType.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;comboBoxVhdPartitionType.Name" xml:space="preserve">
-    <value>comboBoxVhdPartitionType</value>
-  </data>
-  <data name="&gt;&gt;comboBoxVhdPartitionType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxVhdPartitionType.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;comboBoxVhdPartitionType.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGb.Name" xml:space="preserve">
-    <value>comboBoxGb</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGb.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGb.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtVhdNameWithoutExt.Name" xml:space="preserve">
-    <value>txtVhdNameWithoutExt</value>
-  </data>
-  <data name="&gt;&gt;txtVhdNameWithoutExt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtVhdNameWithoutExt.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;txtVhdNameWithoutExt.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblVhdSize.Name" xml:space="preserve">
-    <value>lblVhdSize</value>
-  </data>
-  <data name="&gt;&gt;lblVhdSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblVhdSize.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;lblVhdSize.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblVhdName.Name" xml:space="preserve">
-    <value>lblVhdName</value>
-  </data>
-  <data name="&gt;&gt;lblVhdName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblVhdName.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;lblVhdName.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown1.Name" xml:space="preserve">
-    <value>numericUpDown1</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown1.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="tabPage5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 110</value>
-  </data>
-  <data name="tabPage5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tabPage5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>608, 374</value>
-  </data>
-  <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tabPage5.Text" xml:space="preserve">
-    <value>VHD(X)</value>
-  </data>
-  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;tabPage5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
-    <value>tabControlSystem</value>
-  </data>
-  <data name="&gt;&gt;tabPage5.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelPartition1.Name" xml:space="preserve">
-    <value>labelPartition1</value>
-  </data>
-  <data name="&gt;&gt;labelPartition1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelPartition1.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;labelPartition1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;linklblRestoreMultiPartition.Name" xml:space="preserve">
-    <value>linklblRestoreMultiPartition</value>
-  </data>
-  <data name="&gt;&gt;linklblRestoreMultiPartition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;linklblRestoreMultiPartition.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;linklblRestoreMultiPartition.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;txtEfiSize.Name" xml:space="preserve">
-    <value>txtEfiSize</value>
-  </data>
-  <data name="&gt;&gt;txtEfiSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtEfiSize.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;txtEfiSize.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize1.Name" xml:space="preserve">
-    <value>txtPartitionSize1</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize1.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize1.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize2.Name" xml:space="preserve">
-    <value>txtPartitionSize2</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize2.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize2.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize3.Name" xml:space="preserve">
-    <value>txtPartitionSize3</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize3.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;txtPartitionSize3.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 110</value>
-  </data>
-  <data name="tabPage3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>8, 8, 8, 8</value>
-  </data>
-  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>608, 374</value>
-  </data>
-  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>分区</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
-    <value>tabControlSystem</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControlSystem.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlSystem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 42</value>
-  </data>
-  <data name="tabControlSystem.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tabControlSystem.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabControlSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>628, 494</value>
-  </data>
-  <data name="tabControlSystem.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="&gt;&gt;tabControlSystem.Name" xml:space="preserve">
-    <value>tabControlSystem</value>
-  </data>
-  <data name="&gt;&gt;tabControlSystem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControlSystem.Parent" xml:space="preserve">
-    <value>groupBoxadv</value>
-  </data>
-  <data name="&gt;&gt;tabControlSystem.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="lblVhdPartitionTableType.AutoSize" type="System.Boolean, mscorlib">
@@ -1836,6 +1482,36 @@
   </data>
   <data name="&gt;&gt;numericUpDown1.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="tabPage5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 60</value>
+  </data>
+  <data name="tabPage5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabPage5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>608, 424</value>
+  </data>
+  <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabPage5.Text" xml:space="preserve">
+    <value>虚拟硬盘</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
+    <value>tabControlSystem</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2206,6 +1882,63 @@
   </data>
   <data name="&gt;&gt;txtPartitionSize3.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 60</value>
+  </data>
+  <data name="tabPage3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
+  </data>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>608, 424</value>
+  </data>
+  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>分区</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
+    <value>tabControlSystem</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControlSystem.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlSystem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 42</value>
+  </data>
+  <data name="tabControlSystem.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tabControlSystem.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControlSystem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>628, 494</value>
+  </data>
+  <data name="tabControlSystem.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="&gt;&gt;tabControlSystem.Name" xml:space="preserve">
+    <value>tabControlSystem</value>
+  </data>
+  <data name="&gt;&gt;tabControlSystem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlSystem.Parent" xml:space="preserve">
+    <value>groupBoxadv</value>
+  </data>
+  <data name="&gt;&gt;tabControlSystem.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="comboBoxParts.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 392</value>

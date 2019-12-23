@@ -259,7 +259,7 @@ namespace iTuner
                     disk.Model = drive["Model"].ToString();
                     disk.Index = drive["Index"].ToString();
                     disk.DiskSize = (ulong)drive["Size"];
-                    disk.DriveType = (drive["MediaType"].ToString() == "External hard disk media") ? "本地磁盘" : "可移动磁盘";
+                    disk.DriveType = (drive["MediaType"].ToString() == "External hard disk media") ? "可移动磁盘" : "本地磁盘";
                     disk.Size = (ulong)drive["Size"];
                     bool hasAdded = false;
                     // associate physical disks with partitions

@@ -104,9 +104,10 @@ namespace wintogo
 
                 writeSw.Restart();
 
-                if (WTGModel.UdObj.Volume == String.Empty)
+                if (WTGModel.UdObj.Volume == string.Empty)
                 {
-                    DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index);
+                    DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index, WTGModel.ud.Substring(0, 1));
+                    WTGModel.UdObj.SetVolume(WTGModel.ud.Substring(0, 1));
                 }
                 if (WTGModel.isUefiGpt)
                 {
@@ -129,7 +130,7 @@ namespace wintogo
                     //MsgManager.getResString("Msg_UefiFormatWarning")
                     //您所选择的是UEFI模式，此模式将会格式化您的整个移动磁盘！\n注意是整个磁盘！！！\n程序将会删除所有优盘分区！
 
-                    DiskOperation.DiskPartGPTAndUEFI(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
+                    DiskOperation.DiskPartGPTAndUEFI(WTGModel.efiPartitionSize.ToString(), WTGModel.UdObj, WTGModel.partitionSize);
 
                     if (WTGModel.CheckedMode == ApplyMode.Legacy)
                     {
@@ -162,7 +163,8 @@ namespace wintogo
                     {
                         Console.WriteLine("Retry-partition");
                         Thread.Sleep(1800);
-                        DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index);
+                        DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index,WTGModel.ud.Substring(0,1));
+                        WTGModel.UdObj.SetVolume(WTGModel.ud.Substring(0, 1));
 
                         DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
                     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTuner;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -39,14 +40,23 @@ namespace wintogo
         /// <param name="efiSize"></param>
         /// <param name="uDisk"></param>
         /// <returns>return WTGOperation.diskpartscriptpath + "\\uefi.txt";</returns>
-        public static void DiskPartGPTAndUEFI(string efiSize, string uDisk, string[] partitionSize)
+        public static void DiskPartGPTAndUEFI(string efiSize, UsbDisk uDisk, string[] partitionSize)
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("select volume " + uDisk.Substring(0, 1));
+            sb.AppendLine("select disk " + uDisk.Index);
             sb.AppendLine("clean");
-            sb.AppendLine("convert gpt");
-            sb.AppendLine("create partition efi size " + efiSize);
+            sb.AppendLine("convert gpt NOERR");
+            //Removable device cannot create MSR partition automatically.
+            //EFI partition can not be formatted in Removable device, as a BUG of MS.
+            if (uDisk.DriveType.Contains("Removable"))
+            {
+                sb.AppendLine("create partition primary size " + efiSize);
+            }
+            else
+            {
+                sb.AppendLine("create partition efi size " + efiSize);
+            }
 
 
             List<string> partitionList = new List<string>();
@@ -67,13 +77,27 @@ namespace wintogo
             }
 
             sb.AppendLine("create partition primary");
-
-            sb.AppendLine("select partition 2");
+            if (uDisk.DriveType.Contains("Removable"))
+            {
+                sb.AppendLine("select partition 1");
+                sb.AppendLine("remove NOERR");
+            }
+            else
+            {
+                sb.AppendLine("select partition 2");
+            }
             sb.AppendLine("format fs=fat32 quick");
             sb.AppendLine("assign letter=x");
-            sb.AppendLine("select partition 3");
+
+            if (uDisk.DriveType.Contains("Removable"))
+            {
+                sb.AppendLine("select partition 2");
+            }
+            else {
+                sb.AppendLine("select partition 3");
+            }
             sb.AppendLine("format fs=ntfs quick");
-            sb.AppendLine("assign letter=" + uDisk.Substring(0, 1));
+            sb.AppendLine("assign letter=" + uDisk.Volume);
             for (int i = 0; i < partitionList.Count - 1; i++)
             {
                 sb.AppendLine("select partition " + (i + 4).ToString());
@@ -147,7 +171,7 @@ namespace wintogo
             dsm.RunDiskpartScript();
         }
 
-        internal static void AssignDriveLetter(string index)
+        internal static void AssignDriveLetter(string index, string letter)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("select disk " + index);
@@ -157,7 +181,7 @@ namespace wintogo
             sb.AppendLine("select partition 1");
             sb.AppendLine("format fs=ntfs quick");
             sb.AppendLine("active");
-            sb.AppendLine("assign letter=" + WTGModel.ud.Substring(0, 1));
+            sb.AppendLine("assign letter=" + letter);
             sb.AppendLine("exit");
             DiskpartScriptManager dsm = new DiskpartScriptManager();
             dsm.Args = sb.ToString();

@@ -677,7 +677,8 @@ namespace wintogo
             WTGModel.disableWinRe = checkBoxDisWinre.Checked;
             WTGModel.disableUasp = checkBoxDisUasp.Checked;
             WTGModel.efiPartitionSize = txtEfiSize.Text;
-            WTGModel.vhdPartitionType = comboBoxVhdPartitionType.SelectedText;
+            //MessageBox.Show(comboBoxVhdPartitionType.SelectedIndex.ToString());
+            WTGModel.vhdPartitionType = comboBoxVhdPartitionType.SelectedIndex;
             //WTGModel.vhdTempPath = txtVhdTempPath.Text;
             WTGModel.partitionSize = new string[3];
             WTGModel.partitionSize[0] = txtPartitionSize1.Text;
@@ -1024,28 +1025,36 @@ namespace wintogo
                 txtPartitionSize3.Text = "0";
 
 
+
                 if (radiobtnVhdx.Checked)
                 {
                     trackBar1.Enabled = true;
                 }
-
-                if (!WTGModel.UdObj.DriveType.Contains("Removable Disk"))
+                if (WTGModel.UdObj.DriveType.Contains("Removable"))
                 {
-                    txtPartitionSize3.Enabled = true;
-                    txtPartitionSize2.Enabled = true;
-                    txtPartitionSize1.Enabled = true;
-                    if (checkBoxUefimbr.Enabled)
-                    {
-                        checkBoxUefimbr.Checked = true;
-                    }
+                    checkBoxUefimbr.Checked = true;
+                }
+                txtPartitionSize3.Enabled = true;
+                txtPartitionSize2.Enabled = true;
+                txtPartitionSize1.Enabled = true;
 
-                }
-                else
-                {
-                    txtPartitionSize3.Enabled = false;
-                    txtPartitionSize2.Enabled = false;
-                    txtPartitionSize1.Enabled = false;
-                }
+                //if (!WTGModel.UdObj.DriveType.Contains("Removable Disk"))
+                //{
+                //    txtPartitionSize3.Enabled = true;
+                //    txtPartitionSize2.Enabled = true;
+                //    txtPartitionSize1.Enabled = true;
+                //    if (checkBoxUefimbr.Enabled)
+                //    {
+                //        checkBoxUefimbr.Checked = true;
+                //    }
+
+                //}
+                //else
+                //{
+                //    txtPartitionSize3.Enabled = false;
+                //    txtPartitionSize2.Enabled = false;
+                //    txtPartitionSize1.Enabled = false;
+                //}
 
                 if (WTGModel.UdObj.DiskSize == 0)
                 {

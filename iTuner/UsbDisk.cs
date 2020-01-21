@@ -160,6 +160,10 @@ namespace iTuner
                 return builder.ToString();
             }
         }
+        public void SetVolume(string volume)
+        {
+            Volume = volume;
+        }
 
 
         private string FormatByteCount(ulong bytes)

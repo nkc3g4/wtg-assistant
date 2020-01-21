@@ -192,7 +192,7 @@ namespace wintogo
                 sb.AppendLine("create vdisk file=\"" + this.VhdPath + "\" type=" + this.VhdType + " maximum=" + this.VhdSize);
                 sb.AppendLine("select vdisk file=\"" + this.VhdPath + "\"");
                 sb.AppendLine("attach vdisk");
-                if (WTGModel.vhdPartitionType == "GPT")
+                if (WTGModel.vhdPartitionType == 1)
                 {
                     sb.AppendLine("convert gpt");
                 }

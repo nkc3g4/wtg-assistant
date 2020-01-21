@@ -14,7 +14,7 @@ namespace wintogo
         {
             Thread.CurrentThread.CurrentUICulture = MsgManager.ci;
             InitializeComponent();
-            lblTime.Text = ts.ToString();
+            lblTime.Text = ts.ToString(@"hh\:mm\:ss");
         }
 
         private void button2_Click(object sender, EventArgs e)

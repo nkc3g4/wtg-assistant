@@ -273,6 +273,8 @@
             // checkBoxUefigpt
             // 
             resources.ApplyResources(this.checkBoxUefigpt, "checkBoxUefigpt");
+            this.checkBoxUefigpt.Checked = true;
+            this.checkBoxUefigpt.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxUefigpt.Name = "checkBoxUefigpt";
             this.toolTip1.SetToolTip(this.checkBoxUefigpt, resources.GetString("checkBoxUefigpt.ToolTip"));
             this.checkBoxUefigpt.UseVisualStyleBackColor = true;

@@ -259,7 +259,9 @@ namespace iTuner
                     disk.Model = drive["Model"].ToString();
                     disk.Index = drive["Index"].ToString();
                     disk.DiskSize = (ulong)drive["Size"];
-                    disk.DriveType = (drive["MediaType"].ToString() == "External hard disk media") ? "可移动磁盘" : "本地磁盘";
+                    //MessageBox.Show(drive["MediaType"].ToString() + " " + drive["InterfaceType"].ToString());
+                    //disk.DriveType = (drive["MediaType"].ToString() .Contains("Removable")) ? "可移动磁盘" : "本地磁盘";
+                    disk.DriveType = drive["MediaType"].ToString();
                     disk.Size = (ulong)drive["Size"];
                     bool hasAdded = false;
                     // associate physical disks with partitions
@@ -299,7 +301,7 @@ namespace iTuner
                         }
                         catch (Exception ex)
                         {
-                            disks.Add(new UsbDisk(ex.ToString()));
+                            //disks.Add(new UsbDisk(ex.ToString()));
                         }
                     }
                     if (!hasAdded) disks.Add(disk);

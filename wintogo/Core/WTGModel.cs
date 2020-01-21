@@ -21,7 +21,8 @@ namespace wintogo
         //public static string imageIndex;
         public static bool fixLetter = true;
         public static string vhdNameWithoutExt;
-        public static string vhdPartitionType;
+        //0=MBR 1=GPT
+        public static int vhdPartitionType;
         public static string efiPartitionSize;
         public static UsbDisk UdObj;
         /// <summary>

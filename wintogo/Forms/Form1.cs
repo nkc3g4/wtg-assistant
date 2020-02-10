@@ -1392,7 +1392,10 @@ namespace wintogo
                     }
                     if (!mount_successfully)
                     {
-                        MessageBox.Show("虚拟光驱加载失败，请手动加载，之后选择install.wim");
+                        //请选择install.wim
+                        MessageBox.Show(MsgManager.GetResString("Msg_ImageError", MsgManager.ci));
+                        txtwim.Text = string.Empty;
+                        WTGModel.imageFilePath = string.Empty;
                         return;
                     }
                     else

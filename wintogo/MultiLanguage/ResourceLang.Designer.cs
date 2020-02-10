@@ -277,6 +277,15 @@ namespace wintogo.MultiLanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 虚拟光驱加载失败，请手动加载，之后选择install.wim.
+        /// </summary>
+        public static string Msg_ImageError {
+            get {
+                return ResourceManager.GetString("Msg_ImageError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 此类优盘使用传统模式可能无法启动，确认继续？.
         /// </summary>
         public static string Msg_Legacywarning {

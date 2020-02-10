@@ -276,4 +276,7 @@
   <data name="Msg_VHDXWarning" xml:space="preserve">
     <value>虚拟硬盘模式制作成功率较低，启动兼容性较差，不推荐使用。\n是否继续选择？</value>
   </data>
+  <data name="Msg_ImageError" xml:space="preserve">
+    <value>虚拟光驱加载失败，请手动加载，之后选择install.wim</value>
+  </data>
 </root>

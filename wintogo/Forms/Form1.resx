@@ -990,31 +990,31 @@
     <value>退出</value>
   </data>
   <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 45</value>
+    <value>106, 48</value>
   </data>
   <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="自动检查更新ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 54</value>
+    <value>663, 54</value>
   </data>
   <data name="自动检查更新ToolStripMenuItem.Text" xml:space="preserve">
     <value>检查更新</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 54</value>
+    <value>663, 54</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
     <value>自动检查更新</value>
   </data>
   <data name="diskpart重新分区ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 54</value>
+    <value>663, 54</value>
   </data>
   <data name="diskpart重新分区ToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Diskpart重新分区</value>
+    <value>Diskpart重新分区(还原单分区磁盘)</value>
   </data>
   <data name="wIN7TOGOToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 54</value>
+    <value>663, 54</value>
   </data>
   <data name="wIN7TOGOToolStripMenuItem.Text" xml:space="preserve">
     <value>强制WIN7 TO GO</value>
@@ -1023,31 +1023,34 @@
     <value>False</value>
   </data>
   <data name="bOOTICEToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 54</value>
+    <value>663, 54</value>
   </data>
   <data name="bOOTICEToolStripMenuItem.Text" xml:space="preserve">
     <value>启动BOOTICE</value>
   </data>
   <data name="修复盘符ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 54</value>
+    <value>663, 54</value>
   </data>
   <data name="修复盘符ToolStripMenuItem.Text" xml:space="preserve">
     <value>修复盘符</value>
   </data>
+  <data name="修复盘符ToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="克隆本机系统ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 54</value>
+    <value>663, 54</value>
   </data>
   <data name="克隆本机系统ToolStripMenuItem.Text" xml:space="preserve">
     <value>克隆本机系统</value>
   </data>
   <data name="保存当前设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 54</value>
+    <value>663, 54</value>
   </data>
   <data name="保存当前设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>保存当前设置</value>
   </data>
   <data name="工具ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 45</value>
+    <value>106, 48</value>
   </data>
   <data name="工具ToolStripMenuItem.Text" xml:space="preserve">
     <value>工具</value>
@@ -1071,7 +1074,7 @@
     <value>繁體中文</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 45</value>
+    <value>254, 48</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
     <value>语言(Language)</value>
@@ -1101,7 +1104,7 @@
     <value>关于</value>
   </data>
   <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 45</value>
+    <value>106, 48</value>
   </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助</value>
@@ -1113,7 +1116,7 @@
     <value>2, 2, 0, 2</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1756, 49</value>
+    <value>1756, 52</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>

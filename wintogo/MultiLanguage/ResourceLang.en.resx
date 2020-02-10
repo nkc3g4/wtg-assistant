@@ -267,4 +267,7 @@
   <data name="Msg_VHDXWarning" xml:space="preserve">
     <value>VHD, VHDX mode is NOT recommended for its poor compatibility. Continue?</value>
   </data>
+  <data name="Msg_ImageError" xml:space="preserve">
+    <value>ImageError! Please select install.wim.</value>
+  </data>
 </root>

@@ -203,7 +203,7 @@ namespace wintogo
                 throw new Exception(MsgManager.GetResString("Msg_bootmgrError", MsgManager.ci));
             }
 
-            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
+            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe,WTGModel.skipOOBE, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, @"X:\", FirmwareType.UEFI);
             BootFileOperation.BcdeditFixBootFileTypical(@"X:\", WTGModel.ud, FirmwareType.UEFI);
             RemoveLetterX();
@@ -302,7 +302,7 @@ namespace wintogo
             }
             if (WTGModel.win7togo == 0)
             {
-                ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
+                ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.skipOOBE, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             }
 
             if (WTGModel.isUserSetEfiPartition && Directory.Exists(WTGModel.efiPartition))
@@ -430,7 +430,7 @@ namespace wintogo
                 throw new Exception(MsgManager.GetResString("Msg_bootmgrError", MsgManager.ci));
             }
             //安装EXTRA
-            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
+            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.skipOOBE, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             //BCDBOOT WRITE BOOT FILE  
             BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, @"X:\", FirmwareType.ALL);
             //BootFileOperation.BcdbootWriteALLBootFileToXAndAct(WTGOperation.bcdbootFileName, WTGOperation.ud);

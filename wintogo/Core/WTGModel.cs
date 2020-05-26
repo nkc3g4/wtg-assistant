@@ -85,6 +85,7 @@ namespace wintogo
         public static bool isLegacyUdiskUefi;
         //public static bool isBlockLocalDisk;
         public static bool ntfsUefiSupport;
+        public static bool skipOOBE;
         /// <summary>
         ///  WTGOperation.filetype = Path.GetExtension(openFileDialog1.FileName.ToLower()).Substring(1);
         /// </summary>

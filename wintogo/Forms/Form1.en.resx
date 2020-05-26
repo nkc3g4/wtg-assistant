@@ -122,7 +122,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblWim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 24</value>
+    <value>596, 44</value>
   </data>
   <data name="lblWim.Text" xml:space="preserve">
     <value>Click here to select the install.wim </value>
@@ -131,27 +131,21 @@
     <value>Our Website</value>
   </data>
   <data name="linklblVisit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+    <value>84, 39</value>
   </data>
   <data name="linklblVisit.Text" xml:space="preserve">
     <value>Help</value>
   </data>
   <data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 60</value>
+    <value>669, 117</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Running Windows from an external USB drive
 with Windows To Go
 Choose install.wim or VHD file.</value>
   </data>
-  <data name="checkBoxSan_policy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 24</value>
-  </data>
-  <data name="checkBoxSan_policy.Text" xml:space="preserve">
-    <value>Hide Lcl Disk</value>
-  </data>
   <data name="checkBoxFixed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 24</value>
+    <value>130, 43</value>
   </data>
   <data name="checkBoxFixed.Text" xml:space="preserve">
     <value>Fixed</value>
@@ -159,306 +153,254 @@ Choose install.wim or VHD file.</value>
   <data name="checkBoxBitlocker.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="checkBoxDisUasp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 43</value>
+  </data>
   <data name="checkBoxDisUasp.Text" xml:space="preserve">
     <value>Dis. UASP</value>
   </data>
-  <data name="checkBoxNotemp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 24</value>
-  </data>
-  <data name="checkBoxNotemp.Text" xml:space="preserve">
-    <value>NoTemp</value>
-  </data>
-  <data name="radiobtnLegacy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 24</value>
-  </data>
-  <data name="radiobtnLegacy.Text" xml:space="preserve">
-    <value>Typical</value>
-  </data>
-  <data name="checkBoxNoDefaultLetter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 24</value>
-  </data>
-  <data name="checkBoxNoDefaultLetter.Text" xml:space="preserve">
-    <value>NoDef.Let.</value>
-  </data>
-  <data name="checkBoxFixLetter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 24</value>
-  </data>
-  <data name="checkBoxFixLetter.Text" xml:space="preserve">
-    <value>Fix Letter</value>
-  </data>
-  <data name="checkBoxDoNotFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 24</value>
-  </data>
-  <data name="checkBoxDoNotFormat.Text" xml:space="preserve">
-    <value>DoNotFormat</value>
-  </data>
   <data name="checkBoxDiskpart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 24</value>
+    <value>213, 43</value>
   </data>
   <data name="checkBoxDiskpart.Text" xml:space="preserve">
     <value>RePartition</value>
   </data>
-  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 24</value>
+  <data name="checkBoxSan_policy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 43</value>
   </data>
-  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
+  <data name="checkBoxSan_policy.Text" xml:space="preserve">
+    <value>Hide Lcl Disk</value>
+  </data>
+  <data name="checkBoxNoDefaultLetter.Text" xml:space="preserve">
+    <value>NoDef.Let.</value>
+  </data>
+  <data name="checkBoxDisWinre.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 43</value>
+  </data>
+  <data name="checkBoxDisWinre.Text" xml:space="preserve">
+    <value>Dis Winre</value>
+  </data>
+  <data name="radiobtnLegacy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 43</value>
+  </data>
+  <data name="radiobtnLegacy.Text" xml:space="preserve">
+    <value>Typical</value>
+  </data>
+  <data name="radiobtnVhdx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 43</value>
+  </data>
+  <data name="radiobtnVhdx.Text" xml:space="preserve">
+    <value>VHD/VHDX</value>
+  </data>
+  <data name="checkBoxOOBE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 43</value>
+  </data>
+  <data name="checkBoxOOBE.Text" xml:space="preserve">
+    <value>Skip OOBE</value>
   </data>
   <data name="打开程序运行目录ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>427, 54</value>
   </data>
   <data name="打开程序运行目录ToolStripMenuItem1.Text" xml:space="preserve">
     <value>Open Startup Path</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>427, 54</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Open Logs Folder</value>
   </data>
   <data name="退出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>427, 54</value>
   </data>
   <data name="退出ToolStripMenuItem.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="工具ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
+  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 45</value>
   </data>
-  <data name="工具ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Tools</value>
+  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
   </data>
   <data name="自动检查更新ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>530, 54</value>
   </data>
   <data name="自动检查更新ToolStripMenuItem.Text" xml:space="preserve">
     <value>Check Updates</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>530, 54</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
     <value>Check Updates on Startup</value>
   </data>
   <data name="diskpart重新分区ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>530, 54</value>
   </data>
   <data name="diskpart重新分区ToolStripMenuItem1.Text" xml:space="preserve">
     <value>Re-partition with Diskpart</value>
   </data>
   <data name="wIN7TOGOToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>530, 54</value>
   </data>
   <data name="wIN7TOGOToolStripMenuItem.Text" xml:space="preserve">
     <value>Force WIN7 TO GO</value>
   </data>
   <data name="bOOTICEToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>530, 54</value>
   </data>
   <data name="bOOTICEToolStripMenuItem.Text" xml:space="preserve">
     <value>Start BOOTICE</value>
   </data>
   <data name="修复盘符ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>530, 54</value>
   </data>
   <data name="修复盘符ToolStripMenuItem.Text" xml:space="preserve">
     <value>FixLetter</value>
   </data>
   <data name="克隆本机系统ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>530, 54</value>
   </data>
   <data name="克隆本机系统ToolStripMenuItem.Text" xml:space="preserve">
     <value>Clone Current OS</value>
   </data>
   <data name="保存当前设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>530, 54</value>
   </data>
   <data name="保存当前设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>Save Current Profile</value>
   </data>
+  <data name="工具ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 45</value>
+  </data>
+  <data name="工具ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tools</value>
+  </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 24</value>
+    <value>172, 45</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="chineseSimpleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="繁体中文ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
   <data name="在线帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>472, 54</value>
   </data>
   <data name="在线帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>Online Help(Chinese)</value>
   </data>
   <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>472, 54</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
     <value>FAQ(Chinese)</value>
   </data>
   <data name="官方论坛ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>472, 54</value>
   </data>
   <data name="官方论坛ToolStripMenuItem.Text" xml:space="preserve">
     <value>Our Website(Chinese)</value>
   </data>
   <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>472, 54</value>
   </data>
   <data name="关于ToolStripMenuItem.Text" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 45</value>
+  </data>
+  <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
   <data name="labelDisFunc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 40</value>
+    <value>222, 78</value>
   </data>
   <data name="labelDisFunc.Text" xml:space="preserve">
     <value>Some features
 need Win10.
 </value>
   </data>
+  <data name="checkBoxNoFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 43</value>
+  </data>
+  <data name="checkBoxNoFormat.Text" xml:space="preserve">
+    <value>No Format</value>
+  </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Com.</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 20</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Ver.</value>
-  </data>
-  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 172</value>
-  </data>
-  <data name="lblVhdTempPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 20</value>
-  </data>
-  <data name="lblVhdTempPath.Text" xml:space="preserve">
-    <value>VHD Temp Folder</value>
-  </data>
   <data name="lblVhdPartitionTableType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 20</value>
+    <value>400, 39</value>
   </data>
   <data name="lblVhdPartitionTableType.Text" xml:space="preserve">
     <value>VHD partition table format</value>
   </data>
   <data name="lblVhdSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 40</value>
+    <value>149, 78</value>
   </data>
   <data name="lblVhdSize.Text" xml:space="preserve">
     <value>VHD Size
 (0=Auto)</value>
   </data>
   <data name="lblVhdName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 20</value>
+    <value>178, 39</value>
   </data>
   <data name="lblVhdName.Text" xml:space="preserve">
     <value>VHD Name</value>
   </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 172</value>
-  </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Sys.</value>
-  </data>
-  <data name="linkLabelRestoreSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 20</value>
-  </data>
-  <data name="linkLabelRestoreSystem.Text" xml:space="preserve">
-    <value>Restore to Default</value>
-  </data>
-  <data name="checkBoxDisWinre.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 24</value>
-  </data>
-  <data name="checkBoxDisWinre.Text" xml:space="preserve">
-    <value>Dis Winre</value>
-  </data>
-  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 172</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Part.</value>
+  <data name="tabPage5.Text" xml:space="preserve">
+    <value>VHD/VHDX</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei, 8.1pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 278</value>
+    <value>18, 334</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 20</value>
+    <value>585, 36</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>The sys'll be ins. to the first !0 part.</value>
+    <value>The sys'll be ins. to the first non 0 size part.</value>
   </data>
   <data name="labelPartition1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 20</value>
+    <value>35, 39</value>
   </data>
   <data name="labelPartition1.Text" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 20</value>
+    <value>213, 39</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Multipartition</value>
   </data>
   <data name="linklblRestoreMultiPartition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 20</value>
+    <value>278, 39</value>
   </data>
   <data name="linklblRestoreMultiPartition.Text" xml:space="preserve">
     <value>Restore to Default</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 20</value>
+    <value>68, 39</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>EFI </value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 20</value>
+    <value>35, 39</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 20</value>
+    <value>35, 39</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 172</value>
-  </data>
-  <data name="tabPage4.Text" xml:space="preserve">
-    <value>Disk</value>
-  </data>
-  <data name="checkBoxEfiPartition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 24</value>
-  </data>
-  <data name="checkBoxEfiPartition.Text" xml:space="preserve">
-    <value>EFI Part.</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 40</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>the EFI partition will 
-NOT be formatted</value>
-  </data>
-  <data name="linklblTabPage4Resotre.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 20</value>
-  </data>
-  <data name="linklblTabPage4Resotre.Text" xml:space="preserve">
-    <value>Restore to Default</value>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Part.</value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -892,12 +834,6 @@ NOT be formatted</value>
   </data>
   <data name="groupBoxadv.Text" xml:space="preserve">
     <value>Advance</value>
-  </data>
-  <data name="buttonBenchmark.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 50</value>
-  </data>
-  <data name="buttonBenchmark.Text" xml:space="preserve">
-    <value>Benchmark</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>WTG Assistant</value>

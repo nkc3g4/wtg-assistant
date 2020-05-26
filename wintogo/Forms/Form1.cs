@@ -688,6 +688,7 @@ namespace wintogo
             WTGModel.wimPart = comboBoxParts.SelectedIndex.ToString();
             //WTGModel.isUserSetEfiPartition = checkBoxEfiPartition.Checked;
             //WTGModel.efiPartition = textBoxEfiPartition.Text;
+            WTGModel.skipOOBE = checkBoxOOBE.Checked;
 
             if (radiobtnVhdx.Checked)
             {
@@ -1648,6 +1649,11 @@ namespace wintogo
                 MessageBox.Show(MsgManager.GetResString("Msg_SelectBothNoformatAndRepartition", MsgManager.ci), MsgManager.GetResString("Msg_warning", MsgManager.ci), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 checkBoxNoFormat.Checked = false;
             }
+        }
+
+        private void linkLabel3_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

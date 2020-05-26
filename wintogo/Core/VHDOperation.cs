@@ -237,7 +237,7 @@ namespace wintogo
         }
         public void VHDExtra()
         {
-            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.disableUasp, @"v:\", WTGModel.imageFilePath);
+            ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.skipOOBE, WTGModel.disableUasp, @"v:\", WTGModel.imageFilePath);
             UEFIAndWin7ToGo();
         }
         public void CopyVHD()

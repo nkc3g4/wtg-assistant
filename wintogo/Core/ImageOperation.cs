@@ -73,26 +73,27 @@ namespace wintogo
         /// framework3.5，屏蔽本机硬盘，禁用WINRE
         /// </summary>
         /// <param name="framework"></param>
-        /// <param name="san_policy"></param>
-        /// <param name="diswinre"></param>
-        /// <param name="imageletter">可以是U盘盘符或V盘</param>
-        /// <param name="wimlocation">WIM文件路径</param>
-        public static void ImageExtra(bool framework, bool san_policy, bool diswinre, bool disUasp, string imageletter, string wimlocation)
+        /// <param name="sanPolicy"></param>
+        /// <param name="disWinre"></param>
+        /// <param name="skipOOBE"></param>
+        /// <param name="imageLetter">可以是U盘盘符或V盘</param>
+        /// <param name="wimLocation">WIM文件路径</param>
+        public static void ImageExtra(bool framework, bool sanPolicy, bool disWinre, bool skipOOBE, bool disUasp, string imageLetter, string wimLocation)
         {
-            AddDrivers(imageletter);
-            Solve1809(imageletter.Substring(0, 2));
-            DriveIcon(imageletter.Substring(0, 2));
+            AddDrivers(imageLetter);
+            //Solve1809(imageletter.Substring(0, 2));
+            DriveIcon(imageLetter.Substring(0, 2));
             if (disUasp)
             {
-                DisableUASP(imageletter);
+                DisableUASP(imageLetter);
             }
             if (framework)
             {
                 StringBuilder args = new StringBuilder();
                 args.Append(" /image:");
-                args.Append(imageletter.Substring(0, 2));
+                args.Append(imageLetter.Substring(0, 2));
                 args.Append(" /enable-feature /featurename:NetFX3 /source:");
-                args.Append(wimlocation.Substring(0, wimlocation.Length - 11));
+                args.Append(wimLocation.Substring(0, wimLocation.Length - 11));
                 args.Append("sxs");
                 //ProcessManager.RunDism(args.ToString());
                 try
@@ -106,18 +107,26 @@ namespace wintogo
 
 
             }
-            if (san_policy)
+            if (sanPolicy)
             {
-                ProcessManager.ECMD("dism.exe", " /image:" + imageletter.Substring(0, 2) + " /Apply-Unattend:\"" + WTGModel.applicationFilesPath + "\\san_policy.xml\"");
+                ProcessManager.ECMD("dism.exe", " /image:" + imageLetter.Substring(0, 2) + " /Apply-Unattend:\"" + WTGModel.applicationFilesPath + "\\san_policy.xml\"");
 
             }
 
-            if (diswinre)
+            if (disWinre || skipOOBE)
             {
                 //try {  }
-                if (Directory.Exists(imageletter + "Windows\\System32\\sysprep\\"))
+                if (Directory.Exists(imageLetter + "Windows\\System32\\sysprep\\"))
                 {
-                    File.Copy(WTGModel.applicationFilesPath + "\\unattend.xml", imageletter + "Windows\\System32\\sysprep\\unattend.xml");
+                    //File.Copy(WTGModel.applicationFilesPath + "\\unattend.xml", imageletter + "Windows\\System32\\sysprep\\unattend.xml");
+                    string unattendTemplete = File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_templete.xml");
+                    string unattendSettings = string.Empty;
+                    if(disWinre)
+                        unattendSettings += File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_winre.xml");
+                    if(skipOOBE)
+                        unattendSettings += File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_oobe.xml");
+
+                    File.WriteAllText(imageLetter + "Windows\\System32\\sysprep\\unattend.xml", unattendTemplete.Replace("#",unattendSettings));
                 }
             }
         }

@@ -270,4 +270,7 @@
   <data name="Msg_ImageError" xml:space="preserve">
     <value>ImageError! Please select install.wim.</value>
   </data>
+  <data name="Msg_ChooseFFU" xml:space="preserve">
+    <value>No FFU file is chosen.</value>
+  </data>
 </root>

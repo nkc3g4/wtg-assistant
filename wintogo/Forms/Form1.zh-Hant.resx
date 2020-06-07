@@ -117,26 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="comboBoxUd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnGo.Text" xml:space="preserve">
     <value>創建</value>
   </data>
-  <data name="btnGo.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="lblWim.Text" xml:space="preserve">
     <value>點此選擇ISO鏡像sources目錄下的install.wim或VHD檔案</value>
-  </data>
-  <data name="lblWim.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="contextMenuStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="linklblVisit.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
@@ -146,14 +131,8 @@
     <value>“Windows To Go”可以製作在U盤上運行的系统。
 可使用MSDN版本WIin7/8/10的install.wim、ESD或VHD檔案。</value>
   </data>
-  <data name="lblDescription.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="linkLabel2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9pt</value>
-  </data>
-  <data name="linkLabel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxBitlocker.ToolTip" xml:space="preserve">
     <value />
@@ -188,14 +167,14 @@
   <data name="radiobtnLegacy.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="radiobtnVhdx.Text" xml:space="preserve">
-    <value>虛擬硬碟</value>
-  </data>
-  <data name="radiobtnVhdx.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radiobtnVirtualDisk.Text" xml:space="preserve">
+    <value>虚拟硬碟</value>
   </data>
   <data name="checkBoxOOBE.Text" xml:space="preserve">
     <value>跳過OOBE</value>
+  </data>
+  <data name="checkBoxNoFormat.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="打开程序运行目录ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>417, 54</value>
@@ -211,6 +190,9 @@
   </data>
   <data name="退出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>417, 54</value>
+  </data>
+  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 56</value>
   </data>
   <data name="自动检查更新ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>421, 54</value>
@@ -251,8 +233,11 @@
   <data name="保存当前设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>421, 54</value>
   </data>
+  <data name="工具ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 56</value>
+  </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 45</value>
+    <value>106, 56</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
     <value>語言</value>
@@ -281,49 +266,25 @@
   <data name="关于ToolStripMenuItem.Text" xml:space="preserve">
     <value>關於</value>
   </data>
+  <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 56</value>
+  </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>幫助</value>
   </data>
-  <data name="menuStrip1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1786, 60</value>
   </data>
   <data name="labelDisFunc.Text" xml:space="preserve">
     <value>某些功能在Win10
 以下系統不可用</value>
   </data>
-  <data name="labelDisFunc.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxNoFormat.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="linkLabel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPage1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="lblVhdPartitionTableType.Text" xml:space="preserve">
     <value>VHD分區表</value>
-  </data>
-  <data name="lblVhdPartitionTableType.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBoxVhdPartitionType.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBoxGb.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtVhdNameWithoutExt.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="lblVhdSize.Text" xml:space="preserve">
     <value>虛擬硬碟大小
 (0=自動設定)</value>
-  </data>
-  <data name="lblVhdSize.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="lblVhdName.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 39</value>
@@ -331,30 +292,15 @@
   <data name="lblVhdName.Text" xml:space="preserve">
     <value>虛擬硬碟檔名</value>
   </data>
-  <data name="lblVhdName.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericUpDown1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPage5.Text" xml:space="preserve">
-    <value>虛擬硬碟</value>
-  </data>
-  <data name="tabPage5.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageVirtualDisk.Text" xml:space="preserve">
+    <value>虚拟硬碟</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>系統將裝入第一個
 容量不為0的分區</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="labelPartition1.Text" xml:space="preserve">
     <value>分區1</value>
-  </data>
-  <data name="labelPartition1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>377, 39</value>
@@ -362,59 +308,42 @@
   <data name="label6.Text" xml:space="preserve">
     <value>多分區（請先選擇随身碟）</value>
   </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="linklblRestoreMultiPartition.Text" xml:space="preserve">
     <value>恢復預設值</value>
-  </data>
-  <data name="linklblRestoreMultiPartition.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>EFI分區大小</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtEfiSize.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>分區3</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPartitionSize1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>分區2</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 39</value>
   </data>
-  <data name="txtPartitionSize2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label3.Text" xml:space="preserve">
+    <value>選擇FFU文件的位置</value>
   </data>
-  <data name="txtPartitionSize3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label2.Text" xml:space="preserve">
+    <value>使用FFU格式備份或還原整個U盤
+請先在左側選擇U盤</value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>分區</value>
+  <data name="buttonBackup.Text" xml:space="preserve">
+    <value>開始</value>
   </data>
-  <data name="tabPage3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="buttonFFUBrowse.Text" xml:space="preserve">
+    <value>瀏覽...</value>
   </data>
-  <data name="tabControlSystem.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radioButtonRestore.Text" xml:space="preserve">
+    <value>還原</value>
   </data>
-  <data name="comboBoxParts.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radioButtonBackup.Text" xml:space="preserve">
+    <value>備份</value>
+  </data>
+  <data name="tabPageBackup.Text" xml:space="preserve">
+    <value>備份還原</value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -843,28 +772,13 @@
         wzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzCMD9Fo/j8SJwY9AcoENwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnwim.Text" xml:space="preserve">
     <value>瀏覽...</value>
-  </data>
-  <data name="btnwim.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtwim.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBoxadv.Text" xml:space="preserve">
     <value>高級選項</value>
   </data>
-  <data name="groupBoxadv.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>WTG輔助工具</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

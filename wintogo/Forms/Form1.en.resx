@@ -131,10 +131,10 @@
     <value>Our Website</value>
   </data>
   <data name="linklblVisit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 39</value>
+    <value>146, 39</value>
   </data>
   <data name="linklblVisit.Text" xml:space="preserve">
-    <value>Help</value>
+    <value>Help(ZH)</value>
   </data>
   <data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
     <value>669, 117</value>
@@ -186,17 +186,23 @@ Choose install.wim or VHD file.</value>
   <data name="radiobtnLegacy.Text" xml:space="preserve">
     <value>Typical</value>
   </data>
-  <data name="radiobtnVhdx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 43</value>
+  <data name="radiobtnVirtualDisk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 43</value>
   </data>
-  <data name="radiobtnVhdx.Text" xml:space="preserve">
-    <value>VHD/VHDX</value>
+  <data name="radiobtnVirtualDisk.Text" xml:space="preserve">
+    <value>VHD(X)</value>
   </data>
   <data name="checkBoxOOBE.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 43</value>
   </data>
   <data name="checkBoxOOBE.Text" xml:space="preserve">
     <value>Skip OOBE</value>
+  </data>
+  <data name="checkBoxNoFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 43</value>
+  </data>
+  <data name="checkBoxNoFormat.Text" xml:space="preserve">
+    <value>No Format</value>
   </data>
   <data name="打开程序运行目录ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>427, 54</value>
@@ -217,7 +223,7 @@ Choose install.wim or VHD file.</value>
     <value>Exit</value>
   </data>
   <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 45</value>
+    <value>87, 56</value>
   </data>
   <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
     <value>File</value>
@@ -271,13 +277,13 @@ Choose install.wim or VHD file.</value>
     <value>Save Current Profile</value>
   </data>
   <data name="工具ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 45</value>
+    <value>111, 56</value>
   </data>
   <data name="工具ToolStripMenuItem.Text" xml:space="preserve">
     <value>Tools</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 45</value>
+    <value>172, 56</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
     <value>Language</value>
@@ -307,27 +313,24 @@ Choose install.wim or VHD file.</value>
     <value>About</value>
   </data>
   <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 45</value>
+    <value>104, 56</value>
   </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>Help</value>
   </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1786, 60</value>
+  </data>
   <data name="labelDisFunc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 78</value>
+    <value>292, 78</value>
   </data>
   <data name="labelDisFunc.Text" xml:space="preserve">
-    <value>Some features
-need Win10.
+    <value>Some features only
+available in Win10.
 </value>
   </data>
-  <data name="checkBoxNoFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 43</value>
-  </data>
-  <data name="checkBoxNoFormat.Text" xml:space="preserve">
-    <value>No Format</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>Com.</value>
+  <data name="tabPageCommon.Text" xml:space="preserve">
+    <value>Common</value>
   </data>
   <data name="lblVhdPartitionTableType.Size" type="System.Drawing.Size, System.Drawing">
     <value>400, 39</value>
@@ -348,8 +351,8 @@ need Win10.
   <data name="lblVhdName.Text" xml:space="preserve">
     <value>VHD Name</value>
   </data>
-  <data name="tabPage5.Text" xml:space="preserve">
-    <value>VHD/VHDX</value>
+  <data name="tabPageVirtualDisk.Text" xml:space="preserve">
+    <value>VHD</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei, 8.1pt</value>
@@ -399,8 +402,42 @@ need Win10.
   <data name="label4.Text" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Part.</value>
+  <data name="tabPagePartition.Text" xml:space="preserve">
+    <value>Partition</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 39</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>FFU image location</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>564, 78</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Use FFU image to backup your device.
+Choose drive on the left first.</value>
+  </data>
+  <data name="buttonBackup.Text" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="buttonFFUBrowse.Text" xml:space="preserve">
+    <value>Browse..</value>
+  </data>
+  <data name="radioButtonRestore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 43</value>
+  </data>
+  <data name="radioButtonRestore.Text" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="radioButtonBackup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 43</value>
+  </data>
+  <data name="radioButtonBackup.Text" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="tabPageBackup.Text" xml:space="preserve">
+    <value>Backup</value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

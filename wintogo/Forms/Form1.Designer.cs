@@ -58,8 +58,10 @@
             this.checkBoxDisWinre = new System.Windows.Forms.CheckBox();
             this.checkBoxDonet = new System.Windows.Forms.CheckBox();
             this.radiobtnLegacy = new System.Windows.Forms.RadioButton();
-            this.radiobtnVhdx = new System.Windows.Forms.RadioButton();
+            this.radiobtnVirtualDisk = new System.Windows.Forms.RadioButton();
             this.checkBoxOOBE = new System.Windows.Forms.CheckBox();
+            this.checkBoxNoFormat = new System.Windows.Forms.CheckBox();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开程序运行目录ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,10 +87,11 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDisFunc = new System.Windows.Forms.Label();
             this.tabControlSystem = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.checkBoxNoFormat = new System.Windows.Forms.CheckBox();
+            this.tabPageCommon = new System.Windows.Forms.TabPage();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPageVirtualDisk = new System.Windows.Forms.TabPage();
+            this.radioButtonVHDX = new System.Windows.Forms.RadioButton();
+            this.radioButtonVHD = new System.Windows.Forms.RadioButton();
             this.lblVhdPartitionTableType = new System.Windows.Forms.Label();
             this.comboBoxVhdPartitionType = new System.Windows.Forms.ComboBox();
             this.comboBoxGb = new System.Windows.Forms.ComboBox();
@@ -96,7 +99,7 @@
             this.lblVhdSize = new System.Windows.Forms.Label();
             this.lblVhdName = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPagePartition = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.labelPartition1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -109,6 +112,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPartitionSize2 = new System.Windows.Forms.TextBox();
             this.txtPartitionSize3 = new System.Windows.Forms.TextBox();
+            this.tabPageBackup = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonBackup = new System.Windows.Forms.Button();
+            this.textBoxFFU = new System.Windows.Forms.TextBox();
+            this.buttonFFUBrowse = new System.Windows.Forms.Button();
+            this.radioButtonRestore = new System.Windows.Forms.RadioButton();
+            this.radioButtonBackup = new System.Windows.Forms.RadioButton();
             this.comboBoxParts = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnwim = new System.Windows.Forms.Button();
@@ -116,14 +127,17 @@
             this.groupBoxadv = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialogFFU = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControlSystem.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage5.SuspendLayout();
+            this.tabPageCommon.SuspendLayout();
+            this.tabPageVirtualDisk.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            this.tabPagePartition.SuspendLayout();
+            this.tabPageBackup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxadv.SuspendLayout();
             this.SuspendLayout();
@@ -344,18 +358,20 @@
             // radiobtnLegacy
             // 
             resources.ApplyResources(this.radiobtnLegacy, "radiobtnLegacy");
+            this.radiobtnLegacy.Checked = true;
             this.radiobtnLegacy.Name = "radiobtnLegacy";
+            this.radiobtnLegacy.TabStop = true;
             this.toolTip1.SetToolTip(this.radiobtnLegacy, resources.GetString("radiobtnLegacy.ToolTip"));
             this.radiobtnLegacy.UseVisualStyleBackColor = true;
             this.radiobtnLegacy.CheckedChanged += new System.EventHandler(this.radiochuantong_CheckedChanged);
             // 
-            // radiobtnVhdx
+            // radiobtnVirtualDisk
             // 
-            resources.ApplyResources(this.radiobtnVhdx, "radiobtnVhdx");
-            this.radiobtnVhdx.Name = "radiobtnVhdx";
-            this.toolTip1.SetToolTip(this.radiobtnVhdx, resources.GetString("radiobtnVhdx.ToolTip"));
-            this.radiobtnVhdx.UseVisualStyleBackColor = true;
-            this.radiobtnVhdx.CheckedChanged += new System.EventHandler(this.radiovhdx_CheckedChanged);
+            resources.ApplyResources(this.radiobtnVirtualDisk, "radiobtnVirtualDisk");
+            this.radiobtnVirtualDisk.Name = "radiobtnVirtualDisk";
+            this.toolTip1.SetToolTip(this.radiobtnVirtualDisk, resources.GetString("radiobtnVirtualDisk.ToolTip"));
+            this.radiobtnVirtualDisk.UseVisualStyleBackColor = true;
+            this.radiobtnVirtualDisk.CheckedChanged += new System.EventHandler(this.radiovhdx_CheckedChanged);
             // 
             // checkBoxOOBE
             // 
@@ -363,6 +379,23 @@
             this.checkBoxOOBE.Name = "checkBoxOOBE";
             this.toolTip1.SetToolTip(this.checkBoxOOBE, resources.GetString("checkBoxOOBE.ToolTip"));
             this.checkBoxOOBE.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNoFormat
+            // 
+            resources.ApplyResources(this.checkBoxNoFormat, "checkBoxNoFormat");
+            this.checkBoxNoFormat.Name = "checkBoxNoFormat";
+            this.toolTip1.SetToolTip(this.checkBoxNoFormat, resources.GetString("checkBoxNoFormat.ToolTip"));
+            this.checkBoxNoFormat.UseVisualStyleBackColor = true;
+            this.checkBoxNoFormat.CheckedChanged += new System.EventHandler(this.checkBoxNoFormat_CheckedChanged);
+            // 
+            // linkLabel5
+            // 
+            resources.ApplyResources(this.linkLabel5, "linkLabel5");
+            this.linkLabel5.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.TabStop = true;
+            this.toolTip1.SetToolTip(this.linkLabel5, resources.GetString("linkLabel5.ToolTip"));
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked_2);
             // 
             // menuStrip1
             // 
@@ -541,43 +574,36 @@
             // tabControlSystem
             // 
             resources.ApplyResources(this.tabControlSystem, "tabControlSystem");
-            this.tabControlSystem.Controls.Add(this.tabPage1);
-            this.tabControlSystem.Controls.Add(this.tabPage5);
-            this.tabControlSystem.Controls.Add(this.tabPage3);
+            this.tabControlSystem.Controls.Add(this.tabPageCommon);
+            this.tabControlSystem.Controls.Add(this.tabPageVirtualDisk);
+            this.tabControlSystem.Controls.Add(this.tabPagePartition);
+            this.tabControlSystem.Controls.Add(this.tabPageBackup);
             this.tabControlSystem.Multiline = true;
             this.tabControlSystem.Name = "tabControlSystem";
             this.tabControlSystem.SelectedIndex = 0;
             this.toolTip1.SetToolTip(this.tabControlSystem, resources.GetString("tabControlSystem.ToolTip"));
             // 
-            // tabPage1
+            // tabPageCommon
             // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.checkBoxOOBE);
-            this.tabPage1.Controls.Add(this.checkBoxNoFormat);
-            this.tabPage1.Controls.Add(this.linkLabel3);
-            this.tabPage1.Controls.Add(this.checkBoxDisUasp);
-            this.tabPage1.Controls.Add(this.checkBoxBitlocker);
-            this.tabPage1.Controls.Add(this.checkBoxDonet);
-            this.tabPage1.Controls.Add(this.linkLabel1);
-            this.tabPage1.Controls.Add(this.checkBoxDisWinre);
-            this.tabPage1.Controls.Add(this.radiobtnVhdx);
-            this.tabPage1.Controls.Add(this.checkBoxNoDefaultLetter);
-            this.tabPage1.Controls.Add(this.radiobtnLegacy);
-            this.tabPage1.Controls.Add(this.checkBoxSan_policy);
-            this.tabPage1.Controls.Add(this.checkBoxUefimbr);
-            this.tabPage1.Controls.Add(this.checkBoxDiskpart);
-            this.tabPage1.Controls.Add(this.checkBoxUefigpt);
-            this.tabPage1.Name = "tabPage1";
-            this.toolTip1.SetToolTip(this.tabPage1, resources.GetString("tabPage1.ToolTip"));
-            // 
-            // checkBoxNoFormat
-            // 
-            resources.ApplyResources(this.checkBoxNoFormat, "checkBoxNoFormat");
-            this.checkBoxNoFormat.Name = "checkBoxNoFormat";
-            this.toolTip1.SetToolTip(this.checkBoxNoFormat, resources.GetString("checkBoxNoFormat.ToolTip"));
-            this.checkBoxNoFormat.UseVisualStyleBackColor = true;
-            this.checkBoxNoFormat.CheckedChanged += new System.EventHandler(this.checkBoxNoFormat_CheckedChanged);
+            resources.ApplyResources(this.tabPageCommon, "tabPageCommon");
+            this.tabPageCommon.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCommon.Controls.Add(this.checkBoxOOBE);
+            this.tabPageCommon.Controls.Add(this.checkBoxNoFormat);
+            this.tabPageCommon.Controls.Add(this.linkLabel3);
+            this.tabPageCommon.Controls.Add(this.checkBoxDisUasp);
+            this.tabPageCommon.Controls.Add(this.checkBoxBitlocker);
+            this.tabPageCommon.Controls.Add(this.checkBoxDonet);
+            this.tabPageCommon.Controls.Add(this.linkLabel1);
+            this.tabPageCommon.Controls.Add(this.checkBoxDisWinre);
+            this.tabPageCommon.Controls.Add(this.radiobtnVirtualDisk);
+            this.tabPageCommon.Controls.Add(this.checkBoxNoDefaultLetter);
+            this.tabPageCommon.Controls.Add(this.radiobtnLegacy);
+            this.tabPageCommon.Controls.Add(this.checkBoxSan_policy);
+            this.tabPageCommon.Controls.Add(this.checkBoxUefimbr);
+            this.tabPageCommon.Controls.Add(this.checkBoxDiskpart);
+            this.tabPageCommon.Controls.Add(this.checkBoxUefigpt);
+            this.tabPageCommon.Name = "tabPageCommon";
+            this.toolTip1.SetToolTip(this.tabPageCommon, resources.GetString("tabPageCommon.ToolTip"));
             // 
             // linkLabel3
             // 
@@ -588,22 +614,41 @@
             this.toolTip1.SetToolTip(this.linkLabel3, resources.GetString("linkLabel3.ToolTip"));
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked_1);
             // 
-            // tabPage5
+            // tabPageVirtualDisk
             // 
-            resources.ApplyResources(this.tabPage5, "tabPage5");
-            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage5.Controls.Add(this.linkLabel6);
-            this.tabPage5.Controls.Add(this.lblVhdPartitionTableType);
-            this.tabPage5.Controls.Add(this.comboBoxVhdPartitionType);
-            this.tabPage5.Controls.Add(this.trackBar1);
-            this.tabPage5.Controls.Add(this.comboBoxGb);
-            this.tabPage5.Controls.Add(this.txtVhdNameWithoutExt);
-            this.tabPage5.Controls.Add(this.lblVhdSize);
-            this.tabPage5.Controls.Add(this.lblVhdName);
-            this.tabPage5.Controls.Add(this.numericUpDown1);
-            this.tabPage5.Controls.Add(this.checkBoxFixed);
-            this.tabPage5.Name = "tabPage5";
-            this.toolTip1.SetToolTip(this.tabPage5, resources.GetString("tabPage5.ToolTip"));
+            resources.ApplyResources(this.tabPageVirtualDisk, "tabPageVirtualDisk");
+            this.tabPageVirtualDisk.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageVirtualDisk.Controls.Add(this.radioButtonVHDX);
+            this.tabPageVirtualDisk.Controls.Add(this.radioButtonVHD);
+            this.tabPageVirtualDisk.Controls.Add(this.linkLabel6);
+            this.tabPageVirtualDisk.Controls.Add(this.lblVhdPartitionTableType);
+            this.tabPageVirtualDisk.Controls.Add(this.comboBoxVhdPartitionType);
+            this.tabPageVirtualDisk.Controls.Add(this.trackBar1);
+            this.tabPageVirtualDisk.Controls.Add(this.comboBoxGb);
+            this.tabPageVirtualDisk.Controls.Add(this.txtVhdNameWithoutExt);
+            this.tabPageVirtualDisk.Controls.Add(this.lblVhdSize);
+            this.tabPageVirtualDisk.Controls.Add(this.lblVhdName);
+            this.tabPageVirtualDisk.Controls.Add(this.numericUpDown1);
+            this.tabPageVirtualDisk.Controls.Add(this.checkBoxFixed);
+            this.tabPageVirtualDisk.Name = "tabPageVirtualDisk";
+            this.toolTip1.SetToolTip(this.tabPageVirtualDisk, resources.GetString("tabPageVirtualDisk.ToolTip"));
+            // 
+            // radioButtonVHDX
+            // 
+            resources.ApplyResources(this.radioButtonVHDX, "radioButtonVHDX");
+            this.radioButtonVHDX.Checked = true;
+            this.radioButtonVHDX.Name = "radioButtonVHDX";
+            this.radioButtonVHDX.TabStop = true;
+            this.toolTip1.SetToolTip(this.radioButtonVHDX, resources.GetString("radioButtonVHDX.ToolTip"));
+            this.radioButtonVHDX.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonVHD
+            // 
+            resources.ApplyResources(this.radioButtonVHD, "radioButtonVHD");
+            this.radioButtonVHD.Name = "radioButtonVHD";
+            this.radioButtonVHD.TabStop = true;
+            this.toolTip1.SetToolTip(this.radioButtonVHD, resources.GetString("radioButtonVHD.ToolTip"));
+            this.radioButtonVHD.UseVisualStyleBackColor = true;
             // 
             // lblVhdPartitionTableType
             // 
@@ -663,26 +708,26 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.toolTip1.SetToolTip(this.numericUpDown1, resources.GetString("numericUpDown1.ToolTip"));
             // 
-            // tabPage3
+            // tabPagePartition
             // 
-            resources.ApplyResources(this.tabPage3, "tabPage3");
-            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.linkLabel4);
-            this.tabPage3.Controls.Add(this.labelPartition1);
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.linklblRestoreMultiPartition);
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.txtEfiSize);
-            this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.txtPartitionSize1);
-            this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.txtPartitionSize2);
-            this.tabPage3.Controls.Add(this.txtPartitionSize3);
-            this.tabPage3.Name = "tabPage3";
-            this.toolTip1.SetToolTip(this.tabPage3, resources.GetString("tabPage3.ToolTip"));
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            resources.ApplyResources(this.tabPagePartition, "tabPagePartition");
+            this.tabPagePartition.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPagePartition.Controls.Add(this.label1);
+            this.tabPagePartition.Controls.Add(this.linkLabel4);
+            this.tabPagePartition.Controls.Add(this.labelPartition1);
+            this.tabPagePartition.Controls.Add(this.label6);
+            this.tabPagePartition.Controls.Add(this.linklblRestoreMultiPartition);
+            this.tabPagePartition.Controls.Add(this.label11);
+            this.tabPagePartition.Controls.Add(this.label8);
+            this.tabPagePartition.Controls.Add(this.txtEfiSize);
+            this.tabPagePartition.Controls.Add(this.label5);
+            this.tabPagePartition.Controls.Add(this.txtPartitionSize1);
+            this.tabPagePartition.Controls.Add(this.label4);
+            this.tabPagePartition.Controls.Add(this.txtPartitionSize2);
+            this.tabPagePartition.Controls.Add(this.txtPartitionSize3);
+            this.tabPagePartition.Name = "tabPagePartition";
+            this.toolTip1.SetToolTip(this.tabPagePartition, resources.GetString("tabPagePartition.ToolTip"));
+            this.tabPagePartition.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // label1
             // 
@@ -768,6 +813,73 @@
             this.txtPartitionSize3.TextChanged += new System.EventHandler(this.txtPartitionSize1_TextChanged);
             this.txtPartitionSize3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize1_KeyPress);
             // 
+            // tabPageBackup
+            // 
+            resources.ApplyResources(this.tabPageBackup, "tabPageBackup");
+            this.tabPageBackup.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageBackup.Controls.Add(this.linkLabel5);
+            this.tabPageBackup.Controls.Add(this.label3);
+            this.tabPageBackup.Controls.Add(this.label2);
+            this.tabPageBackup.Controls.Add(this.buttonBackup);
+            this.tabPageBackup.Controls.Add(this.textBoxFFU);
+            this.tabPageBackup.Controls.Add(this.buttonFFUBrowse);
+            this.tabPageBackup.Controls.Add(this.radioButtonRestore);
+            this.tabPageBackup.Controls.Add(this.radioButtonBackup);
+            this.tabPageBackup.Name = "tabPageBackup";
+            this.toolTip1.SetToolTip(this.tabPageBackup, resources.GetString("tabPageBackup.ToolTip"));
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
+            // 
+            // buttonBackup
+            // 
+            resources.ApplyResources(this.buttonBackup, "buttonBackup");
+            this.buttonBackup.Name = "buttonBackup";
+            this.toolTip1.SetToolTip(this.buttonBackup, resources.GetString("buttonBackup.ToolTip"));
+            this.buttonBackup.UseVisualStyleBackColor = true;
+            this.buttonBackup.Click += new System.EventHandler(this.buttonBackup_Click);
+            // 
+            // textBoxFFU
+            // 
+            resources.ApplyResources(this.textBoxFFU, "textBoxFFU");
+            this.textBoxFFU.Name = "textBoxFFU";
+            this.textBoxFFU.ReadOnly = true;
+            this.toolTip1.SetToolTip(this.textBoxFFU, resources.GetString("textBoxFFU.ToolTip"));
+            // 
+            // buttonFFUBrowse
+            // 
+            resources.ApplyResources(this.buttonFFUBrowse, "buttonFFUBrowse");
+            this.buttonFFUBrowse.Name = "buttonFFUBrowse";
+            this.toolTip1.SetToolTip(this.buttonFFUBrowse, resources.GetString("buttonFFUBrowse.ToolTip"));
+            this.buttonFFUBrowse.UseVisualStyleBackColor = true;
+            this.buttonFFUBrowse.Click += new System.EventHandler(this.buttonFFUBrowse_Click);
+            // 
+            // radioButtonRestore
+            // 
+            resources.ApplyResources(this.radioButtonRestore, "radioButtonRestore");
+            this.radioButtonRestore.Name = "radioButtonRestore";
+            this.toolTip1.SetToolTip(this.radioButtonRestore, resources.GetString("radioButtonRestore.ToolTip"));
+            this.radioButtonRestore.UseVisualStyleBackColor = true;
+            this.radioButtonRestore.CheckedChanged += new System.EventHandler(this.radioButtonRestore_CheckedChanged);
+            // 
+            // radioButtonBackup
+            // 
+            resources.ApplyResources(this.radioButtonBackup, "radioButtonBackup");
+            this.radioButtonBackup.Checked = true;
+            this.radioButtonBackup.Name = "radioButtonBackup";
+            this.radioButtonBackup.TabStop = true;
+            this.toolTip1.SetToolTip(this.radioButtonBackup, resources.GetString("radioButtonBackup.ToolTip"));
+            this.radioButtonBackup.UseVisualStyleBackColor = true;
+            // 
             // comboBoxParts
             // 
             resources.ApplyResources(this.comboBoxParts, "comboBoxParts");
@@ -819,6 +931,16 @@
             // 
             resources.ApplyResources(this.folderBrowserDialog2, "folderBrowserDialog2");
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "ffu";
+            this.saveFileDialog1.FileName = "WTGBackup.ffu";
+            resources.ApplyResources(this.saveFileDialog1, "saveFileDialog1");
+            // 
+            // openFileDialogFFU
+            // 
+            resources.ApplyResources(this.openFileDialogFFU, "openFileDialogFFU");
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -851,13 +973,15 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControlSystem.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
+            this.tabPageCommon.ResumeLayout(false);
+            this.tabPageCommon.PerformLayout();
+            this.tabPageVirtualDisk.ResumeLayout(false);
+            this.tabPageVirtualDisk.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tabPagePartition.ResumeLayout(false);
+            this.tabPagePartition.PerformLayout();
+            this.tabPageBackup.ResumeLayout(false);
+            this.tabPageBackup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxadv.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -879,7 +1003,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RadioButton radiobtnLegacy;
         private System.Windows.Forms.ToolStripMenuItem 萝卜头IT论坛ToolStripMenuItem;
-        private System.Windows.Forms.RadioButton radiobtnVhdx;
+        private System.Windows.Forms.RadioButton radiobtnVirtualDisk;
         private System.Windows.Forms.CheckBox checkBoxFixed;
         private System.Windows.Forms.CheckBox checkBoxUefigpt;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -908,8 +1032,8 @@
         private System.Windows.Forms.ToolStripMenuItem chineseSimpleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 繁体中文ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修复盘符ToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPageCommon;
+        private System.Windows.Forms.TabPage tabPagePartition;
         private System.Windows.Forms.TabControl tabControlSystem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPartitionSize1;
@@ -933,7 +1057,7 @@
         private System.Windows.Forms.Button btnwim;
         private System.Windows.Forms.TextBox txtwim;
         private System.Windows.Forms.GroupBox groupBoxadv;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPageVirtualDisk;
         private System.Windows.Forms.Label lblVhdPartitionTableType;
         private System.Windows.Forms.ComboBox comboBoxVhdPartitionType;
         private System.Windows.Forms.TrackBar trackBar1;
@@ -953,6 +1077,19 @@
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.CheckBox checkBoxNoFormat;
         private System.Windows.Forms.CheckBox checkBoxOOBE;
+        private System.Windows.Forms.RadioButton radioButtonVHDX;
+        private System.Windows.Forms.RadioButton radioButtonVHD;
+        private System.Windows.Forms.TabPage tabPageBackup;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonBackup;
+        private System.Windows.Forms.TextBox textBoxFFU;
+        private System.Windows.Forms.Button buttonFFUBrowse;
+        private System.Windows.Forms.RadioButton radioButtonRestore;
+        private System.Windows.Forms.RadioButton radioButtonBackup;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialogFFU;
+        private System.Windows.Forms.LinkLabel linkLabel5;
     }
 }
 

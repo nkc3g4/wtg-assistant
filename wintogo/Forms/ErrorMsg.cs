@@ -31,9 +31,20 @@ namespace wintogo
             Text += Application.ProductName + Application.ProductVersion;
             textBox1.Text = errmsg;
             Log.WriteLog("Info_ErrMsg", errmsg);
-            //Upload ErrorLog
+            
             if (critical)
             {
+                try
+                {
+                    if (File.Exists(Environment.GetEnvironmentVariable("windir") + @"\Logs\DISM\dism.log"))
+                        File.Copy(Environment.GetEnvironmentVariable("windir")+ @"\Logs\DISM\dism.log", WTGModel.logPath + "\\" + "dism.log", true);
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteLog("Info_DISMLOG", ex.ToString());
+                }
+
+                //Upload ErrorLog
                 Thread t = new Thread(UploadLogs);
                 t.Start();
             }

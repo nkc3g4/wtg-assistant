@@ -81,7 +81,7 @@ namespace wintogo
         public static void ImageExtra(bool framework, bool sanPolicy, bool disWinre, bool skipOOBE, bool disUasp, string imageLetter, string wimLocation)
         {
             AddDrivers(imageLetter);
-            //Solve1809(imageletter.Substring(0, 2));
+            Solve1809(imageLetter.Substring(0, 2));
             DriveIcon(imageLetter.Substring(0, 2));
             if (disUasp)
             {
@@ -373,7 +373,7 @@ namespace wintogo
             try
             {
                 int wppver = FileVersionInfo.GetVersionInfo(wppPath).ProductBuildPart;
-                if (wppver >= 17763)
+                if (wppver == 17763)
                 {
                     FileSecurity fileAcl = File.GetAccessControl(wppPath);
                     IdentityReference everyoneUser = new NTAccount("Everyone");

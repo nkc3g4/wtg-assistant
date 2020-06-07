@@ -124,6 +124,15 @@ namespace wintogo.MultiLanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 请选择FFU文件存储位置.
+        /// </summary>
+        public static string Msg_ChooseFFU {
+            get {
+                return ResourceManager.GetString("Msg_ChooseFFU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 请选择镜像文件！.
         /// </summary>
         public static string Msg_chooseinstallwim {

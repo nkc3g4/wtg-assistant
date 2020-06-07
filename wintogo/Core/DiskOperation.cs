@@ -180,7 +180,7 @@ namespace wintogo
             sb.AppendLine("create partition primary");
             sb.AppendLine("select partition 1");
             sb.AppendLine("format fs=ntfs quick");
-            sb.AppendLine("active NOERR");
+            //sb.AppendLine("active NOERR");
             sb.AppendLine("assign letter=" + letter);
             sb.AppendLine("exit");
             DiskpartScriptManager dsm = new DiskpartScriptManager();

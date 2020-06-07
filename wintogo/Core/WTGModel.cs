@@ -123,6 +123,7 @@ namespace wintogo
         public static bool isUserSetEfiPartition;
         public static string efiPartition = string.Empty;
         public static Version dismversion = new Version("0.0.0.0");
+        public static string ffuFilePath;
     }
     public enum OS
     {

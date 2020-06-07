@@ -96,7 +96,7 @@ namespace wintogo
             {
                 try
                 {
-                    Console.WriteLine("Diskpart.exe");
+                    //Console.WriteLine("Diskpart.exe");
                     ProcessManager.ECMD("diskpart.exe", dpargs.ToString());
                 }
                 catch (Exception)

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -60,27 +61,27 @@ namespace wintogo
                 checkBoxUefimbr.Enabled = true;
                 radiobtnLegacy.Enabled = true;
                 labelDisFunc.Visible = true;
-                radiobtnVhdx.Enabled = false;
+                radiobtnVirtualDisk.Enabled = false;
                 WTGModel.CurrentOS = OS.Win7;
             }
             else if (osVersionStr.Contains("6.2") || osVersionStr.Contains("6.3"))//WIN8及以上
             {
                 radiobtnLegacy.Enabled = true;
                 //radiobtnVhd.Enabled = true;
-                radiobtnVhdx.Enabled = true;
+                radiobtnVirtualDisk.Enabled = true;
                 checkBoxUefigpt.Enabled = true;
                 checkBoxUefimbr.Enabled = true;
                 //WIN8.1 UPDATE1 WIMBOOT  已修复WIN10版本号问题
                 try
                 {
-                    string dismversion = FileOperation.GetFileVersion(System.Environment.GetEnvironmentVariable("windir") + "\\System32\\dism.exe");
+                    string dismversion = FileOperation.GetFileVersion(Environment.GetEnvironmentVariable("windir") + "\\System32\\dism.exe");
 
                     WTGModel.dismversion = new Version(Regex.Match(dismversion, @"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+").Value);
                     if (dismversion.Substring(0, 14) == "6.3.9600.17031" || dismversion.Substring(0, 3) == "6.4")
                     {
                         radiobtnLegacy.Enabled = true;
                         //radiobtnVhd.Enabled = true;
-                        radiobtnVhdx.Enabled = true;
+                        radiobtnVirtualDisk.Enabled = true;
                         checkBoxUefigpt.Enabled = true;
                         checkBoxUefimbr.Enabled = true;
                         //checkBoxWimboot.Enabled = true;
@@ -94,7 +95,7 @@ namespace wintogo
                     {
                         radiobtnLegacy.Enabled = true;
                         //radiobtnVhd.Enabled = true;
-                        radiobtnVhdx.Enabled = true;
+                        radiobtnVirtualDisk.Enabled = true;
                         checkBoxUefigpt.Enabled = true;
                         checkBoxUefimbr.Enabled = true;
                         //checkBoxWimboot.Enabled = true;
@@ -107,7 +108,7 @@ namespace wintogo
                     {
                         radiobtnLegacy.Enabled = true;
                         //radiobtnVhd.Enabled = true;
-                        radiobtnVhdx.Enabled = true;
+                        radiobtnVirtualDisk.Enabled = true;
                         checkBoxUefigpt.Enabled = true;
                         checkBoxUefimbr.Enabled = true;
 
@@ -209,9 +210,9 @@ namespace wintogo
                 }
                 else if (WTGModel.choosedImageType == "vhd" || WTGModel.choosedImageType == "vhdx")
                 {
-                    if (!radiobtnVhdx.Enabled)
+                    if (!radiobtnVirtualDisk.Enabled)
                     {
-                        radiobtnVhdx.Checked = true;
+                        radiobtnVirtualDisk.Checked = true;
                         radiobtnLegacy.Enabled = false;
 
                         //checkBoxCompactOS.Checked = true;
@@ -221,7 +222,7 @@ namespace wintogo
                     else
                     {
                         radiobtnLegacy.Enabled = false;
-                        radiobtnVhdx.Checked = true;
+                        radiobtnVirtualDisk.Checked = true;
                         //MessageBox.Show("Test");
                     }
 
@@ -236,7 +237,7 @@ namespace wintogo
                         //{
                         //    radiobtnVhd.Checked = true;
                         //}
-                        radiobtnVhdx.Enabled = false;
+                        radiobtnVirtualDisk.Enabled = false;
                         //checkBoxWimboot.Checked = false;
                         //checkBoxWimboot.Enabled = false;
                     }
@@ -279,10 +280,10 @@ namespace wintogo
             {
                 radiobtnLegacy.Checked = true;
                 //radiobtnVhd.Enabled = false;
-                radiobtnVhdx.Enabled = false;
+                radiobtnVirtualDisk.Enabled = false;
             }
 
-            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked)
+            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVirtualDisk.Checked)
             {
                 checkBoxBitlocker.Enabled = true;
             }
@@ -445,10 +446,10 @@ namespace wintogo
             {
                 radiobtnLegacy.Checked = true;
                 //radiobtnVhd.Enabled = false;
-                radiobtnVhdx.Enabled = false;
+                radiobtnVirtualDisk.Enabled = false;
             }
 
-            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked)
+            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVirtualDisk.Checked)
             {
                 checkBoxBitlocker.Enabled = true;
             }
@@ -595,7 +596,7 @@ namespace wintogo
             //{
             //    formControlList.Add(item);
             //}
-            foreach (Control item in tabPage1.Controls)
+            foreach (Control item in tabPageCommon.Controls)
             {
                 formControlList.Add(item);
             }
@@ -642,7 +643,14 @@ namespace wintogo
 
             else
             {
-                WTGModel.CheckedMode = ApplyMode.VHDX;
+                if (radioButtonVHD.Checked)
+                {
+                    WTGModel.CheckedMode = ApplyMode.VHD;
+                }
+                else
+                {
+                    WTGModel.CheckedMode = ApplyMode.VHDX;
+                }
             }
 
             AssignUDVariable();
@@ -690,9 +698,12 @@ namespace wintogo
             //WTGModel.efiPartition = textBoxEfiPartition.Text;
             WTGModel.skipOOBE = checkBoxOOBE.Checked;
 
-            if (radiobtnVhdx.Checked)
+            if (radiobtnVirtualDisk.Checked)
             {
-                WTGModel.vhdExtension = "vhdx";
+                if (radioButtonVHD.Checked)
+                    WTGModel.vhdExtension = "vhd";
+                else
+                    WTGModel.vhdExtension = "vhdx";
             }
             WTGModel.win8VHDFileName = WTGModel.vhdNameWithoutExt + "." + WTGModel.vhdExtension;
             tWrite = new Thread(new ThreadStart(CreateMain.GoWrite));
@@ -871,10 +882,10 @@ namespace wintogo
             {
                 radiobtnLegacy.Checked = true;
                 //radiobtnVhd.Enabled = false;
-                radiobtnVhdx.Enabled = false;
+                radiobtnVirtualDisk.Enabled = false;
             }
 
-            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked)
+            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVirtualDisk.Checked)
             {
                 checkBoxBitlocker.Enabled = true;
             }
@@ -913,9 +924,9 @@ namespace wintogo
 
         private void radiovhdx_CheckedChanged(object sender, EventArgs e)
         {
-            if (radiobtnVhdx.Checked && DialogResult.Cancel == MessageBox.Show(MsgManager.GetResString("Msg_VHDXWarning", MsgManager.ci), "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning))
+            if (radiobtnVirtualDisk.Checked && DialogResult.Cancel == MessageBox.Show(MsgManager.GetResString("Msg_VHDXWarning", MsgManager.ci), "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning))
             {
-                radiobtnVhdx.Checked = false;
+                radiobtnVirtualDisk.Checked = false;
                 radiobtnLegacy.Checked = true;
                 return;
             }
@@ -1027,7 +1038,7 @@ namespace wintogo
 
 
 
-                if (radiobtnVhdx.Checked)
+                if (radiobtnVirtualDisk.Checked)
                 {
                     trackBar1.Enabled = true;
                 }
@@ -1181,14 +1192,14 @@ namespace wintogo
             {
                 radiobtnLegacy.Checked = true;
                 //radiobtnVhd.Enabled = false;
-                radiobtnVhdx.Enabled = false;
+                radiobtnVirtualDisk.Enabled = false;
             }
             else
             {
                 SystemDetection(false);
             }
 
-            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVhdx.Checked)
+            if ((checkBoxUefigpt.Checked || checkBoxUefimbr.Checked) && !radiobtnVirtualDisk.Checked)
             {
                 checkBoxBitlocker.Enabled = true;
             }
@@ -1426,9 +1437,9 @@ namespace wintogo
                 }
                 else if (WTGModel.choosedImageType == "vhd" || WTGModel.choosedImageType == "vhdx")
                 {
-                    if (!radiobtnVhdx.Enabled)
+                    if (!radiobtnVirtualDisk.Enabled)
                     {
-                        radiobtnVhdx.Checked = true;
+                        radiobtnVirtualDisk.Checked = true;
                         radiobtnLegacy.Enabled = false;
                         //radiobtnVhd.Enabled = false;
 
@@ -1441,7 +1452,7 @@ namespace wintogo
                         radiobtnLegacy.Enabled = false;
                         //radiobtnVhd.Enabled = false;
 
-                        radiobtnVhdx.Checked = true;
+                        radiobtnVirtualDisk.Checked = true;
                         //MessageBox.Show("Test");
                     }
 
@@ -1452,7 +1463,7 @@ namespace wintogo
                     if (WTGModel.win7togo != 0) //WIN7 cannot comptible with VHDX disk or wimboot
                     {
 
-                        radiobtnVhdx.Enabled = false;
+                        radiobtnVirtualDisk.Enabled = false;
                         //checkBoxWimboot.Checked = false;
                         //checkBoxWimboot.Enabled = false;
                     }
@@ -1654,6 +1665,100 @@ namespace wintogo
         private void linkLabel3_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void buttonFFUBrowse_Click(object sender, EventArgs e)
+        {
+
+            if (radioButtonBackup.Checked)
+            {
+                if (saveFileDialog1.ShowDialog() == DialogResult.Cancel) return;
+
+                if (Directory.GetParent(saveFileDialog1.FileName).Exists)
+                {
+                    WTGModel.ffuFilePath = saveFileDialog1.FileName;
+                    textBoxFFU.Text = saveFileDialog1.FileName;
+                }
+
+            }
+            else
+            {
+                if (openFileDialogFFU.ShowDialog() == DialogResult.Cancel) return;
+
+                if (File.Exists(openFileDialogFFU.FileName))
+                {
+                    WTGModel.ffuFilePath = openFileDialogFFU.FileName;
+                    textBoxFFU.Text = openFileDialogFFU.FileName;
+                }
+            }
+        }
+
+        private void buttonBackup_Click(object sender, EventArgs e)
+        {
+
+            if (comboBoxUd.SelectedIndex == 0) { MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci)); return; }
+            if (string.IsNullOrEmpty(WTGModel.ffuFilePath)) { MessageBox.Show(MsgManager.GetResString("Msg_chooseud", MsgManager.ci)); return; }
+
+            if (radioButtonRestore.Checked)
+            {
+                StringBuilder formatTip = new StringBuilder();
+                formatTip.AppendLine(MsgManager.GetResString("Msg_ConfirmChoose", MsgManager.ci));
+                formatTip.Append(WTGModel.UdObj.Model);
+                formatTip.AppendLine(MsgManager.GetResString("Msg_FormatTip", MsgManager.ci));
+                //formatTip.AppendLine(MsgManager.GetResString("Msg_Repartition", MsgManager.ci));
+                FormatAlert fa = new FormatAlert(formatTip.ToString());
+                if (DialogResult.Yes != fa.ShowDialog())
+                {
+                    return;
+                }
+            }
+
+
+
+
+            Thread tCommand = new Thread(() =>
+            {
+                string dismArgs = string.Empty;
+                if (radioButtonBackup.Checked)
+                {
+                    dismArgs = string.Format(@"/capture-ffu /imagefile={0} /capturedrive=\\.\PhysicalDrive{1} /name:WTGBackup", WTGModel.ffuFilePath, WTGModel.UdObj.Index);
+
+                }
+                else
+                {
+                    dismArgs = string.Format(@"/apply-ffu /ImageFile={0} /ApplyDrive:\\.\PhysicalDrive{1}", WTGModel.ffuFilePath, WTGModel.UdObj.Index);
+                }
+                ProcessManager.ECMD("dism.exe", dismArgs);
+                bool failed = false;
+
+                if (File.Exists(Environment.GetEnvironmentVariable("windir") + @"\Logs\DISM\dism.log"))
+                {
+                    string[] dismLog = File.ReadAllLines(Environment.GetEnvironmentVariable("windir") + @"\Logs\DISM\dism.log");
+                    for (int i = 1; i < 20; i++)
+                    {
+                        if (dismLog[dismLog.Length - i].Contains("Failed"))
+                        {
+                            failed = true;
+                            MessageBox.Show(MsgManager.GetResString("Msg_Failure", MsgManager.ci));
+                            break;
+                        }
+                    }
+                }
+                if (!failed)
+                    MessageBox.Show(MsgManager.GetResString("Msg_Complete", MsgManager.ci));
+            });
+            tCommand.Start();
+
+        }
+
+        private void radioButtonRestore_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel5_LinkClicked_2(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=46043");
         }
     }
 }

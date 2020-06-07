@@ -131,7 +131,7 @@ namespace wintogo
                     //您所选择的是UEFI模式，此模式将会格式化您的整个移动磁盘！\n注意是整个磁盘！！！\n程序将会删除所有优盘分区！
 
                     DiskOperation.DiskPartGPTAndUEFI(WTGModel.efiPartitionSize.ToString(), WTGModel.UdObj, WTGModel.partitionSize);
-
+                    Thread.Sleep(2000); //Delay for disk getting ready
                     if (WTGModel.CheckedMode == ApplyMode.Legacy)
                     {
                         //UEFI+GPT 传统
@@ -168,6 +168,7 @@ namespace wintogo
 
                         DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
                     }
+                    Thread.Sleep(2000); //Delay for disk getting ready
                     if (WTGModel.CheckedMode == ApplyMode.Legacy)
                     {
                         if (Write.UEFIMBRTypical())

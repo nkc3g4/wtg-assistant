@@ -279,4 +279,7 @@
   <data name="Msg_ImageError" xml:space="preserve">
     <value>虚拟光驱加载失败，请手动加载，之后选择install.wim</value>
   </data>
+  <data name="Msg_ChooseFFU" xml:space="preserve">
+    <value>请选择FFU文件存储位置</value>
+  </data>
 </root>

@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Compression;
+
 
 namespace wintogo
 {
 
     public static class FileInitialization
     {
+        public static List<string> appFileList = new List<string> {"bootice.exe","BitlockerConfig_x64.exe","BitlockerConfig_x86.exe","imagex_x86.exe","san_policy.xml","unattend_oobe.xml","unattend_templete.xml","unattend_winre.xml" };
         public static void FileValidation()
         {
             if (StringUtility.IsChina(WTGModel.diskpartScriptPath))
@@ -33,11 +36,24 @@ namespace wintogo
             //解压文件
             try
             {
-                ZipHelper.UnZip(Application.StartupPath + "\\files.dat", WTGModel.applicationFilesPath);
+                ZipFile.ExtractToDirectory(Application.StartupPath + "\\files.dat", WTGModel.applicationFilesPath);
+
+                //ZipHelper.UnZip(Application.StartupPath + "\\files.dat", WTGModel.applicationFilesPath);
             }
             catch (Exception ex)
             {
                 Log.WriteLog("Err_Unzip", ex.ToString());
+            }
+            //Validate Files
+            foreach (var item in appFileList)
+            {
+                if (!File.Exists(WTGModel.applicationFilesPath + "\\" + item))
+                {
+                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("Msg_FileBroken", MsgManager.ci), false);
+                    er.ShowDialog();
+                    Environment.Exit(0);
+
+                }
             }
         }
 

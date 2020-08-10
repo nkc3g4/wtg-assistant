@@ -137,7 +137,9 @@ namespace wintogo
         }
         public static void DeleteAllLogs()
         {
-            ProcessManager.ECMD("cmd.exe","/c del /f /s /q \"" + WTGModel.logPath + "\\*.*\"");
+            ProcessManager.SyncCMD("del /f /s /q \"" + WTGModel.logPath + "\\*.*\"");
+
+            //ProcessManager.ECMD("cmd.exe","/c del /f /s /q \"" + WTGModel.logPath + "\\*.*\"");
         }
 
     }

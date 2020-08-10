@@ -48,6 +48,19 @@ namespace wintogo
                     return;
 
                 }
+                if (WTGModel.isUefiGpt || WTGModel.isUefiMbr)
+                {
+                    
+                    if (WTGModel.UdObj.DriveType.Contains("Removable"))
+                    {
+                        if (WTGModel.dismversion < new Version(10, 0, 16299))
+                        {
+                            MessageBox.Show(MsgManager.GetResString("Msg_Below1709", MsgManager.ci));
+                            return;
+                        }
+                    }
+                }
+
 
 
                 //GB 是将要写入的优盘或移动硬盘\n误格式化，后果自负！
@@ -112,26 +125,8 @@ namespace wintogo
                 if (WTGModel.isUefiGpt)
                 {
                     //UEFI+GPT
-                    if (Environment.OSVersion.ToString().Contains("5.1") || System.Environment.OSVersion.ToString().Contains("5.2"))
-                    {
-                        //XP系统不支持UEFI模式写入
-                        MessageBox.Show(MsgManager.GetResString("Msg_XPUefiError", MsgManager.ci)); return;
-                    }
-                    if (WTGModel.udString.Contains("可移动磁盘") || WTGModel.udString.Contains("Removable Disk"))
-                    {
-                        if (WTGModel.dismversion.Build < 16299)
-                        {
-                            throw new Exception(MsgManager.GetResString("Msg_Below1709", MsgManager.ci));
-                        }
-
-
-                    }
-
-                    //MsgManager.getResString("Msg_UefiFormatWarning")
-                    //您所选择的是UEFI模式，此模式将会格式化您的整个移动磁盘！\n注意是整个磁盘！！！\n程序将会删除所有优盘分区！
-
                     DiskOperation.DiskPartGPTAndUEFI(WTGModel.efiPartitionSize.ToString(), WTGModel.UdObj, WTGModel.partitionSize);
-                    Thread.Sleep(2000); //Delay for disk getting ready
+                    DiskOperation.CheckDiskExists(WTGModel.ud);
                     if (WTGModel.CheckedMode == ApplyMode.Legacy)
                     {
                         //UEFI+GPT 传统
@@ -149,13 +144,6 @@ namespace wintogo
                 else if (WTGModel.isUefiMbr)
                 {
                     //UEFI+MBR
-                    if (WTGModel.udString.Contains("可移动磁盘") || WTGModel.udString.Contains("Removable Disk"))
-                    {
-                        if (WTGModel.dismversion.Build < 16299)
-                        {
-                            throw new Exception(MsgManager.GetResString("Msg_Below1709", MsgManager.ci));
-                        }
-                    }
 
                     //DiskpartScriptManager dsm = new DiskpartScriptManager();
                     DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
@@ -163,12 +151,12 @@ namespace wintogo
                     {
                         Console.WriteLine("Retry-partition");
                         Thread.Sleep(1800);
-                        DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index,WTGModel.ud.Substring(0,1));
+                        DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index, WTGModel.ud.Substring(0, 1));
                         WTGModel.UdObj.SetVolume(WTGModel.ud.Substring(0, 1));
 
                         DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
                     }
-                    Thread.Sleep(2000); //Delay for disk getting ready
+                    DiskOperation.CheckDiskExists(WTGModel.ud);
                     if (WTGModel.CheckedMode == ApplyMode.Legacy)
                     {
                         if (Write.UEFIMBRTypical())

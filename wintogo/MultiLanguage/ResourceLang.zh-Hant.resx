@@ -270,4 +270,7 @@
   <data name="Msg_ImageError" xml:space="preserve">
     <value>鏡像文件錯誤,請選擇install.wim</value>
   </data>
+  <data name="Msg_FileBroken" xml:space="preserve">
+    <value>文件損壞，請重新下載</value>
+  </data>
 </root>

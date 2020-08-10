@@ -282,4 +282,7 @@
   <data name="Msg_ChooseFFU" xml:space="preserve">
     <value>请选择FFU文件存储位置</value>
   </data>
+  <data name="Msg_FileBroken" xml:space="preserve">
+    <value>程序文件损坏，请重新下载程序！</value>
+  </data>
 </root>

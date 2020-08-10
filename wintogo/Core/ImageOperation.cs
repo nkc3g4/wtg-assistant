@@ -115,18 +115,24 @@ namespace wintogo
 
             if (disWinre || skipOOBE)
             {
-                //try {  }
-                if (Directory.Exists(imageLetter + "Windows\\System32\\sysprep\\"))
+                try
                 {
-                    //File.Copy(WTGModel.applicationFilesPath + "\\unattend.xml", imageletter + "Windows\\System32\\sysprep\\unattend.xml");
-                    string unattendTemplete = File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_templete.xml");
-                    string unattendSettings = string.Empty;
-                    if(disWinre)
-                        unattendSettings += File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_winre.xml");
-                    if(skipOOBE)
-                        unattendSettings += File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_oobe.xml");
+                    if (Directory.Exists(imageLetter + "Windows\\System32\\sysprep\\"))
+                    {
+                        //File.Copy(WTGModel.applicationFilesPath + "\\unattend.xml", imageletter + "Windows\\System32\\sysprep\\unattend.xml");
+                        string unattendTemplete = File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_templete.xml");
+                        string unattendSettings = string.Empty;
+                        if (disWinre)
+                            unattendSettings += File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_winre.xml");
+                        if (skipOOBE)
+                            unattendSettings += File.ReadAllText(WTGModel.applicationFilesPath + "\\unattend_oobe.xml");
 
-                    File.WriteAllText(imageLetter + "Windows\\System32\\sysprep\\unattend.xml", unattendTemplete.Replace("#",unattendSettings));
+                        File.WriteAllText(imageLetter + "Windows\\System32\\sysprep\\unattend.xml", unattendTemplete.Replace("#", unattendSettings));
+                    }
+                }
+                catch(Exception e)
+                {
+                    Log.WriteLog("Err_unattend", e.ToString());
                 }
             }
         }

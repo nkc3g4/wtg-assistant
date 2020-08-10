@@ -255,7 +255,8 @@ namespace wintogo
                     }
                     else
                     {
-                        ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\fastcopy.exe", " /auto_close \"" + this.VhdPath + "\" /to=\"" + WTGModel.ud + "\"", MsgManager.GetResString("Msg_Copy", MsgManager.ci));
+                        throw new FileNotFoundException("Can not find RoboCopy in %windir%");
+                        //ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\fastcopy.exe", " /auto_close \"" + this.VhdPath + "\" /to=\"" + WTGModel.ud + "\"", MsgManager.GetResString("Msg_Copy", MsgManager.ci));
                     }
 
                     //BigFileCopy ()

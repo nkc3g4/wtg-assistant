@@ -61,10 +61,6 @@ namespace wintogo
         /// 默认为imagex_x86.exe
         /// </summary>
         public static string imagexFileName = "imagex_x86.exe";
-        /// <summary>
-        /// bcdboot文件名
-        /// </summary>
-        public static string bcdbootFileName;
         ///// <summary>
         ///// 强制格式化
         ///// </summary>

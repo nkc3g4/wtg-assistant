@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Threading;
 using System.Windows.Forms;
 using wintogo.Utility;
@@ -54,9 +55,10 @@ namespace wintogo
         {
             try
             {
-
                 string tmpFile = Path.GetTempFileName();
-                ZipHelper.ZipFileDirectory(WTGModel.logPath, tmpFile);
+                ZipFile.CreateFromDirectory(WTGModel.logPath, tmpFile);
+
+                //ZipHelper.ZipFileDirectory(WTGModel.logPath, tmpFile);
                 HttpPost.HttpUploadFile(@"http://laa.luobotou.org/wtgreport.ashx", tmpFile);
                 File.Delete(tmpFile);
 

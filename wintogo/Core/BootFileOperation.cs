@@ -95,7 +95,7 @@ namespace wintogo
             args.Append(" /set {bootmgr} device partition=");
             args.Append(BCDDisk.Substring(0, 2));
             ////执行一次
-            ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\bcdedit.exe", args.ToString());
+            ProcessManager.ECMD("bcdedit.exe", args.ToString());
 
             args.Clear();
             args.Append("/store ");
@@ -103,13 +103,13 @@ namespace wintogo
             args.Append(" /set {default} device partition=");
             args.Append(osdevice.Substring(0, 2));
             ////执行一次
-            ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\bcdedit.exe", args.ToString());
+            ProcessManager.ECMD("bcdedit.exe", args.ToString());
             args.Clear();
             args.Append("/store ");
             args.Append(BCDDisk.Substring(0, 2) + BCDPath);
             args.Append(" /set {default} osdevice partition=");
             args.Append(osdevice.Substring(0, 2));
-            ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\bcdedit.exe", args.ToString());
+            ProcessManager.ECMD("bcdedit.exe", args.ToString());
 
         }
         public static void BcdeditFixBootFileVHD(string BCDDisk, string osdevice, string VHDFileNameWithExt, FirmwareType fwType)
@@ -146,7 +146,7 @@ namespace wintogo
             args.Append(" /set {bootmgr} device  partition=" + BCDDisk.Substring(0, 2));
             //}
             ////执行一次
-            ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\bcdedit.exe", args.ToString());
+            ProcessManager.ECMD("bcdedit.exe", args.ToString());
 
             args.Clear();
             args.Append("/store ");
@@ -160,7 +160,7 @@ namespace wintogo
             args.Append(" /set {default} device  vhd=[" + osdevice.Substring(0, 2) + "]\\" + VHDFileNameWithExt);
             //}
             ////执行一次
-            ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\bcdedit.exe", args.ToString());
+            ProcessManager.ECMD("bcdedit.exe", args.ToString());
             args.Clear();
             args.Append("/store ");
             args.Append(BCDDisk.Substring(0, 2) + BCDPath);
@@ -173,7 +173,7 @@ namespace wintogo
             args.Append(" /set {default} osdevice  vhd=[" + osdevice.Substring(0, 2) + "]\\" + VHDFileNameWithExt);
             //}
             //args.Append(" /set {default} osdevice  vhd=[" + osdevice.Substring(0, 2) + "]\\" + VHDFileNameWithExt);
-            ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\bcdedit.exe", args.ToString());
+            ProcessManager.ECMD("bcdedit.exe", args.ToString());
 
         }
 
@@ -191,31 +191,25 @@ namespace wintogo
             args.Append(sourceDisk);
             args.Append("windows /s ");
             args.Append(targetDisk.Substring(0, 2));
-            if (WTGModel.bcdbootFileName == "bcdboot.exe")
+
+            if (fwType == FirmwareType.ALL)
             {
-                if (fwType == FirmwareType.ALL)
-                {
-                    args.Append(" /f all ");
-                }
-                else if (fwType == FirmwareType.BIOS)
-                {
-                    args.Append(" /f bios ");
-                }
-                else
-                {
-                    args.Append(" /f uefi ");
-                }
+                args.Append(" /f all ");
             }
+            else if (fwType == FirmwareType.BIOS)
+            {
+                args.Append(" /f bios ");
+            }
+            else
+            {
+                args.Append(" /f uefi ");
+            }
+
             args.Append(" /l zh-CN ");
             args.Append(" /v ");
-            //这里不能直接调用系统BCDBOOT,原因未知
-            //if (WTGModel.CurrentOS == OS.Win8_1_with_update || WTGModel.CurrentOS == OS.Win10 || WTGModel.CurrentOS == OS.Win8_without_update)
-            //{
-            //    ProcessManager.ECMD("bcdboot.exe", args.ToString());
-            //}
-            //else
-            //{
-            ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\" + WTGModel.bcdbootFileName, args.ToString());
+
+            ProcessManager.ECMD("bcdboot.exe", args.ToString());
+            //ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\" + WTGModel.bcdbootFileName, args.ToString());
 
 
             //}

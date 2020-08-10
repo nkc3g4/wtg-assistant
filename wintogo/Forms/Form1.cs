@@ -45,17 +45,9 @@ namespace wintogo
         private void SystemDetection(bool isInitialization)
         {
             checkBoxBitlocker.Enabled = false;
-            WTGModel.bcdbootFileName = "bcdboot.exe";
+            
             string osVersionStr = Environment.OSVersion.ToString();
-            if (osVersionStr.Contains("5.1") || osVersionStr.Contains("6.0")) //XP 禁用功能
-            {
-                radiobtnLegacy.Enabled = true;
-                checkBoxDiskpart.Checked = false;
-                checkBoxDiskpart.Enabled = false;
-                labelDisFunc.Visible = true;
-                WTGModel.CurrentOS = OS.XP;
-            }
-            else if (osVersionStr.Contains("6.1"))//WIN7
+            if (osVersionStr.Contains("6.1"))//WIN7 禁用功能
             {
                 checkBoxUefigpt.Enabled = true;
                 checkBoxUefimbr.Enabled = true;
@@ -63,6 +55,7 @@ namespace wintogo
                 labelDisFunc.Visible = true;
                 radiobtnVirtualDisk.Enabled = false;
                 WTGModel.CurrentOS = OS.Win7;
+                tabPageBackup.Parent = null;
             }
             else if (osVersionStr.Contains("6.2") || osVersionStr.Contains("6.3"))//WIN8及以上
             {
@@ -530,10 +523,6 @@ namespace wintogo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
-
-
             Graphics graphics = CreateGraphics();
             float dpiX = graphics.DpiX;
 

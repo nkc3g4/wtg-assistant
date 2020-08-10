@@ -16,7 +16,7 @@ namespace wintogo
             int c = 0;
             while (!Directory.Exists(disk))
             {
-                Thread.Sleep(50);
+                Thread.Sleep(100);
                 if (++c > 100)
                 {
                     break;
@@ -108,16 +108,7 @@ namespace wintogo
             DiskpartScriptManager dsm = new DiskpartScriptManager();
             dsm.Args = sb.ToString();
             dsm.RunDiskpartScript();
-            int c = 0;
-            while (!Directory.Exists(WTGModel.ud))
-            {
-                c++;
-                Thread.Sleep(50);
-                if (c > 100)
-                {
-                    break;
-                }
-            }
+            CheckDiskExists(WTGModel.ud);
         }
         /// <summary>
         /// MBR+UEFI脚本Write到WTGOperation.diskpartscriptpath + @"\uefimbr.txt
@@ -259,16 +250,7 @@ namespace wintogo
             DiskpartScriptManager dsm = new DiskpartScriptManager();
             dsm.Args = sb.ToString();
             dsm.RunDiskpartScript();
-            int c = 0;
-            while (!Directory.Exists(WTGModel.ud))
-            {
-                c++;
-                Thread.Sleep(50);
-                if (c > 100)
-                {
-                    break;
-                }
-            }
+            CheckDiskExists(WTGModel.ud);
 
         }
 

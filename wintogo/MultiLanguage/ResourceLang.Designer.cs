@@ -268,6 +268,15 @@ namespace wintogo.MultiLanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 程序文件损坏，请重新下载程序！.
+        /// </summary>
+        public static string Msg_FileBroken {
+            get {
+                return ResourceManager.GetString("Msg_FileBroken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 是将要写入的优盘或移动硬盘.
         /// </summary>
         public static string Msg_FormatTip {

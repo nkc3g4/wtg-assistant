@@ -273,4 +273,7 @@
   <data name="Msg_ChooseFFU" xml:space="preserve">
     <value>No FFU file is chosen.</value>
   </data>
+  <data name="Msg_FileBroken" xml:space="preserve">
+    <value>The program is corrupted! </value>
+  </data>
 </root>

@@ -33,7 +33,6 @@
             this.comboBoxUd = new System.Windows.Forms.ComboBox();
             this.btnGo = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lblWim = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.萝卜头IT论坛ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -144,13 +143,12 @@
             // 
             // comboBoxUd
             // 
-            resources.ApplyResources(this.comboBoxUd, "comboBoxUd");
             this.comboBoxUd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxUd, "comboBoxUd");
             this.comboBoxUd.FormattingEnabled = true;
             this.comboBoxUd.Items.AddRange(new object[] {
             resources.GetString("comboBoxUd.Items")});
             this.comboBoxUd.Name = "comboBoxUd";
-            this.toolTip1.SetToolTip(this.comboBoxUd, resources.GetString("comboBoxUd.ToolTip"));
             this.comboBoxUd.SelectedIndexChanged += new System.EventHandler(this.comboBoxUd_SelectedIndexChanged);
             this.comboBoxUd.MouseHover += new System.EventHandler(this.comboBox1_MouseHover);
             // 
@@ -158,7 +156,6 @@
             // 
             resources.ApplyResources(this.btnGo, "btnGo");
             this.btnGo.Name = "btnGo";
-            this.toolTip1.SetToolTip(this.btnGo, resources.GetString("btnGo.ToolTip"));
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -167,47 +164,36 @@
             resources.ApplyResources(this.openFileDialog1, "openFileDialog1");
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // lblWim
-            // 
-            resources.ApplyResources(this.lblWim, "lblWim");
-            this.lblWim.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblWim.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(112)))), ((int)(((byte)(166)))));
-            this.lblWim.Name = "lblWim";
-            this.toolTip1.SetToolTip(this.lblWim, resources.GetString("lblWim.ToolTip"));
-            this.lblWim.Click += new System.EventHandler(this.wimbox_Click);
-            // 
             // folderBrowserDialog1
             // 
-            resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
             this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.萝卜头IT论坛ToolStripMenuItem,
             this.错误提示测试ToolStripMenuItem,
             this.手动选择优盘ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.toolTip1.SetToolTip(this.contextMenuStrip1, resources.GetString("contextMenuStrip1.ToolTip"));
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // 萝卜头IT论坛ToolStripMenuItem
             // 
-            resources.ApplyResources(this.萝卜头IT论坛ToolStripMenuItem, "萝卜头IT论坛ToolStripMenuItem");
             this.萝卜头IT论坛ToolStripMenuItem.Name = "萝卜头IT论坛ToolStripMenuItem";
+            resources.ApplyResources(this.萝卜头IT论坛ToolStripMenuItem, "萝卜头IT论坛ToolStripMenuItem");
             this.萝卜头IT论坛ToolStripMenuItem.Click += new System.EventHandler(this.萝卜头IT论坛ToolStripMenuItem_Click);
             // 
             // 错误提示测试ToolStripMenuItem
             // 
-            resources.ApplyResources(this.错误提示测试ToolStripMenuItem, "错误提示测试ToolStripMenuItem");
             this.错误提示测试ToolStripMenuItem.Name = "错误提示测试ToolStripMenuItem";
+            resources.ApplyResources(this.错误提示测试ToolStripMenuItem, "错误提示测试ToolStripMenuItem");
             this.错误提示测试ToolStripMenuItem.Click += new System.EventHandler(this.错误提示测试ToolStripMenuItem_Click);
             // 
             // 手动选择优盘ToolStripMenuItem
             // 
-            resources.ApplyResources(this.手动选择优盘ToolStripMenuItem, "手动选择优盘ToolStripMenuItem");
             this.手动选择优盘ToolStripMenuItem.Name = "手动选择优盘ToolStripMenuItem";
+            resources.ApplyResources(this.手动选择优盘ToolStripMenuItem, "手动选择优盘ToolStripMenuItem");
             this.手动选择优盘ToolStripMenuItem.Click += new System.EventHandler(this.手动选择优盘ToolStripMenuItem_Click);
             // 
             // linklblVisit
@@ -216,14 +202,12 @@
             this.linklblVisit.LinkColor = System.Drawing.Color.Red;
             this.linklblVisit.Name = "linklblVisit";
             this.linklblVisit.TabStop = true;
-            this.toolTip1.SetToolTip(this.linklblVisit, resources.GetString("linklblVisit.ToolTip"));
             this.linklblVisit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // lblDescription
             // 
             resources.ApplyResources(this.lblDescription, "lblDescription");
             this.lblDescription.Name = "lblDescription";
-            this.toolTip1.SetToolTip(this.lblDescription, resources.GetString("lblDescription.ToolTip"));
             // 
             // linkLabel2
             // 
@@ -233,7 +217,6 @@
             this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(112)))), ((int)(((byte)(166)))));
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.TabStop = true;
-            this.toolTip1.SetToolTip(this.linkLabel2, resources.GetString("linkLabel2.ToolTip"));
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // checkBoxFixed
@@ -399,48 +382,46 @@
             // 
             // menuStrip1
             // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
             this.工具ToolStripMenuItem,
             this.toolStripMenuItem5,
             this.帮助ToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.toolTip1.SetToolTip(this.menuStrip1, resources.GetString("menuStrip1.ToolTip"));
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // 文件ToolStripMenuItem
             // 
-            resources.ApplyResources(this.文件ToolStripMenuItem, "文件ToolStripMenuItem");
             this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.打开程序运行目录ToolStripMenuItem1,
             this.toolStripMenuItem1,
             this.退出ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
+            resources.ApplyResources(this.文件ToolStripMenuItem, "文件ToolStripMenuItem");
             // 
             // 打开程序运行目录ToolStripMenuItem1
             // 
-            resources.ApplyResources(this.打开程序运行目录ToolStripMenuItem1, "打开程序运行目录ToolStripMenuItem1");
             this.打开程序运行目录ToolStripMenuItem1.Name = "打开程序运行目录ToolStripMenuItem1";
+            resources.ApplyResources(this.打开程序运行目录ToolStripMenuItem1, "打开程序运行目录ToolStripMenuItem1");
             this.打开程序运行目录ToolStripMenuItem1.Click += new System.EventHandler(this.打开程序运行目录ToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem1
             // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // 退出ToolStripMenuItem
             // 
-            resources.ApplyResources(this.退出ToolStripMenuItem, "退出ToolStripMenuItem");
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            resources.ApplyResources(this.退出ToolStripMenuItem, "退出ToolStripMenuItem");
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
             // 工具ToolStripMenuItem
             // 
-            resources.ApplyResources(this.工具ToolStripMenuItem, "工具ToolStripMenuItem");
             this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.自动检查更新ToolStripMenuItem,
             this.toolStripMenuItem3,
@@ -451,141 +432,139 @@
             this.克隆本机系统ToolStripMenuItem,
             this.保存当前设置ToolStripMenuItem});
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
+            resources.ApplyResources(this.工具ToolStripMenuItem, "工具ToolStripMenuItem");
             // 
             // 自动检查更新ToolStripMenuItem
             // 
-            resources.ApplyResources(this.自动检查更新ToolStripMenuItem, "自动检查更新ToolStripMenuItem");
             this.自动检查更新ToolStripMenuItem.Name = "自动检查更新ToolStripMenuItem";
+            resources.ApplyResources(this.自动检查更新ToolStripMenuItem, "自动检查更新ToolStripMenuItem");
             this.自动检查更新ToolStripMenuItem.Click += new System.EventHandler(this.自动检查更新ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
             this.toolStripMenuItem3.Checked = true;
             this.toolStripMenuItem3.CheckOnClick = true;
             this.toolStripMenuItem3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
             this.toolStripMenuItem3.CheckedChanged += new System.EventHandler(this.toolStripMenuItem3_CheckedChanged);
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // diskpart重新分区ToolStripMenuItem1
             // 
-            resources.ApplyResources(this.diskpart重新分区ToolStripMenuItem1, "diskpart重新分区ToolStripMenuItem1");
             this.diskpart重新分区ToolStripMenuItem1.Name = "diskpart重新分区ToolStripMenuItem1";
+            resources.ApplyResources(this.diskpart重新分区ToolStripMenuItem1, "diskpart重新分区ToolStripMenuItem1");
             this.diskpart重新分区ToolStripMenuItem1.Click += new System.EventHandler(this.diskpart重新分区ToolStripMenuItem1_Click);
             // 
             // wIN7TOGOToolStripMenuItem
             // 
-            resources.ApplyResources(this.wIN7TOGOToolStripMenuItem, "wIN7TOGOToolStripMenuItem");
             this.wIN7TOGOToolStripMenuItem.CheckOnClick = true;
             this.wIN7TOGOToolStripMenuItem.Name = "wIN7TOGOToolStripMenuItem";
+            resources.ApplyResources(this.wIN7TOGOToolStripMenuItem, "wIN7TOGOToolStripMenuItem");
             // 
             // bOOTICEToolStripMenuItem
             // 
-            resources.ApplyResources(this.bOOTICEToolStripMenuItem, "bOOTICEToolStripMenuItem");
             this.bOOTICEToolStripMenuItem.Name = "bOOTICEToolStripMenuItem";
+            resources.ApplyResources(this.bOOTICEToolStripMenuItem, "bOOTICEToolStripMenuItem");
             this.bOOTICEToolStripMenuItem.Click += new System.EventHandler(this.bOOTICEToolStripMenuItem_Click);
             // 
             // 修复盘符ToolStripMenuItem
             // 
-            resources.ApplyResources(this.修复盘符ToolStripMenuItem, "修复盘符ToolStripMenuItem");
             this.修复盘符ToolStripMenuItem.Name = "修复盘符ToolStripMenuItem";
+            resources.ApplyResources(this.修复盘符ToolStripMenuItem, "修复盘符ToolStripMenuItem");
             this.修复盘符ToolStripMenuItem.Click += new System.EventHandler(this.修复盘符ToolStripMenuItem_Click);
             // 
             // 克隆本机系统ToolStripMenuItem
             // 
-            resources.ApplyResources(this.克隆本机系统ToolStripMenuItem, "克隆本机系统ToolStripMenuItem");
             this.克隆本机系统ToolStripMenuItem.Name = "克隆本机系统ToolStripMenuItem";
+            resources.ApplyResources(this.克隆本机系统ToolStripMenuItem, "克隆本机系统ToolStripMenuItem");
             this.克隆本机系统ToolStripMenuItem.Click += new System.EventHandler(this.克隆本机系统ToolStripMenuItem_Click);
             // 
             // 保存当前设置ToolStripMenuItem
             // 
-            resources.ApplyResources(this.保存当前设置ToolStripMenuItem, "保存当前设置ToolStripMenuItem");
             this.保存当前设置ToolStripMenuItem.Name = "保存当前设置ToolStripMenuItem";
+            resources.ApplyResources(this.保存当前设置ToolStripMenuItem, "保存当前设置ToolStripMenuItem");
             this.保存当前设置ToolStripMenuItem.Click += new System.EventHandler(this.保存当前设置ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
             this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.chineseSimpleToolStripMenuItem,
             this.繁体中文ToolStripMenuItem});
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
             // 
             // englishToolStripMenuItem
             // 
-            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // chineseSimpleToolStripMenuItem
             // 
-            resources.ApplyResources(this.chineseSimpleToolStripMenuItem, "chineseSimpleToolStripMenuItem");
             this.chineseSimpleToolStripMenuItem.Name = "chineseSimpleToolStripMenuItem";
+            resources.ApplyResources(this.chineseSimpleToolStripMenuItem, "chineseSimpleToolStripMenuItem");
             this.chineseSimpleToolStripMenuItem.Click += new System.EventHandler(this.chineseSimpleToolStripMenuItem_Click);
             // 
             // 繁体中文ToolStripMenuItem
             // 
-            resources.ApplyResources(this.繁体中文ToolStripMenuItem, "繁体中文ToolStripMenuItem");
             this.繁体中文ToolStripMenuItem.Name = "繁体中文ToolStripMenuItem";
+            resources.ApplyResources(this.繁体中文ToolStripMenuItem, "繁体中文ToolStripMenuItem");
             this.繁体中文ToolStripMenuItem.Click += new System.EventHandler(this.繁体中文ToolStripMenuItem_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
-            resources.ApplyResources(this.帮助ToolStripMenuItem, "帮助ToolStripMenuItem");
             this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.在线帮助ToolStripMenuItem,
             this.toolStripMenuItem4,
             this.官方论坛ToolStripMenuItem,
             this.关于ToolStripMenuItem});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
+            resources.ApplyResources(this.帮助ToolStripMenuItem, "帮助ToolStripMenuItem");
             // 
             // 在线帮助ToolStripMenuItem
             // 
-            resources.ApplyResources(this.在线帮助ToolStripMenuItem, "在线帮助ToolStripMenuItem");
             this.在线帮助ToolStripMenuItem.Name = "在线帮助ToolStripMenuItem";
+            resources.ApplyResources(this.在线帮助ToolStripMenuItem, "在线帮助ToolStripMenuItem");
             this.在线帮助ToolStripMenuItem.Click += new System.EventHandler(this.在线帮助ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // 官方论坛ToolStripMenuItem
             // 
-            resources.ApplyResources(this.官方论坛ToolStripMenuItem, "官方论坛ToolStripMenuItem");
             this.官方论坛ToolStripMenuItem.Name = "官方论坛ToolStripMenuItem";
+            resources.ApplyResources(this.官方论坛ToolStripMenuItem, "官方论坛ToolStripMenuItem");
             this.官方论坛ToolStripMenuItem.Click += new System.EventHandler(this.官方论坛ToolStripMenuItem_Click);
             // 
             // 关于ToolStripMenuItem
             // 
-            resources.ApplyResources(this.关于ToolStripMenuItem, "关于ToolStripMenuItem");
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            resources.ApplyResources(this.关于ToolStripMenuItem, "关于ToolStripMenuItem");
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
             // labelDisFunc
             // 
             resources.ApplyResources(this.labelDisFunc, "labelDisFunc");
             this.labelDisFunc.Name = "labelDisFunc";
-            this.toolTip1.SetToolTip(this.labelDisFunc, resources.GetString("labelDisFunc.ToolTip"));
             // 
             // tabControlSystem
             // 
-            resources.ApplyResources(this.tabControlSystem, "tabControlSystem");
             this.tabControlSystem.Controls.Add(this.tabPageCommon);
             this.tabControlSystem.Controls.Add(this.tabPageVirtualDisk);
             this.tabControlSystem.Controls.Add(this.tabPagePartition);
             this.tabControlSystem.Controls.Add(this.tabPageBackup);
+            resources.ApplyResources(this.tabControlSystem, "tabControlSystem");
             this.tabControlSystem.Multiline = true;
             this.tabControlSystem.Name = "tabControlSystem";
             this.tabControlSystem.SelectedIndex = 0;
-            this.toolTip1.SetToolTip(this.tabControlSystem, resources.GetString("tabControlSystem.ToolTip"));
             // 
             // tabPageCommon
             // 
-            resources.ApplyResources(this.tabPageCommon, "tabPageCommon");
             this.tabPageCommon.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageCommon.Controls.Add(this.checkBoxOOBE);
             this.tabPageCommon.Controls.Add(this.checkBoxNoFormat);
@@ -602,8 +581,8 @@
             this.tabPageCommon.Controls.Add(this.checkBoxUefimbr);
             this.tabPageCommon.Controls.Add(this.checkBoxDiskpart);
             this.tabPageCommon.Controls.Add(this.checkBoxUefigpt);
+            resources.ApplyResources(this.tabPageCommon, "tabPageCommon");
             this.tabPageCommon.Name = "tabPageCommon";
-            this.toolTip1.SetToolTip(this.tabPageCommon, resources.GetString("tabPageCommon.ToolTip"));
             // 
             // linkLabel3
             // 
@@ -611,12 +590,10 @@
             this.linkLabel3.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(112)))), ((int)(((byte)(166)))));
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.TabStop = true;
-            this.toolTip1.SetToolTip(this.linkLabel3, resources.GetString("linkLabel3.ToolTip"));
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked_1);
             // 
             // tabPageVirtualDisk
             // 
-            resources.ApplyResources(this.tabPageVirtualDisk, "tabPageVirtualDisk");
             this.tabPageVirtualDisk.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageVirtualDisk.Controls.Add(this.radioButtonVHDX);
             this.tabPageVirtualDisk.Controls.Add(this.radioButtonVHD);
@@ -630,8 +607,8 @@
             this.tabPageVirtualDisk.Controls.Add(this.lblVhdName);
             this.tabPageVirtualDisk.Controls.Add(this.numericUpDown1);
             this.tabPageVirtualDisk.Controls.Add(this.checkBoxFixed);
+            resources.ApplyResources(this.tabPageVirtualDisk, "tabPageVirtualDisk");
             this.tabPageVirtualDisk.Name = "tabPageVirtualDisk";
-            this.toolTip1.SetToolTip(this.tabPageVirtualDisk, resources.GetString("tabPageVirtualDisk.ToolTip"));
             // 
             // radioButtonVHDX
             // 
@@ -639,7 +616,6 @@
             this.radioButtonVHDX.Checked = true;
             this.radioButtonVHDX.Name = "radioButtonVHDX";
             this.radioButtonVHDX.TabStop = true;
-            this.toolTip1.SetToolTip(this.radioButtonVHDX, resources.GetString("radioButtonVHDX.ToolTip"));
             this.radioButtonVHDX.UseVisualStyleBackColor = true;
             // 
             // radioButtonVHD
@@ -647,55 +623,48 @@
             resources.ApplyResources(this.radioButtonVHD, "radioButtonVHD");
             this.radioButtonVHD.Name = "radioButtonVHD";
             this.radioButtonVHD.TabStop = true;
-            this.toolTip1.SetToolTip(this.radioButtonVHD, resources.GetString("radioButtonVHD.ToolTip"));
             this.radioButtonVHD.UseVisualStyleBackColor = true;
             // 
             // lblVhdPartitionTableType
             // 
             resources.ApplyResources(this.lblVhdPartitionTableType, "lblVhdPartitionTableType");
             this.lblVhdPartitionTableType.Name = "lblVhdPartitionTableType";
-            this.toolTip1.SetToolTip(this.lblVhdPartitionTableType, resources.GetString("lblVhdPartitionTableType.ToolTip"));
             // 
             // comboBoxVhdPartitionType
             // 
-            resources.ApplyResources(this.comboBoxVhdPartitionType, "comboBoxVhdPartitionType");
             this.comboBoxVhdPartitionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxVhdPartitionType.FormattingEnabled = true;
             this.comboBoxVhdPartitionType.Items.AddRange(new object[] {
             resources.GetString("comboBoxVhdPartitionType.Items"),
             resources.GetString("comboBoxVhdPartitionType.Items1")});
+            resources.ApplyResources(this.comboBoxVhdPartitionType, "comboBoxVhdPartitionType");
             this.comboBoxVhdPartitionType.Name = "comboBoxVhdPartitionType";
-            this.toolTip1.SetToolTip(this.comboBoxVhdPartitionType, resources.GetString("comboBoxVhdPartitionType.ToolTip"));
             // 
             // comboBoxGb
             // 
-            resources.ApplyResources(this.comboBoxGb, "comboBoxGb");
             this.comboBoxGb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxGb, "comboBoxGb");
             this.comboBoxGb.FormattingEnabled = true;
             this.comboBoxGb.Items.AddRange(new object[] {
             resources.GetString("comboBoxGb.Items"),
             resources.GetString("comboBoxGb.Items1")});
             this.comboBoxGb.Name = "comboBoxGb";
-            this.toolTip1.SetToolTip(this.comboBoxGb, resources.GetString("comboBoxGb.ToolTip"));
             this.comboBoxGb.SelectedIndexChanged += new System.EventHandler(this.comboBoxGb_SelectedIndexChanged);
             // 
             // txtVhdNameWithoutExt
             // 
             resources.ApplyResources(this.txtVhdNameWithoutExt, "txtVhdNameWithoutExt");
             this.txtVhdNameWithoutExt.Name = "txtVhdNameWithoutExt";
-            this.toolTip1.SetToolTip(this.txtVhdNameWithoutExt, resources.GetString("txtVhdNameWithoutExt.ToolTip"));
             // 
             // lblVhdSize
             // 
             resources.ApplyResources(this.lblVhdSize, "lblVhdSize");
             this.lblVhdSize.Name = "lblVhdSize";
-            this.toolTip1.SetToolTip(this.lblVhdSize, resources.GetString("lblVhdSize.ToolTip"));
             // 
             // lblVhdName
             // 
             resources.ApplyResources(this.lblVhdName, "lblVhdName");
             this.lblVhdName.Name = "lblVhdName";
-            this.toolTip1.SetToolTip(this.lblVhdName, resources.GetString("lblVhdName.ToolTip"));
             // 
             // numericUpDown1
             // 
@@ -706,11 +675,9 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.toolTip1.SetToolTip(this.numericUpDown1, resources.GetString("numericUpDown1.ToolTip"));
             // 
             // tabPagePartition
             // 
-            resources.ApplyResources(this.tabPagePartition, "tabPagePartition");
             this.tabPagePartition.BackColor = System.Drawing.SystemColors.Control;
             this.tabPagePartition.Controls.Add(this.label1);
             this.tabPagePartition.Controls.Add(this.linkLabel4);
@@ -725,27 +692,24 @@
             this.tabPagePartition.Controls.Add(this.label4);
             this.tabPagePartition.Controls.Add(this.txtPartitionSize2);
             this.tabPagePartition.Controls.Add(this.txtPartitionSize3);
+            resources.ApplyResources(this.tabPagePartition, "tabPagePartition");
             this.tabPagePartition.Name = "tabPagePartition";
-            this.toolTip1.SetToolTip(this.tabPagePartition, resources.GetString("tabPagePartition.ToolTip"));
             this.tabPagePartition.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // labelPartition1
             // 
             resources.ApplyResources(this.labelPartition1, "labelPartition1");
             this.labelPartition1.Name = "labelPartition1";
-            this.toolTip1.SetToolTip(this.labelPartition1, resources.GetString("labelPartition1.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.toolTip1.SetToolTip(this.label6, resources.GetString("label6.ToolTip"));
             // 
             // linklblRestoreMultiPartition
             // 
@@ -753,41 +717,35 @@
             this.linklblRestoreMultiPartition.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(112)))), ((int)(((byte)(166)))));
             this.linklblRestoreMultiPartition.Name = "linklblRestoreMultiPartition";
             this.linklblRestoreMultiPartition.TabStop = true;
-            this.toolTip1.SetToolTip(this.linklblRestoreMultiPartition, resources.GetString("linklblRestoreMultiPartition.ToolTip"));
             this.linklblRestoreMultiPartition.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblRestoreMultiPartition_LinkClicked);
             // 
             // label11
             // 
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            this.toolTip1.SetToolTip(this.label11, resources.GetString("label11.ToolTip"));
             // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.toolTip1.SetToolTip(this.label8, resources.GetString("label8.ToolTip"));
             // 
             // txtEfiSize
             // 
             resources.ApplyResources(this.txtEfiSize, "txtEfiSize");
             this.txtEfiSize.Name = "txtEfiSize";
             this.txtEfiSize.ShortcutsEnabled = false;
-            this.toolTip1.SetToolTip(this.txtEfiSize, resources.GetString("txtEfiSize.ToolTip"));
             this.txtEfiSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEfiSize_KeyPress);
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.toolTip1.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             // 
             // txtPartitionSize1
             // 
             resources.ApplyResources(this.txtPartitionSize1, "txtPartitionSize1");
             this.txtPartitionSize1.Name = "txtPartitionSize1";
             this.txtPartitionSize1.ReadOnly = true;
-            this.toolTip1.SetToolTip(this.txtPartitionSize1, resources.GetString("txtPartitionSize1.ToolTip"));
             this.txtPartitionSize1.TextChanged += new System.EventHandler(this.txtPartitionSize3_TextChanged);
             this.txtPartitionSize1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize3_KeyPress);
             // 
@@ -795,13 +753,11 @@
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.toolTip1.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // txtPartitionSize2
             // 
             resources.ApplyResources(this.txtPartitionSize2, "txtPartitionSize2");
             this.txtPartitionSize2.Name = "txtPartitionSize2";
-            this.toolTip1.SetToolTip(this.txtPartitionSize2, resources.GetString("txtPartitionSize2.ToolTip"));
             this.txtPartitionSize2.TextChanged += new System.EventHandler(this.txtPartitionSize2_TextChanged);
             this.txtPartitionSize2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize2_KeyPress);
             // 
@@ -809,13 +765,11 @@
             // 
             resources.ApplyResources(this.txtPartitionSize3, "txtPartitionSize3");
             this.txtPartitionSize3.Name = "txtPartitionSize3";
-            this.toolTip1.SetToolTip(this.txtPartitionSize3, resources.GetString("txtPartitionSize3.ToolTip"));
             this.txtPartitionSize3.TextChanged += new System.EventHandler(this.txtPartitionSize1_TextChanged);
             this.txtPartitionSize3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPartitionSize1_KeyPress);
             // 
             // tabPageBackup
             // 
-            resources.ApplyResources(this.tabPageBackup, "tabPageBackup");
             this.tabPageBackup.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageBackup.Controls.Add(this.linkLabel5);
             this.tabPageBackup.Controls.Add(this.label3);
@@ -825,26 +779,23 @@
             this.tabPageBackup.Controls.Add(this.buttonFFUBrowse);
             this.tabPageBackup.Controls.Add(this.radioButtonRestore);
             this.tabPageBackup.Controls.Add(this.radioButtonBackup);
+            resources.ApplyResources(this.tabPageBackup, "tabPageBackup");
             this.tabPageBackup.Name = "tabPageBackup";
-            this.toolTip1.SetToolTip(this.tabPageBackup, resources.GetString("tabPageBackup.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // buttonBackup
             // 
             resources.ApplyResources(this.buttonBackup, "buttonBackup");
             this.buttonBackup.Name = "buttonBackup";
-            this.toolTip1.SetToolTip(this.buttonBackup, resources.GetString("buttonBackup.ToolTip"));
             this.buttonBackup.UseVisualStyleBackColor = true;
             this.buttonBackup.Click += new System.EventHandler(this.buttonBackup_Click);
             // 
@@ -853,13 +804,11 @@
             resources.ApplyResources(this.textBoxFFU, "textBoxFFU");
             this.textBoxFFU.Name = "textBoxFFU";
             this.textBoxFFU.ReadOnly = true;
-            this.toolTip1.SetToolTip(this.textBoxFFU, resources.GetString("textBoxFFU.ToolTip"));
             // 
             // buttonFFUBrowse
             // 
             resources.ApplyResources(this.buttonFFUBrowse, "buttonFFUBrowse");
             this.buttonFFUBrowse.Name = "buttonFFUBrowse";
-            this.toolTip1.SetToolTip(this.buttonFFUBrowse, resources.GetString("buttonFFUBrowse.ToolTip"));
             this.buttonFFUBrowse.UseVisualStyleBackColor = true;
             this.buttonFFUBrowse.Click += new System.EventHandler(this.buttonFFUBrowse_Click);
             // 
@@ -867,7 +816,6 @@
             // 
             resources.ApplyResources(this.radioButtonRestore, "radioButtonRestore");
             this.radioButtonRestore.Name = "radioButtonRestore";
-            this.toolTip1.SetToolTip(this.radioButtonRestore, resources.GetString("radioButtonRestore.ToolTip"));
             this.radioButtonRestore.UseVisualStyleBackColor = true;
             this.radioButtonRestore.CheckedChanged += new System.EventHandler(this.radioButtonRestore_CheckedChanged);
             // 
@@ -877,33 +825,30 @@
             this.radioButtonBackup.Checked = true;
             this.radioButtonBackup.Name = "radioButtonBackup";
             this.radioButtonBackup.TabStop = true;
-            this.toolTip1.SetToolTip(this.radioButtonBackup, resources.GetString("radioButtonBackup.ToolTip"));
             this.radioButtonBackup.UseVisualStyleBackColor = true;
+            this.radioButtonBackup.CheckedChanged += new System.EventHandler(this.radioButtonBackup_CheckedChanged);
             // 
             // comboBoxParts
             // 
-            resources.ApplyResources(this.comboBoxParts, "comboBoxParts");
             this.comboBoxParts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxParts.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxParts, "comboBoxParts");
             this.comboBoxParts.Name = "comboBoxParts";
-            this.toolTip1.SetToolTip(this.comboBoxParts, resources.GetString("comboBoxParts.ToolTip"));
             this.comboBoxParts.SelectedIndexChanged += new System.EventHandler(this.comboBoxParts_SelectedIndexChanged);
             this.comboBoxParts.MouseHover += new System.EventHandler(this.comboBoxParts_MouseHover);
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, resources.GetString("pictureBox1.ToolTip"));
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnwim
             // 
             resources.ApplyResources(this.btnwim, "btnwim");
             this.btnwim.Name = "btnwim";
-            this.toolTip1.SetToolTip(this.btnwim, resources.GetString("btnwim.ToolTip"));
             this.btnwim.UseVisualStyleBackColor = true;
             this.btnwim.Click += new System.EventHandler(this.btnwim_Click);
             // 
@@ -912,24 +857,18 @@
             resources.ApplyResources(this.txtwim, "txtwim");
             this.txtwim.Name = "txtwim";
             this.txtwim.ReadOnly = true;
-            this.toolTip1.SetToolTip(this.txtwim, resources.GetString("txtwim.ToolTip"));
             this.txtwim.TextChanged += new System.EventHandler(this.txtwim_TextChanged);
             // 
             // groupBoxadv
             // 
-            resources.ApplyResources(this.groupBoxadv, "groupBoxadv");
             this.groupBoxadv.Controls.Add(this.tabControlSystem);
+            resources.ApplyResources(this.groupBoxadv, "groupBoxadv");
             this.groupBoxadv.Name = "groupBoxadv";
             this.groupBoxadv.TabStop = false;
-            this.toolTip1.SetToolTip(this.groupBoxadv, resources.GetString("groupBoxadv.ToolTip"));
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // folderBrowserDialog2
-            // 
-            resources.ApplyResources(this.folderBrowserDialog2, "folderBrowserDialog2");
             // 
             // saveFileDialog1
             // 
@@ -951,7 +890,6 @@
             this.Controls.Add(this.txtwim);
             this.Controls.Add(this.btnwim);
             this.Controls.Add(this.comboBoxUd);
-            this.Controls.Add(this.lblWim);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.linkLabel2);
@@ -965,7 +903,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -993,7 +930,6 @@
 
         private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Label lblWim;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.LinkLabel linklblVisit;

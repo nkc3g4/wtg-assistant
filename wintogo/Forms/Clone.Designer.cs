@@ -30,7 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -50,21 +49,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(640, 234);
+            this.label1.Size = new System.Drawing.Size(321, 120);
             this.label1.TabIndex = 1;
-            this.label1.Text = "克隆本机系统须知：\r\n1.须提前下载附加文件。\r\n2.本机系统必须为Win10 64位。\r\n3.USB设备须有足够空间且识别为本地磁盘。\r\n4.USB设备将会被重" +
-    "新分区，所有数据将删除。\r\n5.克隆后WTG系统启动模式为UEFI+MBR。";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(376, 92);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(137, 39);
-            this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "下载链接";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.label1.Text = "克隆本机系统须知：\r\n1.本机系统必须为Win10 64位。\r\n2.WinRE镜像在C:\\Recovery目录中\r\n3.USB设备须有足够空间且识别为本地磁盘。\r" +
+    "\n4.USB设备将会被重新分区，所有数据将删除。\r\n5.克隆后WTG系统启动模式为UEFI+MBR。";
             // 
             // button2
             // 
@@ -79,11 +67,10 @@
             // 
             // Clone
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 39F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 481);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,7 +88,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button button2;
     }
 }

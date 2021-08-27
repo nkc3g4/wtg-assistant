@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Windows.Forms;
 
 namespace wintogo.Utility
 {
@@ -19,7 +20,7 @@ namespace wintogo.Utility
             request.AllowAutoRedirect = true;
             request.Method = "POST";
             string boundary = DateTime.Now.Ticks.ToString("X"); // 随机分隔线
-            request.ContentType = "multipart/form-data;charset=utf-8;boundary=" + boundary;
+            request.ContentType = "multipart/form-data;charset=utf-8;boundary=" + boundary+";version="+Application.ProductVersion;
             byte[] itemBoundaryBytes = Encoding.UTF8.GetBytes("\r\n--" + boundary + "\r\n");
             byte[] endBoundaryBytes = Encoding.UTF8.GetBytes("\r\n--" + boundary + "--\r\n");
             int pos = path.LastIndexOf("\\");

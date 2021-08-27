@@ -12,6 +12,7 @@ namespace wintogo
     {
         public Finish(TimeSpan ts)
         {
+            FormHelper.Closewp();
             Thread.CurrentThread.CurrentUICulture = MsgManager.ci;
             InitializeComponent();
             lblTime.Text = ts.ToString(@"hh\:mm\:ss");

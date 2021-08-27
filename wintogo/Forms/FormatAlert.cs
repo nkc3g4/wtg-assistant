@@ -23,7 +23,7 @@ namespace wintogo.Forms
             {
 
                 string oriText = btnOk.Text;
-                for (int i = 3; i >= 1; i--)
+                for (int i = 1; i >= 1; i--)
                 {
                     btnOk.Invoke(new Action(() => { btnOk.Text = oriText+"(" + i.ToString() + ")"; }));
                     Thread.Sleep(1000);

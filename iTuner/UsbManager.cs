@@ -233,6 +233,61 @@ namespace iTuner
         //========================================================================================
         // Methods
         //========================================================================================
+        public List<string> GetVolumns(int index,string model)
+        {
+            List<string> vols = new List<string>();
+            foreach (ManagementObject drive in
+              new ManagementObjectSearcher(
+                  "select DeviceID,Model,Size,Index,MediaType,Size,InterfaceType from Win32_DiskDrive where Index="+ index).Get())
+            {
+                if (drive["Model"].ToString() != model)
+                    continue;
+                try
+                {
+                    // associate physical disks with partitions
+                    foreach (ManagementObject partition in new ManagementObjectSearcher(string.Format(
+                        "associators of {{Win32_DiskDrive.DeviceID='{0}'}} where AssocClass = Win32_DiskDriveToDiskPartition",
+                        drive["DeviceID"])).Get())
+                    {
+                        try
+                        {
+                            if (partition != null)
+                            {
+                                // associate partitions with logical disks (drive letter volumes)
+                                ManagementObject logical = new ManagementObjectSearcher(string.Format(
+                                    "associators of {{Win32_DiskPartition.DeviceID='{0}'}} where AssocClass = Win32_LogicalDiskToPartition",
+                                    partition["DeviceID"])).First();
+                                //MessageBox.Show(logical.ToString());
+                                if (logical != null)
+                                {
+                                    // finally find the logical disk entry to determine the volume name
+                                    ManagementObject volume = new ManagementObjectSearcher(string.Format(
+                                        "select FreeSpace, Size, VolumeName, DriveType from Win32_LogicalDisk where Name='{0}'",
+                                        logical["Name"])).First();
+                                    vols.Add(logical["Name"].ToString());
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            //disks.Add(new UsbDisk(ex.ToString()));
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    //MessageBox.Show(e.ToString());
+                }
+            }
+            return vols;
+
+        }
+
+
+
+
 
         /// <summary>
         /// Gets a collection of all available USB disk drives currently mounted.
@@ -256,6 +311,7 @@ namespace iTuner
                     if (drive["InterfaceType"].ToString() != "USB" && drive["InterfaceType"].ToString() != "SCSI") continue;
                     if (drive["Model"].ToString().Contains("APPLE SD")) continue;
                     UsbDisk disk = new UsbDisk(drive["DeviceID"].ToString());
+                    
                     disk.Model = drive["Model"].ToString();
                     disk.Index = drive["Index"].ToString();
                     disk.DiskSize = (ulong)drive["Size"];
@@ -301,6 +357,7 @@ namespace iTuner
                         }
                         catch (Exception ex)
                         {
+                            Console.WriteLine(ex.ToString());
                             //disks.Add(new UsbDisk(ex.ToString()));
                         }
                     }

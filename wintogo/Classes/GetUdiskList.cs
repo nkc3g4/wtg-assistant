@@ -12,14 +12,12 @@ namespace wintogo
     public static class GetUdiskList
     {
         private static Thread tListUDisks;
-        static string currentList;//当前优盘列表
         public static UsbDiskCollection diskCollection = new UsbDiskCollection();
-
+        
         #region Udisk
         public delegate void OutDelegate(bool isend, object dtSource,ComboBox combobox);
         public static  void OutText(bool isend, object dtSource, ComboBox comboBoxUd)
         {
-            //MessageBox.Show("Test");
             if (comboBoxUd.InvokeRequired)
             {
                 OutDelegate outdelegate = new OutDelegate(OutText);
@@ -38,36 +36,44 @@ namespace wintogo
                 comboBoxUd.SelectedIndex = comboBoxUd.Items.Count - 1;
             }
         }
+        public static List<string> GetVolumns(UsbDisk usbDisk)
+        {
+            UsbManager manager = new UsbManager();
+            return manager.GetVolumns(int.Parse(usbDisk.Index), usbDisk.Model);
+        }
+        private static UsbDiskCollection GetUsbDiskCollection()
+        {
+            UsbManager manager = new UsbManager();
 
-        private static void GetUdiskInfo()
+            UsbDiskCollection usbDisks = new UsbDiskCollection();
+            try
+            {
+                UsbDisk udChoose = new UsbDisk(MsgManager.GetResString("Msg_chooseud", MsgManager.ci));
+                usbDisks.Add(udChoose);
+                foreach (UsbDisk disk in manager.GetAvailableDisks())
+                {
+                    usbDisks.Add(disk);
+                }
+            }
+            catch (Exception ex) { Log.WriteLog("Err_GetUdiskInfo", ex.ToString()); }
+            return usbDisks;
+        }
+        public static void GetUdiskInfo()
         {
 
-            string newlist = string.Empty;
             UsbManager manager = new UsbManager();
             try
             {
-                diskCollection.Clear();
-                //UsbDiskCollection disks = manager.GetAvailableDisks();
-                UsbDisk udChoose = new UsbDisk(MsgManager.GetResString("Msg_chooseud", MsgManager.ci));
-                diskCollection.Add(udChoose);
-
-                //if (disks == null) { return; }
-                foreach (UsbDisk disk in manager.GetAvailableDisks())
+                var newDiskCollection = GetUsbDiskCollection();
+                if (!diskCollection.SequenceEqual(newDiskCollection))
                 {
-                    diskCollection.Add(disk);
-                    newlist += disk.ToString();
-
-                }
-                if (newlist != currentList)
-                {
-                    currentList = newlist;
+                    diskCollection = newDiskCollection;
                     OutText(false, diskCollection, cbb);
                 }
             }
             catch (Exception ex) { Log.WriteLog("Err_GetUdiskInfo", ex.ToString()); }
             finally
             {
-
                 manager.Dispose();
             }
 

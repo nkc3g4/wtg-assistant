@@ -13,7 +13,7 @@ namespace iTuner
     /// Represents the displayable information for a single USB disk.
     /// </summary>
 
-    public class UsbDisk
+    public class UsbDisk:IEquatable<UsbDisk>
     {
         private const int KB = 1024;
         private const int MB = KB * 1024;
@@ -192,5 +192,16 @@ namespace iTuner
 
             return format;
         }
+
+        public bool Equals(UsbDisk other)
+        {
+            if (other is null)
+                return false;
+
+            return ToString() == other.ToString();
+        }
+        public override bool Equals(object obj) => Equals(obj as UsbDisk);
+        public override int GetHashCode() => ToString().GetHashCode();
+
     }
 }

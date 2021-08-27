@@ -232,6 +232,15 @@ namespace wintogo.MultiLanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 请安装.NET Framework 4.6.1或更高版本！.
+        /// </summary>
+        public static string Msg_DotnetVersionError {
+            get {
+                return ResourceManager.GetString("Msg_DotnetVersionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 如果您不清楚您在做什么，请立即停止操作！.
         /// </summary>
         public static string Msg_DoWhat {

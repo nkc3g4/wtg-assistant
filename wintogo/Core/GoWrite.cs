@@ -204,8 +204,8 @@ namespace wintogo
             }
 
             ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe,WTGModel.skipOOBE, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
-            BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, @"X:\", FirmwareType.UEFI);
-            BootFileOperation.BcdeditFixBootFileTypical(@"X:\", WTGModel.ud, FirmwareType.UEFI);
+            BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, WTGModel.espLetter.Substring(0,1)+":\\", FirmwareType.UEFI);
+            BootFileOperation.BcdeditFixBootFileTypical(WTGModel.espLetter.Substring(0, 1) + ":\\", WTGModel.ud, FirmwareType.UEFI);
             RemoveLetterX();
 
             return true;
@@ -432,10 +432,10 @@ namespace wintogo
             //安装EXTRA
             ImageOperation.ImageExtra(WTGModel.installDonet35, WTGModel.isBlockLocalDisk, WTGModel.disableWinRe, WTGModel.skipOOBE, WTGModel.disableUasp, WTGModel.ud, WTGModel.imageFilePath);
             //BCDBOOT WRITE BOOT FILE  
-            BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, @"X:\", FirmwareType.ALL);
+            BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, WTGModel.espLetter.Substring(0, 1) + ":\\", FirmwareType.ALL);
             //BootFileOperation.BcdbootWriteALLBootFileToXAndAct(WTGOperation.bcdbootFileName, WTGOperation.ud);
-            BootFileOperation.BcdeditFixBootFileTypical(@"X:\", WTGModel.ud, FirmwareType.UEFI);
-            BootFileOperation.BooticeAct(@"X:\");
+            BootFileOperation.BcdeditFixBootFileTypical(WTGModel.espLetter.Substring(0, 1) + ":\\", WTGModel.ud, FirmwareType.UEFI);
+            BootFileOperation.BooticeAct(WTGModel.espLetter.Substring(0, 1) + ":\\");
             RemoveLetterX();
 
             return true;
@@ -457,7 +457,7 @@ namespace wintogo
             {
                 DiskpartScriptManager dsm = new DiskpartScriptManager();
                 StringBuilder args = new StringBuilder();
-                args.AppendLine("select volume x");
+                args.AppendLine("select volume "+WTGModel.espLetter.Substring(0, 1));
                 args.AppendLine("remove");
                 args.AppendLine("exit");
                 dsm.Args = args.ToString();

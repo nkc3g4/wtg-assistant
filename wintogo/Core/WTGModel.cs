@@ -8,6 +8,8 @@ namespace wintogo
 {
     public class WTGModel
     {
+        public static string espLetter;
+        public static WriteProgress wp;
         public static  string[] partitionSize;
         //public static string partitionSize1;
         //public static string partitionSize2;

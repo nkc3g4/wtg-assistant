@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -116,17 +117,36 @@ namespace wintogo
                 Log.WriteProgramRunInfoToLog();
 
                 writeSw.Restart();
+                //Assign UD Volume
+               
 
                 if (WTGModel.UdObj.Volume == string.Empty)
                 {
-                    DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index, WTGModel.ud.Substring(0, 1));
-                    WTGModel.UdObj.SetVolume(WTGModel.ud.Substring(0, 1));
+                    DiskOperation.RepartitionAndAutoAssignDriveLetter(WTGModel.UdObj.Index);
+                    List<string> vols = GetUdiskList.GetVolumns(WTGModel.UdObj);
+                    if (vols.Count < 1)
+                        throw new Exception("Device Repartition Error!");
+                    string vol = vols[0].Substring(0, 1);
+                    WTGModel.UdObj.SetVolume(vol);
+                    WTGModel.ud = vol + ":\\";
+
+                }
+                else
+                {
+                    WTGModel.ud = WTGModel.UdObj.Volume.Substring(0, 2) + "\\";
                 }
                 if (WTGModel.isUefiGpt)
                 {
                     //UEFI+GPT
                     DiskOperation.DiskPartGPTAndUEFI(WTGModel.efiPartitionSize.ToString(), WTGModel.UdObj, WTGModel.partitionSize);
                     DiskOperation.CheckDiskExists(WTGModel.ud);
+                    List<string> vols = GetUdiskList.GetVolumns(WTGModel.UdObj);
+                    if (vols.Count < 2)
+                    {
+                        throw new Exception("Partition Error");
+                    }
+                    
+                    WTGModel.espLetter = vols[0];
                     if (WTGModel.CheckedMode == ApplyMode.Legacy)
                     {
                         //UEFI+GPT 传统
@@ -146,17 +166,35 @@ namespace wintogo
                     //UEFI+MBR
 
                     //DiskpartScriptManager dsm = new DiskpartScriptManager();
-                    DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
-                    for (int i = 0; i < 5 && !Directory.Exists(WTGModel.ud); i++)
+                    DiskOperation.DiskPartMBRAndUEFI(WTGModel.efiPartitionSize, WTGModel.UdObj, WTGModel.partitionSize,false);
+                    //DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
+
+                    if (!Directory.Exists(WTGModel.ud))
                     {
                         Console.WriteLine("Retry-partition");
-                        Thread.Sleep(1800);
-                        DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index, WTGModel.ud.Substring(0, 1));
-                        WTGModel.UdObj.SetVolume(WTGModel.ud.Substring(0, 1));
-
-                        DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
+                        Thread.Sleep(3800);
+                        DiskOperation.DiskPartMBRAndUEFI(WTGModel.efiPartitionSize, WTGModel.UdObj, WTGModel.partitionSize,false);
                     }
-                    DiskOperation.CheckDiskExists(WTGModel.ud);
+
+                    //for (int i = 0; i < 5 && !Directory.Exists(WTGModel.ud); i++)
+                    //{
+                    //    Console.WriteLine("Retry-partition");
+                    //    Thread.Sleep(1800);
+                    //    DiskOperation.AssignDriveLetter(WTGModel.UdObj.Index, WTGModel.ud.Substring(0, 1));
+                    //    WTGModel.UdObj.SetVolume(WTGModel.ud.Substring(0, 1));
+                    //    //DiskOperation.GenerateMBRAndUEFIScript(WTGModel.efiPartitionSize.ToString(), WTGModel.ud, WTGModel.partitionSize);
+                    //    DiskOperation.DiskPartMBRAndUEFI(WTGModel.efiPartitionSize, WTGModel.UdObj, WTGModel.partitionSize);
+                    //}
+                    //DiskOperation.CheckDiskExists(WTGModel.ud);
+                    List<string> vols = GetUdiskList.GetVolumns(WTGModel.UdObj);
+                    if (vols.Count < 2)
+                    {
+                        throw new Exception("Partition Error");
+                    }
+                    WTGModel.espLetter = vols[0];
+                    WTGModel.UdObj.SetVolume(vols[1]);
+                    WTGModel.ud = vols[1].Substring(0,1) + ":\\";
+                    Console.WriteLine(WTGModel.ud);
                     if (WTGModel.CheckedMode == ApplyMode.Legacy)
                     {
                         if (Write.UEFIMBRTypical())

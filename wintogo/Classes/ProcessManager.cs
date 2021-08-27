@@ -11,7 +11,7 @@ namespace wintogo
 {
     public static class ProcessManager
     {
-        public static WriteProgress wp;
+        //public static WriteProgress wp;
         public static StringBuilder output = new StringBuilder();
         //public delegate void AppendTextCallback(string text);
         //public static double percentage = -1;
@@ -39,13 +39,12 @@ namespace wintogo
                 Log.WriteLog("Output", output.ToString());
                 output.Clear();
 
-
-
+                /*
                 wp.Invoke(new Action(() =>
                 {
                     wp.IsUserClosing = false;
                     wp.Close();
-                }));
+                }));*/
 
             }
             catch (Exception ex)
@@ -57,16 +56,22 @@ namespace wintogo
 
         public static void AppendText(string text)
         {
+           
+            
             output.Append(text);
             //Log.AppendLog("Output.log", text);
             //try
             //{
             Thread t = new Thread(() =>
             {
+                
+                
                 try
                 {
+
+                    
                     int c = 0;
-                    while (!wp.IsHandleCreated)
+                    while (WTGModel.wp == null || !WTGModel.wp.IsHandleCreated)
                     {
                         if (++c > 100)
                         {
@@ -74,12 +79,16 @@ namespace wintogo
                         }
                         Thread.Sleep(50);
                     }
+                    WTGModel.wp.textBox1.Invoke(new Action(() => {
+                        WTGModel.wp.textBox1.AppendText(text);
+                    }));
+                    /*
                     //IntPtr IsHandleCreated = wp.Handle;
                     string[] txtLines = wp.textBox1.Lines;
                     if (txtLines.Length == 0 || txtLines.Length == 1 || (txtLines.Length - 2 >= 0 && text != txtLines[txtLines.Length - 2] + "\r\n"))
                     {
                         wp.textBox1.BeginInvoke(new Action(() => { wp.textBox1.AppendText(text); }));
-                    }
+                    }*/
                 }
                 catch (Exception ex)
                 {
@@ -185,6 +194,13 @@ namespace wintogo
                 process.Exited += new EventHandler(progress_Exited);
                 process.Start();
                 process.BeginOutputReadLine();
+                process.WaitForExit();
+                int exitCode = process.ExitCode;
+                if (exitCode != 0)
+                {
+                    Log.WriteLog("Err_ProcessExit", exitCode.ToString());
+                }
+                Console.WriteLine("Exit: " + process.ExitCode);
             }
             catch (Exception ex)
             {
@@ -194,7 +210,7 @@ namespace wintogo
             }
 
         }
-        public static void Do(ThreadStart ts)
+        /*public static void Do(ThreadStart ts)
         {
 
             wp = new WriteProgress();
@@ -203,19 +219,32 @@ namespace wintogo
             t.Start();
             wp.ShowDialog();
 
-        }
-        public static void ECMD(string StartFileName, string StartFileArg, params string[] AppendText)
+        }*/
+        public static void ECMD(string StartFileName, string StartFileArg, params string[] TextAppend)
         {
             try
             {
-                wp = new WriteProgress();
-                wp.IsUserClosing = true;
+                if (WTGModel.wp == null)
+                {
+                    //WTGModel.wp.s
+                    Thread twp = new Thread(new ThreadStart(() =>
+                    {
+                        WTGModel.wp = new WriteProgress();
+                        WTGModel.wp.IsUserClosing = true;
+                        WTGModel.wp.ShowDialog();
+                    }));
+                    twp.Start();
+                }
+                AppendText("Command:" + StartFileName + StartFileArg + "\r\n");
+                Thread.Sleep(3000);
                 ExecuteCMD(StartFileName, StartFileArg);
-                wp.ShowDialog();
-                if (wp.OnClosingException != null)
+
+                //wp.ShowDialog();
+                
+                /*if (wp.OnClosingException != null)
                 {
                     throw wp.OnClosingException;
-                }
+                }*/
             }
             catch
             {

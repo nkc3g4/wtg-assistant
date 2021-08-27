@@ -208,9 +208,14 @@ namespace wintogo
             args.Append(" /l zh-CN ");
             args.Append(" /v ");
 
-            ProcessManager.ECMD("bcdboot.exe", args.ToString());
-            //ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\" + WTGModel.bcdbootFileName, args.ToString());
-
+            if (WTGModel.CurrentOS == OS.Win7)
+            {
+                ProcessManager.ECMD(WTGModel.applicationFilesPath + "\\bcdboot.exe", args.ToString());
+            }
+            else
+            {
+                ProcessManager.ECMD("bcdboot.exe", args.ToString());
+            }
 
             //}
         }

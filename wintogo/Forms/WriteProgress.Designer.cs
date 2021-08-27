@@ -33,7 +33,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.win8PB1 = new wintogo.Win8PB();
+            this.labelProgress = new System.Windows.Forms.Label();
+            this.win8PB2 = new wintogo.Win8PB();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,19 +65,24 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // win8PB1
+            // labelProgress
             // 
-            this.win8PB1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.win8PB1, "win8PB1");
-            this.win8PB1.Name = "win8PB1";
-            this.win8PB1.Load += new System.EventHandler(this.win8PB1_Load);
+            resources.ApplyResources(this.labelProgress, "labelProgress");
+            this.labelProgress.Name = "labelProgress";
+            // 
+            // win8PB2
+            // 
+            this.win8PB2.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.win8PB2, "win8PB2");
+            this.win8PB2.Name = "win8PB2";
             // 
             // WriteProgress
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.win8PB2);
+            this.Controls.Add(this.labelProgress);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.win8PB1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
@@ -99,8 +105,8 @@
         public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private Win8PB win8PB1;
         public System.Windows.Forms.LinkLabel linkLabel1;
-
+        private System.Windows.Forms.Label labelProgress;
+        private Win8PB win8PB2;
     }
 }

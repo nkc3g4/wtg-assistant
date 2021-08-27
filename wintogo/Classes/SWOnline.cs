@@ -108,7 +108,7 @@ namespace wintogo
                 WebClient MyWebClient = new WebClient();
                 //MyWebClient.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
                 MyWebClient.Credentials = CredentialCache.DefaultCredentials;
-                byte[] pageData = MyWebClient.DownloadData(releaseUrl); //从指定网站下载数据"http://bbs.luobotou.org/app/wintogo.txt"
+                byte[] pageData = MyWebClient.DownloadData(releaseUrl); //从指定网站下载数据"https://bbs.luobotou.org/app/wintogo.txt"
 
                 pageHtml = Encoding.UTF8.GetString(pageData);
                 int index = pageHtml.IndexOf("~");
@@ -139,7 +139,7 @@ namespace wintogo
 
                 MyWebClient.Credentials = CredentialCache.DefaultCredentials;
                 
-                byte[] pageData = MyWebClient.DownloadData("http://bbs.luobotou.org/app/wintogo.txt"); //从指定网站下载数据
+                byte[] pageData = MyWebClient.DownloadData("https://bbs.luobotou.org/app/wintogo.txt"); //从指定网站下载数据
                 //MyWebClient.DownloadString()
                 pageHtml = Encoding.UTF8.GetString(pageData);
                 int index = pageHtml.IndexOf("announcement=");
@@ -151,7 +151,7 @@ namespace wintogo
                         //string pageHtml;
                         //WebClient MyWebClient2 = new WebClient();
                         MyWebClient.Credentials = CredentialCache.DefaultCredentials;
-                        byte[] pageData1 = MyWebClient.DownloadData("http://bbs.luobotou.org/portal.php");
+                        byte[] pageData1 = MyWebClient.DownloadData("https://bbs.luobotou.org/portal.php");
                         pageHtml = Encoding.UTF8.GetString(pageData1);
 
                         #region 正则表达式实现
@@ -185,7 +185,7 @@ namespace wintogo
                         //    //int adprogram = index1 + Application.ProductName.Length + 1;
                         //}
                     }
-                    pageHtml = MyWebClient.DownloadString("http://bbs.luobotou.org/app/announcement.txt");
+                    pageHtml = MyWebClient.DownloadString("https://bbs.luobotou.org/app/announcement.txt");
                     Match match = Regex.Match(pageHtml, Application.ProductName + "=(.+)~(.+)结束");
                     string adlink = match.Groups[2].Value;
                     string adtitle = match.Groups[1].Value;

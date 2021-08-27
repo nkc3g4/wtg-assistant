@@ -34,6 +34,58 @@ namespace wintogo
             dsm.RunDiskpartScript();
             //attributes volume set nodefaultdriveletter
         }
+        public static void DiskPartMBRAndUEFI(string efiSize, UsbDisk uDisk, string[] partitionSize,bool keepDriveLetter)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("select disk " + uDisk.Index);
+            sb.AppendLine("clean");
+            sb.AppendLine("convert mbr");
+            sb.AppendLine("create partition primary size " + efiSize);
+
+            List<string> partitionList = new List<string>();
+            for (int i = 0; i < partitionSize.Length; i++)
+            {
+                int partSize = 0;
+                int.TryParse(partitionSize[i], out partSize);
+                if (partSize == 0)
+                {
+                    continue;
+                }
+                partitionList.Add(partitionSize[i]);
+            }
+
+            for (int i = 0; i < partitionList.Count - 1; i++)
+            {
+                sb.AppendLine("create partition primary size " + partitionList[i]);
+            }
+
+
+            sb.AppendLine("create partition primary");
+            sb.AppendLine("select partition 2");
+            sb.AppendLine("remove noerr");
+            sb.AppendLine("format fs=ntfs quick");
+         
+            if(keepDriveLetter)
+                sb.AppendLine("assign letter=" + uDisk.Volume.Substring(0, 1));
+            else
+                sb.AppendLine("assign");
+            for (int i = 0; i < partitionList.Count - 1; i++)
+            {
+                sb.AppendLine("select partition " + (i + 3).ToString());
+                sb.AppendLine("format fs=ntfs quick");
+                sb.AppendLine("assign");
+            }
+            sb.AppendLine("select partition 1");
+            sb.AppendLine("remove noerr");
+            sb.AppendLine("format fs=fat32 quick");
+            sb.AppendLine("active");
+            sb.AppendLine("assign");
+            sb.AppendLine("exit");
+            DiskpartScriptManager dsm = new DiskpartScriptManager();
+            dsm.Args = sb.ToString();
+            dsm.RunDiskpartScript();
+        }
         /// <summary>
         /// WTGOperation.diskpartscriptpath + @"\uefi.txt"
         /// </summary>
@@ -77,6 +129,26 @@ namespace wintogo
             }
 
             sb.AppendLine("create partition primary");
+
+
+            if (uDisk.DriveType.Contains("Removable"))
+            {
+                sb.AppendLine("select partition 2");
+            }
+            else {
+                sb.AppendLine("select partition 3");
+            }
+            sb.AppendLine("format fs=ntfs quick");
+            sb.AppendLine("assign letter=" + uDisk.Volume.Substring(0,1));
+
+
+            for (int i = 0; i < partitionList.Count - 1; i++)
+            {
+                sb.AppendLine("select partition " + (i + 4).ToString());
+                sb.AppendLine("format fs=ntfs quick");
+                sb.AppendLine("assign");
+            }
+
             if (uDisk.DriveType.Contains("Removable"))
             {
                 sb.AppendLine("select partition 1");
@@ -87,29 +159,14 @@ namespace wintogo
                 sb.AppendLine("select partition 2");
             }
             sb.AppendLine("format fs=fat32 quick");
-            sb.AppendLine("assign letter=x");
-
-            if (uDisk.DriveType.Contains("Removable"))
-            {
-                sb.AppendLine("select partition 2");
-            }
-            else {
-                sb.AppendLine("select partition 3");
-            }
-            sb.AppendLine("format fs=ntfs quick");
-            sb.AppendLine("assign letter=" + uDisk.Volume);
-            for (int i = 0; i < partitionList.Count - 1; i++)
-            {
-                sb.AppendLine("select partition " + (i + 4).ToString());
-                sb.AppendLine("format fs=ntfs quick");
-                sb.AppendLine("assign");
-            }
+            sb.AppendLine("assign");
             sb.AppendLine("exit");
             DiskpartScriptManager dsm = new DiskpartScriptManager();
             dsm.Args = sb.ToString();
             dsm.RunDiskpartScript();
             CheckDiskExists(WTGModel.ud);
         }
+        /*
         /// <summary>
         /// MBR+UEFI脚本Write到WTGOperation.diskpartscriptpath + @"\uefimbr.txt
         /// </summary>
@@ -161,7 +218,7 @@ namespace wintogo
             dsm.Args = sb.ToString();
             dsm.RunDiskpartScript();
         }
-
+        */
         internal static void AssignDriveLetter(string index, string letter)
         {
             StringBuilder sb = new StringBuilder();
@@ -178,6 +235,23 @@ namespace wintogo
             dsm.Args = sb.ToString();
             dsm.RunDiskpartScript();
 
+        }
+
+        internal static void AssignDriveLetterFAT32(string index, string letter)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("select disk " + index);
+            sb.AppendLine("clean");
+            sb.AppendLine("convert mbr");
+            sb.AppendLine("create partition primary size 10240");
+            sb.AppendLine("select partition 1");
+            sb.AppendLine("format fs=fat32 quick");
+            //sb.AppendLine("active NOERR");
+            sb.AppendLine("assign letter=" + letter);
+            sb.AppendLine("exit");
+            DiskpartScriptManager dsm = new DiskpartScriptManager();
+            dsm.Args = sb.ToString();
+            dsm.RunDiskpartScript();
         }
         internal static void RepartitionAndAutoAssignDriveLetter(string index)
         {

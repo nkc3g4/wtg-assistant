@@ -46,7 +46,7 @@ namespace wintogo
             infoDict.Add("SkipOOBE", WTGModel.skipOOBE.ToString());
             infoDict.Add("CreateGuid", WTGModel.CreateGuid);
 
-            Thread t = new Thread(() =>
+            /*Thread t = new Thread(() =>
             {
                 try
                 {
@@ -64,7 +64,7 @@ namespace wintogo
                     Log.WriteLog("Err_Stats", ex.ToString());
                 }
             });
-            t.Start();
+            t.Start();*/
 
             StringBuilder sb = new StringBuilder();
             foreach (var item in infoDict)
@@ -137,9 +137,28 @@ namespace wintogo
         }
         public static void DeleteAllLogs()
         {
-            ProcessManager.SyncCMD("del /f /s /q \"" + WTGModel.logPath + "\\*.*\"");
-
+            //ProcessManager.SyncCMD("del /f /s /q \"" + WTGModel.logPath + "\\*.*\"");
+            try
+            {
+                new DirectoryInfo(WTGModel.logPath).EmptyDir();
+            }
+            catch (Exception ex)            
+            {
+                Console.WriteLine(ex);
+            }
             //ProcessManager.ECMD("cmd.exe","/c del /f /s /q \"" + WTGModel.logPath + "\\*.*\"");
+        }
+        private static void EmptyDir(this DirectoryInfo directory)
+        {
+            foreach (FileInfo item in directory.GetFiles())
+            {
+                item.Delete();
+            }
+            foreach (DirectoryInfo item in directory.GetDirectories())
+            {
+                item.Delete(true);
+            }
+
         }
 
     }

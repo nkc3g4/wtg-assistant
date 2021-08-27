@@ -14,7 +14,7 @@ namespace wintogo
 
     public static class FileInitialization
     {
-        public static List<string> appFileList = new List<string> {"bootice.exe","BitlockerConfig_x64.exe","BitlockerConfig_x86.exe","imagex_x86.exe","san_policy.xml","unattend_oobe.xml","unattend_templete.xml","unattend_winre.xml" };
+        public static List<string> appFileList = new List<string> { "bootice.exe", "BitlockerConfig_x64.exe", "BitlockerConfig_x86.exe", "imagex_x86.exe", "san_policy.xml", "unattend_oobe.xml", "unattend_templete.xml", "unattend_winre.xml" };
         public static void FileValidation()
         {
             if (StringUtility.IsChina(WTGModel.diskpartScriptPath))
@@ -22,7 +22,7 @@ namespace wintogo
                 if (StringUtility.IsChina(Application.StartupPath))
                 {
                     Log.WriteLog("Err_IsChinaOrContainSpace", "FileValidationErr");
-                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("IsChinaMsg", MsgManager.ci),false);
+                    ErrorMsg er = new ErrorMsg(MsgManager.GetResString("IsChinaMsg", MsgManager.ci), false);
                     er.ShowDialog();
                     Environment.Exit(0);
                 }
@@ -36,6 +36,10 @@ namespace wintogo
             //解压文件
             try
             {
+                if (Directory.Exists(WTGModel.applicationFilesPath))
+                {
+                    Directory.Delete(WTGModel.applicationFilesPath, true);
+                }
                 ZipFile.ExtractToDirectory(Application.StartupPath + "\\files.dat", WTGModel.applicationFilesPath);
 
                 //ZipHelper.UnZip(Application.StartupPath + "\\files.dat", WTGModel.applicationFilesPath);
@@ -104,6 +108,6 @@ namespace wintogo
         }
 
     }
-    
+
 
 }

@@ -292,12 +292,12 @@ namespace wintogo
         {
             if (WTGModel.isUefiGpt && !WTGModel.isLegacyUdiskUefi)
             {
-                BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
+                BootFileOperation.BcdeditFixBootFileVHD(WTGModel.espLetter+":\\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
             }
             else if (WTGModel.isUefiMbr && !WTGModel.isLegacyUdiskUefi)
             {
-                BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
-                BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
+                BootFileOperation.BcdeditFixBootFileVHD(WTGModel.espLetter + ":\\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
+                BootFileOperation.BcdeditFixBootFileVHD(WTGModel.espLetter + ":\\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
             }
             else if (WTGModel.isWimBoot)
             {
@@ -321,15 +321,15 @@ namespace wintogo
         {
             if (WTGModel.isUefiGpt && !WTGModel.isLegacyUdiskUefi)
             {
-                BootFileOperation.BcdbootWriteBootFile(@"V:\", @"X:\", FirmwareType.UEFI);
-                BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
+                BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.espLetter + ":\\", FirmwareType.UEFI);
+                BootFileOperation.BcdeditFixBootFileVHD(WTGModel.espLetter + ":\\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
             }
             else if (WTGModel.isUefiMbr && !WTGModel.isLegacyUdiskUefi)
             {
-                BootFileOperation.BcdbootWriteBootFile(@"V:\", @"X:\", FirmwareType.ALL);
-                BootFileOperation.BooticeWriteMBRPBRAndAct("X:");
-                BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
-                BootFileOperation.BcdeditFixBootFileVHD(@"X:\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
+                BootFileOperation.BcdbootWriteBootFile(@"V:\", WTGModel.espLetter + ":\\", FirmwareType.ALL);
+                BootFileOperation.BooticeWriteMBRPBRAndAct(WTGModel.espLetter + ":\\");
+                BootFileOperation.BcdeditFixBootFileVHD(WTGModel.espLetter + ":\\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.UEFI);
+                BootFileOperation.BcdeditFixBootFileVHD(WTGModel.espLetter + ":\\", WTGModel.ud, WTGModel.win8VHDFileName, FirmwareType.BIOS);
             }
             //else if (WTGModel.isWimBoot)
             //{

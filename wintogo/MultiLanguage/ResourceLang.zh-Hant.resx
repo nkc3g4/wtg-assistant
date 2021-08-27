@@ -273,4 +273,7 @@
   <data name="Msg_FileBroken" xml:space="preserve">
     <value>文件損壞，請重新下載</value>
   </data>
+  <data name="Msg_DotnetVersionError" xml:space="preserve">
+    <value>請安裝.NET Framework 4.6.1或更高版本！</value>
+  </data>
 </root>

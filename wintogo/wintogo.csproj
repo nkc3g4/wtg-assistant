@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>wintogo</RootNamespace>
     <AssemblyName>wintogo</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
@@ -178,6 +178,8 @@
       <DependentUpon>UdiskBenchmark.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\Benchmark.cs" />
+    <Compile Include="Utility\FormHelper.cs" />
+    <Compile Include="Utility\GetDotNetVersion.cs" />
     <Compile Include="Utility\ISOHelper.cs" />
     <Compile Include="Utility\TakeOwn.cs" />
     <Compile Include="Utility\HttpPost.cs" />

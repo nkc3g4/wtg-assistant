@@ -10,7 +10,9 @@ namespace wintogo
     {
         public static string[] topicName = new string[10];
         public static string[] topicLink = new string[10];
+       
         public bool IsUserClosing { get; set; }
+        
         public Exception OnClosingException { get; protected set; }
         public WriteProgress()
         {
@@ -38,7 +40,8 @@ namespace wintogo
             }
             try
             {
-                
+                WTGModel.wp = null;
+
                 //Log.WriteLog("Output", textBox1.Text);
                 ////if (System.IO.Directory .Exists ())
                 //FileStream fs = new FileStream(WTGModel.logPath + "\\" + DateTime.Now.ToFileTime() + ".log", FileMode.Create, FileAccess.Write);

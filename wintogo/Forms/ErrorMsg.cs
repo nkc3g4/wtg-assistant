@@ -14,6 +14,8 @@ namespace wintogo
         bool critical;
         public ErrorMsg(string errmsg, bool critical)
         {
+            FormHelper.Closewp();
+
             Thread.CurrentThread.CurrentUICulture = MsgManager.ci;
 
             this.errmsg = errmsg;
@@ -32,13 +34,13 @@ namespace wintogo
             Text += Application.ProductName + Application.ProductVersion;
             textBox1.Text = errmsg;
             Log.WriteLog("Info_ErrMsg", errmsg);
-            
+
             if (critical)
             {
                 try
                 {
                     if (File.Exists(Environment.GetEnvironmentVariable("windir") + @"\Logs\DISM\dism.log"))
-                        File.Copy(Environment.GetEnvironmentVariable("windir")+ @"\Logs\DISM\dism.log", WTGModel.logPath + "\\" + "dism.log", true);
+                        File.Copy(Environment.GetEnvironmentVariable("windir") + @"\Logs\DISM\dism.log", WTGModel.logPath + "\\" + "dism.log", true);
                 }
                 catch (Exception ex)
                 {
@@ -55,7 +57,8 @@ namespace wintogo
         {
             try
             {
-                string tmpFile = Path.GetTempFileName();
+                Random r = new Random();
+                string tmpFile = Path.GetTempFileName() + r.Next(65536).ToString();
                 ZipFile.CreateFromDirectory(WTGModel.logPath, tmpFile);
 
                 //ZipHelper.ZipFileDirectory(WTGModel.logPath, tmpFile);
@@ -63,12 +66,12 @@ namespace wintogo
                 File.Delete(tmpFile);
 
 
-
+                /*
                 HttpPost.Post("http://laa.luobotou.org/wtgstats.ashx", new Dictionary<string, string>() {
                     {"type","error" },
                     {"guid",WTGModel.CreateGuid },
                     {"errorMsg",errmsg}
-                });
+                });*/
 
 
             }

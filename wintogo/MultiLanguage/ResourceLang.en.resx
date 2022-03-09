@@ -279,4 +279,7 @@
   <data name="Msg_DotnetVersionError" xml:space="preserve">
     <value>This program requires .NET framework 4.6.1 or higher version.</value>
   </data>
+  <data name="Msg_PartitionError" xml:space="preserve">
+    <value>Partition Error</value>
+  </data>
 </root>

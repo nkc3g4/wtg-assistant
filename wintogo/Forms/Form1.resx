@@ -287,7 +287,7 @@
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>"Windows To Go"可以制作在U盘上运行的操作系统。
-可使用MSDN版本Windows8/8.1/10的install.wim、
+可使用MSDN版本Widows 10/11的install.wim、
 已装入系统的VHD文件或已解密的ESD文件。</value>
   </data>
   <data name="&gt;&gt;lblDescription.Name" xml:space="preserve">
@@ -1065,7 +1065,7 @@
     <value>退出</value>
   </data>
   <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 36</value>
+    <value>85, 44</value>
   </data>
   <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
     <value>文件</value>
@@ -1125,7 +1125,7 @@
     <value>保存当前设置</value>
   </data>
   <data name="工具ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 36</value>
+    <value>85, 44</value>
   </data>
   <data name="工具ToolStripMenuItem.Text" xml:space="preserve">
     <value>工具</value>
@@ -1149,7 +1149,7 @@
     <value>繁體中文</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 36</value>
+    <value>203, 44</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
     <value>语言(Language)</value>
@@ -1179,7 +1179,7 @@
     <value>关于</value>
   </data>
   <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 36</value>
+    <value>85, 44</value>
   </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助</value>
@@ -1191,7 +1191,7 @@
     <value>2, 2, 0, 2</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1427, 40</value>
+    <value>1427, 48</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2215,13 +2215,13 @@
     <value>7</value>
   </data>
   <data name="tabPageBackup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 90</value>
+    <value>8, 49</value>
   </data>
   <data name="tabPageBackup.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageBackup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 297</value>
+    <value>510, 337</value>
   </data>
   <data name="tabPageBackup.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>

@@ -288,4 +288,7 @@
   <data name="Msg_DotnetVersionError" xml:space="preserve">
     <value>请安装.NET Framework 4.6.1或更高版本！</value>
   </data>
+  <data name="Msg_PartitionError" xml:space="preserve">
+    <value>分区错误</value>
+  </data>
 </root>

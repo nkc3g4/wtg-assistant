@@ -26,7 +26,7 @@ namespace wintogo.Forms
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://bbs.luobotou.org/thread-16579-1-1.html");
+            Process.Start("https://bbs.luobotou.org/thread-16579-1-1.html");
         }
 
         private void button2_Click(object sender, EventArgs e)

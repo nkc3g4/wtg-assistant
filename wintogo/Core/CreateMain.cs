@@ -125,7 +125,7 @@ namespace wintogo
                     DiskOperation.RepartitionAndAutoAssignDriveLetter(WTGModel.UdObj.Index);
                     List<string> vols = GetUdiskList.GetVolumns(WTGModel.UdObj);
                     if (vols.Count < 1)
-                        throw new Exception("Device Repartition Error!");
+                        throw new Exception(MsgManager.GetResString("Msg_PartitionError"));
                     string vol = vols[0].Substring(0, 1);
                     WTGModel.UdObj.SetVolume(vol);
                     WTGModel.ud = vol + ":\\";
@@ -133,7 +133,7 @@ namespace wintogo
                 }
                 else
                 {
-                    WTGModel.ud = WTGModel.UdObj.Volume.Substring(0, 2) + "\\";
+                    WTGModel.ud = WTGModel.UdObj.Volume.Substring(0, 1) + ":\\";
                 }
                 if (WTGModel.isUefiGpt)
                 {
@@ -143,7 +143,7 @@ namespace wintogo
                     List<string> vols = GetUdiskList.GetVolumns(WTGModel.UdObj);
                     if (vols.Count < 2)
                     {
-                        throw new Exception("Partition Error");
+                        throw new Exception(MsgManager.GetResString("Msg_PartitionError"));
                     }
                     
                     WTGModel.espLetter = vols[0];

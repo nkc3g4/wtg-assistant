@@ -25,8 +25,7 @@ namespace wintogo
 
         Stopwatch writeSw = new Stopwatch();
         private int udSizeInMB = 0;
-        private readonly string releaseUrl = "http://bbs.luobotou.org/app/wintogo.txt";
-        private readonly string reportUrl = "http://myapp.luobotou.org/statistics.aspx?name=wtg&ver=";
+        private readonly string releaseUrl = "https://bbs.luobotou.org/app/wintogo.txt";
         List<Control> formControlList = new List<Control>();
 
         bool useiso = false;
@@ -134,7 +133,7 @@ namespace wintogo
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            WebUtility.VisitWeb("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=2427");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=2427");
 
 
         }
@@ -151,7 +150,7 @@ namespace wintogo
 
         private void 萝卜头IT论坛ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WebUtility.VisitWeb("http://bbs.luobotou.org");
+            WebUtility.VisitWeb("https://bbs.luobotou.org");
         }
 
         private void checkBoxuefi_CheckedChanged(object sender, EventArgs e)
@@ -191,13 +190,13 @@ namespace wintogo
 
         private void 在线帮助ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WebUtility.VisitWeb("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=2427");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=2427");
 
         }
 
         private void 官方论坛ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WebUtility.VisitWeb("http://bbs.luobotou.org/forum-88-1.html");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/forum-88-1.html");
 
         }
 
@@ -258,7 +257,7 @@ namespace wintogo
 
         private void 自动检查更新ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SWOnline swo = new SWOnline(releaseUrl, reportUrl);
+            SWOnline swo = new SWOnline(releaseUrl);
             Thread threadUpdate = new Thread(swo.Update);
             threadUpdate.Start();
             //若无弹出窗口，则当前程序已是最新版本！
@@ -353,7 +352,7 @@ namespace wintogo
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            WebUtility.VisitWeb("http://bbs.luobotou.org/thread-1625-1-1.html");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/thread-1625-1-1.html");
 
         }
 
@@ -420,7 +419,7 @@ namespace wintogo
             autodetectWim.Start();
             //linkLabel7_LinkClicked(null, null);
 
-            SWOnline swo = new SWOnline(releaseUrl, reportUrl);
+            SWOnline swo = new SWOnline(releaseUrl);
             swo.TopicLink = WriteProgress.topicLink;
             swo.TopicName = WriteProgress.topicName;
             swo.Linklabel = linkLabel2;
@@ -564,10 +563,7 @@ namespace wintogo
             WTGModel.partitionSize[0] = txtPartitionSize1.Text;
             WTGModel.partitionSize[1] = txtPartitionSize2.Text;
             WTGModel.partitionSize[2] = txtPartitionSize3.Text;
-            //MessageBox.Show(comboBoxParts.SelectedIndex.ToString());
             WTGModel.wimPart = comboBoxParts.SelectedIndex.ToString();
-            //WTGModel.isUserSetEfiPartition = checkBoxEfiPartition.Checked;
-            //WTGModel.efiPartition = textBoxEfiPartition.Text;
             WTGModel.skipOOBE = checkBoxOOBE.Checked;
 
             if (radiobtnVirtualDisk.Checked)
@@ -597,7 +593,6 @@ namespace wintogo
             {
                 if (folderBrowserDialog1.SelectedPath.Length != 0)
                 {
-                    //MsgManager.getResString("Msg_UDRoot")
                     //请选择优盘根目录
                     MessageBox.Show(MsgManager.GetResString("Msg_UDRoot", MsgManager.ci));
                 }
@@ -970,14 +965,14 @@ namespace wintogo
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Process.Start("http://bbs.luobotou.org");
+            Process.Start("https://bbs.luobotou.org");
         }
 
 
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
+            Process.Start("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
 
         }
 
@@ -985,7 +980,7 @@ namespace wintogo
 
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
+            Process.Start("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
 
         }
 
@@ -1320,7 +1315,7 @@ namespace wintogo
 
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
+            Process.Start("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
 
         }
 
@@ -1507,7 +1502,7 @@ namespace wintogo
 
         private void linkLabel5_LinkClicked_2(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=46043");
+            Process.Start("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=46043");
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

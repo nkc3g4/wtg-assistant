@@ -16,10 +16,9 @@ namespace wintogo
 
 
         }
-        public SWOnline(string releaseUrl, string reportUrl)
+        public SWOnline(string releaseUrl)
         {
             this.ReleaseUrl = releaseUrl;
-            this.ReportUrl = reportUrl;
         }
         private string releaseUrl;
 
@@ -27,14 +26,6 @@ namespace wintogo
         {
             get { return releaseUrl; }
             set { releaseUrl = value; }
-        }
-
-        private string reportUrl;
-
-        public string ReportUrl
-        {
-            get { return reportUrl; }
-            set { reportUrl = value; }
         }
 
         private string[] topicLink;

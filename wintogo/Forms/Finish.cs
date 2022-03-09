@@ -25,7 +25,7 @@ namespace wintogo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WebUtility.VisitWeb("http://bbs.luobotou.org/forum.php?mod=viewthread&tid=804");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=804");
 
         }
 
@@ -35,7 +35,7 @@ namespace wintogo
             {
                 try
                 {
-                    HttpPost.Post("http://laa.luobotou.org/wtgstats.ashx", new Dictionary<string, string>() {
+                    HttpPost.Post("https://laa.luobotou.org/wtgstats.ashx", new Dictionary<string, string>() {
                     {"type","finish" },
                     {"guid",WTGModel.CreateGuid },
                     {"timeElapsed",lblTime.Text}
@@ -51,7 +51,7 @@ namespace wintogo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            WebUtility.VisitWeb("http://bbs.luobotou.org/thread-5258-1-1.html");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/thread-5258-1-1.html");
             //System.Diagnostics.Process.Start("http://bbs.luobotou.org/thread-5258-1-1.html");
         }
 

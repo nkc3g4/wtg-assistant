@@ -367,6 +367,15 @@ namespace wintogo.MultiLanguage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 分区错误.
+        /// </summary>
+        public static string Msg_PartitionError {
+            get {
+                return ResourceManager.GetString("Msg_PartitionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 重命名错误.
         /// </summary>
         public static string Msg_RenameError {

@@ -435,7 +435,7 @@ namespace wintogo
             BootFileOperation.BcdbootWriteBootFile(WTGModel.ud, WTGModel.espLetter.Substring(0, 1) + ":\\", FirmwareType.ALL);
             //BootFileOperation.BcdbootWriteALLBootFileToXAndAct(WTGOperation.bcdbootFileName, WTGOperation.ud);
             BootFileOperation.BcdeditFixBootFileTypical(WTGModel.espLetter.Substring(0, 1) + ":\\", WTGModel.ud, FirmwareType.UEFI);
-            BootFileOperation.BooticeAct(WTGModel.espLetter.Substring(0, 1) + ":\\");
+            //BootFileOperation.BooticeAct(WTGModel.espLetter.Substring(0, 1) + ":\\");
             RemoveLetterX();
 
             return true;

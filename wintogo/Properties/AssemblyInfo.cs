@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("bbs.luobotou.org")]
 [assembly: AssemblyProduct("WTG辅助工具")]
-[assembly: AssemblyCopyright("Copyright  © 2012-2022    nkc3g4")]
+[assembly: AssemblyCopyright("Copyright  © 2012-2023    nkc3g4")]
 [assembly: AssemblyTrademark("萝卜头IT论坛")]
 [assembly: AssemblyCulture("")]
 

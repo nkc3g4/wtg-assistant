@@ -307,7 +307,6 @@ namespace iTuner
             {
                 try
                 {
-                    if ((uint)drive["Index"] < 1) continue;
                     if (drive["InterfaceType"].ToString() != "USB" && drive["InterfaceType"].ToString() != "SCSI") continue;
                     if (drive["Model"].ToString().Contains("APPLE SD")) continue;
                     UsbDisk disk = new UsbDisk(drive["DeviceID"].ToString());

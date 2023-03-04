@@ -27,11 +27,6 @@ namespace wintogo
         public static int vhdPartitionType;
         public static string efiPartitionSize;
         public static UsbDisk UdObj;
-        /// <summary>
-        /// UserSetWTGSettingItems();
-        /// </summary>
-        //public static UserSetWTGSettingItems userSettings = new UserSetWTGSettingItems();
-        //public static List<string> imagePartNames = new List<string>();
       
         /// <summary>
         /// 可使用ESD文件
@@ -46,9 +41,7 @@ namespace wintogo
         /// </summary>
         public static string udString;
         public static bool isWimBoot;
-        //public static bool isFramework;
         public static bool isBlockLocalDisk;
-        //public static bool isDiswinre;
         /// <summary>
         /// 镜像文件路径
         /// </summary>
@@ -88,14 +81,6 @@ namespace wintogo
         ///  WTGOperation.filetype = Path.GetExtension(openFileDialog1.FileName.ToLower()).Substring(1);
         /// </summary>
         public static string choosedImageType;
-        /// <summary>
-        /// 是否勾选通用启动文件
-        /// </summary>
-        //public static bool commonBootFiles;
-        /// <summary>
-        /// Path.GetTempPath();
-        /// </summary>
-        //public static string scriptTempPath = Path.GetTempPath();
         /// <summary>
         /// win8.vhd
         /// </summary>

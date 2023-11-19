@@ -25,7 +25,7 @@ namespace wintogo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WebUtility.VisitWeb("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=804");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/thread-804-1-1.html");
 
         }
 

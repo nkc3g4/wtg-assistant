@@ -133,7 +133,7 @@ namespace wintogo
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            WebUtility.VisitWeb("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=2427");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/thread-2427-1-1.html");
 
 
         }
@@ -190,7 +190,7 @@ namespace wintogo
 
         private void 在线帮助ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WebUtility.VisitWeb("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=2427");
+            WebUtility.VisitWeb("https://bbs.luobotou.org/thread-2427-1-1.html");
 
         }
 
@@ -972,7 +972,7 @@ namespace wintogo
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
+            Process.Start("https://bbs.luobotou.org/thread-6098-1-1.html");
 
         }
 
@@ -980,7 +980,7 @@ namespace wintogo
 
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
+            Process.Start("https://bbs.luobotou.org/thread-6098-1-1.html");
 
         }
 
@@ -1315,7 +1315,7 @@ namespace wintogo
 
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=6098");
+            Process.Start("https://bbs.luobotou.org/thread-6098-1-1.html");
 
         }
 
@@ -1502,7 +1502,7 @@ namespace wintogo
 
         private void linkLabel5_LinkClicked_2(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://bbs.luobotou.org/forum.php?mod=viewthread&tid=46043");
+            Process.Start("https://bbs.luobotou.org/thread-46043-1-1.html");
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
